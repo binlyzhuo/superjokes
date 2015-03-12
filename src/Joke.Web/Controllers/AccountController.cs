@@ -112,6 +112,7 @@ namespace Joke.Web.Controllers
         public ActionResult UpdateJoke(int jokeid)
         {
             var jokeinfo = jokeLogic.JokeDetailGet(jokeid);
+            ////
             return View(jokeinfo);
         }
     }
