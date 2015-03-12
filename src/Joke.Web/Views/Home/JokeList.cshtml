@@ -7,8 +7,11 @@
 @section header{
     
     <script type="text/javascript" src="~/Scripts/jquery.cookie.js"></script>
+<script type="text/javascript" src="~/Scripts/jquery.lazyload.min.js"></script>
+
     <script type="text/javascript">
         $(function () {
+            $("img.lazyloading").lazyload();
             jokesfollow();
         });
         
@@ -97,7 +100,7 @@
                         {
                             <div>
                                 
-                                <img src="@JokeHelper.GetJokeImg(p.Content)" alt="@p.Title"/></div>
+                                <img class="lazyloading" data-original="~/imgs/loadingplace.png" src="@JokeHelper.GetJokeImg(p.Content)" alt="@p.Title" /></div>
                         }
 
                     </div>

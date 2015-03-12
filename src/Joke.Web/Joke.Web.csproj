@@ -115,6 +115,7 @@
     <None Include="Properties\PublishProfiles\joke.pubxml" />
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
     <Content Include="Imgs\defaultphoto.png" />
+    <Content Include="Imgs\loadingplace.png" />
     <Content Include="Imgs\superjokelogo.png" />
     <Content Include="Imgs\xiaohua_logo.png" />
     <Content Include="Scripts\jquery-2.1.3.js" />
