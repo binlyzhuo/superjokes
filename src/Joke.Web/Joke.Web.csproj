@@ -204,6 +204,7 @@
     <Content Include="Views\Account\UserList.cshtml" />
     <Content Include="Views\Account\UserSearchList.cshtml" />
     <Content Include="favicon.ico" />
+    <Content Include="Views\Account\UpdateJoke.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

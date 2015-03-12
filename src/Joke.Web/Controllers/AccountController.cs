@@ -108,5 +108,10 @@ namespace Joke.Web.Controllers
             }
             return Json(jsonViewResult,JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult UpdateJoke()
+        {
+            return View();
+        }
     }
 }
