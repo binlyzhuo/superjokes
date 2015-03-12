@@ -109,9 +109,10 @@ namespace Joke.Web.Controllers
             return Json(jsonViewResult,JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult UpdateJoke()
+        public ActionResult UpdateJoke(int jokeid)
         {
-            return View();
+            var jokeinfo = jokeLogic.JokeDetailGet(jokeid);
+            return View(jokeinfo);
         }
     }
 }
