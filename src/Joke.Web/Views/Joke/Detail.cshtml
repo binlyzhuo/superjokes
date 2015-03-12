@@ -13,6 +13,34 @@
         
         $(function () {
             jokesfollow();
+
+            // 
+            $(document).keydown(function (event) {
+                //alert(event.keyCode);
+                switch(event.keyCode)
+                {
+                    case 37:
+                        var link = $("#lastJokeLink").attr("href");
+                        if ($.trim(link) != "") {
+                            window.location.href = link;
+                        }
+                        else
+                        {
+                            alert('已结束');
+                        }
+                        break;
+                    case 39:
+                        
+                        var link = $("#nextJokeLink").attr("href");
+                        if ($.trim(link) != "") {
+                            window.location.href = link;
+                        }
+                        else {
+                            alert('已结束');
+                        }
+                        break;
+                }
+            });
         });
         
         function jokesfollow() {
@@ -120,7 +148,7 @@
                     @if (nextJoke != null)
                     {
                         <em>下一篇：</em>
-                        <a href="@JokeHelper.GetJokeDetail(nextJoke.ID)" title="@nextJoke.Title">@nextJoke.Title</a>
+                        <a id="nextJokeLink" href="@JokeHelper.GetJokeDetail(nextJoke.ID)" title="@nextJoke.Title">@nextJoke.Title</a>
                     }
 
                 </span>
@@ -128,7 +156,7 @@
                     @if (lastJoke != null)
                     {
                         <em>上一篇：</em>
-                        <a href="@JokeHelper.GetJokeDetail(lastJoke.ID)" title="@lastJoke.Title">@lastJoke.Title</a>
+                        <a id="lastJokeLink" href="@JokeHelper.GetJokeDetail(lastJoke.ID)" title="@lastJoke.Title">@lastJoke.Title</a>
                     }
 
                 </span>
