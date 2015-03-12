@@ -58,9 +58,9 @@ namespace Joke.Data
 
         public Tuple<T_Joke, T_Joke, T_Joke> GetLastNextJokes(int jokeid)
         {
-            string sql = string.Format(@"select top 1 * from T_Joke where ID={0}
-                        select top 1 * from T_Joke where ID<{0} order by ID desc
-                        select top 1 * from T_Joke where ID>{0} order by ID asc", jokeid);
+            string sql = string.Format(@"select top 1 * from T_Joke where ID={0} and state=1
+                        select top 1 * from T_Joke where ID<{0} and state=1 order by ID desc
+                        select top 1 * from T_Joke where ID>{0} and state=1 order by ID asc", jokeid);
 
             var item = this.jokeDatabase.FetchMultiple<T_Joke, T_Joke, T_Joke>(sql);
             var data = new Tuple<T_Joke, T_Joke, T_Joke>(item.Item1[0], item.Item2 != null && item.Item2.Count > 0 ? item.Item2[0] : null, item.Item3 != null && item.Item3.Count > 0 ? item.Item3[0] : null);
