@@ -66,6 +66,20 @@
     @Html.Partial("_TopMenus")
     @RenderBody()
     @Html.Partial("_FriendLinks")
+    @if (!Request.IsLocal)
+    {
+        <script>
+            var _hmt = _hmt || [];
+            (function () {
+                var hm = document.createElement("script");
+                hm.src = "//hm.baidu.com/hm.js?f344538d97afb5266a5905a8d337115d";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(hm, s);
+            })();
+        </script>
+
+    }
     @MiniProfiler.RenderIncludes()
 </body>
+
 </html>
