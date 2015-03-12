@@ -5,6 +5,7 @@
 @using Joke.Model.ViewModel
 @using Joke.Web.Helpers
 @section header{
+    
     <script type="text/javascript" src="~/Scripts/jquery.cookie.js"></script>
     <script type="text/javascript">
         $(function () {
@@ -12,25 +13,50 @@
         });
         
         function jokesfollow() {
-            $(".followBtn").each(function () {
+            $("em.followBtn").each(function () {
                 $(this).click(function () {
                     var jokeid = $(this).attr("data");
                     var followtype = $(this).attr("type");
+                    var txt = "";
+                    if (followtype == 1) {
+                        txt = "赞";
+                    }
+                    else {
+                        txt = "踩";
+                    }
+                    var followCookieValue = $.cookie('joke' + jokeid);
+                    if (followCookieValue != null)
+                    {
+                        $(this).parent('div.vote-btn').append(showMsg(txt));
+
+                        $(this).parent('div.vote-btn').children('div.article-layer-box').hide(2000);
+                    }
+                    
                     $(this).unbind("click");
                     $(this).parent("div.vote-btn").siblings("div.vote-btn").children("em.followBtn").unbind("click");
+                    $.cookie('joke' + jokeid, jokeid, { expires: 7 });
                     $.post('/joke/JokeFollow', { jokeid: jokeid, type: followtype }, function (data) {
-                        if (followtype == "1")
-                        {
-                            alert('点赞成功');
-                        }
-                        else
-                        {
-                            alert('点踩成功');
-                        }
+                        
                     });
+                    $(this).children("span.text").html(Number($(this).children("span.text").html())+1);
+                    $(this).parent('div.vote-btn').append(showMsg(txt));
+
+                    $(this).parent('div.vote-btn').children('div.article-layer-box').hide(2000);
                     
                 });
             });
+        }
+
+        function showMsg(txt)
+        {
+            var msg = "";
+            msg = msg + '<div style="display: block;" class="article-layer-box">';
+            msg = msg + '<div class="layer-inner">';
+            msg += '<i class="icon correct-icon">已'+txt+'过</i>';
+            msg += '<span>已'+txt+'过</span></div>';
+            msg += '<i class="icon arrow-icon"></i>';
+            msg += '</div>';
+            return msg;
         }
     </script>
 }
@@ -83,7 +109,7 @@
                                 <i class="icon"></i><span class="text">@p.LikeCount</span>
                             </em>
                         </div>
-                        <div class="bad-btn-box  vote-btn">
+                        <div class="bad-btn-box vote-btn">
                             <em class="bad-btn followBtn @string.Format("btn{0}",p.JokeId)" data="@p.JokeId" type="2">
                                 <i class="icon"></i><span class="text">@p.HateCount</span>
                             </em>

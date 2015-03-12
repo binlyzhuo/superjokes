@@ -8,23 +8,56 @@
     var nextJoke = Model.Item3;
 }
 @section header{
-    <script type="text/javascript" src="~/Scripts/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.cookie.js"></script>
     <script type="text/javascript">
         
         $(function () {
             jokesfollow();
         });
+        
         function jokesfollow() {
-            $(".good-btn-box em").each(function () {
+            $("em.followBtn").each(function () {
                 $(this).click(function () {
                     var jokeid = $(this).attr("data");
                     var followtype = $(this).attr("type");
+                    var txt = "";
+                    if (followtype == 1) {
+                        txt = "赞";
+                    }
+                    else {
+                        txt = "踩";
+                    }
+                    var followCookieValue = $.cookie('joke' + jokeid);
+                    if (followCookieValue != null) {
+                        $(this).parent('div.vote-btn').append(showMsg(txt));
 
-                    $.post('/Joke/JokeFollow', { jokeid: jokeid, type: followtype }, function (data) {
-                        alert("操作成功");
+                        $(this).parent('div.vote-btn').children('div.article-layer-box').hide(2000);
+                    }
+
+                    $(this).unbind("click");
+                    $(this).parent("div.vote-btn").siblings("div.vote-btn").children("em.followBtn").unbind("click");
+                    $.cookie('joke' + jokeid, jokeid, { expires: 7 });
+                    $.post('/joke/JokeFollow', { jokeid: jokeid, type: followtype }, function (data) {
+
                     });
+                    $(this).children("span.text").html(Number($(this).children("span.text").html()) + 1);
+                    $(this).parent('div.vote-btn').append(showMsg(txt));
+
+                    $(this).parent('div.vote-btn').children('div.article-layer-box').hide(2000);
+
                 });
             });
+        }
+
+        function showMsg(txt) {
+            var msg = "";
+            msg = msg + '<div style="display: block;" class="article-layer-box">';
+            msg = msg + '<div class="layer-inner">';
+            msg += '<i class="icon correct-icon">已' + txt + '过</i>';
+            msg += '<span>已' + txt + '过</span></div>';
+            msg += '<i class="icon arrow-icon"></i>';
+            msg += '</div>';
+            return msg;
         }
     </script>
 }
@@ -72,12 +105,12 @@
             <div class="article-commentbar articleCommentbar clearfix" data-id="44506">
                 
                 <div class="good-btn-box vote-btn">
-                    <em class="good-btn" data="@currentJoke.ID" type="1">
+                    <em class="good-btn followBtn" data="@currentJoke.ID" type="1">
                         <i class="icon"></i><span class="text">@currentJoke.LikeCount</span>
                     </em>
                 </div>
                 <div class="bad-btn-box  vote-btn">
-                    <em class="bad-btn" data="@currentJoke.ID" type="2">
+                    <em class="bad-btn followBtn" data="@currentJoke.ID" type="2">
                         <i class="icon"></i><span class="text">@currentJoke.HateCount</span>
                     </em>
                 </div>
