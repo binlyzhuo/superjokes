@@ -1,0 +1,105 @@
+﻿@{
+
+    Layout = "~/Views/Shared/_BaseLayoutPage.cshtml";
+    List<string> msgList = ViewBag.MsgList;
+}
+@section header{
+    <script type="text/javascript" src="~/Scripts/jquery.form.js"></script>
+    <style type="text/css">
+        #registerTable {
+            width: 500px;
+        }
+
+            #registerTable tr {
+                height: 30px;
+            }
+
+            #registerTable .title {
+                width: 80px;
+                text-align: right;
+                font-size: 13px;
+            }
+
+        .mustinput {
+            color: red;
+        }
+    </style>
+    <script type="text/javascript">
+        function userLogin() {
+            var userName = $("#txtUserName").val();
+            var email = $("#txtEmail").val();
+
+            $("#userLoginForm").submit();
+        }
+    </script>
+}
+
+<div class="regdiv wrapper" style="width:500px;height:300px;margin-top:20px;">
+    <form method="post" action="login" id="userLoginForm">
+        <table id="registerTable">
+            <tr>
+                <td></td>
+                <td colspan="2">
+                    @if (msgList != null && msgList.Count > 0)
+                    {
+                        <ul class="errorlist">
+                            @foreach (var m in msgList)
+                            {
+                                <li>@m</li>
+                            }
+                        </ul>
+                    }
+                </td>
+
+            </tr>
+            <tr>
+                <td></td>
+                <td colspan="2" align="left" style="font-size:15px;">用户登录</td>
+
+            </tr>
+            <tr>
+                <td class="title">用户名：</td>
+                <td>
+                    <input type="text" id="txtUserName" name="UserName" class="text-form" />
+                    <span class="mustinput">*</span>
+                </td>
+                <td>
+                    <span id="msgUserName"></span>
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="title">密码：</td>
+                <td>
+                    <input type="password" id="txtPassword" name="Password" class="text-form" />
+                    <span class="mustinput">*</span>
+                </td>
+                <td>
+                    <span id="msgPassword"></span>
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="title">验证码：</td>
+                <td>
+                    <input type="text" class="text-form" id="txtVerifyCode" name="VerifyCode" style="width:120px;" />
+                    <div style="line-height:10px; float:right;margin-right:7px;width:260px;">
+                        <img id="valiCode" style="cursor: pointer;" src="/Home/GetVerifyCode" alt="验证码" onclick="javascript: $('#valiCode').attr('src', '/Home/GetVerifyCode?t=' + Math.random());" />
+                        <div style="float:right;margin-right: 47px;line-height: 25px;width:150px;">
+                            <span class="mustinput">*</span>
+                            <span id="msgVerifyCode"></span>
+                        </div>
+                    </div>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td colspan="2" align="left">
+                    <input type="button" value="登录" style="width:100px;height:30px;" onclick="userLogin();" />
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+

@@ -1,0 +1,27 @@
+﻿
+@{
+    
+    Layout = "~/Views/Shared/_BaseLayoutPage.cshtml";
+}
+
+<div class="wrapper clearfix">
+    <!-- main -->
+    <div class="main">
+        <!-- section -->
+        @Html.Action("CategorySummary","Home",null)
+        <!-- //section -->
+        <!-- new-panel -->
+        @Html.Action("LatestJokes", "Home", null)
+        <!-- //new-panel -->
+    </div>
+    <!-- //main -->
+    <!-- aside -->
+    <div class="aside">
+        <!-- section -->
+        @Html.Action("LikeMostJokes", "Home", null)
+        <!-- //section -->
+    </div>
+    <!-- //aside -->
+</div>
+
+@Html.Action("JokeImgList")

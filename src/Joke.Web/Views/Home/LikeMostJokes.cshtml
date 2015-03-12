@@ -1,0 +1,27 @@
+﻿@model List<T_Joke>
+@using Joke.Model.Domain
+@using Joke.Web.Helpers
+<div class="section">
+    <div class="section-header">
+        <h2 class="section-title">网友推荐笑话</h2>
+    </div>
+    <ul class="rank-list recommend-list">
+        @for (int index = 0; index < Model.Count; index++)
+        {
+            if (index < 3)
+            {
+                <li>
+                    <em class="n1">@(index+1)</em>
+                    <a href="@JokeHelper.GetJokeDetail(Model[index].ID)" target="_blank" title="@Model[index].Title">@Model[index].Title</a>
+                </li>
+            }
+            else
+            {
+                <li>
+                    <em>@(index + 1)</em>
+                    <a href="@JokeHelper.GetJokeDetail(Model[index].ID)" target="_blank" title="@Model[index].Title">@Model[index].Title</a>
+                </li>
+            }
+        }
+    </ul>
+</div>

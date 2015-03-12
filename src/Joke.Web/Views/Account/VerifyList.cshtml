@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "VerifyList";
+    Layout = "~/Views/Shared/_BaseAdminLayoutPage.cshtml";
+}
+@section header{
+    <script type="text/javascript">
+        $(function () {
+            loadingjokes();
+        });
+
+        function loadingjokes() {
+            $.ajax({
+                url: '/account/JokeList',
+                type:'post',
+                data: { page: 1, pagesize: 20, state: 0 },
+                success: function (data) {
+                    $("#jokeslistDiv").html(data);
+                }
+
+            });
+        }
+
+        function Verify(jokeid,type)
+        {
+            //alert(jokeid);
+            $.post('verify', { jokeid: jokeid, type: type }, function (data) {
+                if (data.Success) {
+                    alert('审核成功');
+                    loadingjokes();
+                }
+            });
+        }
+
+        function DeleteJoke(jokeid) {
+            $.post('DeleteJoke', { jokeid: jokeid }, function (data) {
+                if (data.Success) {
+                    alert('删除成功');
+                    loadingjokes();
+                }
+            });
+        }
+
+        function jokeDetail(jokieid) {
+            window.showModalDialog('/account/jokedetail?jokeid=' + jokieid,"", "dialogWidth=800px;dialogHeight=300px");
+        }
+    </script>
+}
+<h2>待审核笑话</h2>
+<div id="jokeslistDiv"></div>
+

@@ -1,0 +1,17 @@
+﻿@model List<CategoryDto>
+@using Joke.Model.Dto
+@using Joke.Web.Helpers
+<div class="filter filter-classification">
+    <div class="filter-header">
+        <h2>笑话连篇分类</h2>
+    </div>
+    <div class="filter-links clearfix">
+        <a class="current" href="/new/">全部</a>
+
+        @foreach (var s in Model)
+        {
+            <a href="@JokeHelper.GetCategoryJokes(s.PinYin)">@s.Name</a>
+        }
+        
+    </div>
+</div>

@@ -1,0 +1,36 @@
+﻿@model Tuple<int, List<JokePrimaryInfo>>
+@using Joke.Model.Domain
+@using Joke.Web.Helpers
+@using Joke.Model.ViewModel
+@using Joke.Common
+@{
+    var latest = Model.Item2[0];
+}
+<div style="height: 578px; overflow: hidden;" class="section new-panel">
+    <div class="section-header">
+        <a class="more" target="_blank" href="/latest/">@string.Format("共{0}条笑话»",Model.Item1)</a>
+        <h2 class="section-title">最新更新</h2>
+    </div>
+    <div class="headline">
+        <h3 class="headline-title">
+            <a href="@JokeHelper.GetJokeDetail(latest.JokeId)" target="_blank" title="@latest.Title">@latest.Title</a>
+        </h3>
+        <p>
+            @latest.Content.SubString(70)<a class="more" href="@JokeHelper.GetJokeDetail(latest.JokeId)" target="_blank">[查看全文]</a>
+        </p>
+    </div>
+    <!-- news-list -->
+    <ul class="news-list">
+        
+        @for (int index = 1; index < Model.Item2.Count; index++)
+        {
+            <li>
+                <span class="date">@Model.Item2[index].AddDate.ToString("yyyy-MM-dd")</span>
+                <a class="type" title="@string.Format("{0}笑话", Model.Item2[index].CategoryName)" href="@JokeHelper.GetCategoryJokes(@Model.Item2[index].PinYin)" target="_blank">[@Model.Item2[index].CategoryName]</a>
+                <a href="@JokeHelper.GetJokeDetail(@Model.Item2[index].JokeId)" title="@Model.Item2[index].Title" target="_blank">@Model.Item2[index].Title</a>
+            </li>
+        }
+    </ul>
+
+    <!-- //news-list -->
+</div>

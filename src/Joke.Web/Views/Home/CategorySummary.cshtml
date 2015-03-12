@@ -1,0 +1,18 @@
+﻿@model List<CategorySummaryInfo>
+@using Joke.Model.ViewModel
+@using Joke.Web.Helpers
+<div class="section classification-section">
+    <div class="section-header">
+        <h2>笑话分类</h2>
+    </div>
+    <ul class="news-list classification-nav clearfix">
+
+        @foreach (var s in Model)
+        {
+            <li>
+                <a title="@string.Format("{0}笑话",s.CategoryName)" href="@JokeHelper.GetCategoryJokes(s.PinYin)" target="_blank">@s.CategoryName<em>(@s.JokeCount)</em></a>
+            </li>
+        }
+    </ul>
+
+</div>

@@ -1,0 +1,126 @@
+﻿@model Tuple<T_Joke, T_Joke, T_Joke>
+@using Joke.Model.Domain
+@using Joke.Web.Helpers
+@{
+    Layout = "~/Views/Shared/_BaseLayoutPage.cshtml";
+    var currentJoke = Model.Item1;
+    var lastJoke = Model.Item2;
+    var nextJoke = Model.Item3;
+}
+@section header{
+    <script type="text/javascript" src="~/Scripts/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript">
+        
+        $(function () {
+            jokesfollow();
+        });
+        function jokesfollow() {
+            $(".good-btn-box em").each(function () {
+                $(this).click(function () {
+                    var jokeid = $(this).attr("data");
+                    var followtype = $(this).attr("type");
+
+                    $.post('/Joke/JokeFollow', { jokeid: jokeid, type: followtype }, function (data) {
+                        alert("操作成功");
+                    });
+                });
+            });
+        }
+    </script>
+}
+<div class="wrapper location clearfix">
+    <a class="collect" href="#"></a>
+    <a href="/">笑话大全</a><i> &gt; </i>
+    <a href="/latest/">笑话连篇</a><i> &gt; </i>
+    <a href="/lengxiaohua/">冷笑话</a><i> &gt; </i>
+    <span>冷笑话...</span>
+</div>
+<div class="wrapper clearfix">
+    <!-- main -->
+    <div class="main">
+        <!-- article -->
+        <div class="section article">
+            <div class="article-header">
+                <div class="article-page clearfix">
+                    @if (lastJoke != null)
+                    {
+                        <a class="prev" href="@JokeHelper.GetJokeDetail(lastJoke.ID)">上一页</a>
+                    }
+
+                    @if (nextJoke != null)
+                    {
+                        <a class="next" href="@JokeHelper.GetJokeDetail(nextJoke.ID)">下一页</a>
+                    }
+
+                </div>
+                <h1 class="article-title">@currentJoke.Title</h1>
+                <div class="article-source">
+                    <span>来源：</span>
+                    <a href="/" target="_blank" rel="nofollow">本站原创</a>
+                </div>
+            </div>
+            <div class="article-text">
+                @if (currentJoke.Type == 0)
+                {
+                    @currentJoke.Content
+                }
+                else if (currentJoke.Type == 1)
+                {
+                    <img src="@JokeHelper.GetJokeImg(currentJoke.Content)" />
+                }
+            </div>
+            <div class="article-commentbar articleCommentbar clearfix" data-id="44506">
+                
+                <div class="good-btn-box vote-btn">
+                    <em class="good-btn" data="@currentJoke.ID" type="1">
+                        <i class="icon"></i><span class="text">@currentJoke.LikeCount</span>
+                    </em>
+                </div>
+                <div class="bad-btn-box  vote-btn">
+                    <em class="bad-btn" data="@currentJoke.ID" type="2">
+                        <i class="icon"></i><span class="text">@currentJoke.HateCount</span>
+                    </em>
+                </div>
+            </div>
+            <div class="related-article clearfix">
+                <span class="next">
+                    @if (nextJoke != null)
+                    {
+                        <em>下一篇：</em>
+                        <a href="@JokeHelper.GetJokeDetail(nextJoke.ID)" title="@nextJoke.Title">@nextJoke.Title</a>
+                    }
+
+                </span>
+                <span class="prev">
+                    @if (lastJoke != null)
+                    {
+                        <em>上一篇：</em>
+                        <a href="@JokeHelper.GetJokeDetail(lastJoke.ID)" title="@lastJoke.Title">@lastJoke.Title</a>
+                    }
+
+                </span>
+                <span class="tip">可用“←”或“→”方向键快速翻页</span>
+            </div>
+        </div>
+        <!-- comment-section -->
+        
+        <!-- //comment-section -->
+        <!-- //article -->
+        @Html.Action("ReadMostJokes", "Joke", null)
+        <!-- filter -->
+        @Html.Action("CategoryList", "Joke", null)
+        <!-- //filter -->
+
+    </div>
+    <!-- //main -->
+    <!-- aside -->
+    <div class="aside">
+        <!-- section -->
+        @Html.Action("LikeMostJokes", "Home", null)
+        <!-- //section -->
+        <!-- section -->
+        <!-- //section -->
+
+    </div>
+    <!-- //aside -->
+</div>

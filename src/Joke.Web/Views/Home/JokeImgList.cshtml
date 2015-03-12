@@ -1,0 +1,24 @@
+﻿@model List<T_Joke>
+@using Joke.Model.Domain
+@using Joke.Web.Helpers
+<div class="wrapper section wrapper-section">
+    <div class="section-header">
+        <a class="more" href="/images/" target="_blank">更多»</a>
+        <h2 class="section-title">最新搞笑趣图</h2>
+    </div>
+    <ul class="pic-text intriguing-list clearfix">
+        
+        @foreach (var s in Model)
+        {
+            <li class="item">
+                <span class="pic">
+                    <a class="img-wrap" href="@JokeHelper.GetJokeDetail(s.ID)" target="_blank">
+                        <img width="170" title="@s.Title" alt="@s.Title" loadsrc="@JokeHelper.GetJokeImg(s.Content)" src="@JokeHelper.GetJokeImg(s.Content)" shid="1" style="opacity: 1;">
+                    </a>
+                    <a class="text" href="@JokeHelper.GetJokeDetail(s.ID)" title="@s.Title" target="_blank">@s.Title</a>
+                </span>
+            </li>
+        }
+    </ul>
+
+</div>

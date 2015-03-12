@@ -1,0 +1,55 @@
+﻿@{
+    Layout = null;
+}
+@model Joke.Model.Domain.T_Joke
+@using Joke.Web.Helpers
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>JokeDetail</title>
+    <script type="text/javascript" src="~/Scripts/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript">
+        function Verify(jokeid, type) {
+            //alert(jokeid);
+            $.post('verify', { jokeid: jokeid, type: type }, function (data) {
+                if (data.Success) {
+                    alert('审核成功');
+                }
+            });
+        }
+        function DeleteJoke(jokeid) {
+            $.post('DeleteJoke', { jokeid: jokeid }, function (data) {
+                if (data.Success) {
+                    alert('删除成功');
+                    loadingjokes();
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <p>@Model.Title</p>
+        <p>
+            @if (Model.Type == 0)
+            {
+                <span>@Model.Content</span>
+            }
+            else
+            {
+                <img src="@JokeHelper.GetJokeImg(Model.Content)" />
+            }
+        </p>
+        <p>状态: @Html.Raw(Model.State==0?"未审核":"已审核")</p>
+        <p>
+            <a href="#" onclick="Verify(@Model.ID,0);">通过</a>
+            <a href="#" onclick="DeleteJoke(@Model.ID)">删除</a>
+        </p>
+    </div>
+</body>
+</html>
+
+
+

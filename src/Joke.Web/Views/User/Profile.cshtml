@@ -1,0 +1,32 @@
+﻿@model Joke.Model.Domain.T_User
+
+@{
+    
+    Layout = "~/Views/Shared/_BaseUserLayoutPage.cshtml";
+}
+<div>
+    <table>
+        <tr>
+            <td>用户名：</td>
+            <td>@Model.UserName</td>
+        </tr>
+        <tr>
+            <td>电子邮件：</td>
+            <td>@Model.Email</td>
+        </tr>
+        <tr>
+            <td>个人头像：</td>
+            <td>
+                <img src="~/Imgs/defaultphoto.png" />
+            </td>
+        </tr>
+        <tr>
+            <td>注册日期：</td>
+            <td>@Model.RegisterDate.ToString("yyyy-MM-dd HH:mm:ss")</td>
+        </tr>
+        <tr>
+            <td>上次登录日期：</td>
+            <td>@Model.LastLogin.ToString("yyyy-MM-dd HH:mm:ss")</td>
+        </tr>
+    </table>
+</div>

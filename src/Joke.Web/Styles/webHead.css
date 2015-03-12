@@ -1,0 +1,413 @@
+﻿.site-nav {
+    position: relative;
+    z-index: 1000;
+    border-bottom: 1px solid #e4e4e4;
+    background: #f5f5f5;
+    height: 27px;
+}
+
+.site-nav-inner {
+    width: 980px;
+    margin: 0 auto;
+    margin-top: 2px;
+    height: 24px;
+    line-height: 24px;
+}
+
+    .site-nav-inner a {
+        color: #666;
+        text-decoration: none;
+    }
+
+        .site-nav-inner a:hover {
+            color: #c00;
+        }
+
+.quick-menu {
+    float: left;
+    color: #ccc;
+}
+
+    .quick-menu a {
+        margin: 0 6px;
+    }
+
+    .quick-menu .home {
+        margin: 0 6px 0 0;
+    }
+
+.quick-more {
+    float: left;
+    position: relative;
+    z-index: 50;
+    zoom: 1;
+}
+
+    .quick-more .m {
+        float: left;
+        position: relative;
+        z-index: 1;
+        padding: 1px 20px 1px 8px;
+        padding: 2px 20px 0 8px\9;
+        height: 22px;
+        line-height: 22px;
+        color: #666;
+        cursor: default;
+    }
+
+.quick-more-hover .m {
+    margin-bottom: -2px;
+    padding: 0 19px 2px 7px;
+    padding: 1px 19px 1px 7px\9;
+    border: 1px solid #ccc;
+    border-bottom: 0 none;
+    background: #fff;
+}
+
+.quick-more-hover .quick-more-list {
+    display: block;
+}
+
+.quick-more .m b {
+    position: absolute;
+    right: 8px;
+    top: 10px;
+    width: 7px;
+    height: 4px;
+    font: 0/0 arial;
+    background: url(http://icon.zol-img.com.cn/sj/images/desk_bg.png) no-repeat -98px -192px;
+}
+
+.quick-more-hover .m b {
+    right: 7px;
+    top: 9px;
+    background: url(http://icon.zol-img.com.cn/sj/images/desk_bg.png) no-repeat -98px -184px;
+}
+
+.quick-more-list {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 24px;
+    width: 158px;
+    border: 1px solid #ccc;
+    background: #fff;
+}
+
+    .quick-more-list dl {
+        padding: 4px 0 6px 10px;
+    }
+
+    .quick-more-list .hover {
+        background: #f5f5f5;
+    }
+
+    .quick-more-list dt {
+        height: 24px;
+        line-height: 24px;
+        overflow: hidden;
+        color: #666;
+        font-weight: bold;
+    }
+
+    .quick-more-list dd {
+        overflow: hidden;
+        zoom: 1;
+        line-height: 20px;
+    }
+
+        .quick-more-list dd a {
+            float: left;
+            margin-right: 12px;
+            white-space: nowrap;
+        }
+
+    .quick-more-list .lines {
+        padding-top: 0;
+    }
+
+        .quick-more-list .lines dt {
+            padding-top: 4px;
+            margin-right: 10px;
+            border-top: 1px solid #ccc;
+        }
+
+    .quick-more-list p {
+        margin: 0 10px;
+        height: 32px;
+        line-height: 32px;
+        border-top: 1px solid #ccc;
+        font-weight: bold;
+    }
+
+.login-info {
+    float: right;
+}
+
+    .login-info span {
+        margin: 0 0 0 10px;
+        color: #ccc;
+    }
+
+        .login-info span a {
+            margin: 0;
+        }
+
+    .login-info a {
+        margin-left: 10px;
+    }
+
+    .login-info .logout {
+        margin: 0 0 0 12px;
+        color: #666;
+        font-family: "宋体";
+    }
+
+.site-nav .sitenav-groupsite .sitenav-trigger, .site-nav .sitenav-trigger i, .site-nav .group-site-list a, .site-nav .site-map .icon-new, .site-nav .site-map .icon-hot {
+    background: url(http://icon.zol-img.com.cn/sj/img/pubWebNav-bg.png) no-repeat;
+}
+
+.site-nav .sitenav-trigger {
+    display: block;
+    position: relative;
+    zoom: 1;
+    padding: 0 10px;
+    color: #666;
+    cursor: pointer;
+}
+
+    .site-nav .sitenav-trigger i {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 7px;
+        height: 4px;
+        overflow: hidden;
+        background-position: -75px -195px;
+    }
+
+.site-nav .sitenav-groupsite {
+    position: relative;
+    float: right;
+    width: 97px;
+    margin: 0 0 0 5px;
+}
+
+    .site-nav .sitenav-groupsite a {
+        color: #333;
+        text-decoration: none;
+    }
+
+        .site-nav .sitenav-groupsite a:hover {
+            color: #c00;
+            text-decoration: underline;
+        }
+
+    .site-nav .sitenav-groupsite .sitenav-trigger {
+        padding: 0 22px 0 25px;
+        background-position: -180px -173px;
+    }
+
+    .site-nav .sitenav-groupsite .groupsite-sitemap-body {
+        display: none;
+        position: absolute;
+        top: 27px;
+        right: 0;
+        _right: -1px;
+        width: 978px;
+        background: #fff;
+        border: 1px solid #E6E6E6;
+    }
+
+.site-nav .h-sitenav-groupsite {
+    margin-top: -2px;
+    margin-bottom: -1px;
+    padding-bottom: 1px;
+    background: #fff;
+    line-height: 26px;
+}
+
+    .site-nav .h-sitenav-groupsite .sitenav-trigger {
+        z-index: 10;
+        margin-bottom: -1px;
+        padding: 0 21px 1px 24px;
+        border: 1px solid #e6e6e6;
+        border-bottom: 0 none;
+        background-color: #fff;
+        background-position: -181px -172px;
+    }
+
+    .site-nav .h-sitenav-groupsite .groupsite-sitemap-body {
+        display: block;
+    }
+
+    .site-nav .h-sitenav-groupsite .sitenav-trigger i {
+        top: 11px;
+        right: 9px;
+    }
+
+.site-nav .group-site-list {
+    overflow: hidden;
+    margin: 10px 0 0 20px;
+    font: normal 12px/26px "microsoft yahei","\5FAE\8F6F\96C5\9ED1";
+    *zoom: 1;
+}
+
+    .site-nav .group-site-list .site-title {
+        float: left;
+    }
+
+    .site-nav .group-site-list .group-links {
+        float: left;
+    }
+
+    .site-nav .group-site-list a {
+        float: left;
+        margin: 0 0 0 20px;
+        padding: 0 0 0 20px;
+        background-position: -184px 5px;
+    }
+
+    .site-nav .group-site-list .g-pchome {
+        background-position: -184px -20px;
+    }
+
+    .site-nav .group-site-list .g-fengniao {
+        background-position: -184px -45px;
+    }
+
+    .site-nav .group-site-list .g-ea3w {
+        background-position: -184px -70px;
+    }
+
+    .site-nav .group-site-list .g-3qit {
+        background-position: -184px -95px;
+    }
+
+    .site-nav .group-site-list .g-xyit {
+        background-position: -184px -120px;
+    }
+
+    .site-nav .group-site-list .g-zdnet {
+        background-position: -184px -145px;
+    }
+
+    .site-nav .group-site-list a:hover {
+        background-position: 0 5px;
+        color: #c00;
+    }
+
+    .site-nav .group-site-list .g-pchome:hover {
+        background-position: 0 -20px;
+    }
+
+    .site-nav .group-site-list .g-fengniao:hover {
+        background-position: 0 -45px;
+    }
+
+    .site-nav .group-site-list .g-ea3w:hover {
+        background-position: 0 -70px;
+    }
+
+    .site-nav .group-site-list .g-3qit:hover {
+        background-position: 0 -95px;
+    }
+
+    .site-nav .group-site-list .g-xyit:hover {
+        background-position: 0 -120px;
+    }
+
+    .site-nav .group-site-list .g-zdnet:hover {
+        background-position: 0 -145px;
+    }
+
+.site-nav .site-map {
+    position: relative;
+    margin: 10px 20px 0;
+    padding: 56px 0 19px;
+    border-top: 1px solid #f0f0f0;
+}
+
+    .site-nav .site-map h3 span {
+        position: absolute;
+        top: 0;
+        left: -1px;
+        width: 22%;
+        height: 56px;
+        padding: 0;
+        border-right: 1px solid #f0f0f0;
+        color: #0b92e0;
+        font: normal 16px/56px "microsoft yahei","\5FAE\8F6F\96C5\9ED1";
+    }
+
+    .site-nav .site-map .sitenav-channel-title {
+        left: 22%;
+        padding: 0 0 0 10px;
+        border: 0 none;
+    }
+
+    .site-nav .site-map .site-map-inner {
+        overflow: hidden;
+        zoom: 1;
+    }
+
+.site-nav .site-map-inner div {
+    float: left;
+    width: 11%;
+    margin: -7px 0 -8px -1px;
+    border-left: 1px solid #f5f5f5;
+    font: normal 12px/28px "microsoft yahei","\5FAE\8F6F\96C5\9ED1";
+}
+
+.site-nav .site-map-item1 {
+    margin-left: 1px;
+    border: 0 none;
+}
+
+.site-nav .site-map .site-map-item3 {
+    border-left-color: #f0f0f0;
+}
+
+.site-nav .site-map span, .site-nav .site-map strong {
+    display: block;
+    height: 28px;
+    padding: 0 0 0 10px;
+}
+
+.site-nav .site-map .site-map-item1 span, .site-nav .site-map .site-map-item1 strong {
+    padding-left: 0;
+}
+
+.site-nav .site-map .icon-new {
+    position: absolute;
+    margin: 0 0 0 2px;
+    width: 9px;
+    height: 11px;
+    font: 0/0 arial;
+    background-position: -60px -175px;
+}
+
+.site-nav .site-map .icon-hot {
+    position: absolute;
+    margin: 0 0 0 2px;
+    width: 9px;
+    height: 11px;
+    font: 0/0 arial;
+    background-position: -60px -190px;
+}
+
+.site-nav .site-map .red {
+    color: #f33;
+}
+
+
+.text-form {
+            border: 1px solid #ccc;
+            color: #666;
+            font-family: arial;
+            height: 24px;
+            line-height: 24px;
+            outline: medium none;
+            padding: 0 4px;
+            width: 196px;
+        }

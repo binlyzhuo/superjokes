@@ -1,0 +1,17 @@
+﻿@model List<T_Joke>
+@using Joke.Model.Domain
+@using Joke.Web.Helpers
+<div class="section view-history">
+    <div class="section-header">
+        <h2>看过的网友还看了</h2>
+    </div>
+    <div class="news-box clearfix">
+        <ul id="jokereadlist">
+            @foreach (var s in Model)
+            {
+                <li><a title="@s.Title" href="@JokeHelper.GetJokeDetail(s.ID)">@s.Title</a></li>
+            }
+        </ul>
+
+    </div>
+</div>

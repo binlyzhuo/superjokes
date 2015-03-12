@@ -1,0 +1,30 @@
+﻿@model List<T_Joke>
+@using Joke.Model.Domain
+@using Joke.Web.Helpers
+<div class="section hot-nets">
+    <div class="section-header">
+        <h2 class="icon-title joke-icon">笑话连篇24小时排行</h2>
+    </div>
+    <ul class="rank-list">
+        @for (int index = 0; index < Model.Count; index++)
+        {
+            if (index < 3)
+            {
+                <li>
+                    <em class="n1">@(index + 1)</em>
+                    <span class="num">@Model[index].LikeCount</span>
+                    <a href="@JokeHelper.GetJokeDetail(Model[index].ID)" target="_blank" title="@Model[index].Title">@Model[index].Title</a>
+                </li>
+            }
+            else
+            {
+                <li>
+                    <em>@(index + 1)</em>
+                    <span class="num">@Model[index].LikeCount</span>
+                    <a href="@JokeHelper.GetJokeDetail(Model[index].ID)" target="_blank" title="@Model[index].Title">@Model[index].Title</a>
+                </li>
+            }
+        }
+
+    </ul>
+</div>

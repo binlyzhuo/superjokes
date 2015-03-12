@@ -1,0 +1,71 @@
+﻿@{
+    Layout = null;
+    UserInfoPrincipal userinfo = System.Web.HttpContext.Current.User as UserInfoPrincipal;
+}
+@using Joke.Web.Models
+@using Joke.Web.Auth
+@using StackExchange.Profiling
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <meta name="keywords" content="@ViewBag.KeyWords" />
+    <meta name="description" content="@ViewBag.Description" />
+    
+    <link type="text/css" rel="stylesheet" href="~/Styles/xiaohualist.css" />
+    <link type="text/css" rel="stylesheet" href="~/Styles/webHead.css" />
+    <script type="text/javascript" src="~/Scripts/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.lazyload.min.js"></script>
+    @RenderSection("header", false)
+</head>
+<body class="@ViewBag.BgClass">
+    <div id="headerWrap" class="site-nav">
+        <div class="site-nav-inner clearfix">
+            <div class="quick-menu">
+                <a target="_blank" href="/">超级冷笑话</a>
+            </div>
+
+            <div class="login-info" id="userbar">
+                @if (userinfo != null)
+                {
+                    <a target="_self" href="/user/profile" rel="nofollow">@userinfo.UserName</a>
+                    if (userinfo.IsAdmin == 1)
+                    {
+                        <a href="/account/index" rel="nofollow">管理中心</a>
+                    }
+                    <a target="_self" href="/user/logout" rel="nofollow">退出</a>
+                }
+                else
+                {
+                    <a target="_self" href="/login" rel="nofollow">登录</a>
+                    <a target="_blank" href="/register" rel="nofollow">注册</a>
+                }
+
+            </div>
+        </div>
+    </div>
+    <div class="header clearfix">
+        <a href="/" class="logo">
+            <h3 style="font-weight:bold;font-size:35px;">超级冷笑话</h3>
+        </a>
+
+
+        <div class="searchbox">
+            <form target="_blank" method="get" action="/search" onsubmit="return (function(){var text = document.getElementById('softSearch').value; if(text == '' || text == '请输入笑话关键词') return false;})()">
+
+                <div class="stext">
+                    <input type="text" value="请输入笑话关键词" autocomplete="off" name="wd" onblur="(function(obj){var val = obj.value.replace(/(^\s*)|(\s*$)/g,'');if(!val) {obj.value='请输入笑话关键词';obj.style.color='#999999';}})(this);" onfocus="if(this.value == '请输入笑话关键词') this.value='';this.style.color='#333';" id="softSearch">
+                </div>
+                <input type="hidden" value="6" name="type">
+                <input type="submit" value="搜索" class="sbtn">
+            </form>
+        </div>
+    </div>
+    @Html.Partial("_TopMenus")
+    @RenderBody()
+    @Html.Partial("_FriendLinks")
+    @MiniProfiler.RenderIncludes()
+</body>
+</html>

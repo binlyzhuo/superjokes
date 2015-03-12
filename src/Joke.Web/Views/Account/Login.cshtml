@@ -1,0 +1,43 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <script type="text/javascript" src="~/Scripts/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.form.min.js"></script>
+    <script type="text/javascript">
+        function adminLogin() {
+            $("#adminloginform").submit();
+        }
+    </script>
+</head>
+<body>
+    <div> 
+        <form method="post" action="login" id="adminloginform">
+            <table>
+                <tr>
+                    <td>用户名:</td>
+                    <td><input type="text" id="txtUserName" name="UserName" /> </td>
+                </tr>
+                <tr>
+                    <td>密码:</td>
+                    <td><input type="password" id="txtPassword" name="Password" /> </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="button" value="登录" id="btnAdminLogin" onclick="adminLogin();" />
+                    </td>
+                </tr>
+            </table>
+        </form>
+        
+    </div>
+</body>
+</html>

@@ -1,0 +1,120 @@
+﻿@{
+    Layout = "~/Views/Shared/_BaseLayoutPage.cshtml";
+}
+@model PageSearchResult<JokePostInfo>
+@using Joke.Model.ViewModel
+@using Joke.Web.Helpers
+@section header{
+    <script type="text/javascript" src="~/Scripts/jquery.cookie.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            jokesfollow();
+        });
+        
+        function jokesfollow() {
+            $(".followBtn").each(function () {
+                $(this).click(function () {
+                    var jokeid = $(this).attr("data");
+                    var followtype = $(this).attr("type");
+                    $(this).unbind("click");
+                    $(this).parent("div.vote-btn").siblings("div.vote-btn").children("em.followBtn").unbind("click");
+                    $.post('/joke/JokeFollow', { jokeid: jokeid, type: followtype }, function (data) {
+                        if (followtype == "1")
+                        {
+                            alert('点赞成功');
+                        }
+                        else
+                        {
+                            alert('点踩成功');
+                        }
+                    });
+                    
+                });
+            });
+        }
+    </script>
+}
+<div class="wrapper location clearfix">
+    <a class="collect" href="#"></a>
+    <a href="/">笑话大全</a><i> &gt; </i>
+    <a href="/latest/">笑话连篇</a><i> &gt; </i>
+    <h1>短篇笑话</h1>
+</div>
+<div class="wrapper clearfix">
+    <!-- main -->
+    <div class="main">
+        <!-- filter -->
+        @Html.Action("CategoryJokeList", "Joke", null)
+        <!-- //filter -->
+        <!-- article-list -->
+        <ul class="article-list">
+
+            @foreach (var p in Model.Items)
+            {
+                <li class="article-summary">
+                    <span class="article-topbar"></span>
+                    <span class="article-title">
+                        <a href="@JokeHelper.GetJokeDetail(p.JokeId)" target="_blank">@p.Title</a>
+                    </span>
+                    <div class="article-source">
+                        <a class="user-icon" href="/" rel="nofollow" target="_blank">
+                            <img width="30" height="30" alt="@p.NikeName" src="~/Imgs/defaultphoto.png">
+                        </a>
+                        <a href="/" target="_blank" rel="nofollow" class="nike-name">@p.NikeName</a>
+                    </div>
+                    <div class="summary-text">
+                        @if (p.JokeType == 0)
+                        {
+                            <div>@p.Content</div>
+                        }
+                        else
+                        {
+                            <div>
+                                
+                                <img src="@JokeHelper.GetJokeImg(p.Content)" alt="@p.Title"/></div>
+                        }
+
+                    </div>
+                    <div class="article-commentbar articleCommentbar clearfix" data-id="43894">
+                        <a class="all-read" href="@JokeHelper.GetJokeDetail(p.JokeId)" target="_blank">查看全文»</a>
+                        
+                        <div class="good-btn-box vote-btn">
+                            <em class="good-btn followBtn @string.Format("btn{0}",p.JokeId)" data="@p.JokeId" type="1">
+                                <i class="icon"></i><span class="text">@p.LikeCount</span>
+                            </em>
+                        </div>
+                        <div class="bad-btn-box  vote-btn">
+                            <em class="bad-btn followBtn @string.Format("btn{0}",p.JokeId)" data="@p.JokeId" type="2">
+                                <i class="icon"></i><span class="text">@p.HateCount</span>
+                            </em>
+                        </div>
+                    </div>
+                </li>
+            }
+        </ul>
+
+        <!-- //article-list -->
+        <!-- page-box -->
+        <div class="page-box">
+           
+            <div class="page">
+                @Html.ShowPageNavigate(Model.Page,Model.TotalCount,Model.TotalPages)
+            </div>
+        </div>		<!-- //page-box -->
+    </div>
+
+    <!-- //main -->
+    <!-- aside -->
+    <div class="aside">
+        <!-- section -->
+        @Html.Action("Last20HourJokes","Joke",null)
+        <!-- //section -->
+        <!-- section -->
+        @Html.Action("LikeMostImages","Joke",null)
+        <!-- //section -->
+        <!-- section -->
+        
+        <!-- //section -->
+    </div>
+    <!-- //aside -->
+</div>

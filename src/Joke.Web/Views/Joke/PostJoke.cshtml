@@ -1,0 +1,194 @@
+﻿@{
+    Layout = "~/Views/Shared/_BaseLayoutPage.cshtml";
+}
+@model List<CategoryDto>
+@using Joke.Model.Dto
+@section header{
+    <style type="text/css">
+        .mydata-list {
+            padding: 28px 0 10px;
+        }
+
+        
+        .upload-data .mydata-list li {
+            line-height: 32px;
+            padding-left: 80px;
+        }
+
+        .mydata-list li {
+            line-height: 26px;
+            padding: 10px 0 0 168px;
+            position: relative;
+        }
+
+        .upload-data .mydata-list .title {
+            line-height: 32px;
+            text-align: left;
+            width: 80px;
+        }
+
+        .mydata-list li .title {
+            color: #545454;
+            font-size: 14px;
+            left: 0;
+            line-height: 26px;
+            position: absolute;
+            text-align: right;
+            top: 10px;
+            width: 156px;
+        }
+
+        .text-form {
+            border: 1px solid #ccc;
+            color: #666;
+            font-family: arial;
+            height: 24px;
+            line-height: 24px;
+            outline: medium none;
+            padding: 0 4px;
+            width: 196px;
+        }
+
+
+        select {
+            border: 1px solid #ccc;
+            height: 26px;
+            line-height: 22px;
+            padding: 2px;
+        }
+
+        select, input, button {
+            font-size: 100%;
+            vertical-align: middle;
+        }
+
+        .textarea {
+            border: 1px solid #ccc;
+            color: #333;
+            
+            font-family: "arial";
+            font-size: 12px;
+            height: 70px;
+            line-height: 20px;
+            outline: medium none;
+            overflow-y: auto;
+            padding: 2px 5px;
+            resize: none;
+            text-align: left;
+            
+        }
+
+
+        .upload-data .save-btn .txt {
+            color: #999;
+            display: inline-block;
+            line-height: 36px;
+            margin: 0 0 0 8px;
+            padding: 0 0 0 18px;
+            vertical-align: middle;
+        }
+
+        .others-cont .txt, .others-cont .txt-right, .others-cont .txt-err {
+            color: #999;
+            display: inline-block;
+            line-height: 26px;
+            margin: 0 0 0 8px;
+            padding: 0 0 0 18px;
+            vertical-align: top;
+        }
+    </style>
+    <script type="text/javascript" src="~/Scripts/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.form.min.js"></script>
+    <script type="text/javascript">
+        function postJokes() {
+            //$("#postjokeform").submit();
+            var jokeTitle = $("#joketitle").val();
+            var joketype = $("#joketype").val();
+
+            if ($.trim(jokeTitle) == "") {
+                $("#txtTitle").css("color", "red");
+                return false;
+            }
+
+            if (joketype == "0") {
+                var jokeContent = $("#jokecontent").val();
+                if ($.trim(jokeContent) == "") {
+                    $("#txtJokeContent").css("color", "red");
+                    return false;
+                }
+            }
+            $("#postjokeform").submit();
+        }
+
+        $(document).ready(function () {
+            $("#joketype").change(function () {
+                var joketype = $(this).val();
+                if (joketype == "0") {
+                    $("#uploadJokeTxt").show();
+                    $("#uploadImgList").hide();
+                }
+                else if (joketype == "1") {
+                    $("#uploadJokeTxt").hide();
+                    $("#uploadImgList").show();
+                }
+            });
+        });
+    </script>
+}
+<div class="wrapper">
+    <form id="postjokeform" method="post" action="/joke/postjoke" enctype="multipart/form-data">
+        <div class="content">
+            <ul id="myDayaListForm" class="mydata-list">
+                <li>
+                    <label class="title">笑话标题：</label>
+                    <div class="others-cont">
+                        <input type="text" value="" name="joketitle" id="joketitle" class="text-form" style="width:350px;">
+                        <span class="txt" id="txtTitle">建议在个20字符以内</span>
+                    </div>
+                </li>
+                <li>
+                    <label class="title">笑话分类：</label>
+                    <div class="others-cont">
+                        <select id="joketype" name="joketype" tabindex="4">
+                            <option value="0">短文</option>
+                            <option value="1">图片</option>
+                        </select>
+                        <select id="jokecategory" name="jokecategory" tabindex="5">
+
+                            @foreach (var s in Model)
+                            {
+                                <option value="@s.ID">@s.Name</option>
+                            }
+                        </select>
+
+                    </div>
+                </li>
+                <li id="uploadJokeTxt">
+                    <label class="title">笑话内容：</label>
+                    <div class="others-cont">
+                        <textarea class="textarea" name="jokecontent" id="jokecontent" style="width:350px;height:200px;"></textarea>
+                        <span class="txt" id="txtJokeContent">限制在2000个字符以内</span>
+                    </div>
+                </li>
+                <li id="uploadImgList" style="display:none;">
+                    <label class="title">图片上传：</label>
+                    <div class="others-cont pic-upload-bar clearfix">
+                        <input type="file" name="jokeImgFile" />
+                        <a href="#">上传图片</a>
+                    </div>
+                    <p class="tx-msg">支持5M内的jpg、jpeg、gif、bmp或png格式的图片</p>
+                    <div style="padding: 10px 0 0; display: none;">
+                        <img width="208" style="vertical-align: top;" id="showPic">
+                    </div>
+                </li>
+            </ul>
+            <div class="save-btn">
+                <a href="javascript:;" onclick="postJokes();" id="submitBtn" style="color:white;display:block;width:100px;padding:10px; text-align:center; margin-left:169px; background-color:#F28A1B;font-weight:bold;font-size:15px;">确认提交</a>
+
+            </div>
+        </div>
+    </form>
+    
+</div>
+
+

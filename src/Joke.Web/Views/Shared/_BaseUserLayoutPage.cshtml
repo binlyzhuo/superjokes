@@ -1,0 +1,28 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_BaseLayoutPage.cshtml";
+}
+@section header{
+   @RenderSection("headersection",false)    
+}
+<div class="wrapper location clearfix">
+    <a class="collect" href="#"></a>
+    <a href="/">笑话大全</a><i> &gt; </i>
+    <a href="/user/profile">个人中心</a><i> &gt; </i>
+</div>
+<div class="wrapper clearfix" style="height:400px;">
+    <div class="profileLeft">
+        <ul class="useractionlist">
+            <li><a href="profile">个人信息</a></li>
+            <li><a href="collect">收藏夹</a></li>
+            <li><a href="postlist">发表记录</a></li>
+            <li><a href="updatepwd">修改密码</a></li>
+        </ul>
+    </div>
+    <div class="profileRight">
+        @RenderBody()
+    </div>
+    @StackExchange.Profiling.MiniProfiler.RenderIncludes()
+</div>
+
+

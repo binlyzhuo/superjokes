@@ -1,0 +1,89 @@
+﻿@{
+    ViewBag.Title = "UpdatePwd";
+    Layout = "~/Views/Shared/_BaseUserLayoutPage.cshtml";
+
+    List<string> msgList = ViewBag.MsgList;
+}
+@section headersection{
+   <script type="text/javascript">
+       function userUpdatePwd() {
+           
+           var oldpassword = $("#txtOldPwd").val();
+           var password = $("#txtPassword").val();
+           var confirmPassword = $("#txtPasswordConfirm").val();
+           
+           if ($.trim(oldpassword) == "") {
+               $("#msgOldPwd").html('请输入原密码').css('color', 'red');
+               return false;
+           }
+
+           if ($.trim(password) == "") {
+               $("#msgPassword").css("color", "red").html('请输入新密码');
+               return false;
+           }
+           if ($.trim(confirmPassword) == "") {
+               $("#msgPasswordConfirm").css("color", "red").html('请输入确认密码');
+               return false;
+           }
+           
+           $("#userUpdatePwd").submit();
+       }
+    </script>    
+}
+<form method="post" action="updatepwd" id="userUpdatePwd">
+    <div>@ViewBag.Msg</div>
+    <table id="registerTable">
+
+        @if (msgList != null && msgList.Count > 0)
+        {
+            <tr>
+                <td></td>
+                <td colspan="2">
+                    <ul class="errorlist">
+                        @foreach (var m in msgList)
+                        {
+                            <li>@m</li>
+                        }
+                    </ul>
+                </td>
+
+            </tr>
+        }
+        <tr>
+            <td class="title">原密码：</td>
+            <td>
+                <input type="password" id="txtOldPwd" name="OldPwd" class="text-form" />
+                <span class="mustinput">*</span>
+                <span id="msgOldPwd"></span>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="title">新密码：</td>
+            <td>
+                <input type="password" id="txtPassword" name="Password" class="text-form" />
+                <span class="mustinput">*</span>
+                <span id="msgPassword"></span>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="title">确认密码：</td>
+            <td>
+                <input type="password" id="txtPasswordConfirm" name="ConfirmPwd" class="text-form" />
+                <span class="mustinput">*</span>
+                <span id="msgPasswordConfirm"></span>
+            </td>
+            <td></td>
+        </tr>
+        
+        <tr>
+            <td></td>
+            <td colspan="2" align="left">
+                <input type="button" value="修改密码" style="width:100px;height:30px;" onclick="userUpdatePwd();" />
+            </td>
+        </tr>
+    </table>
+
+</form>
+
