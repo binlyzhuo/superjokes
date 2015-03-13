@@ -117,6 +117,17 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="App_Data\log4net.config" />
+    <Content Include="Imgs\bjhover.png" />
+    <Content Include="Imgs\bodyback.jpg" />
+    <Content Include="Imgs\commentSection-bg.png" />
+    <Content Include="Imgs\filter-icon.png" />
+    <Content Include="Imgs\header-bg.png" />
+    <Content Include="Imgs\list-body-bg.png" />
+    <Content Include="Imgs\main-bg.png" />
+    <Content Include="Imgs\page-mark.png" />
+    <Content Include="Imgs\page-mark_IE6.png" />
+    <Content Include="Imgs\part-items-bg.png" />
+    <Content Include="Imgs\xiaohua-bj.png" />
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -223,6 +234,7 @@
     <Content Include="Views\Account\UserSearchList.cshtml" />
     <Content Include="favicon.ico" />
     <Content Include="Views\Account\UpdateJoke.cshtml" />
+    <Content Include="Views\Joke\PostJokeResult.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

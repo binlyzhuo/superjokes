@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "PostJokeResult";
+    Layout = "~/Views/Shared/_BaseLayoutPage.cshtml";
+}
+@model PostJokeResult
+@using Joke.Web.Models
+
+<div class="wrapper">
+    <div class="postresult">
+        @if (Model.Success)
+        {
+            <p class="success">发表成功</p>
+            <p><a href="/joke/postjoke">再发一篇</a></p>
+        }
+        else
+        {
+            <p class="fail">发表失败</p>
+            <p><a href="/joke/postjoke">重新发表</a></p>
+        }
+        
+    </div>
+</div>

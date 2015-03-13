@@ -77,7 +77,16 @@ namespace Joke.Web.Controllers
                 Success = jokeId>0?true:false,
                 Message = jokeId>0?"发表成功":"发表失败"
             };
-            return View("PostResult", postResult);
+
+            return RedirectToAction("PostJokeResult", postResult);
+
+        }
+
+        [UserAuthorize(Roles = "User,Admin")]
+        [HttpGet]
+        public ActionResult PostJokeResult(PostJokeResult postResult)
+        {
+            return View(postResult);
         }
 
         public ActionResult Detail(int id)
