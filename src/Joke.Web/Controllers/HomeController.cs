@@ -38,6 +38,11 @@ namespace Joke.Web.Controllers
         public ActionResult Login()
         {
             ViewBag.BgClass = "indexPage-body";
+            if(Request.IsAuthenticated)
+            {
+                return RedirectToAction("Profile","User",null);
+            }
+            
             return View();
         }
 
