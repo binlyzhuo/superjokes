@@ -56,6 +56,7 @@
       <HintPath>..\packages\Qiniu.6.1.8.2\lib\Net40\Qiniu.4.0.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
@@ -69,7 +70,7 @@
     <Compile Include="LogHelper.cs" />
     <Compile Include="Md5.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QiniuHelper.cs" />
+    <Compile Include="QiniuUpload.cs" />
     <Compile Include="StringExtends.cs" />
   </ItemGroup>
   <ItemGroup>

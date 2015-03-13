@@ -13,6 +13,7 @@ using Joke.Web.Auth;
 using Newtonsoft.Json;
 using Joke.Web.App_Start;
 using StackExchange.Profiling;
+using Travelling.Web.Helpers;
 
 namespace Joke.Web
 {
@@ -28,7 +29,7 @@ namespace Joke.Web
             LogHelper.LogConfig(Server.MapPath(@"~\App_Data\log4net.config"));
             DtoMapper.AutoMapper();
 
-            
+            QiniuUpload.Config();
         }
 
         /// <summary>

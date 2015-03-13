@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Configuration;
+using Travelling.Web.Helpers;
+using Joke.Common;
 
 namespace Joke.Web.Helpers
 {
@@ -20,7 +22,8 @@ namespace Joke.Web.Helpers
 
         public static string GetJokeImg(string imgName)
         {
-            return string.Format("{0}/{1}", ConfigurationManager.AppSettings["JokeImgUpload"], imgName);
+
+            return string.Format("{0}/{1}", QiniuUpload.QiniuCloudUrl,FileInfoHelper.GetFileName(imgName));
         }
     }
 }

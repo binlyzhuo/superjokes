@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.IO;
+using System.Threading;
 using Joke.BusinessLogic;
 using Joke.Model.Domain;
 using Joke.Web.Models;
@@ -11,6 +12,7 @@ using Joke.Model.ViewModel;
 using Joke.Common;
 using Joke.Web.Auth;
 using Microsoft.Security.Application;
+using Travelling.Web.Helpers;
 
 namespace Joke.Web.Controllers
 {
@@ -47,14 +49,22 @@ namespace Joke.Web.Controllers
                 FileInfoHelper.GetFileName(jokeImgFile.FileName);
                 FileInfoHelper.GetFileExtend(jokeImgFile.FileName);
                 string newName = FileInfoHelper.GetNewName(jokeImgFile.FileName);
+                if (Request.IsLocal)
+                {
+                    newName = string.Format("local_{0}",newName);
+                }
                 string uploadFolder = string.Format("{3}\\{0}\\{1}\\{2}", DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, JokeImgUpload);
                 if (!Directory.Exists(uploadFolder))
                 {
                     Directory.CreateDirectory(uploadFolder);
                 }
+                //
                 jokeImgFile.SaveAs(uploadFolder + "\\" + newName);
+                Thread.Sleep(1);
                 string fileName = jokeImgFile.FileName;
                 content = string.Format("{0}\\{1}\\{2}", DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day) + "\\" + newName;
+                
+                bool updateResult = QiniuUpload.PutFile(newName, uploadFolder + "\\" + newName);
             }
           
             T_Joke jokeinfo = new T_Joke()
