@@ -14,11 +14,10 @@ namespace Joke.Web.Controllers
         protected UserInfoPrincipal user = System.Web.HttpContext.Current.User as UserInfoPrincipal;
         protected string JokeImgUpload = System.Web.HttpContext.Current.Server.MapPath(ConfigurationManager.AppSettings["JokeImgUpload"]);
         protected string JokeImgUploadConfig = ConfigurationManager.AppSettings["JokeImgUpload"];
-
-        protected void UserLogin()
-        {
-            //user = UserInfo.GetUserInfo();
-        }
+        protected string SiteTitle = ConfigurationManager.AppSettings["SiteTitle"];
+        protected string SiteKeyWords = ConfigurationManager.AppSettings["SiteKeyWords"];
+        protected string SiteDescription = ConfigurationManager.AppSettings["SiteDescription"];
+        
 
         protected void SetPageSeo(string title,string keywords="",string description="")
         {

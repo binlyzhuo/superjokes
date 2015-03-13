@@ -25,11 +25,7 @@ namespace Joke.Web.Controllers
         [OutputCache(Duration=2000)]
         public ActionResult Index()
         {
-            
-            string title = "超级冷笑话";
-            string keywords = "冷笑话，成人笑话，极品笑话，笑话大全";
-            string description = "冷笑话，成人笑话，极品笑话";
-            SetPageSeo(title, keywords, description);
+            SetPageSeo(SiteTitle, SiteKeyWords, SiteDescription);
             ViewBag.BgClass = "indexPage-body";
             return View();
         }
