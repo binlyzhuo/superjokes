@@ -28,7 +28,7 @@
             </div>
 
             <div class="login-info" id="userbar">
-                @if (userinfo != null)
+                @if (Request.IsAuthenticated)
                 {
                     <a target="_self" href="/user/profile" rel="nofollow">@userinfo.UserName</a>
                     if (userinfo.IsAdmin == 1)
