@@ -53,6 +53,10 @@ namespace Joke.Web.Controllers
                 {
                     newName = string.Format("local_{0}",newName);
                 }
+                else
+                {
+                    newName = string.Format("online_{0}", newName);
+                }
                 string uploadFolder = string.Format("{3}\\{0}\\{1}\\{2}", DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, JokeImgUpload);
                 if (!Directory.Exists(uploadFolder))
                 {
