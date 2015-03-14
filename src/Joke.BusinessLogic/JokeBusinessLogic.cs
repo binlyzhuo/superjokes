@@ -88,7 +88,7 @@ namespace Joke.BusinessLogic
             return jokeData.SingleOrDefault(jokeid);
         }
 
-        public Tuple<T_Joke,T_Joke,T_Joke> GetLastNextJokes(int jokeid)
+        public Tuple<JokePostInfo, T_Joke, T_Joke> GetLastNextJokes(int jokeid)
         {
             return jokeData.GetLastNextJokes(jokeid);
         }
@@ -138,6 +138,11 @@ namespace Joke.BusinessLogic
         public int JokesCount(int userid, int? state=null)
         {
             return jokeData.JokesCount(userid,state);
+        }
+
+        public JokePostInfo GetPostJokeInfo(int jokeid)
+        {
+            return jokeData.GetPostJokeInfo(jokeid);
         }
     }
 }

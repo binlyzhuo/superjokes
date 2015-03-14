@@ -29,7 +29,7 @@ namespace Joke.Web.Helpers
                     {
                         if (currint == i)
                         {//当前页处理                           
-                            output.AppendFormat("<a class='cpb' href='{0}?page={1}'>{2}</a> ", redirectTo, currentPage, currentPage);
+                            output.AppendFormat("<a class='selectpage' href='{0}?page={1}'>{2}</a> ", redirectTo, currentPage, currentPage);
                         }
                         else
                         {//一般页处理

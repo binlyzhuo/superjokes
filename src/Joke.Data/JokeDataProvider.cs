@@ -56,14 +56,18 @@ namespace Joke.Data
             return items;
         }
 
-        public Tuple<T_Joke, T_Joke, T_Joke> GetLastNextJokes(int jokeid)
+        public Tuple<JokePostInfo, T_Joke, T_Joke> GetLastNextJokes(int jokeid)
         {
-            string sql = string.Format(@"select top 1 * from T_Joke where ID={0} and state=1
+            string detailSQL = string.Format(@"select j.ID as JokeId,j.Title,j.Content,j.LikeCount,j.HateCount,u.NikeName,u.id as UserID,j.Type as JokeType,j.State as JokeState,j.AddDate as PostDate,c.Name as Category,c.PinYin as CategoryPinyin from T_Joke j 
+                            inner join T_User u on u.ID = j.PostID
+                            inner join T_Category c on c.ID = j.Category
+                            where j.State=1 and j.ID = {0}", jokeid);
+            string querySQL = string.Format(@"{1}
                         select top 1 * from T_Joke where ID<{0} and state=1 order by ID desc
-                        select top 1 * from T_Joke where ID>{0} and state=1 order by ID asc", jokeid);
+                        select top 1 * from T_Joke where ID>{0} and state=1 order by ID asc", jokeid, detailSQL);
 
-            var item = this.jokeDatabase.FetchMultiple<T_Joke, T_Joke, T_Joke>(sql);
-            var data = new Tuple<T_Joke, T_Joke, T_Joke>(item.Item1[0], item.Item2 != null && item.Item2.Count > 0 ? item.Item2[0] : null, item.Item3 != null && item.Item3.Count > 0 ? item.Item3[0] : null);
+            var item = this.jokeDatabase.FetchMultiple<JokePostInfo, T_Joke, T_Joke>(querySQL);
+            var data = new Tuple<JokePostInfo, T_Joke, T_Joke>(item.Item1[0], item.Item2 != null && item.Item2.Count > 0 ? item.Item2[0] : null, item.Item3 != null && item.Item3.Count > 0 ? item.Item3[0] : null);
             return data;
         }
 
@@ -160,6 +164,15 @@ namespace Joke.Data
                 TotalCount = items.Item2[0]
             };
             return pageResult;
+        }
+
+        public JokePostInfo GetPostJokeInfo(int jokeid)
+        {
+            string sql = string.Format(@"select j.ID as JokeId,j.Title,j.Content,j.LikeCount,j.HateCount,u.NikeName,u.id as UserID,j.Type as JokeType,j.State as JokeState,j.AddDate as PostDate,c.Name as Category,c.PinYin as CategoryPinyin from T_Joke j 
+                            inner join T_User u on u.ID = j.PostID
+                            inner join T_Category c on c.ID = j.Category
+                            where j.State=1 and j.ID = {0}",jokeid);
+            return this.jokeDatabase.SingleOrDefault<JokePostInfo>(sql);
         }
     }
 }

@@ -21,5 +21,9 @@ namespace Joke.Model.ViewModel
 
         public int JokeState { set; get; }
         public DateTime PostDate { set; get; }
+
+        public string Category { set; get; }
+
+        public string CategoryPinyin { set; get; }
     }
 }

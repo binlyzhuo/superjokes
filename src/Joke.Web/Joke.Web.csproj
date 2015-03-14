@@ -139,6 +139,7 @@
     <Content Include="Imgs\page-mark.png" />
     <Content Include="Imgs\page-mark_IE6.png" />
     <Content Include="Imgs\part-items-bg.png" />
+    <Content Include="Imgs\shareimg.png" />
     <Content Include="Imgs\xiaohua-bj.png" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
