@@ -203,6 +203,7 @@
     <Compile Include="Helpers\ValidateCode.cs" />
     <Compile Include="Helpers\WebHelper.cs" />
     <Compile Include="Models\AdminLoginModel.cs" />
+    <Compile Include="Models\JokeUpdateModel.cs" />
     <Compile Include="Models\JsonViewResult.cs" />
     <Compile Include="Models\PostJokeResult.cs" />
     <Compile Include="Models\UserLoginModel.cs" />
@@ -247,6 +248,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Views\Account\UpdateJoke.cshtml" />
     <Content Include="Views\Joke\PostJokeResult.cshtml" />
+    <Content Include="Views\Joke\UpdateJoke.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

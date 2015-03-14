@@ -99,6 +99,14 @@
                         @if (p.JokeType == 0)
                         {
                             <div>@p.Content</div>
+                            if (Request.IsAuthenticated && (System.Web.HttpContext.Current.User as Joke.Web.Auth.UserInfoPrincipal).IsAdmin > 0)
+                            {
+                                if (p.JokeType == 0)
+                                {
+                                    <a style="color:firebrick;text-decoration:underline;" href="/joke/UpdateJoke?jokeid=@p.JokeId">编辑</a>
+                                }
+
+                            }
                         }
                         else
                         {
@@ -106,7 +114,7 @@
                                 
                                 <img class="lazyloading" data-original="~/imgs/loadingplace.png" src="@JokeHelper.GetJokeImg(p.Content)" alt="@p.Title" /></div>
                         }
-
+                        
                     </div>
                     <div class="article-commentbar articleCommentbar clearfix" data-id="@p.JokeId">
                         <a class="all-read" href="@JokeHelper.GetJokeDetail(p.JokeId)" target="_blank">查看全文»</a>

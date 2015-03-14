@@ -2,6 +2,7 @@
 @using Joke.Model.Domain
 @using Joke.Web.Helpers
 @using Joke.Model.ViewModel
+@using Joke.Web.Auth
 @{
     Layout = "~/Views/Shared/_BaseLayoutPage.cshtml";
     var currentJoke = Model.Item1;
@@ -11,27 +12,25 @@
 @section header{
     <script type="text/javascript" src="~/Scripts/jquery.cookie.js"></script>
     <script type="text/javascript">
-        
+
         $(function () {
             jokesfollow();
 
-            // 
+            //
             $(document).keydown(function (event) {
                 //alert(event.keyCode);
-                switch(event.keyCode)
-                {
+                switch (event.keyCode) {
                     case 37:
                         var link = $("#lastJokeLink").attr("href");
                         if ($.trim(link) != "") {
                             window.location.href = link;
                         }
-                        else
-                        {
+                        else {
                             alert('已结束');
                         }
                         break;
                     case 39:
-                        
+
                         var link = $("#nextJokeLink").attr("href");
                         if ($.trim(link) != "") {
                             window.location.href = link;
@@ -43,7 +42,7 @@
                 }
             });
         });
-        
+
         function jokesfollow() {
             $("em.followBtn").each(function () {
                 $(this).click(function () {
@@ -130,10 +129,19 @@
                 {
                     <img src="@JokeHelper.GetJokeImg(currentJoke.Content)" />
                 }
+                @if (Request.IsAuthenticated && (System.Web.HttpContext.Current.User as UserInfoPrincipal).IsAdmin > 0)
+                {
+                    if (currentJoke.JokeType == 0)
+                    {
+                        <a style="color:firebrick;text-decoration:underline;" href="/joke/UpdateJoke?jokeid=@currentJoke.JokeId">编辑</a>
+                    }
+
+                }
+
             </div>
             <div class="article-commentbar articleCommentbar clearfix" data-id="@currentJoke.JokeId">
                 <div class="share-btn-box">
-                    
+
                     <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a title="分享到QQ空间" href="#" class="bds_qzone" data-cmd="qzone"></a><a title="分享到新浪微博" href="#" class="bds_tsina" data-cmd="tsina"></a><a title="分享到腾讯微博" href="#" class="bds_tqq" data-cmd="tqq"></a><a title="分享到人人网" href="#" class="bds_renren" data-cmd="renren"></a><a title="分享到微信" href="#" class="bds_weixin" data-cmd="weixin"></a></div>
                     <script>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": '@Html.Raw(JokeHelper.GetShareContent(currentJoke))', "bdMini": "2", "bdMiniList": false, "bdPic": "@Html.Raw(JokeHelper.GetShareImg(currentJoke))", "bdStyle": "1", "bdSize": "16" }, "share": {}, "image": { "viewList": ["qzone", "tsina", "tqq", "renren", "weixin"], "viewText": "分享到：", "viewSize": "16" }, "selectShare": { "bdContainerClass": null, "bdSelectMiniList": ["qzone", "tsina", "tqq", "renren", "weixin"] } }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
                 </div>
@@ -169,7 +177,6 @@
             </div>
         </div>
         <!-- comment-section -->
-        
         <!-- //comment-section -->
         <!-- //article -->
         @Html.Action("ReadMostJokes", "Joke", null)

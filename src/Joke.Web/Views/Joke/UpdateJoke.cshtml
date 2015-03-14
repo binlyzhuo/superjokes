@@ -1,0 +1,90 @@
+﻿@{
+    ViewBag.Title = "UpdateJoke";
+    Layout = "~/Views/Shared/_BaseLayoutPage.cshtml";
+    List<Joke.Model.Dto.CategoryDto> categoryList = ViewBag.Categories;
+}
+@model Joke.Web.Models.JokeUpdateModel
+@section header{
+              <script type="text/javascript">
+                  function updateJoke() {
+                      //$("#postjokeform").submit();
+                      var jokeTitle = $("#joketitle").val();
+                      var joketype = $("#joketype").val();
+
+                      if ($.trim(jokeTitle) == "") {
+                          $("#txtTitle").css("color", "red");
+                          return false;
+                      }
+
+                      if (joketype == "0") {
+                          var jokeContent = $("#jokecontent").val();
+                          if ($.trim(jokeContent) == "") {
+                              $("#txtJokeContent").css("color", "red");
+                              return false;
+                          }
+                      }
+                      $("#updatejokeform").submit();
+                  }
+              </script> 
+}
+<div class="wrapper">
+
+    <h2>编辑笑话</h2>
+    <div class="wrapper">
+        <form id="updatejokeform" method="post" action="/joke/UpdateJoke" enctype="multipart/form-data">
+            <div class="content">
+                <ul id="myDayaListForm" class="mydata-list">
+                    <li>
+                        <label class="title">笑话标题：</label>
+                        <div class="others-cont">
+                            @Html.HiddenFor(u=>u.ID)
+                            <input type="text" value="@Model.Title" name="Title" id="joketitle" class="text-form" style="width:350px;">
+
+                            <span class="txt" id="txtTitle">建议在个20字符以内</span>
+                        </div>
+                    </li>
+                    <li>
+                        <label class="title">笑话分类：</label>
+                        <div class="others-cont">
+                            <select id="joketype" name="Type" tabindex="4">
+                                <option value="0">短文</option>
+                                
+                            </select>
+                            <select id="jokecategory" name="Category" tabindex="5">
+
+                                @foreach (var s in categoryList)
+                                {
+                                    <option @Html.Raw(s.ID == Model.Category ? "selected" : "") value="@s.ID">@s.Name</option>
+                                }
+                            </select>
+
+                        </div>
+                    </li>
+                    <li id="uploadJokeTxt">
+                        <label class="title">笑话内容：</label>
+                        <div class="others-cont">
+                            <textarea class="textarea" name="Content" id="jokecontent" style="width:350px;height:200px;">@Model.Content</textarea>
+                            <span class="txt" id="txtJokeContent">限制在2000个字符以内</span>
+                        </div>
+                    </li>
+                    <li id="uploadImgList" style="display:none;">
+                        <label class="title">图片上传：</label>
+                        <div class="others-cont pic-upload-bar clearfix">
+                            <input type="file" name="jokeImgFile" />
+                            <a href="#">上传图片</a>
+                        </div>
+                        <p class="tx-msg">支持5M内的jpg、jpeg、gif、bmp或png格式的图片</p>
+                        <div style="padding: 10px 0 0; display: none;">
+                            <img width="208" style="vertical-align: top;" id="showPic">
+                        </div>
+                    </li>
+                </ul>
+                <div class="save-btn">
+                    <a href="javascript:;" onclick="updateJoke();" id="submitBtn" style="color:white;display:block;width:100px;padding:10px; text-align:center; margin-left:169px; background-color:#F28A1B;font-weight:bold;font-size:15px;">确认提交</a>
+
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>

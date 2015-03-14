@@ -169,5 +169,35 @@ namespace Joke.Web.Controllers
             var items = jokeBusinessLogic.LikeMostJokesGet(10, 1);
             return View(items);
         }
+
+        [UserAuthorize(Roles = "Admin")]
+        public ActionResult UpdateJoke(int jokeid)
+        {
+            var jokeinfo = jokeBusinessLogic.JokeDetailGet(jokeid);
+            JokeUpdateModel jokeModel = new JokeUpdateModel() { 
+              ID = jokeinfo.ID, Title = jokeinfo.Title,Content = jokeinfo.Content,Type = jokeinfo.Type,Category = jokeinfo.Category
+            };
+            var categoryDtos = jokeBusinessLogic.GetCategoryList();
+            ViewBag.Categories = categoryDtos;
+            return View(jokeModel);
+        }
+
+        [UserAuthorize(Roles = "Admin")]
+        [HttpPost]
+        public ActionResult UpdateJoke(JokeUpdateModel jokeModel)
+        {
+            if(!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            var jokeinfo = jokeBusinessLogic.JokeDetailGet(jokeModel.ID);
+            jokeinfo.Title =Sanitizer.GetSafeHtmlFragment(jokeModel.Title);
+            jokeinfo.Content = Sanitizer.GetSafeHtmlFragment(jokeModel.Content);
+            jokeinfo.Category = jokeModel.Category;
+
+            bool updateResult=jokeBusinessLogic.UpdateJoke(jokeinfo);
+            return RedirectToAction("Detail", new { id=jokeModel.ID});
+        }
     }
 }
