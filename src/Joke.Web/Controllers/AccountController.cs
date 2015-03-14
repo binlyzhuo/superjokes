@@ -97,6 +97,13 @@ namespace Joke.Web.Controllers
         {
             JsonViewResult jsonViewResult = new JsonViewResult() { Success = false };
             int userJokesCount = jokeLogic.JokesCount(uid);
+            var userinfo = userLogic.GetUserInfo(uid);
+            if(userinfo.IsAdmin>0)
+            {
+                jsonViewResult.Success = false;
+                jsonViewResult.Message = "不能删除管理员";
+                return Json(jsonViewResult, JsonRequestBehavior.AllowGet);
+            }
             if(userJokesCount>0)
             {
                 jsonViewResult.Success = false;
@@ -105,6 +112,7 @@ namespace Joke.Web.Controllers
             else
             {
                 jsonViewResult.Success = userLogic.DeleteUser(uid);
+
             }
             return Json(jsonViewResult,JsonRequestBehavior.AllowGet);
         }

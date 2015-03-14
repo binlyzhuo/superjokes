@@ -22,6 +22,22 @@
         function userSearch(){
 
         }
+
+        function deleteUser(uid){
+            if(confirm("确认删除该用户"))
+            {
+                $.post('/account/DeleteUser',{uid:uid},function(data){
+                    if(data.Success){
+                        alert('操作成功');
+                    }
+                    else
+                    {
+                        alert(data.Message);
+
+                    }
+                });
+            }
+        }
     </script>
 }
 <h2>用户管理</h2>
@@ -65,9 +81,8 @@ else
                     {
                         <a href="#" onclick="updateUsers(@m.ID,0)">拖黑</a>
                     }
+                    <a href="#" onclick="deleteUser(@m.ID)">删除用户</a>
                 </td>
-
-
 
             </tr>
         }
