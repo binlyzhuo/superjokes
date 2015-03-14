@@ -78,12 +78,12 @@ namespace Joke.Web.Controllers
                 CheckDate = DateTime.Parse("1900-01-01"),
                 CheckUserId = 0,
                 CommentCount = 0,
-                Content = Sanitizer.GetSafeHtmlFragment(content),
+                Content = content,
                 HateCount = 0,
                 LikeCount = 0,
                 PostID = user.UserId,
                 State = 0,
-                Title = Sanitizer.GetSafeHtmlFragment(joketitle),
+                Title = joketitle,
                 Type = joketype
             };
             int jokeId=jokeBusinessLogic.AddJoke(jokeinfo);
@@ -193,7 +193,7 @@ namespace Joke.Web.Controllers
 
             var jokeinfo = jokeBusinessLogic.JokeDetailGet(jokeModel.ID);
             jokeinfo.Title =Sanitizer.GetSafeHtmlFragment(jokeModel.Title);
-            jokeinfo.Content = Sanitizer.GetSafeHtmlFragment(jokeModel.Content);
+            jokeinfo.Content = jokeModel.Content;
             jokeinfo.Category = jokeModel.Category;
 
             bool updateResult=jokeBusinessLogic.UpdateJoke(jokeinfo);
