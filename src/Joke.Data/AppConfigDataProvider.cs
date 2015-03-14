@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace Joke.Data
 {
-    public class CommentDataProvider:BaseData<T_Comment>
+    public class AppConfigDataProvider:BaseData<T_AppConfig>
     {
-
     }
 }

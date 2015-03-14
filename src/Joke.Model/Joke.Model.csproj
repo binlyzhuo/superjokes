@@ -43,7 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\T_AppConfig.cs" />
     <Compile Include="Domain\T_Category.cs" />
+    <Compile Include="Domain\T_Comment.cs" />
     <Compile Include="Domain\T_FriendLink.cs" />
     <Compile Include="Domain\T_Joke.cs" />
     <Compile Include="Domain\T_User.cs" />

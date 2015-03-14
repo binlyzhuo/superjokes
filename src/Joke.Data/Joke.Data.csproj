@@ -43,8 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppConfigDataProvider.cs" />
     <Compile Include="BaseData.cs" />
     <Compile Include="CategoryDataProvider.cs" />
+    <Compile Include="CommentDataProvider.cs" />
     <Compile Include="FriendLinkDataProvider.cs" />
     <Compile Include="JokeDataProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
