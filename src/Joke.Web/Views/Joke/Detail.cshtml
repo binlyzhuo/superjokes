@@ -116,9 +116,9 @@
                 </div>
                 <h1 class="article-title">@currentJoke.Title</h1>
                 <div class="article-source">
-                    <span>来源：</span>
-                    <a href="/" target="_blank" rel="nofollow">本站原创</a>
-                    <span>@currentJoke.PostDate.ToString("yyyy-MM-dd HH:mm:ss")</span>
+                    <span>分类：</span>
+                    <a href="@JokeHelper.GetCategoryJokes(currentJoke.CategoryPinyin)" title="@string.Format("{0}笑话大全",currentJoke.Category)" style="color: firebrick; text-decoration: underline;" target="_blank" rel="nofollow">@currentJoke.Category</a>
+                    <span style="color:#333;margin-left:5px;">@currentJoke.PostDate.ToString("yyyy-MM-dd HH:mm:ss")</span>
                 </div>
             </div>
             <div class="article-text">
