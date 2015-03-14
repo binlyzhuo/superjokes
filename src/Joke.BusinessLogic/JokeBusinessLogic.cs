@@ -19,10 +19,12 @@ namespace Joke.BusinessLogic
     {
         private readonly CategoryDataProvider categoryData;
         private readonly JokeDataProvider jokeData;
+        private readonly CommentDataProvider commentData;
         public JokeBusinessLogic()
         {
             categoryData = new CategoryDataProvider();
             jokeData = new JokeDataProvider();
+            commentData = new CommentDataProvider();
         }
 
         public void InitCategory()
