@@ -127,7 +127,6 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\image.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -151,14 +150,10 @@
     <Content Include="App_Data\appsettings.config" />
     <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\superjokes.pubxml" />
-    <None Include="Scripts\jquery-1.9.0.intellisense.js" />
     <Content Include="Scripts\bootbox.js" />
     <Content Include="Scripts\bootbox.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <None Include="Scripts\jquery-1.6-vsdoc.js" />
-    <Content Include="Scripts\jquery-1.6.js" />
-    <Content Include="Scripts\jquery-1.6.min.js" />
     <Content Include="Scripts\jquery-1.9.0.js" />
     <Content Include="Scripts\jquery-1.9.0.min.js" />
     <Content Include="Scripts\jquery-1.9.0.min.map" />
@@ -172,9 +167,6 @@
     <Content Include="Scripts\jquery.cookie.js" />
     <Content Include="Scripts\jquery.form.js" />
     <Content Include="Scripts\jquery.form.min.js" />
-    <Content Include="Scripts\jquery.goup.js" />
-    <Content Include="Scripts\jquery.goup.min.js" />
-    <Content Include="Scripts\jquery.lazyload.js" />
     <Content Include="Scripts\jquery.lazyload.min.js" />
     <Content Include="Content\xiaohualist.css" />
     <Content Include="Scripts\jquery.scrollUp.js" />
