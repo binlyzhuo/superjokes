@@ -200,6 +200,7 @@ namespace Joke.Web.Controllers
 
         public ActionResult JokeCategoryList(string pinyin,int page=1,int pagesize=20)
         {
+            ViewBag.BgClass = "list-body-bg";
             pinyin = Sanitizer.GetSafeHtmlFragment(pinyin);
             var category = jokeLogic.CategoryGet(pinyin);
             string title = string.Format("{0}笑话大全",category.Name);
