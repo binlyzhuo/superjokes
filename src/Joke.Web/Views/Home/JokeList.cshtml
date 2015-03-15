@@ -18,7 +18,7 @@
                 scrollName: 'scrollUp',
                 scrollText: '', // Text for element, can contain HTML
                 scrollTitle: false,          // Set a custom <a> title if required.
-                scrollImg: true,
+                scrollImg: true
             });
             
         });
@@ -96,7 +96,7 @@
                 <li class="article-summary">
                     <span class="article-topbar"></span>
                     <span class="article-title">
-                        <a href="@JokeHelper.GetJokeDetail(p.JokeId)" target="_blank">@p.Title</a>
+                        <a href="@JokeHelper.GetJokeDetail(p.JokeId)" target="_blank" title="@string.Format("{0}",p.Title)">@p.Title</a>
                     </span>
                     <div class="article-source">
                         <a class="user-icon" href="/" rel="nofollow" target="_blank">
