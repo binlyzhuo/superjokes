@@ -86,6 +86,13 @@ namespace Joke.Web.Controllers
                 Title = joketitle,
                 Type = joketype
             };
+
+            if(user.IsAdmin>0)
+            {
+                jokeinfo.State = 1;
+                jokeinfo.CheckDate = DateTime.Now;
+                jokeinfo.CheckUserId = user.UserId;
+            }
             int jokeId=jokeBusinessLogic.AddJoke(jokeinfo);
             PostJokeResult postResult = new PostJokeResult() {
                 Success = jokeId>0?true:false,
@@ -192,7 +199,7 @@ namespace Joke.Web.Controllers
             }
 
             var jokeinfo = jokeBusinessLogic.JokeDetailGet(jokeModel.ID);
-            jokeinfo.Title =Sanitizer.GetSafeHtmlFragment(jokeModel.Title);
+            jokeinfo.Title =jokeModel.Title;
             jokeinfo.Content = jokeModel.Content;
             jokeinfo.Category = jokeModel.Category;
 

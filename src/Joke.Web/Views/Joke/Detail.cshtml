@@ -124,7 +124,7 @@
             <div class="article-text">
                 @if (currentJoke.JokeType == 0)
                 {
-                    @currentJoke.Content
+                   @Html.Raw(currentJoke.Content)
                 }
                 else if (currentJoke.JokeType == 1)
                 {
