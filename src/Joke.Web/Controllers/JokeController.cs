@@ -191,6 +191,7 @@ namespace Joke.Web.Controllers
 
         [UserAuthorize(Roles = "Admin")]
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult UpdateJoke(JokeUpdateModel jokeModel)
         {
             if(!ModelState.IsValid)
