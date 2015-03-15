@@ -5,16 +5,25 @@
 @using Joke.Model.ViewModel
 @using Joke.Web.Helpers
 @section header{
-    <script type="text/javascript" src="~/Scripts/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.scrollUp.js"></script>
     <script type="text/javascript" src="~/Scripts/jquery.cookie.js"></script>
     <script type="text/javascript" src="~/Scripts/jquery.lazyload.min.js"></script>
-    
+    <link type="text/css" rel="stylesheet" href="~/Content/image.css" />
     <script type="text/javascript">
         $(function () {
             $("img.lazyloading").lazyload();
             jokesfollow();
             
+            $.scrollUp({
+                scrollName: 'scrollUp',
+                scrollText: '', // Text for element, can contain HTML
+                scrollTitle: false,          // Set a custom <a> title if required.
+                scrollImg: true,
+            });
+            
         });
+
+        
 
     function jokesfollow() {
         $("em.followBtn").each(function () {
