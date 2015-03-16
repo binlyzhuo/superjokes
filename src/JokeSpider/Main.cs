@@ -10,6 +10,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
+using Joke.Common;
 
 namespace JokeSpider
 {
@@ -17,42 +19,51 @@ namespace JokeSpider
     {
         JokeBusinessLogic jokeLogic = new JokeBusinessLogic();
         bool isOk = false;
+        string encoding = "";
         public mainForm()
         {
 
             InitializeComponent();
+            LogHelper.LogConfig("Config\\log4net.config");
             Application.AddMessageFilter(this);
-            //txtRequestUrl.Text = "http://www.mahua.com/";
             var rules = Spider.GetRules();
-            rules.Add(new SpiderRule()
+            rules.Insert(0,new SpiderRule()
             {
                 Name = "--请选择来源--",
                 Url = ""
             });
             cboRules.DataSource = rules;
-            cboRules.SelectedIndex = rules.Count - 1;
+            cboRules.SelectedIndex = 0;
             cboRules.SelectedIndexChanged += cboRules_SelectedIndexChanged;
         }
 
         private void btnRequest_Click(object sender, EventArgs e)
         {
+            lblMsg.Text = "正在执行请等待";
             if (!isOk)
             {
                 lblMsg.Text = "请填写合法的数据";
                 lblMsg.ForeColor = Color.Red;
                 return;
             }
-            btnRequest.Enabled = false;
+            //btnRequest.Enabled = false;
             List<JokeInfo> jokes = new List<JokeInfo>();
-            var content = Spider.GetHtmlContent(txtRequestUrl.Text);
+            var content = Spider.GetHtmlContent(txtRequestUrl.Text, encoding);
             HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
             doc.LoadHtml(content);
             string jokelistXPath = txtListRule.Text.Trim();
             var nodes = doc.DocumentNode.SelectNodes(jokelistXPath);
-            if(nodes.Count==0)
+            
+            if (nodes==null||nodes.Count == 0)
             {
-                lblMsg.Text = "没有抓取到数据，请重新定义规则";
+                lblMsg.Text = "没有抓取到集合数据，请重新定义规则";
                 return;
+            }
+            else
+            {
+                lblMsg.Text = nodes.Count.ToString();
+                txtRepContent.Text = nodes[0].InnerHtml;
+                //return;
             }
             JokeInfo jokeinfo;
             HtmlNode temp;
@@ -81,6 +92,9 @@ namespace JokeSpider
 
         private void cboRules_SelectedIndexChanged(object sender, EventArgs e)
         {
+            btnRequest.Enabled = true;
+            lblMsg.Text = "";
+            txtRepContent.Text = "";
             if (string.IsNullOrEmpty(this.cboRules.SelectedValue.ToString()))
             {
                 txtTitleRule.Text = "";
@@ -96,7 +110,7 @@ namespace JokeSpider
             txtTitleRule.Text = rule.TitleRule;
             txtContentRule.Text = rule.ContentRule;
             txtListRule.Text = rule.ListRule;
-            //MessageBox.Show(selectValue.ToString());
+            encoding = rule.Encoding;
         }
 
         public bool PreFilterMessage(ref Message m)

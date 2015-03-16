@@ -15,5 +15,7 @@ namespace JokeSpider
 
         public string TitleRule { set; get; }
         public string ContentRule { set; get; }
+
+        public string Encoding { set; get; }
     }
 }

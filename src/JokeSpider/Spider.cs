@@ -11,7 +11,7 @@ namespace JokeSpider
 {
     public class Spider
     {
-        public static string GetHtmlContent(string url)
+        public static string GetHtmlContent(string url, string encoding = "utf-8")
         {
             string strMsg = "";
             try
@@ -19,7 +19,7 @@ namespace JokeSpider
 
                 WebRequest request = WebRequest.Create(url);
                 WebResponse response = request.GetResponse();
-                StreamReader reader = new StreamReader(response.GetResponseStream(),Encoding.GetEncoding("utf-8"));
+                StreamReader reader = new StreamReader(response.GetResponseStream(), Encoding.GetEncoding(encoding));
                 strMsg = reader.ReadToEnd();
                 reader.Close();
                 reader.Dispose();
@@ -48,6 +48,7 @@ namespace JokeSpider
                 rule.ListRule = n.SelectSingleNode("listrule").InnerText;
                 rule.Url = n.SelectSingleNode("url").InnerText;
                 rule.ContentRule = n.SelectSingleNode("contentrule").InnerText;
+                rule.Encoding = n.SelectSingleNode("encoding").InnerText;
                 rules.Add(rule);
             }
             return rules;

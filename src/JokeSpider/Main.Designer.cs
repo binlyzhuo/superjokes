@@ -41,6 +41,7 @@
             this.lblListRule = new System.Windows.Forms.Label();
             this.txtListRule = new System.Windows.Forms.TextBox();
             this.lblMsg = new System.Windows.Forms.Label();
+            this.txtRepContent = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnRequest
@@ -71,7 +72,7 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(76, 255);
+            this.progressBar1.Location = new System.Drawing.Point(76, 286);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(280, 23);
             this.progressBar1.TabIndex = 3;
@@ -153,11 +154,21 @@
             this.lblMsg.Size = new System.Drawing.Size(0, 12);
             this.lblMsg.TabIndex = 12;
             // 
+            // txtRepContent
+            // 
+            this.txtRepContent.Location = new System.Drawing.Point(388, 28);
+            this.txtRepContent.Multiline = true;
+            this.txtRepContent.Name = "txtRepContent";
+            this.txtRepContent.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtRepContent.Size = new System.Drawing.Size(474, 250);
+            this.txtRepContent.TabIndex = 13;
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(502, 332);
+            this.ClientSize = new System.Drawing.Size(874, 380);
+            this.Controls.Add(this.txtRepContent);
             this.Controls.Add(this.lblMsg);
             this.Controls.Add(this.txtListRule);
             this.Controls.Add(this.lblListRule);
@@ -193,6 +204,7 @@
         private System.Windows.Forms.Label lblListRule;
         private System.Windows.Forms.TextBox txtListRule;
         private System.Windows.Forms.Label lblMsg;
+        private System.Windows.Forms.TextBox txtRepContent;
     }
 }
 

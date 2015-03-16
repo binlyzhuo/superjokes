@@ -6,6 +6,14 @@
     <listrule>//html[1]/body[1]/div[2]/div[1]/dl</listrule>
     <titlerule>//dt[1]//span[1]//a[1]</titlerule>
     <contentrule>//dd[1]</contentrule>
+    <encoding>utf-8</encoding>
   </rule>
-  
+  <rule>
+    <name>Zol笑话大全</name>
+    <url>http://xiaohua.zol.com.cn/new/</url>
+    <listrule>//html[1]/body[1]/div[4]/div[1]/ul[1]/li</listrule>
+    <titlerule>//span[2]//a[1]</titlerule>
+    <contentrule>//div[2]</contentrule>
+    <encoding>gb2312</encoding>
+  </rule>
 </rules>
