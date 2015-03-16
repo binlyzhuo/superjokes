@@ -16,7 +16,6 @@ namespace JokeSpider
             try
             {
 
-                //WebClient
                 WebRequest request = WebRequest.Create(url);
                 WebResponse response = request.GetResponse();
                 StreamReader reader = new StreamReader(response.GetResponseStream(),Encoding.GetEncoding("utf-8"));

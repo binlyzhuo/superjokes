@@ -88,6 +88,16 @@
   <ItemGroup>
     <Content Include="Config\spiderrules.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Joke.BusinessLogic\Joke.BusinessLogic.csproj">
+      <Project>{c22b1452-5fbe-443a-a89a-58b7978fb68b}</Project>
+      <Name>Joke.BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Joke.Model\Joke.Model.csproj">
+      <Project>{e79f7be1-d63f-40a5-852d-5c4374d51812}</Project>
+      <Name>Joke.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

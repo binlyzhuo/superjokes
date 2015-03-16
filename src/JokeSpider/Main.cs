@@ -24,6 +24,7 @@ namespace JokeSpider
 
         private void btnRequest_Click(object sender, EventArgs e)
         {
+            btnRequest.Enabled = false;
             List<JokeInfo> jokes = new List<JokeInfo>();
             var content = Spider.GetHtmlContent(txtRequestUrl.Text);
             HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
