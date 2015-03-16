@@ -107,7 +107,7 @@
                     <div class="summary-text">
                         @if (p.JokeType == 0)
                         {
-                            <div>@p.Content</div>
+                            <div>@Html.Raw(p.Content)</div>
                             if (Request.IsAuthenticated && (System.Web.HttpContext.Current.User as Joke.Web.Auth.UserInfoPrincipal).IsAdmin > 0)
                             {
                                 if (p.JokeType == 0)

@@ -42,11 +42,16 @@
             this.txtListRule = new System.Windows.Forms.TextBox();
             this.lblMsg = new System.Windows.Forms.Label();
             this.txtRepContent = new System.Windows.Forms.TextBox();
+            this.cbIsRepeat = new System.Windows.Forms.CheckBox();
+            this.txtTotalPage = new System.Windows.Forms.TextBox();
+            this.lblPageNumber = new System.Windows.Forms.Label();
+            this.cmbCategory = new System.Windows.Forms.ComboBox();
+            this.lblCategory = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnRequest
             // 
-            this.btnRequest.Location = new System.Drawing.Point(76, 207);
+            this.btnRequest.Location = new System.Drawing.Point(76, 276);
             this.btnRequest.Name = "btnRequest";
             this.btnRequest.Size = new System.Drawing.Size(75, 23);
             this.btnRequest.TabIndex = 0;
@@ -72,7 +77,7 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(76, 286);
+            this.progressBar1.Location = new System.Drawing.Point(76, 352);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(280, 23);
             this.progressBar1.TabIndex = 3;
@@ -149,10 +154,11 @@
             // lblMsg
             // 
             this.lblMsg.AutoSize = true;
-            this.lblMsg.Location = new System.Drawing.Point(157, 212);
+            this.lblMsg.Location = new System.Drawing.Point(172, 281);
             this.lblMsg.Name = "lblMsg";
-            this.lblMsg.Size = new System.Drawing.Size(0, 12);
+            this.lblMsg.Size = new System.Drawing.Size(41, 12);
             this.lblMsg.TabIndex = 12;
+            this.lblMsg.Text = "待抓取";
             // 
             // txtRepContent
             // 
@@ -163,11 +169,62 @@
             this.txtRepContent.Size = new System.Drawing.Size(474, 250);
             this.txtRepContent.TabIndex = 13;
             // 
+            // cbIsRepeat
+            // 
+            this.cbIsRepeat.AutoSize = true;
+            this.cbIsRepeat.Location = new System.Drawing.Point(141, 244);
+            this.cbIsRepeat.Name = "cbIsRepeat";
+            this.cbIsRepeat.Size = new System.Drawing.Size(72, 16);
+            this.cbIsRepeat.TabIndex = 15;
+            this.cbIsRepeat.Text = "是否循环";
+            this.cbIsRepeat.UseVisualStyleBackColor = true;
+            // 
+            // txtTotalPage
+            // 
+            this.txtTotalPage.Location = new System.Drawing.Point(283, 239);
+            this.txtTotalPage.Name = "txtTotalPage";
+            this.txtTotalPage.Size = new System.Drawing.Size(75, 21);
+            this.txtTotalPage.TabIndex = 16;
+            // 
+            // lblPageNumber
+            // 
+            this.lblPageNumber.AutoSize = true;
+            this.lblPageNumber.Location = new System.Drawing.Point(237, 244);
+            this.lblPageNumber.Name = "lblPageNumber";
+            this.lblPageNumber.Size = new System.Drawing.Size(35, 12);
+            this.lblPageNumber.TabIndex = 17;
+            this.lblPageNumber.Text = "页码:";
+            // 
+            // cmbCategory
+            // 
+            this.cmbCategory.DisplayMember = "Name";
+            this.cmbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCategory.FormattingEnabled = true;
+            this.cmbCategory.Location = new System.Drawing.Point(141, 200);
+            this.cmbCategory.Name = "cmbCategory";
+            this.cmbCategory.Size = new System.Drawing.Size(215, 20);
+            this.cmbCategory.TabIndex = 18;
+            this.cmbCategory.ValueMember = "ID";
+            // 
+            // lblCategory
+            // 
+            this.lblCategory.AutoSize = true;
+            this.lblCategory.Location = new System.Drawing.Point(100, 208);
+            this.lblCategory.Name = "lblCategory";
+            this.lblCategory.Size = new System.Drawing.Size(35, 12);
+            this.lblCategory.TabIndex = 19;
+            this.lblCategory.Text = "类型:";
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(874, 380);
+            this.ClientSize = new System.Drawing.Size(874, 468);
+            this.Controls.Add(this.lblCategory);
+            this.Controls.Add(this.cmbCategory);
+            this.Controls.Add(this.lblPageNumber);
+            this.Controls.Add(this.txtTotalPage);
+            this.Controls.Add(this.cbIsRepeat);
             this.Controls.Add(this.txtRepContent);
             this.Controls.Add(this.lblMsg);
             this.Controls.Add(this.txtListRule);
@@ -205,6 +262,11 @@
         private System.Windows.Forms.TextBox txtListRule;
         private System.Windows.Forms.Label lblMsg;
         private System.Windows.Forms.TextBox txtRepContent;
+        private System.Windows.Forms.CheckBox cbIsRepeat;
+        private System.Windows.Forms.TextBox txtTotalPage;
+        private System.Windows.Forms.Label lblPageNumber;
+        private System.Windows.Forms.ComboBox cmbCategory;
+        private System.Windows.Forms.Label lblCategory;
     }
 }
 

@@ -13,10 +13,10 @@
     </div>
     <div class="headline">
         <h3 class="headline-title">
-            <a href="@JokeHelper.GetJokeDetail(latest.JokeId)" target="_blank" title="@latest.Title">@latest.Title</a>
+            <a href="@JokeHelper.GetJokeDetail(latest.JokeId)" target="_blank" title="@latest.Title">@Html.Raw(latest.Title)</a>
         </h3>
         <p>
-            @latest.Content.SubString(70)<a class="more" href="@JokeHelper.GetJokeDetail(latest.JokeId)" target="_blank">[查看全文]</a>
+            @Html.Raw(latest.Content.SubString(70))<a class="more" href="@JokeHelper.GetJokeDetail(latest.JokeId)" target="_blank">[查看全文]</a>
         </p>
     </div>
     <!-- news-list -->
@@ -27,7 +27,7 @@
             <li>
                 <span class="date">@Model.Item2[index].AddDate.ToString("yyyy-MM-dd")</span>
                 <a class="type" title="@string.Format("{0}笑话", Model.Item2[index].CategoryName)" href="@JokeHelper.GetCategoryJokes(@Model.Item2[index].PinYin)" target="_blank">[@Model.Item2[index].CategoryName]</a>
-                <a href="@JokeHelper.GetJokeDetail(@Model.Item2[index].JokeId)" title="@Model.Item2[index].Title" target="_blank">@Model.Item2[index].Title</a>
+                <a href="@JokeHelper.GetJokeDetail(@Model.Item2[index].JokeId)" title="@Model.Item2[index].Title" target="_blank">@Html.Raw(Model.Item2[index].Title)</a>
             </li>
         }
     </ul>
