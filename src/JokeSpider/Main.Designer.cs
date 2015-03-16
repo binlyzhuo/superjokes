@@ -1,6 +1,6 @@
 ﻿namespace JokeSpider
 {
-    partial class Main
+    partial class mainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -31,6 +31,7 @@
             this.btnRequest = new System.Windows.Forms.Button();
             this.txtRequestUrl = new System.Windows.Forms.TextBox();
             this.lblRequestUrl = new System.Windows.Forms.Label();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.SuspendLayout();
             // 
             // btnRequest
@@ -59,16 +60,24 @@
             this.lblRequestUrl.TabIndex = 2;
             this.lblRequestUrl.Text = "请求地址:";
             // 
-            // Main
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(73, 129);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(280, 23);
+            this.progressBar1.TabIndex = 3;
+            // 
+            // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(396, 223);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.lblRequestUrl);
             this.Controls.Add(this.txtRequestUrl);
             this.Controls.Add(this.btnRequest);
-            this.Name = "Main";
-            this.Text = "Form1";
+            this.Name = "mainForm";
+            this.Text = "笑话爬虫";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -79,6 +88,7 @@
         private System.Windows.Forms.Button btnRequest;
         private System.Windows.Forms.TextBox txtRequestUrl;
         private System.Windows.Forms.Label lblRequestUrl;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }
 

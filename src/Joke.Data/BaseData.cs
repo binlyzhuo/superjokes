@@ -13,7 +13,7 @@ namespace Joke.Data
         protected Database jokeDatabase;
         public BaseData()
         {
-            this.jokeDatabase = new Database("Joke");
+            this.jokeDatabase = new Database("SuperJokes");
         }
 
         public void BulkInsert(List<T> items)

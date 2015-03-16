@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<rules>
+  <rule>
+    <name>超级冷笑话</name>
+    <url>http://www.google.com.hk</url>
+    <titlerule>//http[1]</titlerule>
+    <contentrule>//</contentrule>
+  </rule>
+</rules>

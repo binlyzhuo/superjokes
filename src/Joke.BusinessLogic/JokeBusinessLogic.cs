@@ -146,5 +146,10 @@ namespace Joke.BusinessLogic
         {
             return jokeData.GetPostJokeInfo(jokeid);
         }
+
+        public void AddJokes(List<T_Joke> jokes)
+        {
+            jokeData.BulkInsert(jokes);
+        }
     }
 }

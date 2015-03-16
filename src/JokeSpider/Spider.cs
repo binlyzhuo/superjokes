@@ -15,9 +15,11 @@ namespace JokeSpider
             string strMsg = "";
             try
             {
+
+                //WebClient
                 WebRequest request = WebRequest.Create(url);
                 WebResponse response = request.GetResponse();
-                StreamReader reader = new StreamReader(response.GetResponseStream(),Encoding.GetEncoding("gb2312"));
+                StreamReader reader = new StreamReader(response.GetResponseStream(),Encoding.GetEncoding("utf-8"));
                 strMsg = reader.ReadToEnd();
                 reader.Close();
                 reader.Dispose();
@@ -29,6 +31,11 @@ namespace JokeSpider
                 return null;
             }
             
+        }
+
+        public static List<SpiderRule> GetRules()
+        {
+            return null;
         }
     }
 }
