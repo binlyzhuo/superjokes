@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Jokes
+namespace JokeSpider
 {
-    public partial class Login : Form
+    public partial class Main : Form
     {
-        public Login()
+        public Main()
         {
             InitializeComponent();
+        }
+
+        private void btnRequest_Click(object sender, EventArgs e)
+        {
+            var content = Spider.GetHtmlContent(txtRequestUrl.Text);
         }
     }
 }

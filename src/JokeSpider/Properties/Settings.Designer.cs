@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Jokes.Properties
+namespace JokeSpider.Properties
 {
 
 
