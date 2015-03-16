@@ -23,8 +23,14 @@ namespace Joke.Web.Helpers
 
         public static string GetJokeImg(string imgName)
         {
-
-            return string.Format("{0}/{1}", QiniuUpload.QiniuCloudUrl,FileInfoHelper.GetFileName(imgName));
+            if(AppConfig.IsQiniuUpload>0)
+            {
+                return string.Format("{0}/{1}", QiniuUpload.QiniuCloudUrl, FileInfoHelper.GetFileName(imgName));
+            }
+            else
+            {
+                return string.Format("{1}/{0}", imgName,AppConfig.JokeImgUpload);
+            }
         }
 
         public static string GetShareContent(JokePostInfo jokeinfo)
@@ -43,7 +49,14 @@ namespace Joke.Web.Helpers
 
         public static string GetShareImg(JokePostInfo jokeinfo)
         {
-            return string.Format("{0}/{1}", QiniuUpload.QiniuCloudUrl,jokeinfo.JokeType==1?FileInfoHelper.GetFileName(jokeinfo.Content):"shareimg.png");
+            if(AppConfig.IsQiniuUpload>0)
+            {
+                return string.Format("{0}/{1}", QiniuUpload.QiniuCloudUrl, jokeinfo.JokeType == 1 ? FileInfoHelper.GetFileName(jokeinfo.Content) : "shareimg.png");
+            }
+            else
+            {
+               return string.Format("{0}", jokeinfo.JokeType == 1 ? string.Format("{0}//{1}",AppConfig.JokeImgUpload,jokeinfo.Content) : "/imgs/shareimg.png");
+            }
         }
     }
 }

@@ -13,6 +13,7 @@ using Joke.Common;
 using Joke.Web.Auth;
 using Microsoft.Security.Application;
 using Travelling.Web.Helpers;
+using Joke.Web.Helpers;
 
 namespace Joke.Web.Controllers
 {
@@ -67,8 +68,11 @@ namespace Joke.Web.Controllers
                 Thread.Sleep(1);
                 string fileName = jokeImgFile.FileName;
                 content = string.Format("{0}\\{1}\\{2}", DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day) + "\\" + newName;
+                if(AppConfig.IsQiniuUpload>0)
+                {
+                    bool updateResult = QiniuUpload.PutFile(newName, uploadFolder + "\\" + newName);
+                }
                 
-                bool updateResult = QiniuUpload.PutFile(newName, uploadFolder + "\\" + newName);
             }
           
             T_Joke jokeinfo = new T_Joke()
