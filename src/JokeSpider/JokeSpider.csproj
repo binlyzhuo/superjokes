@@ -37,6 +37,7 @@
       <HintPath>..\packages\HtmlAgilityPack.1.4.9\lib\Net45\HtmlAgilityPack.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -48,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppConfig.cs" />
     <Compile Include="HtmlAgility.cs" />
     <Compile Include="JokeInfo.cs" />
     <Compile Include="Main.cs">
@@ -72,6 +74,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Config\log4net.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -86,12 +89,18 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Config\spiderrules.xml" />
+    <Content Include="Config\spiderrules.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Joke.BusinessLogic\Joke.BusinessLogic.csproj">
       <Project>{c22b1452-5fbe-443a-a89a-58b7978fb68b}</Project>
       <Name>Joke.BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Joke.Common\Joke.Common.csproj">
+      <Project>{43f92e2b-df89-4d24-8913-c645fe0175cd}</Project>
+      <Name>Joke.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\Joke.Model\Joke.Model.csproj">
       <Project>{e79f7be1-d63f-40a5-852d-5c4374d51812}</Project>

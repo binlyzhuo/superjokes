@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net;
 using System.IO;
+using System.Xml;
 
 namespace JokeSpider
 {
@@ -34,7 +35,28 @@ namespace JokeSpider
 
         public static List<SpiderRule> GetRules()
         {
-            return null;
+            XmlDocument xmldoc = new XmlDocument();
+            xmldoc.Load("Config\\spiderrules.xml");
+            var ruleNodes = xmldoc.SelectNodes("rules/rule");
+            SpiderRule rule;
+            List<SpiderRule> rules = new List<SpiderRule>();
+            foreach(XmlNode n in ruleNodes)
+            {
+                rule = new SpiderRule();
+                rule.Name = n.SelectSingleNode("name").InnerText;
+                rule.TitleRule = n.SelectSingleNode("titlerule").InnerText;
+                rule.ListRule = n.SelectSingleNode("listrule").InnerText;
+                rule.Url = n.SelectSingleNode("url").InnerText;
+                rule.ContentRule = n.SelectSingleNode("contentrule").InnerText;
+                rules.Add(rule);
+            }
+            return rules;
+        }
+
+        public static SpiderRule GetRuleByName(string name)
+        {
+            var rule = GetRules().SingleOrDefault(u => u.Name == name);
+            return rule;
         }
     }
 }

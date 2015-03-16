@@ -8,9 +8,12 @@ namespace JokeSpider
 {
     public class SpiderRule
     {
-        static SpiderRule()
-        {
+        public string Name { set; get; }
+        public string Url { set; get; }
 
-        }
+        public string ListRule { set; get; }
+
+        public string TitleRule { set; get; }
+        public string ContentRule { set; get; }
     }
 }
