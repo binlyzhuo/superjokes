@@ -24,6 +24,7 @@ namespace JokeSpider
         {
 
             InitializeComponent();
+            Control.CheckForIllegalCrossThreadCalls = false; 
             DtoMapper.AutoMapper();
             LogHelper.LogConfig("Config\\log4net.config");
             Application.AddMessageFilter(this);
@@ -48,98 +49,16 @@ namespace JokeSpider
                 lblMsg.ForeColor = Color.Red;
                 return;
             }
-            int page = 1;
-            if(cbIsRepeat.Checked)
-            {
-                page = txtTotalPage.Text.ToInt32();
 
-                for(int i=1;i<page;i++)
-                {
-                    List<JokeInfo> jokes = new List<JokeInfo>();
-                    var content = Spider.GetHtmlContent(string.Format(txtRequestUrl.Text,i), encoding);
-                    HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
-                    doc.LoadHtml(content);
-                    string jokelistXPath = txtListRule.Text.Trim();
-                    var nodes = doc.DocumentNode.SelectNodes(jokelistXPath);
+            //==========
+            CheckForIllegalCrossThreadCalls = false;
+            btnRequest.Enabled = false;
+            Thread myThread = new Thread(CatchJokes);
+            myThread.IsBackground = true;
+            myThread.Start();
+            //==========
 
-                    if (nodes == null || nodes.Count == 0)
-                    {
-                        lblMsg.Text = "没有抓取到集合数据，请重新定义规则";
-                        return;
-                    }
-                    else
-                    {
-                        lblMsg.Text = nodes.Count.ToString();
-                        txtRepContent.Text = nodes[0].InnerHtml;
-                        //return;
-                    }
-                    JokeInfo jokeinfo;
-                    HtmlNode temp;
-                    foreach (var node in nodes)
-                    {
-                        temp = HtmlNode.CreateNode(node.OuterHtml);
-                        jokeinfo = new JokeInfo();
-                        jokeinfo.Title = temp.SelectSingleNode(txtTitleRule.Text.Trim()).InnerText.Trim();
-                        jokeinfo.Content = temp.SelectSingleNode(txtContentRule.Text.Trim()).InnerText.Trim();
-                        if (string.IsNullOrEmpty(jokeinfo.Content) || string.IsNullOrEmpty(jokeinfo.Title))
-                        {
-                            continue;
-                        }
-                        jokes.Add(jokeinfo);
-                    }
-                    if (jokes.Count == 0)
-                    {
-                        lblMsg.Text = "没有抓取到数据，请重新定义规则!";
-                        return;
-                    }
-
-                    jokeLogic.AddJokes(ToJokes(jokes));
-                    lblMsg.Text = "抓取数据成功";
-                }
-            }
-            else
-            {
-                List<JokeInfo> jokes = new List<JokeInfo>();
-                var content = Spider.GetHtmlContent(txtRequestUrl.Text, encoding);
-                HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
-                doc.LoadHtml(content);
-                string jokelistXPath = txtListRule.Text.Trim();
-                var nodes = doc.DocumentNode.SelectNodes(jokelistXPath);
-
-                if (nodes == null || nodes.Count == 0)
-                {
-                    lblMsg.Text = "没有抓取到集合数据，请重新定义规则";
-                    return;
-                }
-                else
-                {
-                    lblMsg.Text = nodes.Count.ToString();
-                    txtRepContent.Text = nodes[0].InnerHtml;
-                    //return;
-                }
-                JokeInfo jokeinfo;
-                HtmlNode temp;
-                foreach (var node in nodes)
-                {
-                    temp = HtmlNode.CreateNode(node.OuterHtml);
-                    jokeinfo = new JokeInfo();
-                    jokeinfo.Title = temp.SelectSingleNode(txtTitleRule.Text.Trim()).InnerText.Trim();
-                    jokeinfo.Content = temp.SelectSingleNode(txtContentRule.Text.Trim()).InnerText.Trim();
-                    if (string.IsNullOrEmpty(jokeinfo.Content) || string.IsNullOrEmpty(jokeinfo.Title))
-                    {
-                        continue;
-                    }
-                    jokes.Add(jokeinfo);
-                }
-                if (jokes.Count == 0)
-                {
-                    lblMsg.Text = "没有抓取到数据，请重新定义规则!";
-                    return;
-                }
-
-                jokeLogic.AddJokes(ToJokes(jokes));
-                lblMsg.Text = "抓取数据成功";
-            }
+            
 
             
             //jokeLogic.AddJokes();
@@ -201,6 +120,128 @@ namespace JokeSpider
                 };
             }).ToList();
             return jokes;
+        }
+
+        private void CatchJokes()
+        {
+            CatchJokesAction(SetCatchProgress);
+
+        }
+
+        private void SetCatchProgress(string msg)
+        {
+            pgCatchStatus.Value = 0;
+            pgCatchStatus.Maximum = 100;
+            
+            for (int i = 0; i < 100; i++)
+            {
+                pgCatchStatus.Value = i;
+                Thread.Sleep(1);
+            }
+
+            lblCatchStatus.Text = msg;
+        }
+
+        private void CatchJokesAction(Action<string> action)
+        {
+            int page = 1;
+            if (cbIsRepeat.Checked)
+            {
+                page = txtTotalPage.Text.ToInt32();
+
+                for (int i = 1; i < page; i++)
+                {
+                    action(string.Format("正在抓取:{0}", string.Format(txtRequestUrl.Text, i)));
+                    List<JokeInfo> jokes = new List<JokeInfo>();
+                    var content = Spider.GetHtmlContent(string.Format(txtRequestUrl.Text, i), encoding);
+                    HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
+                    doc.LoadHtml(content);
+                    string jokelistXPath = txtListRule.Text.Trim();
+                    var nodes = doc.DocumentNode.SelectNodes(jokelistXPath);
+
+                    if (nodes == null || nodes.Count == 0)
+                    {
+                        lblMsg.Text = "没有抓取到集合数据，请重新定义规则";
+                        return;
+                    }
+                    else
+                    {
+                        lblMsg.Text = nodes.Count.ToString();
+                        txtRepContent.Text = nodes[0].InnerHtml;
+                        //return;
+                    }
+                    JokeInfo jokeinfo;
+                    HtmlNode temp;
+                    foreach (var node in nodes)
+                    {
+                        temp = HtmlNode.CreateNode(node.OuterHtml);
+                        jokeinfo = new JokeInfo();
+                        jokeinfo.Title = temp.SelectSingleNode(txtTitleRule.Text.Trim()).InnerText.Trim();
+                        jokeinfo.Content = temp.SelectSingleNode(txtContentRule.Text.Trim()).InnerText.Trim();
+                        if (string.IsNullOrEmpty(jokeinfo.Content) || string.IsNullOrEmpty(jokeinfo.Title))
+                        {
+                            continue;
+                        }
+                        jokes.Add(jokeinfo);
+                    }
+                    if (jokes.Count == 0)
+                    {
+                        lblMsg.Text = "没有抓取到数据，请重新定义规则!";
+                        return;
+                    }
+
+                    jokeLogic.AddJokes(ToJokes(jokes));
+                    lblMsg.Text = "抓取数据成功";
+                }
+            }
+            else
+            {
+                action(string.Format("正在抓取:{0}", txtRequestUrl.Text));
+                List<JokeInfo> jokes = new List<JokeInfo>();
+                var content = Spider.GetHtmlContent(txtRequestUrl.Text, encoding);
+                HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
+                doc.LoadHtml(content);
+                string jokelistXPath = txtListRule.Text.Trim();
+                var nodes = doc.DocumentNode.SelectNodes(jokelistXPath);
+
+                if (nodes == null || nodes.Count == 0)
+                {
+                    lblMsg.Text = "没有抓取到集合数据，请重新定义规则";
+                    return;
+                }
+                else
+                {
+                    lblMsg.Text = nodes.Count.ToString();
+                    txtRepContent.Text = nodes[0].InnerHtml;
+                    //return;
+                }
+                JokeInfo jokeinfo;
+                HtmlNode temp;
+                foreach (var node in nodes)
+                {
+                    temp = HtmlNode.CreateNode(node.OuterHtml);
+                    jokeinfo = new JokeInfo();
+                    jokeinfo.Title = temp.SelectSingleNode(txtTitleRule.Text.Trim()).InnerText.Trim();
+                    jokeinfo.Content = temp.SelectSingleNode(txtContentRule.Text.Trim()).InnerText.Trim();
+                    if (string.IsNullOrEmpty(jokeinfo.Content) || string.IsNullOrEmpty(jokeinfo.Title))
+                    {
+                        continue;
+                    }
+                    jokes.Add(jokeinfo);
+                }
+                if (jokes.Count == 0)
+                {
+                    lblMsg.Text = "没有抓取到数据，请重新定义规则!";
+                    return;
+                }
+
+                jokeLogic.AddJokes(ToJokes(jokes));
+                lblMsg.Text = "抓取数据成功";
+            }
+
+            btnRequest.Enabled = true;
+            lblCatchStatus.Text = "";
+           
         }
     }
 }

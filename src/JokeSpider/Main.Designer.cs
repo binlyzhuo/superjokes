@@ -31,7 +31,6 @@
             this.btnRequest = new System.Windows.Forms.Button();
             this.txtRequestUrl = new System.Windows.Forms.TextBox();
             this.lblRequestUrl = new System.Windows.Forms.Label();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.cboRules = new System.Windows.Forms.ComboBox();
             this.lblSiteName = new System.Windows.Forms.Label();
             this.lblTitleRule = new System.Windows.Forms.Label();
@@ -47,6 +46,8 @@
             this.lblPageNumber = new System.Windows.Forms.Label();
             this.cmbCategory = new System.Windows.Forms.ComboBox();
             this.lblCategory = new System.Windows.Forms.Label();
+            this.pgCatchStatus = new System.Windows.Forms.ProgressBar();
+            this.lblCatchStatus = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnRequest
@@ -74,13 +75,6 @@
             this.lblRequestUrl.Size = new System.Drawing.Size(59, 12);
             this.lblRequestUrl.TabIndex = 2;
             this.lblRequestUrl.Text = "请求地址:";
-            // 
-            // progressBar1
-            // 
-            this.progressBar1.Location = new System.Drawing.Point(76, 352);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(280, 23);
-            this.progressBar1.TabIndex = 3;
             // 
             // cboRules
             // 
@@ -215,11 +209,28 @@
             this.lblCategory.TabIndex = 19;
             this.lblCategory.Text = "类型:";
             // 
+            // pgCatchStatus
+            // 
+            this.pgCatchStatus.Location = new System.Drawing.Point(76, 330);
+            this.pgCatchStatus.Name = "pgCatchStatus";
+            this.pgCatchStatus.Size = new System.Drawing.Size(309, 23);
+            this.pgCatchStatus.TabIndex = 20;
+            // 
+            // lblCatchStatus
+            // 
+            this.lblCatchStatus.AutoSize = true;
+            this.lblCatchStatus.Location = new System.Drawing.Point(400, 341);
+            this.lblCatchStatus.Name = "lblCatchStatus";
+            this.lblCatchStatus.Size = new System.Drawing.Size(0, 12);
+            this.lblCatchStatus.TabIndex = 21;
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(874, 468);
+            this.Controls.Add(this.lblCatchStatus);
+            this.Controls.Add(this.pgCatchStatus);
             this.Controls.Add(this.lblCategory);
             this.Controls.Add(this.cmbCategory);
             this.Controls.Add(this.lblPageNumber);
@@ -235,7 +246,6 @@
             this.Controls.Add(this.lblTitleRule);
             this.Controls.Add(this.lblSiteName);
             this.Controls.Add(this.cboRules);
-            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.lblRequestUrl);
             this.Controls.Add(this.txtRequestUrl);
             this.Controls.Add(this.btnRequest);
@@ -251,7 +261,6 @@
         private System.Windows.Forms.Button btnRequest;
         private System.Windows.Forms.TextBox txtRequestUrl;
         private System.Windows.Forms.Label lblRequestUrl;
-        private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.ComboBox cboRules;
         private System.Windows.Forms.Label lblSiteName;
         private System.Windows.Forms.Label lblTitleRule;
@@ -267,6 +276,8 @@
         private System.Windows.Forms.Label lblPageNumber;
         private System.Windows.Forms.ComboBox cmbCategory;
         private System.Windows.Forms.Label lblCategory;
+        private System.Windows.Forms.ProgressBar pgCatchStatus;
+        private System.Windows.Forms.Label lblCatchStatus;
     }
 }
 
