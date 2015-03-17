@@ -282,6 +282,8 @@
     </Compile>
     <Compile Include="Helpers\JokeHelper.cs" />
     <Compile Include="Helpers\RouteConfigBind.cs" />
+    <Compile Include="Helpers\SinaOAuth.cs" />
+    <Compile Include="Helpers\TencentOAuth.cs" />
     <Compile Include="Helpers\ValidateCode.cs" />
     <Compile Include="Helpers\WebHelper.cs" />
     <Compile Include="Models\AdminLoginModel.cs" />
