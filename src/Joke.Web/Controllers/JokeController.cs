@@ -214,27 +214,50 @@ namespace Joke.Web.Controllers
 
         public ActionResult Comments(CommentSearchModel search)
         {
-             
-            List<CommentViewInfo> items = jokeBusinessLogic.CommentSearchResult(search);
+            var items = jokeBusinessLogic.CommentSearchResult(search);
             return View(items);
         }
 
         [HttpPost]
         [UserAuthorize(Roles = "User,Admin")]
-        public ActionResult PostComment(int jokeId,string comment)
+        public ActionResult PostComment(CommentPostModel commentPost)
         {
-            var jokeinfo = jokeBusinessLogic.JokeDetailGet(jokeId);
-            JsonViewResult json = new JsonViewResult() { Success =false };
+            JsonViewResult json = new JsonViewResult() { Success = false };
+            if(!ModelState.IsValid)
+            {
+                json.Success = false;
+                json.Message = "输入错误";
+                return Json(json, JsonRequestBehavior.AllowGet);
+            }
+
+            string verifyCode = Session["ValidateCode"] as string;
+            if(verifyCode.ToLower()!=commentPost.VerifyCode)
+            {
+                json.Success = false;
+                json.Message = "验证码输入错误";
+                return Json(json, JsonRequestBehavior.AllowGet);
+            }
+
+            var jokeinfo = jokeBusinessLogic.JokeDetailGet(commentPost.JokeID);
+            
             T_Comment commentDomain = new T_Comment();
             commentDomain.AddDate = DateTime.Now;
-            commentDomain.Content = comment;
+            commentDomain.Content = commentPost.Comment;
             commentDomain.Floor = jokeinfo.CommentCount+1;
-            commentDomain.JokeId = jokeId;
+            commentDomain.JokeId = commentPost.JokeID;
             commentDomain.UserID = user.UserId;
             jokeinfo.CommentCount = jokeinfo.CommentCount + 1;
             jokeBusinessLogic.UpdateJoke(jokeinfo);
             json.Success = jokeBusinessLogic.AddComment(commentDomain);
             return Json(json,JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        [UserAuthorize(Roles = "User,Admin")]
+        public ActionResult CommentList(CommentSearchModel search)
+        {
+            var items = jokeBusinessLogic.CommentSearchResult(search);
+            return View(items);
         }
     }
 }

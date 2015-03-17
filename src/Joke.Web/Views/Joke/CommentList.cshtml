@@ -1,0 +1,34 @@
+﻿@model PageSearchResult<CommentViewInfo>
+@using Joke.Model.ViewModel
+@{
+    string pattern = "";
+    
+}
+<div id="commentsFilter" class="section-header">
+    <h3 class="section-title">用户评论<em>(@Model.TotalCount)</em></h3>
+</div>
+<ul id="discussArea" class="discuss-area"></ul>
+<ul id="commentsList" class="comment-list">
+
+    @foreach (var m in Model.Items)
+    {
+        <li class="comment-item  single-item  clearfix">
+            <a class="pic avator" style="color: #999; text-decoration:none;">
+                <img width="40" height="40" alt="" src="~/Imgs/defaultphoto.png">
+            </a>
+            <div data-name="@m.UserName" class="comment-infor">
+                <div class="comment-header">
+                    <span class="floor-num">@string.Format("{0}搂", m.Floor)</span>
+                    <span class="name-bar">
+                        <a class="name" style="color: #999; text-decoration:none;">@m.UserName</a>
+                    </span>
+                </div>
+                <div class="cpmment-content">
+                    <p>@Html.Raw(m.Comment)</p>
+                </div>
+            </div>
+        </li>
+    }
+</ul>
+<!--page-box-->
+<!--//page-box-->

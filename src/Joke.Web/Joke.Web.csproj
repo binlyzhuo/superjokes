@@ -128,9 +128,85 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\reset.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="App_Data\log4net.config" />
+    <Content Include="Imgs\arclist\1.gif" />
+    <Content Include="Imgs\arclist\10.gif" />
+    <Content Include="Imgs\arclist\11.gif" />
+    <Content Include="Imgs\arclist\12.gif" />
+    <Content Include="Imgs\arclist\13.gif" />
+    <Content Include="Imgs\arclist\14.gif" />
+    <Content Include="Imgs\arclist\15.gif" />
+    <Content Include="Imgs\arclist\16.gif" />
+    <Content Include="Imgs\arclist\17.gif" />
+    <Content Include="Imgs\arclist\18.gif" />
+    <Content Include="Imgs\arclist\19.gif" />
+    <Content Include="Imgs\arclist\2.gif" />
+    <Content Include="Imgs\arclist\20.gif" />
+    <Content Include="Imgs\arclist\21.gif" />
+    <Content Include="Imgs\arclist\22.gif" />
+    <Content Include="Imgs\arclist\23.gif" />
+    <Content Include="Imgs\arclist\24.gif" />
+    <Content Include="Imgs\arclist\25.gif" />
+    <Content Include="Imgs\arclist\26.gif" />
+    <Content Include="Imgs\arclist\27.gif" />
+    <Content Include="Imgs\arclist\28.gif" />
+    <Content Include="Imgs\arclist\29.gif" />
+    <Content Include="Imgs\arclist\3.gif" />
+    <Content Include="Imgs\arclist\30.gif" />
+    <Content Include="Imgs\arclist\31.gif" />
+    <Content Include="Imgs\arclist\32.gif" />
+    <Content Include="Imgs\arclist\33.gif" />
+    <Content Include="Imgs\arclist\34.gif" />
+    <Content Include="Imgs\arclist\35.gif" />
+    <Content Include="Imgs\arclist\36.gif" />
+    <Content Include="Imgs\arclist\37.gif" />
+    <Content Include="Imgs\arclist\38.gif" />
+    <Content Include="Imgs\arclist\39.gif" />
+    <Content Include="Imgs\arclist\4.gif" />
+    <Content Include="Imgs\arclist\40.gif" />
+    <Content Include="Imgs\arclist\41.gif" />
+    <Content Include="Imgs\arclist\42.gif" />
+    <Content Include="Imgs\arclist\43.gif" />
+    <Content Include="Imgs\arclist\44.gif" />
+    <Content Include="Imgs\arclist\45.gif" />
+    <Content Include="Imgs\arclist\46.gif" />
+    <Content Include="Imgs\arclist\47.gif" />
+    <Content Include="Imgs\arclist\48.gif" />
+    <Content Include="Imgs\arclist\49.gif" />
+    <Content Include="Imgs\arclist\5.gif" />
+    <Content Include="Imgs\arclist\50.gif" />
+    <Content Include="Imgs\arclist\51.gif" />
+    <Content Include="Imgs\arclist\52.gif" />
+    <Content Include="Imgs\arclist\53.gif" />
+    <Content Include="Imgs\arclist\54.gif" />
+    <Content Include="Imgs\arclist\55.gif" />
+    <Content Include="Imgs\arclist\56.gif" />
+    <Content Include="Imgs\arclist\57.gif" />
+    <Content Include="Imgs\arclist\58.gif" />
+    <Content Include="Imgs\arclist\59.gif" />
+    <Content Include="Imgs\arclist\6.gif" />
+    <Content Include="Imgs\arclist\60.gif" />
+    <Content Include="Imgs\arclist\61.gif" />
+    <Content Include="Imgs\arclist\62.gif" />
+    <Content Include="Imgs\arclist\63.gif" />
+    <Content Include="Imgs\arclist\64.gif" />
+    <Content Include="Imgs\arclist\65.gif" />
+    <Content Include="Imgs\arclist\66.gif" />
+    <Content Include="Imgs\arclist\67.gif" />
+    <Content Include="Imgs\arclist\68.gif" />
+    <Content Include="Imgs\arclist\69.gif" />
+    <Content Include="Imgs\arclist\7.gif" />
+    <Content Include="Imgs\arclist\70.gif" />
+    <Content Include="Imgs\arclist\71.gif" />
+    <Content Include="Imgs\arclist\72.gif" />
+    <Content Include="Imgs\arclist\73.gif" />
+    <Content Include="Imgs\arclist\74.gif" />
+    <Content Include="Imgs\arclist\75.gif" />
+    <Content Include="Imgs\arclist\8.gif" />
+    <Content Include="Imgs\arclist\9.gif" />
     <Content Include="Imgs\bjhover.png" />
     <Content Include="Imgs\bodyback.jpg" />
     <Content Include="Imgs\commentSection-bg.png" />
@@ -150,11 +226,14 @@
     <Content Include="App_Data\appsettings.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Imgs\arclist\Thumbs.db" />
+    <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\superjokes.pubxml" />
     <Content Include="Scripts\bootbox.js" />
     <Content Include="Scripts\bootbox.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Scripts\jquery-1.9.0.intellisense.js" />
     <Content Include="Scripts\jquery-1.9.0.js" />
     <Content Include="Scripts\jquery-1.9.0.min.js" />
     <Content Include="Scripts\jquery-1.9.0.min.map" />
@@ -165,11 +244,14 @@
     <Content Include="Imgs\xiaohua_logo.png" />
     <Content Include="Scripts\jquery-2.1.3.js" />
     <Content Include="Scripts\jquery-2.1.3.min.js" />
+    <Content Include="Scripts\jquery-migrate-1.2.1.js" />
+    <Content Include="Scripts\jquery-migrate-1.2.1.min.js" />
     <Content Include="Scripts\jquery.cookie.js" />
     <Content Include="Scripts\jquery.form.js" />
     <Content Include="Scripts\jquery.form.min.js" />
     <Content Include="Scripts\jquery.lazyload.min.js" />
     <Content Include="Content\xiaohualist.css" />
+    <Content Include="Scripts\jquery.qqFace.js" />
     <Content Include="Scripts\jquery.scrollUp.js" />
     <Content Include="Web.config" />
     <Content Include="Scripts\jquery-2.1.3.min.map" />
@@ -253,6 +335,7 @@
     <Content Include="Views\Joke\PostJokeResult.cshtml" />
     <Content Include="Views\Joke\UpdateJoke.cshtml" />
     <Content Include="Views\Joke\Comments.cshtml" />
+    <Content Include="Views\Joke\CommentList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -260,7 +343,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Scripts\jsface\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Joke.BusinessLogic\Joke.BusinessLogic.csproj">
       <Project>{c22b1452-5fbe-443a-a89a-58b7978fb68b}</Project>

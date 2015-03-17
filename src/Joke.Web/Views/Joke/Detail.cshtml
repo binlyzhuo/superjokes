@@ -11,11 +11,14 @@
 }
 @section header{
     <script type="text/javascript" src="~/Scripts/jquery.cookie.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.qqFace.js"></script>
+    <link type="text/css" rel="stylesheet" href="~/Content/reset.css" />
     <script type="text/javascript">
 
         $(function () {
             jokesfollow();
-
+            loadqqfaces();
+            showfaces();
             //
             $(document).keydown(function (event) {
                 //alert(event.keyCode);
@@ -91,8 +94,43 @@
         function postComment() {
             var jokeid=@currentJoke.JokeId;
             var comment = $("#sendText").val();
+            var verifyCode = $("#verifyCode").val();
 
-            $.post('/joke/postcomment',{jokeid:jokeid,comment:comment},function(rep){});
+            $.post('/joke/postcomment',{jokeid:jokeid,comment:comment,verifyCode:verifyCode},function(rep){
+                if(rep.Success)
+                {
+                    $("#sendText").val('');
+                    $.post("/joke/CommentList",{jokeid:jokeid},function(data){
+                        $("#commentinfolist").html(replace_em(data));
+                    });
+                }
+                else{
+                    alert(rep.Message);
+                }
+            });
+        }
+
+        function loadqqfaces(){
+            $('.emotion').qqFace({
+                id : 'facebox', 
+                assign:'sendText', 
+                path:'/imgs/arclist/'	//表情存放的路径
+            });
+            
+        }
+
+        function replace_em(str){
+            //str = str.replace(/\</g,'&lt;');
+            //str = str.replace(/\>/g,'&gt;');
+            //str = str.replace(/\n/g,'<br/>');
+            str = str.replace(/\[em_([0-9]*)\]/g,'<img src="/imgs/arclist/$1.gif" border="0" />');
+            return str;
+        }
+
+        function showfaces(){
+            $(".comment_P").each(function(){
+                $(this).html(replace_em($(this).html()));
+            });
         }
     </script>
 }

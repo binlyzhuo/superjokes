@@ -157,9 +157,10 @@ namespace Joke.BusinessLogic
             return commentData.Add(comment)>0;
         }
 
-        public List<CommentViewInfo> CommentSearchResult(CommentSearchModel search)
+        public PageSearchResult<CommentViewInfo> CommentSearchResult(CommentSearchModel search)
         {
             var items = commentData.CommentSearchResult(search);
+
             return items;
         }
     }
