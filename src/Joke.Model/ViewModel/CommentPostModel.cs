@@ -13,9 +13,11 @@ namespace Joke.Model.ViewModel
         public int JokeID { set; get; }
 
         [Required]
+        [StringLength(500)]
         public string Comment { set; get; }
 
         [Required]
+        [StringLength(5)]
         public string VerifyCode { set; get; }
     }
 }

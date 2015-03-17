@@ -34,6 +34,7 @@
       <HintPath>..\packages\NPoco.2.6.88\lib\net40\NPoco.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -55,6 +56,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\BaseSearchModel.cs" />
     <Compile Include="ViewModel\CategorySummaryInfo.cs" />
+    <Compile Include="ViewModel\CommentPostModel.cs" />
     <Compile Include="ViewModel\CommentSearchModel.cs" />
     <Compile Include="ViewModel\CommentViewInfo.cs" />
     <Compile Include="ViewModel\JokePostInfo.cs" />

@@ -14,11 +14,12 @@
     <script type="text/javascript" src="~/Scripts/jquery.qqFace.js"></script>
     <link type="text/css" rel="stylesheet" href="~/Content/reset.css" />
     <script type="text/javascript">
-
+        
         $(function () {
             jokesfollow();
-            loadqqfaces();
             showfaces();
+            loadqqfaces();
+            
             //
             $(document).keydown(function (event) {
                 //alert(event.keyCode);
@@ -112,11 +113,11 @@
 
         function loadqqfaces(){
             $('.emotion').qqFace({
-                id : 'facebox', 
-                assign:'sendText', 
+                id : 'facebox',
+                assign:'sendText',
                 path:'/imgs/arclist/'	//表情存放的路径
             });
-            
+
         }
 
         function replace_em(str){
@@ -169,7 +170,7 @@
             <div class="article-text">
                 @if (currentJoke.JokeType == 0)
                 {
-                   @Html.Raw(currentJoke.Content)
+                    @Html.Raw(currentJoke.Content)
                 }
                 else if (currentJoke.JokeType == 1)
                 {
@@ -223,7 +224,7 @@
             </div>
         </div>
         <!-- comment-section -->
-        @Html.Action("Comments", "Joke", new { jokeid=currentJoke.JokeId})
+        @Html.Action("Comments", "Joke", new { jokeid = currentJoke.JokeId })
         <!-- //comment-section -->
         <!-- //article -->
         @Html.Action("ReadMostJokes", "Joke", null)

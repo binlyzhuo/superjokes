@@ -35,22 +35,35 @@
     <!--post-box-->
     <div class="post-box">
         <div class="post-header clearfix"><span id="showStr" class="tip"></span><h3 class="post-title">发表评论</h3></div>
-        <div class="post-text">
-            <textarea id="sendText" onfocus="if (this.value == '来说几句，吐个槽！~') this.value = ''; this.style.color = '#333';" onblur="    (function (obj) { var val = obj.value.replace(/(^\s*)|(\s*$)/g, ''); if (!val) { obj.value = '来说几句，吐个槽！~'; obj.style.color = '#999999'; } })(this);">来说几句，吐个槽！~</textarea>
-        </div>
-        <div class="post-toolbar clearfix">
-            <button type="button" id="submitBtn" class="submit-button active-button" onclick="postComment();">吐槽</button>
-            <div class="dimension-code">
-                <span>验证码</span>
-                <input type="text" name="checkimg" maxlength="4" id="showCapt" value="" class="check-code">
-                <span class="tips">
-                    <img width="50" height="30" id="valiCode" style="cursor: pointer;" src="/Home/GetVerifyCode" alt="验证码,点击图片更换" onclick="javascript: $('#valiCode').attr('src', '/Home/GetVerifyCode?t=' + Math.random());" />
-                </span>
+        @if (Request.IsAuthenticated)
+        {
+            <div class="post-text">
+                <textarea id="sendText" onfocus="if (this.value == '来说几句，吐个槽！~') this.value = ''; this.style.color = '#333';" onblur="    (function (obj) { var val = obj.value.replace(/(^\s*)|(\s*$)/g, ''); if (!val) { obj.value = '来说几句，吐个槽！~'; obj.style.color = '#999999'; } })(this);">来说几句，吐个槽！~</textarea>
             </div>
-            <div id="faceList" class="face">
+            <div class="post-toolbar clearfix">
+                <button type="button" id="submitBtn" class="submit-button active-button" onclick="postComment();">吐槽</button>
+                <div class="dimension-code">
+                    <span>验证码</span>
+                    <input type="text" name="checkimg" maxlength="5" id="verifyCode" value="" class="check-code">
+                    <span class="tips">
+                        <img width="50" height="30" id="valiCode" style="cursor: pointer;" src="/Home/GetVerifyCode" alt="验证码,点击图片更换" onclick="javascript: $('#valiCode').attr('src', '/Home/GetVerifyCode?t=' + Math.random());" />
+                    </span>
+                </div>
+                <div id="faceList" class="face">
+                    <span class="icon smile-icon emotion">表情</span>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div id="faceList" class="face" style="display:none;">
+                <textarea id="sendText"></textarea>
                 <span class="icon smile-icon emotion">表情</span>
             </div>
-        </div>
+            <div>
+                请先<a href="/login" target="_parent" style="color:firebrick;text-decoration:underline;">登录</a>
+            </div>
+        }
     </div>
     <!--//post-box-->
 </div>
