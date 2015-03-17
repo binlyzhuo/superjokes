@@ -1,5 +1,9 @@
 ﻿@model PageSearchResult<CommentViewInfo>
 @using Joke.Model.ViewModel
+@using Joke.Web.Auth
+@{
+    UserInfoPrincipal userinfo = System.Web.HttpContext.Current.User as UserInfoPrincipal;
+}
 <div class="section comment-section">
     <div id="commentinfolist">
         <div id="commentsFilter" class="section-header">
@@ -22,10 +26,18 @@
                             </span>
                         </div>
                         <div class="cpmment-content">
-                            <p class="comment_P">@Html.Raw(m.Comment)</p>
-                        </div>
+                            <p class="comment_P">
+                                @Html.Raw(m.Comment)
+                                @if (Request.IsAuthenticated && userinfo.IsAdmin == 1)
+                                {
+                                    <a data="@m.CommentId" href="#" style="color:firebrick;text-decoration:underline;" rel="nofollow" class="deletelink">删除</a>
+                                }
+
+                                
+                        </p>
                     </div>
-                </li>
+                </div>
+            </li>
             }
         </ul>
         <!--page-box-->

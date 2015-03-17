@@ -163,5 +163,10 @@ namespace Joke.BusinessLogic
 
             return items;
         }
+
+        public bool CommentDelete(int commentId)
+        {
+           return commentData.Delete(commentId);
+        }
     }
 }
