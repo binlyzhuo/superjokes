@@ -17,6 +17,8 @@ namespace Joke.Model.ViewModel
         public string NikeName { set; get; }
 
         public string UserID { set; get; }
+
+        public string UserName { set; get; }
         public int JokeType { set; get; }
 
         public int JokeState { set; get; }

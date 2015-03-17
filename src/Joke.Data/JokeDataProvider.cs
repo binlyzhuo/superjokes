@@ -93,11 +93,12 @@ namespace Joke.Data
                         declare @@pagesize int = @1;
                         with tmp as
                         (
-                        SELECT ROW_NUMBER() over(order by j.ID DESC) as Num, j.ID as JokeId,j.Title,j.Content,j.LikeCount,j.HateCount,u.NikeName,u.ID as UserId,j.Type as JokeType,j.AddDate as PostDate from T_Joke j with(NOLOCK)
+                        SELECT ROW_NUMBER() over(order by j.ID DESC) as Num, j.ID as JokeId,j.Title,j.Content,j.LikeCount,j.HateCount,u.NikeName,u.ID as UserId,j.Type as JokeType,j.AddDate as PostDate,u.UserName,c.Name as Category,c.PinYin as CategoryPinyin from T_Joke j with(NOLOCK)
                         inner join T_User u on u.ID = j.PostID
+                        inner join T_Category c on c.ID = j.Category
                         where j.State=1 {0}
                         )
-                        SELECT JokeId,Title,Content,LikeCount,HateCount,NikeName,UserId,JokeType,PostDate from tmp where Num>(@@pagenum-1)*@@pagesize and Num<=@@pagenum*@@pagesize;
+                        SELECT JokeId,Title,Content,LikeCount,HateCount,NikeName,UserId,JokeType,PostDate,UserName,Category,CategoryPinyin from tmp where Num>(@@pagenum-1)*@@pagesize and Num<=@@pagenum*@@pagesize;
                         select COUNT(1) from T_Joke j where State=1 {0}", where.ToString());
 
             var items = this.jokeDatabase.FetchMultiple<JokePostInfo, int>(sql, search.Page, search.PageSize);
@@ -148,11 +149,11 @@ namespace Joke.Data
                         declare @@pagesize int = @1;
                         with tmp as
                         (
-                        SELECT ROW_NUMBER() over(order by j.ID DESC) as Num, j.ID as JokeId,j.Title,j.Content,j.LikeCount,j.HateCount,u.NikeName,u.ID as UserId,j.Type as JokeType,j.AddDate as PostDate from T_Joke j with(NOLOCK)
+                        SELECT ROW_NUMBER() over(order by j.ID DESC) as Num, j.ID as JokeId,j.Title,j.Content,j.LikeCount,j.HateCount,u.NikeName,u.ID as UserId,j.Type as JokeType,j.AddDate as PostDate,u.UserName from T_Joke j with(NOLOCK)
                         inner join T_User u on u.ID = j.PostID
                         where 1=1 {0}
                         )
-                        SELECT JokeId,Title,Content,LikeCount,HateCount,NikeName,UserId,JokeType,PostDate from tmp where Num>(@@pagenum-1)*@@pagesize and Num<=@@pagenum*@@pagesize;
+                        SELECT JokeId,Title,Content,LikeCount,HateCount,NikeName,UserId,JokeType,PostDate,UserName from tmp where Num>(@@pagenum-1)*@@pagesize and Num<=@@pagenum*@@pagesize;
                         select COUNT(1) from T_Joke j where 1=1 {0}", where.ToString());
 
             var items = this.jokeDatabase.FetchMultiple<JokePostInfo, int>(sql, search.Page, search.PageSize);
@@ -168,7 +169,7 @@ namespace Joke.Data
 
         public JokePostInfo GetPostJokeInfo(int jokeid)
         {
-            string sql = string.Format(@"select j.ID as JokeId,j.Title,j.Content,j.LikeCount,j.HateCount,u.NikeName,u.id as UserID,j.Type as JokeType,j.State as JokeState,j.AddDate as PostDate,c.Name as Category,c.PinYin as CategoryPinyin from T_Joke j 
+            string sql = string.Format(@"select j.ID as JokeId,j.Title,j.Content,j.LikeCount,j.HateCount,u.NikeName,u.id as UserID,j.Type as JokeType,j.State as JokeState,j.AddDate as PostDate,c.Name as Category,c.PinYin as CategoryPinyin,u.UserName from T_Joke j 
                             inner join T_User u on u.ID = j.PostID
                             inner join T_Category c on c.ID = j.Category
                             where j.State=1 and j.ID = {0}",jokeid);

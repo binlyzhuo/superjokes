@@ -30,7 +30,7 @@
                                 @Html.Raw(m.Comment)
                                 @if (Request.IsAuthenticated && userinfo.IsAdmin == 1)
                                 {
-                                    <a data="@m.CommentId" href="#" style="color:firebrick;text-decoration:underline;" rel="nofollow" class="deletelink">删除</a>
+                                    <a data="@m.CommentId" onclick="deletecomments(@m.CommentId);" href="#" style="color:firebrick;text-decoration:underline;" rel="nofollow" class="deletelink">删除</a>
                                 }
 
                                 

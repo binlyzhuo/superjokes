@@ -1,8 +1,8 @@
 ﻿@model PageSearchResult<CommentViewInfo>
 @using Joke.Model.ViewModel
+@using Joke.Web.Auth
 @{
-    string pattern = "";
-    
+    UserInfoPrincipal userinfo = System.Web.HttpContext.Current.User as UserInfoPrincipal;
 }
 <div id="commentsFilter" class="section-header">
     <h3 class="section-title">用户评论<em>(@Model.TotalCount)</em></h3>
@@ -24,10 +24,16 @@
                     </span>
                 </div>
                 <div class="cpmment-content">
-                    <p>@Html.Raw(m.Comment)</p>
-                </div>
+                    <p>
+                        @Html.Raw(m.Comment)
+                        @if (Request.IsAuthenticated && userinfo.IsAdmin == 1)
+                        {
+                            <a data="@m.CommentId" href="#" onclick="deletecomments(@m.CommentId);" style="color:firebrick;text-decoration:underline;" rel="nofollow" class="deletelink">删除</a>
+                        }
+                </p>
             </div>
-        </li>
+        </div>
+    </li>
     }
 </ul>
 <!--page-box-->

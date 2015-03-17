@@ -102,7 +102,9 @@
                         <a class="user-icon" href="/" rel="nofollow" target="_blank">
                             <img width="30" height="30" alt="@p.NikeName" src="~/Imgs/defaultphoto.png">
                         </a>
-                        <a href="/" target="_blank" rel="nofollow" class="nike-name">@p.NikeName</a>
+                        <a href="/" target="_blank" rel="nofollow" class="nike-name">@p.UserName</a>
+                        <a class="nike-name" style="margin-left:5px;">@p.PostDate.ToString("yyyy-MM-dd HH:mm:ss")</a>
+                        <a class="nike-name" style="margin-left:5px;">@p.Category</a>
                     </div>
                     <div class="summary-text">
                         @if (p.JokeType == 0)

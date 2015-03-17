@@ -134,22 +134,16 @@
             });
         }
 
-        function deletecomments(){
-            $(".deletelink").each(function(){
-                $(this).click(function(){
-                    
-                    if(confirm('确认删除本条评论'))
-                    {
-                        var commentid = $(this).attr("data");
-                        $.post('/joke/DeleteComment',{commentid:commentid},function(){
-                            $.post("/joke/CommentList",{jokeid:@currentJoke.JokeId},function(data){
-                                $("#commentinfolist").html(replace_em(data));
-                            });
-                        });
-                    }
-                    
+        function deletecomments(commentid){
+            if(confirm('确认删除本条评论'))
+            {
+                
+                $.post('/joke/DeleteComment',{commentid:commentid},function(){
+                    $.post("/joke/CommentList",{jokeid:@currentJoke.JokeId},function(data){
+                        $("#commentinfolist").html(replace_em(data));
+                    });
                 });
-            });
+            }
         }
     </script>
 }
