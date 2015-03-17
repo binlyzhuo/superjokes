@@ -87,6 +87,13 @@
             msg += '</div>';
             return msg;
         }
+
+        function postComment() {
+            var jokeid=@currentJoke.JokeId;
+            var comment = $("#sendText").val();
+
+            $.post('/joke/postcomment',{jokeid:jokeid,comment:comment},function(rep){});
+        }
     </script>
 }
 <div class="wrapper location clearfix">
@@ -178,6 +185,7 @@
             </div>
         </div>
         <!-- comment-section -->
+        @Html.Action("Comments", "Joke", new { jokeid=currentJoke.JokeId})
         <!-- //comment-section -->
         <!-- //article -->
         @Html.Action("ReadMostJokes", "Joke", null)

@@ -16,7 +16,7 @@
             <a href="@JokeHelper.GetJokeDetail(latest.JokeId)" target="_blank" title="@latest.Title">@Html.Raw(latest.Title)</a>
         </h3>
         <p>
-            @Html.Raw(latest.Content.SubString(70))<a class="more" href="@JokeHelper.GetJokeDetail(latest.JokeId)" target="_blank">[查看全文]</a>
+            @Html.Raw(latest.Content)<a class="more" href="@JokeHelper.GetJokeDetail(latest.JokeId)" target="_blank">[查看全文]</a>
         </p>
     </div>
     <!-- news-list -->

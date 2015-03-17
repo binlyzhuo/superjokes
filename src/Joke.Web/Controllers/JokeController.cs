@@ -211,5 +211,30 @@ namespace Joke.Web.Controllers
             bool updateResult=jokeBusinessLogic.UpdateJoke(jokeinfo);
             return RedirectToAction("Detail", new { id=jokeModel.ID});
         }
+
+        public ActionResult Comments(CommentSearchModel search)
+        {
+             
+            List<CommentViewInfo> items = jokeBusinessLogic.CommentSearchResult(search);
+            return View(items);
+        }
+
+        [HttpPost]
+        [UserAuthorize(Roles = "User,Admin")]
+        public ActionResult PostComment(int jokeId,string comment)
+        {
+            var jokeinfo = jokeBusinessLogic.JokeDetailGet(jokeId);
+            JsonViewResult json = new JsonViewResult() { Success =false };
+            T_Comment commentDomain = new T_Comment();
+            commentDomain.AddDate = DateTime.Now;
+            commentDomain.Content = comment;
+            commentDomain.Floor = jokeinfo.CommentCount+1;
+            commentDomain.JokeId = jokeId;
+            commentDomain.UserID = user.UserId;
+            jokeinfo.CommentCount = jokeinfo.CommentCount + 1;
+            jokeBusinessLogic.UpdateJoke(jokeinfo);
+            json.Success = jokeBusinessLogic.AddComment(commentDomain);
+            return Json(json,JsonRequestBehavior.AllowGet);
+        }
     }
 }

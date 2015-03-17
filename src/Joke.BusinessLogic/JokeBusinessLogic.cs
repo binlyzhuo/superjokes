@@ -151,5 +151,16 @@ namespace Joke.BusinessLogic
         {
             jokeData.BulkInsert(jokes);
         }
+
+        public bool AddComment(T_Comment comment)
+        {
+            return commentData.Add(comment)>0;
+        }
+
+        public List<CommentViewInfo> CommentSearchResult(CommentSearchModel search)
+        {
+            var items = commentData.CommentSearchResult(search);
+            return items;
+        }
     }
 }

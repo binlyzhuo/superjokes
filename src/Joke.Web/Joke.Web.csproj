@@ -252,6 +252,7 @@
     <Content Include="Views\Account\UpdateJoke.cshtml" />
     <Content Include="Views\Joke\PostJokeResult.cshtml" />
     <Content Include="Views\Joke\UpdateJoke.cshtml" />
+    <Content Include="Views\Joke\Comments.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

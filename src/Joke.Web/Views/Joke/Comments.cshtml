@@ -1,0 +1,50 @@
+﻿@model List<CommentViewInfo>
+@using Joke.Model.ViewModel
+ <div class="section comment-section">
+    <div id="commentsFilter" class="section-header">
+        <h3 class="section-title">用户评论<em>(@Model.Count)</em></h3>
+    </div>
+    <ul id="discussArea" class="discuss-area"></ul>
+     <ul id="commentsList" class="comment-list">
+
+         @foreach (var m in Model)
+         {
+             <li class="comment-item  single-item  clearfix">
+                 <a class="pic avator" style="color: #999; text-decoration:none;">
+                     <img width="40" height="40" alt="" src="~/Imgs/defaultphoto.png">
+                 </a>
+                 <div data-name="@m.UserName" class="comment-infor">
+                     <div class="comment-header">
+                         <span class="floor-num">@string.Format("{0}搂",m.Floor)</span>
+                         <span class="name-bar">
+                             <a class="name" style="color: #999; text-decoration:none;">@m.UserName</a>
+                         </span>
+                     </div>
+                     <div class="cpmment-content">
+                         <p>@Html.Raw(m.Comment)</p>
+                     </div>
+                 </div>
+             </li>
+         }
+     </ul>
+
+    <!--page-box-->
+    <!--//page-box-->
+    <!--post-box-->
+    <div class="post-box">
+        <div class="post-header clearfix"><span id="showStr" class="tip"></span><h3 class="post-title">发表评论</h3></div>
+        <div class="post-text">
+            <textarea id="sendText" onfocus="if (this.value == '来说几句，吐个槽！~') this.value = ''; this.style.color = '#333';" onblur="    (function (obj) { var val = obj.value.replace(/(^\s*)|(\s*$)/g, ''); if (!val) { obj.value = '来说几句，吐个槽！~'; obj.style.color = '#999999'; } })(this);">来说几句，吐个槽！~</textarea>
+        </div>
+        <div class="post-toolbar clearfix">
+            <button type="button" id="submitBtn" class="submit-button active-button" onclick="postComment();">吐槽</button>
+            <div class="dimension-code">
+                <span>验证码</span>
+                <input type="text" name="checkimg" maxlength="4" id="showCapt" value="" class="check-code">
+                <span class="tips"> <img width="50" height="30" src="http://icon.zol-img.com.cn/sj/images/codeNews.jpg" title="点击更换验证码" alt="验证码,点击图片更换" data-src="http://service.zol.com.cn/captchasrc.php?param=041cbNwqtF71SvIkwpMOFMKEUiY3SdqvHcMl8v3B60LXT8bBOGMuKkyvIuKBtS6Qb6IwgySavPoPq7g5bGN1BcTxRc1t2Fg" class="verificationImg" id="checkImg"> </span>
+            </div>
+            <div id="faceList" class="face"> <span class="icon smile-icon">表情</span> </div>
+        </div>
+    </div>
+    <!--//post-box-->
+</div>
