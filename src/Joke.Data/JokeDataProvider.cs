@@ -58,7 +58,7 @@ namespace Joke.Data
 
         public Tuple<JokePostInfo, T_Joke, T_Joke> GetLastNextJokes(int jokeid)
         {
-            string detailSQL = string.Format(@"select j.ID as JokeId,j.Title,j.Content,j.LikeCount,j.HateCount,u.NikeName,u.id as UserID,j.Type as JokeType,j.State as JokeState,j.AddDate as PostDate,c.Name as Category,c.PinYin as CategoryPinyin from T_Joke j 
+            string detailSQL = string.Format(@"select j.ID as JokeId,j.Title,j.Content,j.LikeCount,j.HateCount,u.NikeName,u.id as UserID,u.UserName,j.Type as JokeType,j.State as JokeState,j.AddDate as PostDate,c.Name as Category,c.PinYin as CategoryPinyin from T_Joke j 
                             inner join T_User u on u.ID = j.PostID
                             inner join T_Category c on c.ID = j.Category
                             where j.State=1 and j.ID = {0}", jokeid);
