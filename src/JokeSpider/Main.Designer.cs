@@ -206,11 +206,11 @@
             // lblCategory
             // 
             this.lblCategory.AutoSize = true;
-            this.lblCategory.Location = new System.Drawing.Point(100, 208);
+            this.lblCategory.Location = new System.Drawing.Point(76, 208);
             this.lblCategory.Name = "lblCategory";
-            this.lblCategory.Size = new System.Drawing.Size(35, 12);
+            this.lblCategory.Size = new System.Drawing.Size(59, 12);
             this.lblCategory.TabIndex = 19;
-            this.lblCategory.Text = "类型:";
+            this.lblCategory.Text = "笑话分类:";
             // 
             // pgCatchStatus
             // 
@@ -248,7 +248,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(874, 468);
+            this.ClientSize = new System.Drawing.Size(877, 406);
             this.Controls.Add(this.lblTo);
             this.Controls.Add(this.txtStart);
             this.Controls.Add(this.lblCatchStatus);
