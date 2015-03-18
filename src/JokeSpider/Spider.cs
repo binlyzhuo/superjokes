@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Net;
 using System.IO;
 using System.Xml;
+using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace JokeSpider
 {
@@ -31,6 +33,16 @@ namespace JokeSpider
                 return null;
             }
             
+        }
+
+        public static void DownloadImgs(string url)
+        {
+            WebRequest request = WebRequest.Create(url);
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            Stream stream = response.GetResponseStream();
+            Image image;
+            image = Image.FromStream(stream);
+            image.Save(AppConfig.ImgDownload,ImageFormat.Gif);
         }
 
         public static List<SpiderRule> GetRules()

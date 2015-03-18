@@ -42,12 +42,14 @@
             this.lblMsg = new System.Windows.Forms.Label();
             this.txtRepContent = new System.Windows.Forms.TextBox();
             this.cbIsRepeat = new System.Windows.Forms.CheckBox();
-            this.txtTotalPage = new System.Windows.Forms.TextBox();
+            this.txtEndPage = new System.Windows.Forms.TextBox();
             this.lblPageNumber = new System.Windows.Forms.Label();
             this.cmbCategory = new System.Windows.Forms.ComboBox();
             this.lblCategory = new System.Windows.Forms.Label();
             this.pgCatchStatus = new System.Windows.Forms.ProgressBar();
             this.lblCatchStatus = new System.Windows.Forms.Label();
+            this.txtStart = new System.Windows.Forms.TextBox();
+            this.lblTo = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnRequest
@@ -173,17 +175,18 @@
             this.cbIsRepeat.Text = "是否循环";
             this.cbIsRepeat.UseVisualStyleBackColor = true;
             // 
-            // txtTotalPage
+            // txtEndPage
             // 
-            this.txtTotalPage.Location = new System.Drawing.Point(283, 239);
-            this.txtTotalPage.Name = "txtTotalPage";
-            this.txtTotalPage.Size = new System.Drawing.Size(75, 21);
-            this.txtTotalPage.TabIndex = 16;
+            this.txtEndPage.Location = new System.Drawing.Point(314, 239);
+            this.txtEndPage.Name = "txtEndPage";
+            this.txtEndPage.Size = new System.Drawing.Size(31, 21);
+            this.txtEndPage.TabIndex = 16;
+            this.txtEndPage.Text = "1";
             // 
             // lblPageNumber
             // 
             this.lblPageNumber.AutoSize = true;
-            this.lblPageNumber.Location = new System.Drawing.Point(237, 244);
+            this.lblPageNumber.Location = new System.Drawing.Point(219, 245);
             this.lblPageNumber.Name = "lblPageNumber";
             this.lblPageNumber.Size = new System.Drawing.Size(35, 12);
             this.lblPageNumber.TabIndex = 17;
@@ -224,17 +227,36 @@
             this.lblCatchStatus.Size = new System.Drawing.Size(0, 12);
             this.lblCatchStatus.TabIndex = 21;
             // 
+            // txtStart
+            // 
+            this.txtStart.Location = new System.Drawing.Point(260, 239);
+            this.txtStart.Name = "txtStart";
+            this.txtStart.Size = new System.Drawing.Size(31, 21);
+            this.txtStart.TabIndex = 22;
+            this.txtStart.Text = "1";
+            // 
+            // lblTo
+            // 
+            this.lblTo.AutoSize = true;
+            this.lblTo.Location = new System.Drawing.Point(297, 245);
+            this.lblTo.Name = "lblTo";
+            this.lblTo.Size = new System.Drawing.Size(11, 12);
+            this.lblTo.TabIndex = 23;
+            this.lblTo.Text = "-";
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(874, 468);
+            this.Controls.Add(this.lblTo);
+            this.Controls.Add(this.txtStart);
             this.Controls.Add(this.lblCatchStatus);
             this.Controls.Add(this.pgCatchStatus);
             this.Controls.Add(this.lblCategory);
             this.Controls.Add(this.cmbCategory);
             this.Controls.Add(this.lblPageNumber);
-            this.Controls.Add(this.txtTotalPage);
+            this.Controls.Add(this.txtEndPage);
             this.Controls.Add(this.cbIsRepeat);
             this.Controls.Add(this.txtRepContent);
             this.Controls.Add(this.lblMsg);
@@ -272,12 +294,14 @@
         private System.Windows.Forms.Label lblMsg;
         private System.Windows.Forms.TextBox txtRepContent;
         private System.Windows.Forms.CheckBox cbIsRepeat;
-        private System.Windows.Forms.TextBox txtTotalPage;
+        private System.Windows.Forms.TextBox txtEndPage;
         private System.Windows.Forms.Label lblPageNumber;
         private System.Windows.Forms.ComboBox cmbCategory;
         private System.Windows.Forms.Label lblCategory;
         private System.Windows.Forms.ProgressBar pgCatchStatus;
         private System.Windows.Forms.Label lblCatchStatus;
+        private System.Windows.Forms.TextBox txtStart;
+        private System.Windows.Forms.Label lblTo;
     }
 }
 

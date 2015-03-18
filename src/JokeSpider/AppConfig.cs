@@ -12,10 +12,12 @@ namespace JokeSpider
     {
         public readonly static int UserID;
         public readonly static int Category;
+        public readonly static string ImgDownload;
         static AppConfig()
         {
             UserID = ConfigurationManager.AppSettings["UserID"].ToInt32();
             Category = ConfigurationManager.AppSettings["UserID"].ToInt32();
+            ImgDownload = ConfigurationManager.AppSettings[""].Trim();
         }
     }
 }

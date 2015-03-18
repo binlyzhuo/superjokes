@@ -144,12 +144,14 @@ namespace JokeSpider
 
         private void CatchJokesAction(Action<string> action)
         {
-            int page = 1;
+            int endPage = 1;
+            int startPage = 1;
             if (cbIsRepeat.Checked)
             {
-                page = txtTotalPage.Text.ToInt32();
+                startPage = txtStart.Text.ToInt32();
+                endPage = txtEndPage.Text.ToInt32();
 
-                for (int i = 1; i < page; i++)
+                for (int i = startPage; i <= endPage; i++)
                 {
                     action(string.Format("正在抓取:{0}", string.Format(txtRequestUrl.Text, i)));
                     List<JokeInfo> jokes = new List<JokeInfo>();
@@ -162,7 +164,7 @@ namespace JokeSpider
                     if (nodes == null || nodes.Count == 0)
                     {
                         lblMsg.Text = "没有抓取到集合数据，请重新定义规则";
-                        return;
+                        continue;
                     }
                     else
                     {
