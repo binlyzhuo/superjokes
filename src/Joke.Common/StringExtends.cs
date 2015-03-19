@@ -80,7 +80,7 @@ namespace Joke.Common
 
         public static string SubString(this string str,int len)
         {
-            return str.Length>len?str.Substring(0,len):str;
+            return str.Length>len?str.Substring(0,len)+"...":str;
         }
     }
 }

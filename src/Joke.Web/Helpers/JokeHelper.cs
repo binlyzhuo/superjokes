@@ -6,6 +6,7 @@ using System.Configuration;
 using Travelling.Web.Helpers;
 using Joke.Common;
 using Joke.Model.ViewModel;
+using Microsoft.Security.Application;
 
 namespace Joke.Web.Helpers
 {
@@ -57,6 +58,11 @@ namespace Joke.Web.Helpers
             {
                return string.Format("{0}", jokeinfo.JokeType == 1 ? string.Format("{0}//{1}",AppConfig.JokeImgUpload,jokeinfo.Content) : "/imgs/shareimg.png");
             }
+        }
+
+        public static string RemoveHtml(string content)
+        {
+            return Sanitizer.GetSafeHtmlFragment(content);
         }
     }
 }

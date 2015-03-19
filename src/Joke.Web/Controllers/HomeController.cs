@@ -164,7 +164,7 @@ namespace Joke.Web.Controllers
         
         public ActionResult Latest(int page=1)
         {
-            SetPageSeo("最新冷笑话，最新成人笑话，最新笑话", "最新冷笑话，最新成人笑话，最新笑话", "最新冷笑话，最新成人笑话，最新笑话");
+            SetPageSeo("最新冷笑话_最新成人笑话_最新笑话_笑话大全_超级冷笑话", SiteKeyWords, SiteDescription);
             ViewBag.BgClass = "list-body-bg";
             JokeSearchModel search = new JokeSearchModel();
             search.Page = page;
@@ -175,7 +175,7 @@ namespace Joke.Web.Controllers
 
         public ActionResult LengXiaoHua(int page = 1)
         {
-            SetPageSeo("最新冷笑话，最新成人笑话，最新笑话", "最新冷笑话，最新成人笑话，最新笑话", "最新冷笑话，最新成人笑话，最新笑话");
+            SetPageSeo("最新冷笑话_最新成人笑话_最新笑话_笑话大全", SiteKeyWords, SiteDescription);
             ViewBag.BgClass = "list-body-bg";
             JokeSearchModel search = new JokeSearchModel();
             search.Page = page;
@@ -188,7 +188,7 @@ namespace Joke.Web.Controllers
         public ActionResult Images(int page = 1)
         {
             ViewBag.BgClass = "list-body-bg";
-            SetPageSeo("最新冷笑话，最新成人笑话，最新笑话", "最新冷笑话，最新成人笑话，最新笑话", "最新冷笑话，最新成人笑话，最新笑话");
+            SetPageSeo("最新冷笑话_最新成人笑话_最新笑话_笑话大全_超级冷笑话", SiteKeyWords, SiteDescription);
             JokeSearchModel search = new JokeSearchModel();
             search.Page = page;
             search.SearchType = JokeSearchType.ImageJokes;
@@ -203,9 +203,9 @@ namespace Joke.Web.Controllers
             ViewBag.BgClass = "list-body-bg";
             pinyin = Sanitizer.GetSafeHtmlFragment(pinyin);
             var category = jokeLogic.CategoryGet(pinyin);
-            string title = string.Format("{0}笑话大全",category.Name);
-            string keywords = string.Format("{0}，笑话，成人笑话，冷笑话",category.Name);
-            string description = string.Format("{0}笑话，笑话，成人笑话，冷笑话", category.Name);
+            string title = string.Format("{0}笑话大全_超级冷笑话",category.Name);
+            string keywords = string.Format("{0}，{1}",category.Name,SiteKeyWords);
+            string description = string.Format("{0}笑话，{1}", SiteDescription);
             SetPageSeo(title,keywords,description);
             JokeSearchModel search = new JokeSearchModel();
             search.Page = page;

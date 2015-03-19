@@ -282,6 +282,8 @@
     <Content Include="Mobile\images\icons-svg\user-white.svg" />
     <Content Include="Mobile\images\icons-svg\video-black.svg" />
     <Content Include="Mobile\images\icons-svg\video-white.svg" />
+    <Content Include="Mobile\jquery.js" />
+    <Content Include="Mobile\jquery.min.js" />
     <Content Include="Mobile\jquery.mobile-1.4.5.css" />
     <Content Include="Mobile\jquery.mobile-1.4.5.js" />
     <Content Include="Mobile\jquery.mobile-1.4.5.min.css" />

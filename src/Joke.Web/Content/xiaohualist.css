@@ -479,10 +479,13 @@ select,input,button{font-size:100%;vertical-align:middle}
 .com_form{width:100%; position:relative}
 .input{width:99%; height:60px; border:1px solid #ccc}
 .com_form p{height:28px; line-height:28px; position:relative; margin-top:10px;}
-span.emotion{width:42px; height:20px; background:url(http://www.16code.com/cache/demos/user-say/img/icon.gif) no-repeat 2px 2px; padding-left:20px; cursor:pointer}
+span.emotion{width:42px; height:20px; background:url(/Imgs/smileicon.gif) no-repeat 2px 2px; padding-left:20px; cursor:pointer}
 span.emotion:hover{background-position:2px -28px}
 .qqFace{margin-top:4px;background:#fff;padding:2px;border:1px #dfe6f6 solid;}
 .qqFace table td{padding:0px;}
 .qqFace table td img{cursor:pointer;border:1px #fff solid;}
 .qqFace table td img:hover{border:1px #0066cc solid;}
 #show{width:770px; margin:20px auto; background:#fff; padding:5px; border:1px solid #DDD; vertical-align:top;}
+
+.saveBtnLink{float:left;color:white;display:block;width:100px;padding:10px; text-align:center; margin-left:169px; background-color:#F28A1B;font-weight:bold;font-size:15px;}
+.backBtnLink{float:left;color:white;display:block;width:100px;padding:10px; text-align:center; margin-left:109px; background-color:#F28A1B;font-weight:bold;font-size:15px;}

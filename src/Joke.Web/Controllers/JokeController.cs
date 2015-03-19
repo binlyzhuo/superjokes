@@ -118,10 +118,10 @@ namespace Joke.Web.Controllers
         {
 
             var jokeinfo = jokeBusinessLogic.GetLastNextJokes(id);
-            string title = jokeinfo.Item1.Title;
-            string keywords = string.Format("{0}，冷笑话，成人笑话", title);
+            //string title = jokeinfo.Item1.Title;
+            string title = string.Format("{0}，冷笑话，成人笑话_超级冷笑话", jokeinfo.Item1.Title);
             string description = title;
-            SetPageSeo(title,keywords,description);
+            SetPageSeo(title,SiteKeyWords,SiteDescription);
             return View(jokeinfo);
         }
 
