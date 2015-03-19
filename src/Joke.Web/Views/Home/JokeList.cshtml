@@ -1,4 +1,5 @@
 ﻿@{
+    ViewBag.BgClass = "list-body-bg";
     Layout = "~/Views/Shared/_BaseLayoutPage.cshtml";
 }
 @model PageSearchResult<JokePostInfo>
@@ -154,7 +155,7 @@
         <div class="page-box">
            
             <div class="page">
-                @Html.ShowPageNavigate(Model.Page,Model.TotalCount,Model.TotalPages)
+                @Html.ShowPageNavigate(Model.Page,Model.TotalCount,Model.TotalPages,Model.Data)
             </div>
         </div>		<!-- //page-box -->
     </div>

@@ -14,6 +14,8 @@ namespace Joke.Model.ViewModel
         public int PageSize { set; get; }
         public int Page { set; get; }
 
+        public string Data { set; get; }
+
         public int TotalPages
         {
             get

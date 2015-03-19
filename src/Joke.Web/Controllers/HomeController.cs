@@ -22,7 +22,7 @@ namespace Joke.Web.Controllers
         UserBusinessLogic userBusinessLogic = new UserBusinessLogic();
 
         // GET: Home
-        //[OutputCache(Duration=2000)]
+        [OutputCache(Duration=2000)]
         public ActionResult Index()
         {
             SetPageSeo(SiteTitle, SiteKeyWords, SiteDescription);
@@ -165,42 +165,41 @@ namespace Joke.Web.Controllers
         public ActionResult Latest(int page=1)
         {
             SetPageSeo("最新冷笑话_最新成人笑话_最新笑话_笑话大全_超级冷笑话", SiteKeyWords, SiteDescription);
-            ViewBag.BgClass = "list-body-bg";
             JokeSearchModel search = new JokeSearchModel();
             search.Page = page;
             search.SearchType = JokeSearchType.Latest;
             var pageResult = jokeLogic.JokePostInfo(search);
+            pageResult.Data = "latest";
             return View("~/Views/Home/JokeList.cshtml", pageResult);
         }
 
         public ActionResult LengXiaoHua(int page = 1)
         {
             SetPageSeo("最新冷笑话_最新成人笑话_最新笑话_笑话大全", SiteKeyWords, SiteDescription);
-            ViewBag.BgClass = "list-body-bg";
             JokeSearchModel search = new JokeSearchModel();
             search.Page = page;
             search.SearchType = JokeSearchType.LengXioaHua;
             var pageResult = jokeLogic.JokePostInfo(search);
-
+            pageResult.Data = "lengxiaohua";
             return View("~/Views/Home/JokeList.cshtml", pageResult);
         }
 
         public ActionResult Images(int page = 1)
         {
-            ViewBag.BgClass = "list-body-bg";
+            
             SetPageSeo("最新冷笑话_最新成人笑话_最新笑话_笑话大全_超级冷笑话", SiteKeyWords, SiteDescription);
             JokeSearchModel search = new JokeSearchModel();
             search.Page = page;
             search.SearchType = JokeSearchType.ImageJokes;
             var pageResult = jokeLogic.JokePostInfo(search);
-
+            pageResult.Data = "images";
             return View("~/Views/Home/JokeList.cshtml", pageResult);
             
         }
 
         public ActionResult JokeCategoryList(string pinyin,int page=1,int pagesize=20)
         {
-            ViewBag.BgClass = "list-body-bg";
+            
             pinyin = Sanitizer.GetSafeHtmlFragment(pinyin);
             var category = jokeLogic.CategoryGet(pinyin);
             string title = string.Format("{0}笑话大全_超级冷笑话",category.Name);
@@ -212,6 +211,7 @@ namespace Joke.Web.Controllers
             search.PageSize = pagesize;
             search.CategoryPinyin = pinyin;
             var pageResult = jokeLogic.JokePostInfo(search);
+            pageResult.Data = pinyin;
             return View("~/Views/Home/JokeList.cshtml", pageResult);
         }
 

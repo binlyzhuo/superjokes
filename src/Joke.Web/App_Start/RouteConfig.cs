@@ -43,6 +43,11 @@ namespace Joke.Web
                 defaults: new { controller = "Home", action = "JokeCategoryList", pinyin="lengxiaohua" }
             );
 
+            routes.MapRoute(
+                name: "CategoryJokesPaging",
+                url: "{pinyin}/{page}.html",
+                defaults: new { controller = "Home", action = "JokeCategoryList", pinyin = "lengxiaohua",page=1 }
+            );
 
             routes.MapRoute(
                 name: "latestjokes",
