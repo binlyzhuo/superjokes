@@ -89,6 +89,11 @@ namespace Joke.Data
             {
                 where.AppendFormat(" and j.Type={0}", 1);
             }
+            if(search.CategoryID>0)
+            {
+                where.AppendFormat(" and j.Category={0}",search.CategoryID);
+            }
+
             string sql = string.Format(@"declare @@pagenum int=@0;
                         declare @@pagesize int = @1;
                         with tmp as

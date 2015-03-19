@@ -210,6 +210,7 @@ namespace Joke.Web.Controllers
             search.Page = page;
             search.PageSize = pagesize;
             search.CategoryPinyin = pinyin;
+            search.CategoryID = category.ID;
             var pageResult = jokeLogic.JokePostInfo(search);
             pageResult.Data = pinyin;
             return View("~/Views/Home/JokeList.cshtml", pageResult);

@@ -11,5 +11,6 @@ namespace Joke.Model.ViewModel
         public int PostUserId = 0;
         public string CategoryPinyin = "";
         public JokeSearchType SearchType = JokeSearchType.Latest;
+        public int CategoryID { set; get; }
     }
 }

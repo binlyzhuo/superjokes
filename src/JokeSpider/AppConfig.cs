@@ -17,7 +17,7 @@ namespace JokeSpider
         {
             UserID = ConfigurationManager.AppSettings["UserID"].ToInt32();
             Category = ConfigurationManager.AppSettings["UserID"].ToInt32();
-            ImgDownload = ConfigurationManager.AppSettings[""].Trim();
+            ImgDownload = ConfigurationManager.AppSettings["ImgDownload"].Trim();
         }
     }
 }
