@@ -24,7 +24,7 @@
             </div>
 
             <div class="login-info" id="userbar">
-                @if (Request.IsAuthenticated != null)
+                @if (Request.IsAuthenticated)
                 {
                     <a target="_self" href="/user/profile" rel="nofollow">@HttpContext.Current.User.Identity.Name</a>
                     <a target="_self" href="/user/logout" rel="nofollow">退出</a>

@@ -22,11 +22,11 @@ namespace Joke.Web.Controllers
         UserBusinessLogic userBusinessLogic = new UserBusinessLogic();
 
         // GET: Home
-        [OutputCache(Duration=2000)]
+        //[OutputCache(Duration=2000)]
         public ActionResult Index()
         {
             SetPageSeo(SiteTitle, SiteKeyWords, SiteDescription);
-            ViewBag.BgClass = "indexPage-body";
+            
             return View();
         }
 

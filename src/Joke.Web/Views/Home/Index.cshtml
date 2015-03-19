@@ -1,9 +1,17 @@
 ﻿
 @{
-    
+    ViewBag.BgClass = "indexPage-body";
     Layout = "~/Views/Shared/_BaseLayoutPage.cshtml";
     Joke.Common.LogHelper.Info("islogin:"+Request.IsAuthenticated);
+
+    UserInfoPrincipal userinfo = System.Web.HttpContext.Current.User as UserInfoPrincipal;
+    if(userinfo!=null)
+    {
+        Joke.Common.LogHelper.Info("userinfo:" + userinfo.UserName + ",isadmin:" + userinfo.IsAdmin);
+    }
+    
 }
+@using Joke.Web.Auth
 @section header{
   <script type="text/javascript" src="~/Scripts/jquery.lazyload.min.js"></script>
     <script type="text/javascript">
