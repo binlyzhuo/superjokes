@@ -336,6 +336,7 @@
     <Content Include="Views\Joke\UpdateJoke.cshtml" />
     <Content Include="Views\Joke\Comments.cshtml" />
     <Content Include="Views\Joke\CommentList.cshtml" />
+    <Content Include="Views\Home\QQCallBack.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
