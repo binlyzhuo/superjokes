@@ -30,7 +30,7 @@
             <div class="login-info" id="userbar">
                 @if (Request.IsAuthenticated)
                 {
-                    <a target="_self" href="/user/profile" rel="nofollow">@userinfo.UserName</a>
+                    <a target="_self" href="/user/profile" rel="nofollow">@HttpContext.Current.User.Identity.Name</a>
                     if (userinfo.IsAdmin == 1)
                     {
                         <a href="/account/index" rel="nofollow">管理中心</a>

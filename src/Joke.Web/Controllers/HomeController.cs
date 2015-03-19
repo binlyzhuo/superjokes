@@ -33,7 +33,7 @@ namespace Joke.Web.Controllers
         //
         public ActionResult Login()
         {
-            ViewBag.BgClass = "indexPage-body";
+            
             if(Request.IsAuthenticated)
             {
                 return RedirectToAction("Profile","User",null);
@@ -69,6 +69,7 @@ namespace Joke.Web.Controllers
                 UserInfo user = new UserInfo(userinfo.ID, userinfo.UserName, userinfo.IsAdmin);
                 var userJson = JsonConvert.SerializeObject(user);
                 var ticket = new FormsAuthenticationTicket(1, userinfo.UserName, DateTime.Now, DateTime.Now.AddDays(1), true, userJson);
+                FormsAuthentication.SetAuthCookie(userLoginModel.UserName, true);
                 string cookieString = FormsAuthentication.Encrypt(ticket);
                 HttpCookie authCookie = new HttpCookie(FormsAuthentication.FormsCookieName,cookieString);
                 authCookie.Expires = ticket.Expiration;
@@ -76,7 +77,7 @@ namespace Joke.Web.Controllers
                 Response.Cookies.Add(authCookie);
 
 
-                //FormsAuthentication.SetAuthCookie(userLoginModel.UserName,true);
+                
                 //var uname = User.Identity.Name;
                 
 

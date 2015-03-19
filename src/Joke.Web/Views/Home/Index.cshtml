@@ -2,6 +2,7 @@
 @{
     
     Layout = "~/Views/Shared/_BaseLayoutPage.cshtml";
+    Joke.Common.LogHelper.Info("islogin:"+Request.IsAuthenticated);
 }
 @section header{
   <script type="text/javascript" src="~/Scripts/jquery.lazyload.min.js"></script>

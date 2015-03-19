@@ -85,11 +85,11 @@ namespace Joke.Web.Controllers
             return View(pageViewResult);
         }
 
-        public ActionResult Logout()
+        public void Logout()
         {
             FormsAuthentication.SignOut();
-
-            return RedirectToAction("Index","Home",null);
+            Response.Redirect("/home/index");
+            //return RedirectToAction("Index","Home",null);
         }
     }
 }
