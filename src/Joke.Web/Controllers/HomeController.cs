@@ -205,7 +205,7 @@ namespace Joke.Web.Controllers
             var category = jokeLogic.CategoryGet(pinyin);
             string title = string.Format("{0}笑话大全_超级冷笑话",category.Name);
             string keywords = string.Format("{0}，{1}",category.Name,SiteKeyWords);
-            string description = string.Format("{0}笑话，{1}", SiteDescription);
+            string description = string.Format("{0}笑话，{1}", category.Name, SiteDescription);
             SetPageSeo(title,keywords,description);
             JokeSearchModel search = new JokeSearchModel();
             search.Page = page;
