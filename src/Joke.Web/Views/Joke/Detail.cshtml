@@ -4,6 +4,7 @@
 @using Joke.Model.ViewModel
 @using Joke.Web.Auth
 @{
+    ViewBag.BgClass = "list-body-bg";
     Layout = "~/Views/Shared/_BaseLayoutPage.cshtml";
     var currentJoke = Model.Item1;
     var lastJoke = Model.Item2;
