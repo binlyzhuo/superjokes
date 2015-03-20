@@ -44,6 +44,18 @@ namespace Joke.Web
             );
 
             routes.MapRoute(
+                name: "imgjokeslistpaging",
+                url: "images/{page}.html",
+                defaults: new { controller = "Home", action = "Images",page=1 }
+            );
+
+            routes.MapRoute(
+                name: "latestjokespaging",
+                url: "latest/{page}.html",
+                defaults: new { controller = "Home", action = "Latest", page = 1 }
+            );
+
+            routes.MapRoute(
                 name: "CategoryJokesPaging",
                 url: "{pinyin}/{page}.html",
                 defaults: new { controller = "Home", action = "JokeCategoryList", pinyin = "lengxiaohua",page=1 }
@@ -54,6 +66,8 @@ namespace Joke.Web
                 url: "latest",
                 defaults: new { controller = "Home", action = "Latest" }
             );
+
+            
 
             routes.MapRoute(
                 name: "lengxiaohuajokies",

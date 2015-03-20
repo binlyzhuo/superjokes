@@ -188,7 +188,7 @@ namespace Joke.Web.Controllers
         public ActionResult Images(int page = 1)
         {
             
-            SetPageSeo("最新冷笑话_最新成人笑话_最新笑话_笑话大全_超级冷笑话", SiteKeyWords, SiteDescription);
+            SetPageSeo("最新冷笑话_搞笑图片_最新成人笑话_最新笑话_笑话大全_超级冷笑话", SiteKeyWords, SiteDescription);
             JokeSearchModel search = new JokeSearchModel();
             search.Page = page;
             search.SearchType = JokeSearchType.ImageJokes;
