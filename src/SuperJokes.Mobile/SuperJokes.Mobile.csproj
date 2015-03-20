@@ -82,8 +82,13 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="Images\mobile_logo.png" />
+    <None Include="Scripts\jquery-2.1.3.intellisense.js" />
+    <Content Include="Scripts\jquery-2.1.3.js" />
+    <Content Include="Scripts\jquery-2.1.3.min.js" />
     <Content Include="Styles\styles.css" />
     <Content Include="Web.config" />
+    <Content Include="Scripts\jquery-2.1.3.min.map" />
+    <Content Include="Views\Shared\_BaseLayoutPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
