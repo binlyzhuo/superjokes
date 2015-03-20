@@ -55,7 +55,7 @@ namespace Joke.Web.Auth
         {
             get
             {
-                return "UserInfo Authentication";
+                return "Forms";
             }
         }
 
