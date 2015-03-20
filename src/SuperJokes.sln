@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Joke.Common", "Joke.Common\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JokeSpider", "JokeSpider\JokeSpider.csproj", "{1F39D1A9-EEC5-4166-B875-1D2EEC83C6B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Joke.Mobile", "Joke.Mobile\Joke.Mobile.csproj", "{370E39F1-9D52-4962-B16E-D69753E51677}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperJokes.Mobile", "SuperJokes.Mobile\SuperJokes.Mobile.csproj", "{D3392AB5-CD5D-4F06-8202-4DBE39EE9C98}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,10 +47,10 @@ Global
 		{1F39D1A9-EEC5-4166-B875-1D2EEC83C6B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F39D1A9-EEC5-4166-B875-1D2EEC83C6B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F39D1A9-EEC5-4166-B875-1D2EEC83C6B0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{370E39F1-9D52-4962-B16E-D69753E51677}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{370E39F1-9D52-4962-B16E-D69753E51677}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{370E39F1-9D52-4962-B16E-D69753E51677}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{370E39F1-9D52-4962-B16E-D69753E51677}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3392AB5-CD5D-4F06-8202-4DBE39EE9C98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3392AB5-CD5D-4F06-8202-4DBE39EE9C98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3392AB5-CD5D-4F06-8202-4DBE39EE9C98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3392AB5-CD5D-4F06-8202-4DBE39EE9C98}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
