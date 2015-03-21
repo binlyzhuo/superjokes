@@ -1,109 +1,41 @@
-﻿
-<!DOCTYPE HTML PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html;charset=gbk" />
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=2.0" />
-    <title>仿中文幽默王手机wap笑话网站模板首页</title>
-    <meta name="keywords" content="笑话,搞笑图片,幽默笑话,搞笑,段子,幽默" />
-    <meta name="description" content="中文幽默王:提供各类幽默笑话、经典笑话、笑话大全、经典笑话大全、小笑话、成人笑话、冷笑话、极品笑话、搞笑图片、恐怖故事，用心打造网络幽默综合站" />
-    <link type="text/css" rel="stylesheet" href="~/Styles/styles.css" />
-</head>
-<body>
+﻿@{
+    Layout = "~/Views/Shared/_BaseLayoutPage.cshtml";
+}
+@model List<Joke.Model.Domain.T_Joke>
+
     <div id="menu">
         <div class="header">
             <img alt="中文幽默王" src="~/Images/mobile_logo.png" />
         </div>
         <ul class='listnav'>
-            <a href="#"><li>论　　坛</li></a>
-            <a href="#"><li>笑话大全</li></a>
-            <a href="#"><li>段　　子</li></a>
-            <a href="#"><li>搞笑图片</li></a>
-            <a href="#"><li>搞笑动图</li></a>
-            <a href="#"><li>搞笑组图</li></a>
+            <li>
+                <a href="#">最新</a>
+            </li>
+            <li>
+                <a href="#">冷笑话</a>
+            </li>
+            <li>
+                <a href="#">爆笑</a>
+            </li>
+
         </ul>
+        @foreach (var m in Model)
+        {
+            <div class="haha">
 
-        <div class="haha">
-            <a href="#" class="ca">现代笑话</a>:　<span class="date">05 23:00</span>
-            <h3><a href="#">吃光他们的食物</a></h3>
-            有人发帖问：&ldquo;如果中国真和菲律宾开战，<br />
-            让你上前线，你的专业能做什么？&rdquo;<br />
-            各种回复都有，后来一个吃货来了，<br />
-            顿时就安静了：&ldquo;吃光他们的食物。&rdquo;
-        </div>
-        <div class="haha">
-            <a href="#" class="ca">现代笑话</a>:　<span class="date">05 22:30</span>
-            <h3><a href="#" target="_blank">到底是护卫还是护翼</a></h3>
-            展昭对白玉堂炫耀：&ldquo;包大人很重视我，<br />
-            常说有了展护卫真是如虎添翼。&rdquo;<br />
-            白玉堂冷笑：&ldquo;所以你到底是护卫还是护翼？&rdquo;
-        </div>
-        <div class="haha">
-            <a href="#" class="ca">现代笑话</a>:　<span class="date">05 22:00</span>
-            <h3><a href="#" target="_blank">这本书这么多英文</a></h3>
-            男朋友去逛街，在一书摊翻看许久，<br />
-            想买一本《新华字典》，遂与老板砍价：&ldquo;老板，<br />
-            这本书这么多英文，看不懂，便宜点啊！&rdquo; <br />
-            老板瞬间木了，而后男朋友就这样买到了便宜书！
-        </div>
-        <div class="haha">
-            <a href="#" class="ca">现代笑话</a>:　<span class="date">05 21:30</span>
-            <h3><a href="#" target="_blank">好歹你吱一声啊</a></h3>
-            有一天，小明上语文课被老师点名回答问题，<br />
-            小明不知道答案，但是又不好意思说出口，<br />
-            就一直站在座位上，老师看不下去了，<br />
-            说：&ldquo;小明你知道么，不管怎样，好歹你吱一声啊！&rdquo;<br />
-            小明双眼一亮，道：&ldquo;吱&rdquo;！
-        </div>
-        <div class="haha">
-            <a href="#" class="ca">现代笑话</a>:　<span class="date">05 21:00</span>
-            <h3><a href="#" target="_blank">我刚刚看了你的手机</a></h3>
-            有些男人早晨喜欢赖床，怎么叫也叫不醒。<br />
-            于是，某电视台的节目主持人传授给女人们一句如何叫男人起床的&ldquo;魔法语言&rdquo;<br />
-            &mdash;&mdash;只须冲他耳语一句：&ldquo;喂，我刚刚看了你的手机&rdquo;。<br />
-            此节目特意找了100对男女做试验，结果100个男人中，<br />
-            有86人在听到这句话之后从熟睡之中惊跳起来。<p id="pages"><a href="#">笑话下→页</a></p>
-        </div>
-
-
-        <h3 class='tips tipsbg_2'>
-            <a href="/skl/">段子顺口溜</a>　<span class="date">05 21:00</span>
-        </h3>
-
-        <div class="haha">
-            <a href="#" class="ca">段子</a>:　<span class="date">05 11:50</span>
-            <h3><a href="#" target="_blank">喜欢是一种索取，而爱情是一种付出。</a></h3>
-            <p>
-                有人喜欢你，有人爱你，区别在哪里？<br />
-                一个人如果喜欢你，他会想法设法得到你，<br />
-                会不顾一切的争夺，会用谎言来感动你。<br />
-                但如果一个人爱你，他可能会害羞，<br />
-                不敢对你撒谎，只愿默默支持你。<br />
-                喜欢是一种索取，而爱情是一种付出。<br />
-                所以，找个愿意对你付出的人，才是真爱。
-            </p>
-        </div>
-        <div class="haha">
-            <a href="#" class="ca">段子</a>:　<span class="date">05 11:50</span>
-            <h3><a href="#" target="_blank">不值得这三个字，就是一切的答案。</a></h3>
-            <p>
-                爱一个人，不一定懂他。<br />
-                懂一个人，不一定拥有他。<br />
-                拥有一个人，不一定能绑住他。<br />
-                当你爱他时，只因他值得爱。<br />
-                你嫁他时，是因为他能陪你一辈子。<br />
-                然而当这人背叛离开，就不再是那个值得你爱的人，<br />
-                既然如此，又何必再为他苦恼呢？<br />
-                不值得这三个字，就是一切的答案。
-            </p><p id="pages"><a href="#">段子下→页</a></p>
-        </div>
+                <h3><a href="#">@m.Title</a></h3>
+                @Html.Raw(m.Content)
+            </div>
+        }
         
+        
+        <p id="pages"><a href="#">段子下→页</a></p>
 
     </div>
 
     <div id="menu">
-        
+
     </div>
-</body>
-</html>
+
+
 

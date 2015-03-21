@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Joke.BusinessLogic;
+using Joke.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,6 +15,9 @@ namespace SuperJokes.Mobile
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            LogHelper.LogConfig(Server.MapPath(@"~\App_Data\log4net.config"));
+            DtoMapper.AutoMapper();
         }
     }
 }
