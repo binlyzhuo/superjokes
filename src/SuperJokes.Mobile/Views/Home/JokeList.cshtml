@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "JokeList";
+    Layout = "~/Views/Shared/_BaseLayoutPage.cshtml";
+}
+@model PageSearchResult<JokePostInfo>
+@using Joke.Model.ViewModel
+@using SuperJokes.Mobile.Helpers
+<div>
+    <a href="/">超级冷笑话</a>
+</div>
+@foreach (var m in Model.Items)
+{
+    <div class="haha">
+
+        <h3><a href="@SuperJokeHelper.GetJokeDetail(m.JokeId)" target="_parent">@m.Title</a></h3>
+        @Html.Raw(m.Content)
+    </div>
+}
+<p id="pages"><a href="#">段子下→页</a></p>

@@ -1,10 +1,12 @@
 ﻿@model List<CategoryDto>
 @using Joke.Model.Dto
+@using SuperJokes.Mobile.Helpers
+
 <ul class='listnav'>
-    @foreach (var g in Model)
+    @foreach (var g in Model.GetRange(0,10))
     {
         <li>
-            <a href="#">@g.Name</a>
+            <a href="@SuperJokeHelper.GetCategoryJokes(g.PinYin)" target="_parent">@g.Name</a>
         </li>
     }
 </ul>
