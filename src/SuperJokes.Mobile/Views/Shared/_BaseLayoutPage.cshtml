@@ -12,6 +12,14 @@
     <link type="text/css" rel="stylesheet" href="~/Styles/styles.css" />
 </head>
 <body>
-    @RenderBody()
+    <div id="menu">
+        <div class="header">
+            <img alt="超级冷笑话" src="~/Images/mobile_logo.png" />
+        </div>
+        @Html.Action("CatrgoryList","Home",null)
+
+        
+       @RenderBody()
+    </div>
 </body>
 </html>

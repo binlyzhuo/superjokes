@@ -1,0 +1,10 @@
+﻿@model List<CategoryDto>
+@using Joke.Model.Dto
+<ul class='listnav'>
+    @foreach (var g in Model)
+    {
+        <li>
+            <a href="#">@g.Name</a>
+        </li>
+    }
+</ul>

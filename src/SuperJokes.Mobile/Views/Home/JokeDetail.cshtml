@@ -1,0 +1,29 @@
+﻿@model Tuple<JokePostInfo, T_Joke, T_Joke>
+@using Joke.Model.ViewModel
+@using Joke.Model.Domain
+@{
+    ViewBag.Title = "JokeDetail";
+    Layout = "~/Views/Shared/_BaseLayoutPage.cshtml";
+
+    var currentJoke = Model.Item1;
+    var lastJoke = Model.Item2;
+    var nextJoke = Model.Item3;
+}
+
+<div class="haha">
+    <h3>@Model.Item1.Title</h3>
+    @Html.Raw(Model.Item1.Content)
+</div>
+<div class="haha">
+    @if (nextJoke != null)
+    {
+        <p>
+            下一篇:<a target="_parent" href="/home/JokeDetail?jokeid=@nextJoke">@nextJoke.Title</a>
+        </p>
+        
+    }
+    @if (lastJoke != null)
+    {
+        <p>上一篇:<a style="margin-left:5px;" target="_parent" href="/home/JokeDetail?jokeid=@lastJoke.ID">@lastJoke.Title</a></p>
+    }
+</div>

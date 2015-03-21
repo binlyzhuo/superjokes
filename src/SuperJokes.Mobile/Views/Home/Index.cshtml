@@ -1,41 +1,19 @@
 ﻿@{
     Layout = "~/Views/Shared/_BaseLayoutPage.cshtml";
+
+    List<CategoryDto> categorylist = ViewBag.Category;
 }
 @model List<Joke.Model.Domain.T_Joke>
+@using Joke.Model.Dto
 
-    <div id="menu">
-        <div class="header">
-            <img alt="中文幽默王" src="~/Images/mobile_logo.png" />
-        </div>
-        <ul class='listnav'>
-            <li>
-                <a href="#">最新</a>
-            </li>
-            <li>
-                <a href="#">冷笑话</a>
-            </li>
-            <li>
-                <a href="#">爆笑</a>
-            </li>
+@foreach (var m in Model)
+{
+    <div class="haha">
 
-        </ul>
-        @foreach (var m in Model)
-        {
-            <div class="haha">
-
-                <h3><a href="#">@m.Title</a></h3>
-                @Html.Raw(m.Content)
-            </div>
-        }
-        
-        
-        <p id="pages"><a href="#">段子下→页</a></p>
-
+        <h3><a href="/home/JokeDetail?jokeid=@m.ID" target="_parent">@m.Title</a></h3>
+        @Html.Raw(m.Content)
     </div>
-
-    <div id="menu">
-
-    </div>
-
+}
+<p id="pages"><a href="#">段子下→页</a></p>
 
 
