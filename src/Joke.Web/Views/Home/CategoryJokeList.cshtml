@@ -3,7 +3,7 @@
 @using Joke.Web.Helpers
 <div class="filter">
     <div class="filter-links clearfix">
-        <a href="/new/">全部</a>
+        <a href="/">全部</a>
         @foreach (var s in Model)
         {
             <a title="@string.Format("{0}笑话,超级冷笑话",s.Name)" target="_parent" href="@JokeHelper.GetCategoryJokes(s.PinYin)">@s.Name</a>
