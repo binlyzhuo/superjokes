@@ -3,6 +3,7 @@
 @using SuperJokes.Mobile.Helpers
 
 <ul class='listnav'>
+    <li><a href="/" target="_parent" title="@string.Format("{0}冷笑话，超级冷笑话", "最新")">最新</a></li>
     @foreach (var g in Model.GetRange(0,10))
     {
         <li>
