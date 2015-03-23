@@ -220,6 +220,7 @@
     <Content Include="Imgs\shareimg.png" />
     <Content Include="Imgs\smileicon.gif" />
     <Content Include="Imgs\top.png" />
+    <Content Include="Imgs\weixin_lxh.png" />
     <Content Include="Imgs\xiaohua-bj.png" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -337,6 +338,7 @@
     <Content Include="Views\Joke\Comments.cshtml" />
     <Content Include="Views\Joke\CommentList.cshtml" />
     <Content Include="Views\Home\QQCallBack.cshtml" />
+    <Content Include="Views\Home\WeiXin.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -231,7 +231,7 @@ namespace Joke.Web.Controllers
 
         public ActionResult LikeMostJokes()
         {
-            var jokes = jokeLogic.LikeMostJokesGet(20,null);
+            var jokes = jokeLogic.LikeMostJokesGet(15,null);
             return View(jokes);
         }
 
