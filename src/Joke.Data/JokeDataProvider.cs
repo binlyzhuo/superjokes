@@ -67,7 +67,7 @@ namespace Joke.Data
                         select top 1 * from T_Joke where ID>{0} and state=1 order by ID asc", jokeid, detailSQL);
 
             var item = this.jokeDatabase.FetchMultiple<JokePostInfo, T_Joke, T_Joke>(querySQL);
-            var data = new Tuple<JokePostInfo, T_Joke, T_Joke>(item.Item1[0], item.Item2 != null && item.Item2.Count > 0 ? item.Item2[0] : null, item.Item3 != null && item.Item3.Count > 0 ? item.Item3[0] : null);
+            var data = new Tuple<JokePostInfo, T_Joke, T_Joke>(item.Item1 != null && item.Item1.Count>0? item.Item1[0] : null, item.Item2 != null && item.Item2.Count > 0 ? item.Item2[0] : null, item.Item3 != null && item.Item3.Count > 0 ? item.Item3[0] : null);
             return data;
         }
 

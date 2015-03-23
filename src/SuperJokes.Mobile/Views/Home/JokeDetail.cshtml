@@ -1,6 +1,7 @@
 ﻿@model Tuple<JokePostInfo, T_Joke, T_Joke>
 @using Joke.Model.ViewModel
 @using Joke.Model.Domain
+@using SuperJokes.Mobile.Helpers
 @{
     ViewBag.Title = "JokeDetail";
     Layout = "~/Views/Shared/_BaseLayoutPage.cshtml";
@@ -11,19 +12,19 @@
 }
 
 <div class="haha">
-    <h3>@Model.Item1.Title</h3>
+    <h3><a href="@SuperJokeHelper.GetCategoryJokes(Model.Item1.CategoryPinyin)" target="_self">@Model.Item1.Category:</a>@Model.Item1.Title</h3>
     @Html.Raw(Model.Item1.Content)
 </div>
 <div class="haha">
     @if (nextJoke != null)
     {
         <p>
-            下一篇:<a style="margin-left:5px;" target="_parent" href="/home/JokeDetail?jokeid=@nextJoke.ID">@nextJoke.Title</a>
+            下一篇:<a style="margin-left:5px;" target="_parent" href="@SuperJokeHelper.GetJokeDetail(nextJoke.ID)">@nextJoke.Title</a>
         </p>
         
     }
     @if (lastJoke != null)
     {
-        <p>上一篇:<a style="margin-left:5px;" target="_parent" href="/home/JokeDetail?jokeid=@lastJoke.ID">@lastJoke.Title</a></p>
+        <p>上一篇:<a style="margin-left:5px;" target="_parent" href="@SuperJokeHelper.GetJokeDetail(lastJoke.ID)">@lastJoke.Title</a></p>
     }
 </div>

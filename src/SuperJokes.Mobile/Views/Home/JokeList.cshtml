@@ -12,7 +12,7 @@
 {
     <div class="haha">
 
-        <h3><a href="@SuperJokeHelper.GetJokeDetail(m.JokeId)" target="_parent">@m.Title</a></h3>
+        <h3><a target="_self" href="@SuperJokeHelper.GetCategoryJokes(m.CategoryPinyin)">@m.Category:</a><a href="@SuperJokeHelper.GetJokeDetail(m.JokeId)" target="_parent">@m.Title</a></h3>
         @Html.Raw(m.Content)
     </div>
 }
