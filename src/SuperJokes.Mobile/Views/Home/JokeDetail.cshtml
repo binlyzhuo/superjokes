@@ -10,7 +10,7 @@
     var lastJoke = Model.Item2;
     var nextJoke = Model.Item3;
 }
-
+<div><a href="/" target="_parent">超级冷笑话</a>><a target="_parent" href="@SuperJokeHelper.GetCategoryJokes(Model.Item1.CategoryPinyin)">@Model.Item1.Category</a></div>
 <div class="haha">
     <h3><a href="@SuperJokeHelper.GetCategoryJokes(Model.Item1.CategoryPinyin)" target="_self">@Model.Item1.Category:</a>@Model.Item1.Title</h3>
     @Html.Raw(Model.Item1.Content)

@@ -56,15 +56,20 @@ namespace Joke.Data
             return items;
         }
 
-        public Tuple<JokePostInfo, T_Joke, T_Joke> GetLastNextJokes(int jokeid)
+        public Tuple<JokePostInfo, T_Joke, T_Joke> GetLastNextJokes(int jokeid,int? type=null)
         {
             string detailSQL = string.Format(@"select j.ID as JokeId,j.Title,j.Content,j.LikeCount,j.HateCount,u.NikeName,u.id as UserID,u.UserName,j.Type as JokeType,j.State as JokeState,j.AddDate as PostDate,c.Name as Category,c.PinYin as CategoryPinyin from T_Joke j 
                             inner join T_User u on u.ID = j.PostID
                             inner join T_Category c on c.ID = j.Category
                             where j.State=1 and j.ID = {0}", jokeid);
+            string where = "";
+            if(type!=null)
+            {
+                where = string.Format(" and Type={0}",type);
+            }
             string querySQL = string.Format(@"{1}
-                        select top 1 * from T_Joke where ID<{0} and state=1 order by ID desc
-                        select top 1 * from T_Joke where ID>{0} and state=1 order by ID asc", jokeid, detailSQL);
+                        select top 1 * from T_Joke where ID>{0} {2} and state=1 order by ID desc
+                        select top 1 * from T_Joke where ID<{0} {2} and state=1 order by ID desc", jokeid, detailSQL,where);
 
             var item = this.jokeDatabase.FetchMultiple<JokePostInfo, T_Joke, T_Joke>(querySQL);
             var data = new Tuple<JokePostInfo, T_Joke, T_Joke>(item.Item1 != null && item.Item1.Count>0? item.Item1[0] : null, item.Item2 != null && item.Item2.Count > 0 ? item.Item2[0] : null, item.Item3 != null && item.Item3.Count > 0 ? item.Item3[0] : null);

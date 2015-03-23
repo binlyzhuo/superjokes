@@ -90,9 +90,9 @@ namespace Joke.BusinessLogic
             return jokeData.SingleOrDefault(jokeid);
         }
 
-        public Tuple<JokePostInfo, T_Joke, T_Joke> GetLastNextJokes(int jokeid)
+        public Tuple<JokePostInfo, T_Joke, T_Joke> GetLastNextJokes(int jokeid,int? type=null)
         {
-            return jokeData.GetLastNextJokes(jokeid);
+            return jokeData.GetLastNextJokes(jokeid,type);
         }
 
         public List<T_Joke> MostReadJokesGet()

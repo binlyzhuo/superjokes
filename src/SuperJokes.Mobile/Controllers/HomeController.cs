@@ -27,7 +27,7 @@ namespace SuperJokes.Mobile.Controllers
 
         public ActionResult JokeDetail(int jokeid)
         {
-            var jokeinfo = jokeLogic.GetLastNextJokes(jokeid);
+            var jokeinfo = jokeLogic.GetLastNextJokes(jokeid,0);
             //string title = jokeinfo.Item1.Title;
             string title = string.Format("{0}，冷笑话，成人笑话_超级冷笑话", jokeinfo.Item1.Title);
             string description = title;
@@ -55,8 +55,10 @@ namespace SuperJokes.Mobile.Controllers
             search.PageSize = pagesize;
             search.CategoryPinyin = pinyin;
             search.CategoryID = category.ID;
+
             var pageResult = jokeLogic.JokePostInfo(search);
             pageResult.Data = pinyin;
+            pageResult.Data1 = category.Name;
             return View("~/Views/Home/JokeList.cshtml", pageResult);
         }
     }
