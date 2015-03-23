@@ -9,6 +9,14 @@
     <encoding>utf-8</encoding>
   </rule>
   <rule>
+    <name>快乐麻花_新鲜</name>
+    <url>http://www.mahua.com/</url>
+    <listrule>//html[1]/body[1]/div[2]/div[1]/dl</listrule>
+    <titlerule>//dt[1]//span[1]//a[1]</titlerule>
+    <contentrule>//dd[1]</contentrule>
+    <encoding>utf-8</encoding>
+  </rule>
+  <rule>
     <name>Zol笑话大全</name>
     <url>http://xiaohua.zol.com.cn/new/</url>
     <listrule>//html[1]/body[1]/div[4]/div[1]/ul[1]/li</listrule>

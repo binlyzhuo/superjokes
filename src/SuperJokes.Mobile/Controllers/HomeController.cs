@@ -18,11 +18,13 @@ namespace SuperJokes.Mobile.Controllers
         private string SiteDescription = ConfigurationManager.AppSettings["SiteDescription"];
 
         JokeBusinessLogic jokeLogic = new JokeBusinessLogic();
-        public ActionResult Index(UserJokesSearchModel userSearch)
+        public ActionResult Index(int page=1)
         {
+            UserJokesSearchModel userSearch = new UserJokesSearchModel();
             userSearch.JokeType = 0;
             userSearch.JokeState = 1;
             userSearch.UserId = null;
+            userSearch.Page = page;
             var items = jokeLogic.UserJokesSearch(userSearch);
             items.Data = "latest";
             items.Data1 = "最新";

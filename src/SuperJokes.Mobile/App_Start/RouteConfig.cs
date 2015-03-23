@@ -14,16 +14,18 @@ namespace SuperJokes.Mobile
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "latestJokesPaging",
+                url: "latest/{page}.html",
+                defaults: new { controller = "Home", action = "Index", page = 1 }
+            );
+
+            routes.MapRoute(
                 name: "JokeDetail",
                 url: "joke{jokeid}.html",
                 defaults: new { controller = "Home", action = "JokeDetail", jokeid = UrlParameter.Optional }
             );
 
-            routes.MapRoute(
-                name: "latestJokesPaging",
-                url: "latest/{page}.html",
-                defaults: new { controller = "Home", action = "Index", page = 1 }
-            );
+            
 
             routes.MapRoute(
                 name: "CategoryJokesPaging",
