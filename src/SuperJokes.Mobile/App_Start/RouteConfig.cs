@@ -20,6 +20,18 @@ namespace SuperJokes.Mobile
             );
 
             routes.MapRoute(
+                name: "latestJokesPaging",
+                url: "latest/{page}.html",
+                defaults: new { controller = "Home", action = "Index", page = 1 }
+            );
+
+            routes.MapRoute(
+                name: "CategoryJokesPaging",
+                url: "{pinyin}/{page}.html",
+                defaults: new { controller = "Home", action = "JokeCategoryList", pinyin = "lengxiaohua",page=1 }
+            );
+
+            routes.MapRoute(
                 name: "CategoryJokes",
                 url: "{pinyin}.html",
                 defaults: new { controller = "Home", action = "JokeCategoryList", pinyin = "lengxiaohua" }

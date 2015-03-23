@@ -1,7 +1,7 @@
 ﻿@{
     Layout = "~/Views/Shared/_BaseLayoutPage.cshtml";
+    int nextPage = Model.Page == Model.TotalPages ? 1 : Model.Page + 1;
 
-    
 }
 @model PageSearchResult<JokePostInfo>
 @using Joke.Model.Dto
@@ -11,8 +11,18 @@
 {
     <div class="haha">
 
-        <h3><a href="@SuperJokeHelper.GetJokeDetail(m.JokeId)" target="_parent">@m.Title</a></h3>
+        <h3><a href="@SuperJokeHelper.GetCategoryJokes(m.CategoryPinyin)" target="_parent">@m.Category</a>:<a href="@SuperJokeHelper.GetJokeDetail(m.JokeId)" target="_parent">@m.Title</a></h3>
         @Html.Raw(m.Content)
     </div>
 }
-<p id="pages"><a href="#">段子下→页</a></p>
+<p id="pages">
+    @if (Model.Page < Model.TotalPages)
+    {
+        <a href="@SuperJokeHelper.GetPageLink(Model.Data,Model.Page+1)" target="_parent">下→页</a>
+    }
+    @if (Model.Page > 1)
+    {
+        <a href="@SuperJokeHelper.GetPageLink(Model.Data,Model.Page-1)" target="_parent">上←页</a>
+    }
+    
+</p>

@@ -16,5 +16,10 @@ namespace SuperJokes.Mobile.Helpers
         {
             return string.Format("/joke{0}.html", jokeid);
         }
+
+        public static string GetPageLink(string flag,int page)
+        {
+            return string.Format("/{0}/{1}.html",flag,page);
+        }
     }
 }
