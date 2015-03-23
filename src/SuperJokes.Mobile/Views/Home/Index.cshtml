@@ -1,16 +1,17 @@
 ﻿@{
     Layout = "~/Views/Shared/_BaseLayoutPage.cshtml";
 
-    List<CategoryDto> categorylist = ViewBag.Category;
+    
 }
-@model List<Joke.Model.Domain.T_Joke>
+@model PageSearchResult<JokePostInfo>
 @using Joke.Model.Dto
 @using SuperJokes.Mobile.Helpers
-@foreach (var m in Model)
+@using Joke.Model.ViewModel
+@foreach (var m in Model.Items)
 {
     <div class="haha">
 
-        <h3><a href="@SuperJokeHelper.GetJokeDetail(m.ID)" target="_parent">@m.Title</a></h3>
+        <h3><a href="@SuperJokeHelper.GetJokeDetail(m.JokeId)" target="_parent">@m.Title</a></h3>
         @Html.Raw(m.Content)
     </div>
 }

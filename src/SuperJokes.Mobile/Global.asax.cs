@@ -15,6 +15,7 @@ namespace SuperJokes.Mobile
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
 
             LogHelper.LogConfig(Server.MapPath(@"~\App_Data\log4net.config"));
             DtoMapper.AutoMapper();

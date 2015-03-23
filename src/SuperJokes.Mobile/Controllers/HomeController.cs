@@ -15,10 +15,12 @@ namespace SuperJokes.Mobile.Controllers
         // GET: Home
 
         JokeBusinessLogic jokeLogic = new JokeBusinessLogic();
-        public ActionResult Index()
+        public ActionResult Index(UserJokesSearchModel userSearch)
         {
-          
-            var items = jokeLogic.LikeMostJokesGet(20,0);
+            userSearch.JokeType = 0;
+            userSearch.JokeState = 1;
+            userSearch.UserId = null;
+            var items = jokeLogic.UserJokesSearch(userSearch);
 
             return View(items);
         }
