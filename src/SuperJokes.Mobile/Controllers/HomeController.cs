@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Configuration;
 using System.Web.Mvc;
 using Joke.Model.Domain;
 using Joke.Model.ViewModel;
@@ -13,6 +14,8 @@ namespace SuperJokes.Mobile.Controllers
     public class HomeController : Controller
     {
         // GET: Home
+        private string SiteKeyWords = ConfigurationManager.AppSettings["SiteKeyWords"];
+        private string SiteDescription = ConfigurationManager.AppSettings["SiteDescription"];
 
         JokeBusinessLogic jokeLogic = new JokeBusinessLogic();
         public ActionResult Index(UserJokesSearchModel userSearch)
@@ -28,10 +31,10 @@ namespace SuperJokes.Mobile.Controllers
         public ActionResult JokeDetail(int jokeid)
         {
             var jokeinfo = jokeLogic.GetLastNextJokes(jokeid,0);
-            //string title = jokeinfo.Item1.Title;
+            
             string title = string.Format("{0}，冷笑话，成人笑话_超级冷笑话", jokeinfo.Item1.Title);
             string description = title;
-            //SetPageSeo(title, SiteKeyWords, SiteDescription);
+            SetPageSeo(title, SiteKeyWords, SiteDescription);
             return View(jokeinfo);
         }
 
@@ -47,9 +50,9 @@ namespace SuperJokes.Mobile.Controllers
             pinyin = Sanitizer.GetSafeHtmlFragment(pinyin);
             var category = jokeLogic.CategoryGet(pinyin);
             string title = string.Format("{0}笑话大全_超级冷笑话", category.Name);
-            string keywords = string.Format("{0}，{1}", category.Name, "");
-            string description = string.Format("{0}笑话，{1}", category.Name, "");
-            //SetPageSeo(title, keywords, description);
+            string keywords = string.Format("{0}，{1}", category.Name, SiteKeyWords);
+            string description = string.Format("{0}笑话，{1}", category.Name, SiteDescription);
+            SetPageSeo(title, keywords, description);
             JokeSearchModel search = new JokeSearchModel();
             search.Page = page;
             search.PageSize = pagesize;
@@ -60,6 +63,13 @@ namespace SuperJokes.Mobile.Controllers
             pageResult.Data = pinyin;
             pageResult.Data1 = category.Name;
             return View("~/Views/Home/JokeList.cshtml", pageResult);
+        }
+
+        private void SetPageSeo(string title, string keywords = "", string description = "")
+        {
+            ViewBag.Title = title;
+            ViewBag.KeyWords = keywords;
+            ViewBag.Description = description;
         }
     }
 }
