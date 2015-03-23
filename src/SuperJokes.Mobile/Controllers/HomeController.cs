@@ -25,6 +25,7 @@ namespace SuperJokes.Mobile.Controllers
             userSearch.UserId = null;
             var items = jokeLogic.UserJokesSearch(userSearch);
             items.Data = "latest";
+            items.Data1 = "最新";
             return View(items);
         }
 

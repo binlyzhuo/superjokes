@@ -68,7 +68,7 @@ namespace Joke.Data
                 where = string.Format(" and Type={0}",type);
             }
             string querySQL = string.Format(@"{1}
-                        select top 1 * from T_Joke where ID>{0} {2} and state=1 order by ID desc
+                        select top 1 * from T_Joke where ID>{0} {2} and state=1 order by ID asc
                         select top 1 * from T_Joke where ID<{0} {2} and state=1 order by ID desc", jokeid, detailSQL,where);
 
             var item = this.jokeDatabase.FetchMultiple<JokePostInfo, T_Joke, T_Joke>(querySQL);

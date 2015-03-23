@@ -7,6 +7,9 @@
 @using Joke.Model.Dto
 @using SuperJokes.Mobile.Helpers
 @using Joke.Model.ViewModel
+<div>
+    <a href="/home/index" target="_parent">超级冷笑话</a>><a target="_parent" href="@SuperJokeHelper.GetCategoryJokes(Model.Data)">@Model.Data1</a>
+</div>
 @foreach (var m in Model.Items)
 {
     <div class="haha">
@@ -24,5 +27,5 @@
     {
         <a href="@SuperJokeHelper.GetPageLink(Model.Data,Model.Page-1)" target="_parent">上←页</a>
     }
-    
+
 </p>
