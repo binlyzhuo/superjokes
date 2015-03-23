@@ -150,10 +150,9 @@
 }
 <div class="wrapper location clearfix">
     <a class="collect" href="#"></a>
-    <a href="/">笑话大全</a><i> &gt; </i>
-    <a href="/latest/">笑话连篇</a><i> &gt; </i>
-    <a href="/lengxiaohua/">冷笑话</a><i> &gt; </i>
-    <span>冷笑话...</span>
+    <a href="/">参加冷笑话</a><i> &gt; </i>
+    <a href="@JokeHelper.GetCategoryJokes(currentJoke.CategoryPinyin)" target="_self" title="@string.Format("{0}笑话,，超级冷笑话",currentJoke.Category)">@currentJoke.Category</a><i> &gt; </i>
+    <h1>@currentJoke.Title</h1>
 </div>
 <div class="wrapper clearfix">
     <!-- main -->

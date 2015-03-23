@@ -171,6 +171,7 @@ namespace Joke.Web.Controllers
             search.SearchType = JokeSearchType.Latest;
             var pageResult = jokeLogic.JokePostInfo(search);
             pageResult.Data = "latest";
+            pageResult.Data1 = "最新冷笑话";
             return View("~/Views/Home/JokeList.cshtml", pageResult);
         }
 
@@ -182,6 +183,7 @@ namespace Joke.Web.Controllers
             search.SearchType = JokeSearchType.LengXioaHua;
             var pageResult = jokeLogic.JokePostInfo(search);
             pageResult.Data = "lengxiaohua";
+            pageResult.Data1 = "冷笑话";
             return View("~/Views/Home/JokeList.cshtml", pageResult);
         }
 
@@ -194,6 +196,7 @@ namespace Joke.Web.Controllers
             search.SearchType = JokeSearchType.ImageJokes;
             var pageResult = jokeLogic.JokePostInfo(search);
             pageResult.Data = "images";
+            pageResult.Data1 = "搞笑图片";
             return View("~/Views/Home/JokeList.cshtml", pageResult);
             
         }
@@ -214,6 +217,7 @@ namespace Joke.Web.Controllers
             search.CategoryID = category.ID;
             var pageResult = jokeLogic.JokePostInfo(search);
             pageResult.Data = pinyin;
+            pageResult.Data1 = category.Name;
             return View("~/Views/Home/JokeList.cshtml", pageResult);
         }
 

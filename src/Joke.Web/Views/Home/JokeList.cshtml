@@ -72,16 +72,13 @@
         msg += '</div>';
         return msg;
     }
-
-    
 </script>
 
 }
 <div class="wrapper location clearfix">
     <a class="collect" href="#"></a>
-    <a href="/">笑话大全</a><i> &gt; </i>
-    <a href="/latest/">笑话连篇</a><i> &gt; </i>
-    <h1>短篇笑话</h1>
+    <a href="/">超级冷笑话</a><i> &gt; </i>
+    <h1>@Model.Data1</h1>
 </div>
 <div class="wrapper clearfix">
     <!-- main -->
@@ -105,7 +102,7 @@
                         </a>
                         <a href="/" target="_blank" rel="nofollow" class="nike-name">@p.UserName</a>
                         <a class="nike-name" style="margin-left:5px;">@p.PostDate.ToString("yyyy-MM-dd HH:mm:ss")</a>
-                        <a class="nike-name" style="margin-left:5px;">@p.Category</a>
+                        <a class="nike-name" target="_self" style="margin-left:5px;" href="@JokeHelper.GetCategoryJokes(p.CategoryPinyin)" title="@string.Format("{0}笑话,超级冷笑话",p.Category)">@p.Category</a>
                     </div>
                     <div class="summary-text">
                         @if (p.JokeType == 0)
