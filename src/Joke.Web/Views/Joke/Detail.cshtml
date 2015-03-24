@@ -16,85 +16,85 @@
     <link type="text/css" rel="stylesheet" href="~/Content/reset.css" />
     <script type="text/javascript">
 
-    $(function () {
-        jokesfollow();
-        showfaces();
-        loadqqfaces();
-        
-        //
-        $(document).keydown(function (event) {
-            //alert(event.keyCode);
-            switch (event.keyCode) {
-                case 37:
-                    var link = $("#lastJokeLink").attr("href");
-                    if ($.trim(link) != "") {
-                        window.location.href = link;
-                    }
-                    else {
-                        alert('已结束');
-                    }
-                    break;
-                case 39:
+        $(function () {
+            jokesfollow();
+            showfaces();
+            loadqqfaces();
 
-                    var link = $("#nextJokeLink").attr("href");
-                    if ($.trim(link) != "") {
-                        window.location.href = link;
-                    }
-                    else {
-                        alert('已结束');
-                    }
-                    break;
-            }
+            //
+            $(document).keydown(function (event) {
+                //alert(event.keyCode);
+                switch (event.keyCode) {
+                    case 37:
+                        var link = $("#lastJokeLink").attr("href");
+                        if ($.trim(link) != "") {
+                            window.location.href = link;
+                        }
+                        else {
+                            alert('已结束');
+                        }
+                        break;
+                    case 39:
+
+                        var link = $("#nextJokeLink").attr("href");
+                        if ($.trim(link) != "") {
+                            window.location.href = link;
+                        }
+                        else {
+                            alert('已结束');
+                        }
+                        break;
+                }
+            });
         });
-    });
 
-    function jokesfollow() {
-        $("em.followBtn").each(function () {
-            $(this).click(function () {
-                var jokeid = $(this).attr("data");
-                var followtype = $(this).attr("type");
-                var txt = "";
-                if (followtype == 1) {
-                    txt = "赞";
-                }
-                else {
-                    txt = "踩";
-                }
-                var followCookieValue = $.cookie('joke' + jokeid);
-                if (followCookieValue != null) {
+        function jokesfollow() {
+            $("em.followBtn").each(function () {
+                $(this).click(function () {
+                    var jokeid = $(this).attr("data");
+                    var followtype = $(this).attr("type");
+                    var txt = "";
+                    if (followtype == 1) {
+                        txt = "赞";
+                    }
+                    else {
+                        txt = "踩";
+                    }
+                    var followCookieValue = $.cookie('joke' + jokeid);
+                    if (followCookieValue != null) {
+                        $(this).parent('div.vote-btn').append(showMsg(txt));
+
+                        $(this).parent('div.vote-btn').children('div.article-layer-box').hide(2000);
+                    }
+
+                    $(this).unbind("click");
+                    $(this).parent("div.vote-btn").siblings("div.vote-btn").children("em.followBtn").unbind("click");
+                    $.cookie('joke' + jokeid, jokeid, { expires: 7 });
+                    $.post('/joke/JokeFollow', { jokeid: jokeid, type: followtype }, function (data) {
+
+                    });
+                    $(this).children("span.text").html(Number($(this).children("span.text").html()) + 1);
                     $(this).parent('div.vote-btn').append(showMsg(txt));
 
                     $(this).parent('div.vote-btn').children('div.article-layer-box').hide(2000);
-                }
-
-                $(this).unbind("click");
-                $(this).parent("div.vote-btn").siblings("div.vote-btn").children("em.followBtn").unbind("click");
-                $.cookie('joke' + jokeid, jokeid, { expires: 7 });
-                $.post('/joke/JokeFollow', { jokeid: jokeid, type: followtype }, function (data) {
 
                 });
-                $(this).children("span.text").html(Number($(this).children("span.text").html()) + 1);
-                $(this).parent('div.vote-btn').append(showMsg(txt));
-
-                $(this).parent('div.vote-btn').children('div.article-layer-box').hide(2000);
-
             });
-        });
-    }
+        }
 
-    function showMsg(txt) {
-        var msg = "";
-        msg = msg + '<div style="display: block;" class="article-layer-box">';
-        msg = msg + '<div class="layer-inner">';
-        msg += '<i class="icon correct-icon">已' + txt + '过</i>';
-        msg += '<span>已' + txt + '过</span></div>';
-        msg += '<i class="icon arrow-icon"></i>';
-        msg += '</div>';
-        return msg;
-    }
+        function showMsg(txt) {
+            var msg = "";
+            msg = msg + '<div style="display: block;" class="article-layer-box">';
+            msg = msg + '<div class="layer-inner">';
+            msg += '<i class="icon correct-icon">已' + txt + '过</i>';
+            msg += '<span>已' + txt + '过</span></div>';
+            msg += '<i class="icon arrow-icon"></i>';
+            msg += '</div>';
+            return msg;
+        }
 
-    function postComment() {
-        var jokeid=@currentJoke.JokeId;
+        function postComment() {
+            var jokeid=@currentJoke.JokeId;
             var comment = $("#sendText").val();
             var verifyCode = $("#verifyCode").val();
 
@@ -138,7 +138,7 @@
         function deletecomments(commentid){
             if(confirm('确认删除本条评论'))
             {
-                
+
                 $.post('/joke/DeleteComment',{commentid:commentid},function(){
                     $.post("/joke/CommentList",{jokeid:@currentJoke.JokeId},function(data){
                         $("#commentinfolist").html(replace_em(data));
@@ -238,7 +238,14 @@
             </div>
         </div>
         <!-- comment-section -->
-        @Html.Action("Comments", "Joke", new { jokeid = currentJoke.JokeId })
+        @if (AppConfig.IsEnableComment == 1)
+        {
+            Html.Action("Comments", "Joke", new { jokeid = currentJoke.JokeId });
+        }
+        else
+        {
+            <div style="display:none;" id="sendText"></div>
+        }
         <!-- //comment-section -->
         <!-- //article -->
         @Html.Action("ReadMostJokes", "Joke", null)

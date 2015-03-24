@@ -12,11 +12,13 @@ namespace Joke.Web.Helpers
         public static readonly int IsQiniuUpload;
         public static readonly string QiniuCloudUrl;
         public static readonly string JokeImgUpload;
+        public static readonly int IsEnableComment;
         static AppConfig()
         {
             IsQiniuUpload = ConfigurationManager.AppSettings["IsQiniuUpload"].ToInt32();
             QiniuCloudUrl = ConfigurationManager.AppSettings["QiniuCloudUrl"];
             JokeImgUpload = ConfigurationManager.AppSettings["JokeImgUpload"];
+            IsEnableComment = ConfigurationManager.AppSettings["IsEnableComment"].ToInt32();
         }
     }
 }
