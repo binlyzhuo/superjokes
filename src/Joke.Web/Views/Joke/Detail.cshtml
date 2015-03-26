@@ -240,7 +240,7 @@
         <!-- comment-section -->
         @if (AppConfig.IsEnableComment == 1)
         {
-            Html.Action("Comments", "Joke", new { jokeid = currentJoke.JokeId });
+            Html.RenderAction("Comments", "Joke", new { jokeid = currentJoke.JokeId });
         }
         else
         {
