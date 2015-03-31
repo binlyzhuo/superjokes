@@ -19,6 +19,9 @@ Thumbs.db
 *.log
 *.txt
 [Bb]in
+packages/
+Upload/
+logs/
 [Dd]ebug*/
 *.lib
 *.sbr
