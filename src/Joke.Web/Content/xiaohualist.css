@@ -198,7 +198,7 @@ a:hover,.pic-news .source a:hover,.friend-links .more a:hover,.article .related-
 .friend-links .links-header h3{font-size:14px}
 .friend-links .links-header .more{float:right}
 .friend-links .more a{font-weight:bold;color:#333}
-.friend-links .friend{width:958px;padding:10px 8px 14px 12px;background:#fff;line-height:26px;color:#ccc;overflow:hidden;zoom:1;word-break:break-all}
+.friend-links .friend{width:958px;padding:10px 8px 14px 12px;background:#fff;line-height:26px;overflow:hidden;zoom:1;word-break:break-all}
 .friend-links .friend a{padding:0 12px 0 0;color:#666}
 .friend-links .friend span{font-size:12px;color:#333;font-weight:bold;line-height:36px}
 .section{margin-top:10px;border:1px solid #e0e0e0;background-color:#fff}
