@@ -6,6 +6,9 @@
 	<Local Expanded="Yes">
 		<Model Expanded="Yes" ID="{E2320511-83DD-4064-9857-7C50005F8AE0}" Loaded="No" Name="Joke" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="Joke.pdm"/>
 		<Model Expanded="Yes" ID="{DF823BED-0EF3-4425-BCFB-55286FFA30AF}" Loaded="No" Name="Placeholder" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="/bitbucket/placeholder/doc/Placeholder.pdm"/>
+		<Model Expanded="Yes" ID="{DF823BED-0EF3-4425-BCFB-55286FFA30AF}" Loaded="No" Name="Placeholder" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="/bitbucket/placeholder/doc/Placeholder.pdm"/>
+		<Model Expanded="Yes" ID="{DF823BED-0EF3-4425-BCFB-55286FFA30AF}" Loaded="No" Name="Placeholder" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="/bitbucket/placeholder/doc/Placeholder.pdm"/>
+		<Model Expanded="Yes" ID="{DF823BED-0EF3-4425-BCFB-55286FFA30AF}" Loaded="No" Name="Placeholder" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="/bitbucket/placeholder/doc/Placeholder.pdm"/>
 		<Model Expanded="Yes" ID="{DF823BED-0EF3-4425-BCFB-55286FFA30AF}" Name="Placeholder" Selected="Yes" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="/bitbucket/placeholder/doc/Placeholder.pdm"/>
 	</Local>
 	<BrowserModule Name="Repository"/>
