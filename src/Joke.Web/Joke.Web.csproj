@@ -341,7 +341,7 @@
     <Content Include="Views\Joke\CommentList.cshtml" />
     <Content Include="Views\Home\QQCallBack.cshtml" />
     <Content Include="Views\Home\WeiXin.cshtml" />
-    <Content Include="Views\Shared\About.cshtml" />
+    <Content Include="Views\Shared\_About.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
