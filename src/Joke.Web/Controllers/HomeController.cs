@@ -22,7 +22,7 @@ namespace Joke.Web.Controllers
         UserBusinessLogic userBusinessLogic = new UserBusinessLogic();
 
         // GET: Home
-        //[OutputCache(Duration=2000)]
+        [OutputCache(Duration=2000)]
         public ActionResult Index()
         {
             SetPageSeo(SiteTitle, SiteKeyWords, SiteDescription);
@@ -165,7 +165,7 @@ namespace Joke.Web.Controllers
         
         public ActionResult Latest(int page=1)
         {
-            SetPageSeo("最新冷笑话_最新成人笑话_最新笑话_笑话大全_超级冷笑话_糗事百科_十万个冷笑话", SiteKeyWords, SiteDescription);
+            SetPageSeo(string.Format("最新冷笑话_最新成人笑话_最新笑话_笑话大全_超级冷笑话_糗事百科_十万个冷笑话_第{0}页",page), SiteKeyWords, SiteDescription);
             JokeSearchModel search = new JokeSearchModel();
             search.Page = page;
             search.SearchType = JokeSearchType.Latest;
@@ -177,7 +177,7 @@ namespace Joke.Web.Controllers
 
         public ActionResult LengXiaoHua(int page = 1)
         {
-            SetPageSeo(string.Format("最新冷笑话_最新成人笑话_最新笑话_笑话大全_糗事百科_十万个冷笑话,第{0}页",page), SiteKeyWords, SiteDescription);
+            SetPageSeo(string.Format("最新冷笑话_最新成人笑话_最新笑话_笑话大全_糗事百科_十万个冷笑话_第{0}页",page), SiteKeyWords, SiteDescription);
             JokeSearchModel search = new JokeSearchModel();
             search.Page = page;
             search.SearchType = JokeSearchType.LengXioaHua;
