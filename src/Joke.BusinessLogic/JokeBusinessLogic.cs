@@ -53,9 +53,24 @@ namespace Joke.BusinessLogic
 
         public List<CategoryDto> GetCategoryList()
         {
-            var categoryDomains = categoryData.CategoryGet();
-            var categoryDtos = AutoMapper.Mapper.Map<List<T_Category>, List<CategoryDto>>(categoryDomains);
+            var categoryDtos = WebCache.GetCacheObject<List<CategoryDto>>(CategoryCacheKey);
+            if(categoryDtos==null||categoryDtos.Count==0)
+            {
+                var categoryDomains = categoryData.CategoryGet();
+                categoryDtos = AutoMapper.Mapper.Map<List<T_Category>, List<CategoryDto>>(categoryDomains);
+                WebCache.CacheInsert(categoryDtos, CategoryCacheKey);
+            }
             return categoryDtos;
+        }
+
+        public CategoryDto GetCategoryInfo(string pinyin)
+        {
+            return GetCategoryList().SingleOrDefault(u => u.PinYin == pinyin);
+        }
+
+        public CategoryDto GetCategoryInfo(int id)
+        {
+            return GetCategoryList().SingleOrDefault(u => u.ID == id);
         }
 
         public int AddJoke(T_Joke joke)

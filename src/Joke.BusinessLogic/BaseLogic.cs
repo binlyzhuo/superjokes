@@ -8,6 +8,6 @@ namespace Joke.BusinessLogic
 {
     public abstract class BaseLogic
     {
-
+        protected string CategoryCacheKey = "CategoryCacheKey";
     }
 }
