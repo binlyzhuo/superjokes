@@ -76,9 +76,9 @@ namespace Joke.Data
             return data;
         }
 
-        public List<T_Joke> MostReadJokesGet()
+        public List<T_Joke> MostReadJokesGet(int topcount=10)
         {
-            string sql = "SELECT top 10 * from T_Joke order by readcount desc";
+            string sql = string.Format("SELECT top {0} * from T_Joke order by readcount desc",topcount);
             var items = this.jokeDatabase.Fetch<T_Joke>(sql);
             return items;
         }

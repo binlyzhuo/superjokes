@@ -110,9 +110,9 @@ namespace Joke.BusinessLogic
             return jokeData.GetLastNextJokes(jokeid,type);
         }
 
-        public List<T_Joke> MostReadJokesGet()
+        public List<T_Joke> MostReadJokesGet(int topcount)
         {
-            return jokeData.MostReadJokesGet();
+            return jokeData.MostReadJokesGet(topcount);
         }
 
         public PageSearchResult<JokePostInfo> JokePostInfo(JokeSearchModel search)

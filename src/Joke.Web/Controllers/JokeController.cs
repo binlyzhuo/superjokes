@@ -127,7 +127,7 @@ namespace Joke.Web.Controllers
 
         public ActionResult ReadMostJokes()
         {
-            var jokes = jokeBusinessLogic.MostReadJokesGet();
+            var jokes = jokeBusinessLogic.MostReadJokesGet(12);
             return View(jokes);
         }
 
