@@ -56,16 +56,7 @@
         </a>
 
 
-        <div class="searchbox">
-            <form target="_blank" method="get" action="/search" onsubmit="return (function(){var text = document.getElementById('softSearch').value; if(text == '' || text == '请输入笑话关键词') return false;})()">
-
-                <div class="stext">
-                    <input type="text" value="请输入笑话关键词" autocomplete="off" name="wd" onblur="(function(obj){var val = obj.value.replace(/(^\s*)|(\s*$)/g,'');if(!val) {obj.value='请输入笑话关键词';obj.style.color='#999999';}})(this);" onfocus="if(this.value == '请输入笑话关键词') this.value='';this.style.color='#333';" id="softSearch">
-                </div>
-                <input type="hidden" value="6" name="type">
-                <input type="submit" value="搜索" class="sbtn">
-            </form>
-        </div>
+        
     </div>
     @Html.Partial("_TopMenus")
     @RenderBody()

@@ -215,6 +215,7 @@
     <Content Include="Imgs\filter-icon.png" />
     <Content Include="Imgs\header-bg.png" />
     <Content Include="Imgs\list-body-bg.png" />
+    <Content Include="Imgs\logo.png" />
     <Content Include="Imgs\main-bg.png" />
     <Content Include="Imgs\m_suoerjokes_cn.png" />
     <Content Include="Imgs\page-mark.png" />
