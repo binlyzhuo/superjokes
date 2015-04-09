@@ -25,8 +25,15 @@ namespace Joke.Web.Controllers
         [OutputCache(Duration=10)]
         public ActionResult Index()
         {
+            string strUserAgent = Request.UserAgent.ToString().ToLower();
+            if (!string.IsNullOrEmpty(strUserAgent))
+            {
+                Response.StatusCode = 301;
+                Response.RedirectLocation = "http://m.superjokes.cn";
+                Response.End();
+            }
+
             SetPageSeo(SiteTitle, SiteKeyWords, SiteDescription);
-            
             return View();
         }
 
@@ -76,10 +83,6 @@ namespace Joke.Web.Controllers
                 authCookie.Path = FormsAuthentication.FormsCookiePath;
                 Response.Cookies.Add(authCookie);
 
-
-                
-                //var uname = User.Identity.Name;
-                
 
                 bool isAuth = Request.IsAuthenticated;
                 return RedirectToAction("Profile", "User", null);

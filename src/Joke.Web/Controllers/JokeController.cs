@@ -116,10 +116,16 @@ namespace Joke.Web.Controllers
 
         public ActionResult Detail(int id)
         {
+            string strUserAgent = Request.UserAgent.ToString().ToLower();
+            if (!string.IsNullOrEmpty(strUserAgent))
+            {
+                Response.StatusCode = 301;
+                Response.RedirectLocation = string.Format("http://m.superjokes.cn/joke{0}.html",id);
+                Response.End(); 
+            }
 
             var jokeinfo = jokeBusinessLogic.GetLastNextJokes(id);
-            //string title = jokeinfo.Item1.Title;
-            string title = string.Format("冷笑话_{0}_冷笑话大全_成人笑话_超级冷笑话_糗事百科_十万个冷笑话", jokeinfo.Item1.Title);
+            string title = string.Format("冷笑话_超级冷笑话_{0}_冷笑话大全_成人笑话_糗事百科_十万个冷笑话", jokeinfo.Item1.Title);
             string description = title;
             SetPageSeo(title,SiteKeyWords,SiteDescription);
             return View(jokeinfo);
