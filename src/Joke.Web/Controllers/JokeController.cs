@@ -119,9 +119,13 @@ namespace Joke.Web.Controllers
             string strUserAgent = Request.UserAgent.ToString().ToLower();
             if (!string.IsNullOrEmpty(strUserAgent))
             {
-                Response.StatusCode = 301;
-                Response.RedirectLocation = string.Format("http://m.superjokes.cn/joke{0}.html",id);
-                Response.End(); 
+                if(Request.Browser.IsMobileDevice)
+                {
+                    Response.StatusCode = 301;
+                    Response.RedirectLocation = string.Format("http://m.superjokes.cn/joke{0}.html", id);
+                    Response.End(); 
+                }
+                
             }
 
             var jokeinfo = jokeBusinessLogic.GetLastNextJokes(id);

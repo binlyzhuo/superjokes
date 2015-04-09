@@ -18,13 +18,13 @@
 <div class="haha">
     @if (nextJoke != null)
     {
-        <p style="margin-left:90px;">
+        <p style="margin-left:100px;">
             下一篇:<a style="margin-left:5px;" target="_parent" href="@SuperJokeHelper.GetJokeDetail(nextJoke.ID)">@nextJoke.Title</a>
         </p>
 
     }
     @if (lastJoke != null)
     {
-        <p style="margin-left:90px;">上一篇:<a style="margin-left:5px;" target="_parent" href="@SuperJokeHelper.GetJokeDetail(lastJoke.ID)">@lastJoke.Title</a></p>
+        <p style="margin-left:100px;">上一篇:<a style="margin-left:5px;" target="_parent" href="@SuperJokeHelper.GetJokeDetail(lastJoke.ID)">@lastJoke.Title</a></p>
     }
 </div>

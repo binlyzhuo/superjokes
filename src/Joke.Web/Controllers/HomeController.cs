@@ -28,9 +28,13 @@ namespace Joke.Web.Controllers
             string strUserAgent = Request.UserAgent.ToString().ToLower();
             if (!string.IsNullOrEmpty(strUserAgent))
             {
-                Response.StatusCode = 301;
-                Response.RedirectLocation = "http://m.superjokes.cn";
-                Response.End();
+                if(Request.Browser.IsMobileDevice)
+                {
+                    Response.StatusCode = 301;
+                    Response.RedirectLocation = "http://m.superjokes.cn";
+                    Response.End();
+                }
+                
             }
 
             SetPageSeo(SiteTitle, SiteKeyWords, SiteDescription);
