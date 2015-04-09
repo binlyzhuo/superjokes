@@ -271,5 +271,16 @@ namespace Joke.Web.Controllers
         {
             return View();
         }
+
+        public ActionResult Test()
+        {
+            Response.Write("app test page!");
+            string strUserAgent = Request.UserAgent.ToString().ToLower();
+            if (!string.IsNullOrEmpty(strUserAgent))
+            {
+                Response.Write("<br/>ismobile:" + Request.Browser.IsMobileDevice);
+            }
+            return View();
+        }
     }
 }
