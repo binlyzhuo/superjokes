@@ -25,6 +25,7 @@ namespace Joke.Web.Controllers
         [OutputCache(Duration=10)]
         public ActionResult Index()
         {
+            // 判断是否是手机端
             string strUserAgent = Request.UserAgent.ToString().ToLower();
             if (!string.IsNullOrEmpty(strUserAgent))
             {
