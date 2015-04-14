@@ -14,7 +14,10 @@
 		<Model Expanded="Yes" ID="{DF823BED-0EF3-4425-BCFB-55286FFA30AF}" Loaded="No" Name="Placeholder" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="/bitbucket/placeholder/doc/Placeholder.pdm"/>
 		<Model Expanded="Yes" ID="{69170F87-50EA-476E-A593-041BCDAC80D1}" Loaded="No" Name="Tour_Read" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="/bitbucket/travel/docs/database/Tour_Read.pdm"/>
 		<Model Expanded="Yes" ID="{5B8B4441-A0CC-4FE2-89D9-078C6E766E81}" Loaded="No" Name="Tour_Write" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="/bitbucket/travel/docs/database/Tour_Write.pdm"/>
-		<Model Expanded="Yes" ID="{D83537E7-8EC8-4501-984E-5D3F5DF250E9}" Name="Tour_Public" Selected="Yes" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="/bitbucket/travel/docs/database/Tour_Public.pdm"/>
+		<Model Expanded="Yes" ID="{D83537E7-8EC8-4501-984E-5D3F5DF250E9}" Loaded="No" Name="Tour_Public" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="/bitbucket/travel/docs/database/Tour_Public.pdm"/>
+		<Model Expanded="Yes" ID="{5B8B4441-A0CC-4FE2-89D9-078C6E766E81}" Loaded="No" Name="Tour_Write" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="/bitbucket/travel/docs/database/Tour_Write.pdm"/>
+		<Model Expanded="Yes" ID="{5B8B4441-A0CC-4FE2-89D9-078C6E766E81}" Loaded="No" Name="Tour_Write" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="/bitbucket/travel/docs/database/Tour_Write.pdm"/>
+		<Model Expanded="Yes" ID="{5B8B4441-A0CC-4FE2-89D9-078C6E766E81}" Name="Tour_Write" Selected="Yes" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="/bitbucket/travel/docs/database/Tour_Write.pdm"/>
 	</Local>
 	<BrowserModule Name="Repository"/>
 </Workspace>
