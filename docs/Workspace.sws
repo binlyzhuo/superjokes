@@ -42,7 +42,14 @@
 		<Model Expanded="Yes" ID="{3B58A367-4639-44A7-8D58-41F62CE81E9F}" Loaded="No" Name="Huaning" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="/bitbucket/huaning/docs/Huaning.pdm"/>
 		<Model Expanded="Yes" ID="{3B58A367-4639-44A7-8D58-41F62CE81E9F}" Loaded="No" Name="Huaning" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="/bitbucket/huaning/docs/Huaning.pdm"/>
 		<Model Expanded="Yes" ID="{3B58A367-4639-44A7-8D58-41F62CE81E9F}" Loaded="No" Name="Huaning" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="/bitbucket/huaning/docs/Huaning.pdm"/>
-		<Model Expanded="Yes" ID="{E793FBAF-0E8C-41BE-945A-DCDBBB9CB1A8}" Name="PhysicalDataModel_1" Selected="Yes" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="/WorkSpace/互联网网站项目/CAD看图答题活动/Doc/数据库设计/PhysicalDataModel_1.pdm"/>
+		<Model Expanded="Yes" ID="{E793FBAF-0E8C-41BE-945A-DCDBBB9CB1A8}" Loaded="No" Name="PhysicalDataModel_1" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="/WorkSpace/互联网网站项目/CAD看图答题活动/Doc/数据库设计/PhysicalDataModel_1.pdm"/>
+		<Model Expanded="Yes" ID="{3B58A367-4639-44A7-8D58-41F62CE81E9F}" Loaded="No" Name="Huaning" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="/bitbucket/huaning/docs/Huaning.pdm"/>
+		<Model Expanded="Yes" ID="{E793FBAF-0E8C-41BE-945A-DCDBBB9CB1A8}" Loaded="No" Name="PhysicalDataModel_1" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="/WorkSpace/互联网网站项目/CAD看图答题活动/Doc/数据库设计/PhysicalDataModel_1.pdm"/>
+		<Model Expanded="Yes" ID="{3B58A367-4639-44A7-8D58-41F62CE81E9F}" Loaded="No" Name="Huaning" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="/bitbucket/huaning/docs/Huaning.pdm"/>
+		<Model Expanded="Yes" ID="{3B58A367-4639-44A7-8D58-41F62CE81E9F}" Loaded="No" Name="Huaning" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="/bitbucket/huaning/docs/Huaning.pdm"/>
+		<Model Expanded="Yes" ID="{3B58A367-4639-44A7-8D58-41F62CE81E9F}" Loaded="No" Name="Huaning" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="/bitbucket/huaning/docs/Huaning.pdm"/>
+		<Model Expanded="Yes" ID="{E793FBAF-0E8C-41BE-945A-DCDBBB9CB1A8}" Loaded="No" Name="PhysicalDataModel_1" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="/WorkSpace/互联网网站项目/CAD看图答题活动/Doc/数据库设计/PhysicalDataModel_1.pdm"/>
+		<Model Expanded="Yes" ID="{3B58A367-4639-44A7-8D58-41F62CE81E9F}" Name="Huaning" Selected="Yes" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="/huaning/docs/Huaning.pdm"/>
 	</Local>
 	<BrowserModule Name="Repository"/>
 </Workspace>
