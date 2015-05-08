@@ -187,10 +187,18 @@ namespace Joke.Data
             return this.jokeDatabase.SingleOrDefault<JokePostInfo>(sql);
         }
 
-        public List<T_Joke> GetLastestJokes()
+        public List<T_Joke> GetLastestJokes(int catrgoryId,int topCount=10)
         {
-            string sql = string.Format("select top {0} * from T_Joke where Category={1} and Type=0 order by id desc");
-            return null;
+            string sql = string.Format("select top {0} * from T_Joke where Category={1} and Type=0 order by id desc", topCount, catrgoryId);
+            var items = this.jokeDatabase.Fetch<T_Joke>(sql);
+            return items;
+        }
+
+        public int GetJokesCount(int categoryId)
+        {
+            string sql = "select count(1) from T_Joke with(NOLOCK) where Category=1 and Type=0 ";
+            int count = this.jokeDatabase.ExecuteScalar<int>(sql);
+            return count;
         }
     }
 }

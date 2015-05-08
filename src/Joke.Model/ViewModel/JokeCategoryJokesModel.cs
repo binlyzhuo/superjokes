@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Joke.Model.Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,7 @@ namespace Joke.Model.ViewModel
 
         public string PinYin { set; get; }
 
-        public List<JokePrimaryInfo> JokeInfos { set; get; }
+        public List<T_Joke> JokeInfos { set; get; }
         public int TotalCount { set; get; }
     }
 }

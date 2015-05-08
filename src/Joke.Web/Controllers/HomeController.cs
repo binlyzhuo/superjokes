@@ -291,14 +291,15 @@ namespace Joke.Web.Controllers
             return View();
         }
 
-        public ActionResult HotCategoryJokes(int categoryId)
+        public ActionResult HotCategoryJokes(int categoryId=1)
         {
             var category=jokeLogic.GetCategoryInfo(categoryId);
             JokeCategoryJokesModel model = new JokeCategoryJokesModel();
             model.CategoryID = categoryId;
             model.CategoryName = category.Name;
             model.PinYin = category.PinYin;
-
+            model.JokeInfos = jokeLogic.GetCategoryJokes(categoryId, 10);
+            model.TotalCount = jokeLogic.GetJokesCount(categoryId);
             return View(model);
         }
     }

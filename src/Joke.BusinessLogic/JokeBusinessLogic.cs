@@ -184,7 +184,15 @@ namespace Joke.BusinessLogic
            return commentData.Delete(commentId);
         }
 
-
+        public List<T_Joke> GetCategoryJokes(int categoryId,int topCount=10)
+        {
+            var items = jokeData.GetLastestJokes(categoryId,topCount);
+            return items;
+        }
         
+        public int GetJokesCount(int categoryId)
+        {
+            return jokeData.GetJokesCount(categoryId);
+        }
     }
 }
