@@ -59,6 +59,7 @@
     <Compile Include="ViewModel\CommentPostModel.cs" />
     <Compile Include="ViewModel\CommentSearchModel.cs" />
     <Compile Include="ViewModel\CommentViewInfo.cs" />
+    <Compile Include="ViewModel\JokeCategoryJokesModel.cs" />
     <Compile Include="ViewModel\JokePostInfo.cs" />
     <Compile Include="ViewModel\JokePrimaryInfo.cs" />
     <Compile Include="ViewModel\JokeSearchModel.cs" />

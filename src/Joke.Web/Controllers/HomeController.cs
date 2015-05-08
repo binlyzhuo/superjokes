@@ -290,5 +290,16 @@ namespace Joke.Web.Controllers
             }
             return View();
         }
+
+        public ActionResult HotCategoryJokes(int categoryId)
+        {
+            var category=jokeLogic.GetCategoryInfo(categoryId);
+            JokeCategoryJokesModel model = new JokeCategoryJokesModel();
+            model.CategoryID = categoryId;
+            model.CategoryName = category.Name;
+            model.PinYin = category.PinYin;
+
+            return View(model);
+        }
     }
 }

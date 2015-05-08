@@ -348,6 +348,7 @@
     <Content Include="Views\Home\WeiXin.cshtml" />
     <Content Include="Views\Shared\_About.cshtml" />
     <Content Include="Views\Home\Test.cshtml" />
+    <Content Include="Views\Home\HotCategoryJokes.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

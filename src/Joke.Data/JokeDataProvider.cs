@@ -186,5 +186,11 @@ namespace Joke.Data
                             where j.State=1 and j.ID = {0}",jokeid);
             return this.jokeDatabase.SingleOrDefault<JokePostInfo>(sql);
         }
+
+        public List<T_Joke> GetLastestJokes()
+        {
+            string sql = string.Format("select top {0} * from T_Joke where Category={1} and Type=0 order by id desc");
+            return null;
+        }
     }
 }
