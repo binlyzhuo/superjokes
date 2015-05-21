@@ -291,6 +291,11 @@ namespace Joke.Web.Controllers
             return View();
         }
 
+        /// <summary>
+        /// 热门笑话
+        /// </summary>
+        /// <param name="categoryId"></param>
+        /// <returns></returns>
         public ActionResult HotCategoryJokes(int categoryId=1)
         {
             var category=jokeLogic.GetCategoryInfo(categoryId);
