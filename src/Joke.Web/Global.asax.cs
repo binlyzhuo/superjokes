@@ -14,6 +14,7 @@ using Newtonsoft.Json;
 using Joke.Web.App_Start;
 using StackExchange.Profiling;
 using Travelling.Web.Helpers;
+using System.Web.Optimization;
 
 namespace Joke.Web
 {
@@ -23,9 +24,10 @@ namespace Joke.Web
         {
             // Code that runs on application startup
             //AreaRegistration.RegisterAllAreas();
-            GlobalConfiguration.Configure(WebApiConfig.Register);
+            
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
             LogHelper.LogConfig(Server.MapPath(@"~\App_Data\log4net.config"));
             DtoMapper.AutoMapper();
 

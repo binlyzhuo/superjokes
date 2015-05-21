@@ -52,7 +52,10 @@
 		<Model Expanded="Yes" ID="{3B58A367-4639-44A7-8D58-41F62CE81E9F}" Loaded="No" Name="Huaning" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="/huaning/docs/Huaning.pdm"/>
 		<Model Expanded="Yes" ID="{3B58A367-4639-44A7-8D58-41F62CE81E9F}" Loaded="No" Name="Huaning" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="/bitbucket/huaning/docs/Huaning.pdm"/>
 		<Model Expanded="Yes" ID="{3B58A367-4639-44A7-8D58-41F62CE81E9F}" Loaded="No" Name="Huaning" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="/bitbucket/huaning/docs/Huaning.pdm"/>
-		<Model Expanded="Yes" ID="{3B58A367-4639-44A7-8D58-41F62CE81E9F}" Name="Huaning" Selected="Yes" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="/bitbucket/huaning/docs/Huaning.pdm"/>
+		<Model Expanded="Yes" ID="{3B58A367-4639-44A7-8D58-41F62CE81E9F}" Loaded="No" Name="Huaning" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="/bitbucket/huaning/docs/Huaning.pdm"/>
+		<Model Expanded="Yes" ID="{176C0D91-BD9E-481C-98FB-CD3889E9A296}" Loaded="No" Name="ZhunaHotel" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="/bitbucket/zhunahotel/src/docs/ZhunaHotel.pdm"/>
+		<Model Expanded="Yes" ID="{176C0D91-BD9E-481C-98FB-CD3889E9A296}" Loaded="No" Name="ZhunaHotel" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="/bitbucket/zhunahotel/docs/ZhunaHotel.pdm"/>
+		<Model Expanded="Yes" ID="{176C0D91-BD9E-481C-98FB-CD3889E9A296}" Name="ZhunaHotel" Selected="Yes" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="/bitbucket/zhunahotel/docs/ZhunaHotel.pdm"/>
 	</Local>
 	<BrowserModule Name="Repository"/>
 </Workspace>
