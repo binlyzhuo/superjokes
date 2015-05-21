@@ -11,6 +11,8 @@ namespace Joke.Web.App_Start
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include("~/Scripts/jquery-1.9.0.min.js", "~/Scripts/jquery-migrate-1.2.1.min.js"));
+
+            bundles.Add(new StyleBundle("~/content/xiaohuacss").Include("~/Content/xiaohualist.css"));
         }
     }
 }

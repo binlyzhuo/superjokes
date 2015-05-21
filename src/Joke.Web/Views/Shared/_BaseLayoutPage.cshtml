@@ -15,7 +15,8 @@
     <meta name="keywords" content="@ViewBag.KeyWords" />
     <meta name="description" content="@ViewBag.Description" />
     
-    <link type="text/css" rel="stylesheet" href="~/Content/xiaohualist.css" />
+    
+    @Styles.Render("~/content/xiaohuacss")
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("header", false)
 </head>
