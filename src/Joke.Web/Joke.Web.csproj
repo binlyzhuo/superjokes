@@ -132,13 +132,7 @@
     <Content Include="App_Data\CategoryData.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\PagedList.css" />
     <Content Include="Content\reset.css" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="App_Data\log4net.config" />
     <Content Include="humans.txt" />
@@ -239,9 +233,6 @@
     <Content Include="Imgs\weixin_gzh.jpg" />
     <Content Include="Imgs\weixin_lxh.png" />
     <Content Include="Imgs\xiaohua-bj.png" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="App_Data\appsettings.config">
       <SubType>Designer</SubType>
     </Content>

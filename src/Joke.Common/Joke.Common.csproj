@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CodeScales.Http">
+      <HintPath>..\lib\CodeScales.Http.dll</HintPath>
+    </Reference>
     <Reference Include="ICSharpCode.SharpZipLib">
       <HintPath>..\packages\NPOI.2.1.3.1\lib\net40\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
@@ -60,6 +63,7 @@
     <Compile Include="Md5.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QiniuUpload.cs" />
+    <Compile Include="SendCloud.cs" />
     <Compile Include="StringExtends.cs" />
     <Compile Include="WebCache.cs" />
   </ItemGroup>
