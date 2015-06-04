@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "PostList";
+    ViewBag.Title = "发表记录";
     Layout = "~/Views/Shared/_BaseUserLayoutPage.cshtml";
 }
 
@@ -7,11 +7,16 @@
   <style type="text/css">
       .postlist{width:700px;}
     </style>    
+    <script type="text/javascript">
+        function search(p) {
+
+        }
+    </script>
 }
 @model PageSearchResult<JokePostInfo>
 @using Joke.Model.ViewModel
 @using Joke.Model.Domain
-
+@using Joke.Web.Helpers
 
 <h2>我发布的笑话</h2>
 @if (Model.TotalCount == 0)
@@ -46,7 +51,13 @@ else
             </tr>
         }
     </table>
-
+    <br />
+    <div>
+        
+        <div class="page">
+            @Html.AjaxPaging(Model.Page, Model.TotalCount, Model.TotalPages, "user/postlist")
+        </div>
+    </div>
 }
 
 

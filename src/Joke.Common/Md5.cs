@@ -12,10 +12,10 @@ namespace Joke.Common
     {
         public static string GetMd5(string source)
         {
-            return System.Web.Security.FormsAuthentication.HashPasswordForStoringInConfigFile(source, "MD5").ToLower();
+            return GetMd5String(source).ToLower();
         }
 
-        public static string GetMd5String(string source)
+        static string GetMd5String(string source)
         {
             MD5 md5Hash = MD5.Create();
             string hash = GetMd5Hash(md5Hash, source);

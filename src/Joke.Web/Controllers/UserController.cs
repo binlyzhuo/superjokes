@@ -81,6 +81,7 @@ namespace Joke.Web.Controllers
         public ActionResult PostList(UserJokesSearchModel search)
         {
             search.UserId = user.UserId;
+            
             var pageViewResult = jokeLogic.UserJokesSearch(search);
             return View(pageViewResult);
         }
