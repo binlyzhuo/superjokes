@@ -12,7 +12,9 @@
         {
             <li>
                 <span class="time">@Html.Raw(p.AddDate.ToString("MM月dd日"))</span>
-                <a href="@JokeHelper.GetJokeDetail(p.ID)" title="@p.Title" target="_blank">@p.Title</a>
+                <h2 class="joketitle">
+                    <a href="@JokeHelper.GetJokeDetail(p.ID)" title="@p.Title" target="_blank">@p.Title</a>
+                </h2>
             </li>
         }
 

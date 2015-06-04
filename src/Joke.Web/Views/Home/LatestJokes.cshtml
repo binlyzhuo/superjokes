@@ -27,7 +27,7 @@
             <li>
                 <span class="date">@Model.Item2[index].AddDate.ToString("yyyy-MM-dd")</span>
                 <a class="type" title="@string.Format("{0}笑话", Model.Item2[index].CategoryName)" href="@JokeHelper.GetCategoryJokes(@Model.Item2[index].PinYin)" target="_blank">[@Model.Item2[index].CategoryName]</a>
-                <a href="@JokeHelper.GetJokeDetail(@Model.Item2[index].JokeId)" title="@Model.Item2[index].Title" target="_blank">@Html.Raw(Model.Item2[index].Title)</a>
+                <h2 class="joketitle"><a href="@JokeHelper.GetJokeDetail(@Model.Item2[index].JokeId)" title="@Model.Item2[index].Title" target="_blank">@Html.Raw(Model.Item2[index].Title)</a></h2>
             </li>
         }
     </ul>

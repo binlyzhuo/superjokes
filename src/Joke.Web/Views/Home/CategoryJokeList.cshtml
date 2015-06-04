@@ -6,7 +6,9 @@
         <a href="/">全部</a>
         @foreach (var s in Model)
         {
-            <a title="@string.Format("{0}笑话,超级冷笑话",s.Name)" target="_parent" href="@JokeHelper.GetCategoryJokes(s.PinYin)">@s.Name</a>
+            <h2 class="joketitle">
+                <a title="@string.Format("{0}笑话,超级冷笑话",s.Name)" target="_parent" href="@JokeHelper.GetCategoryJokes(s.PinYin)">@s.Name</a>
+            </h2>
         }
     </div>
 </div>

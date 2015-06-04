@@ -12,14 +12,19 @@
             {
                 <li>
                     <em class="n1">@(index+1)</em>
-                    <a href="@JokeHelper.GetJokeDetail(Model[index].ID)" target="_blank" title="@Model[index].Title">@Model[index].Title</a>
+                    <h2 class="joketitle">
+                        <a href="@JokeHelper.GetJokeDetail(Model[index].ID)" target="_blank" title="@Model[index].Title">@Model[index].Title</a>
+                    </h2>
                 </li>
             }
             else
             {
                 <li>
                     <em>@(index + 1)</em>
-                    <a href="@JokeHelper.GetJokeDetail(Model[index].ID)" target="_blank" title="@Model[index].Title">@Model[index].Title</a>
+                    <h2 class="joketitle">
+                        <a href="@JokeHelper.GetJokeDetail(Model[index].ID)" target="_blank" title="@Model[index].Title">@Model[index].Title</a>
+                    </h2>
+                    
                 </li>
             }
         }
