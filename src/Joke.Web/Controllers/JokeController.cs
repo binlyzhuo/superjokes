@@ -278,5 +278,14 @@ namespace Joke.Web.Controllers
             jsonViewResult.Success = jokeBusinessLogic.CommentDelete(commentid);
             return Json(jsonViewResult,JsonRequestBehavior.AllowGet);
         }
+
+        [HttpPost]
+        [UserAuthorize(Roles = "Admin")]
+        public JsonResult DeleteJoke(int id=0)
+        {
+            JsonViewResult jsonViewResult = new JsonViewResult() { Success = false };
+            jsonViewResult.Success = jokeBusinessLogic.DeleteJoke(id);
+            return Json(jsonViewResult, JsonRequestBehavior.AllowGet);
+        }
     }
 }

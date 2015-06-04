@@ -146,11 +146,22 @@
                 });
             }
         }
+
+        function deletejoke(jokeid){
+            if(confirm("确定删除该笑话?")){
+                $.post('/joke/deletejoke',{id:jokeid},function(d){
+                    if(d.Success){
+                        alert('删除成功!');
+                        window.location.href="/";
+                    }
+                });
+            }
+        }
     </script>
 }
 <div class="wrapper location clearfix">
     <a class="collect" href="#"></a>
-    <a href="/">参加冷笑话</a><i> &gt; </i>
+    <a href="/">超级冷笑话</a><i> &gt; </i>
     <a href="@JokeHelper.GetCategoryJokes(currentJoke.CategoryPinyin)" target="_self" title="@string.Format("{0}笑话,超级冷笑话",currentJoke.Category)">@currentJoke.Category</a><i> &gt; </i>
     <h1>@currentJoke.Title</h1>
 </div>
@@ -196,7 +207,7 @@
                     {
                         <a style="color:firebrick;text-decoration:underline;" href="/joke/UpdateJoke?jokeid=@currentJoke.JokeId">编辑</a>
                     }
-
+                    <a style="color:firebrick;text-decoration:underline;" href="javascript:deletejoke(@currentJoke.JokeId);">删除</a>
                 }
 
             </div>

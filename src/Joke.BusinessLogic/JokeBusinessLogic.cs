@@ -194,5 +194,6 @@ namespace Joke.BusinessLogic
         {
             return jokeData.GetJokesCount(categoryId);
         }
+
     }
 }
