@@ -141,6 +141,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="App_Data\log4net.config" />
+    <Content Include="humans.txt" />
     <Content Include="Imgs\8609953_31.jpg" />
     <Content Include="Imgs\8609953_31.png" />
     <Content Include="Imgs\arclist\1.gif" />
