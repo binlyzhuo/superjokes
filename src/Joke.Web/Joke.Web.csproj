@@ -246,6 +246,7 @@
     </Content>
     <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\superjokes.pubxml" />
+    <Content Include="robots.txt" />
     <Content Include="Scripts\bootbox.js" />
     <Content Include="Scripts\bootbox.min.js" />
     <Content Include="Scripts\bootstrap.js" />
