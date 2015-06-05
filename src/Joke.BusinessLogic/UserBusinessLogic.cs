@@ -12,9 +12,11 @@ namespace Joke.BusinessLogic
     public class UserBusinessLogic : BaseLogic
     {
         private readonly UserDataProvider userData;
+        private readonly UserLogDataProvider userlogData;
         public UserBusinessLogic()
         {
             userData = new UserDataProvider();
+            userlogData = new UserLogDataProvider();
         }
 
         public int AddUser(T_User user)
@@ -73,6 +75,11 @@ namespace Joke.BusinessLogic
         public bool DeleteUser(int uid)
         {
             return userData.Delete(uid);
+        }
+
+        public void AddUserLog(T_UserLog log)
+        {
+            userlogData.Add(log);
         }
     }
 }

@@ -140,7 +140,7 @@ a:hover,.pic-news .source a:hover,.friend-links .more a:hover,.article .related-
 .ad-div div{margin-top:15px}
 .ad-div img{vertical-align:top}
 .page{overflow:hidden;font:16px/30px 'Microsoft YaHei','\5FAE\8F6F\96C5\9ED1';text-align:center}
-.page a,.page span{display:inline-block;margin:0 4px;padding:0 10px;height:30px;border:1px solid #d5d5d5;background-position:0 0;text-align:center;vertical-align:middle}
+.page a,.page span{display:inline-block;padding:0 10px;height:30px;border:1px solid #d5d5d5;background-position:0 0;text-align:center;vertical-align:middle}
 .page .current{border-color:#eb6d05;background-position:-200px -164px;color:#fff}
 .page .morelink{margin:0;padding:0;width:20px;border:0 none;background:none;font-family:Arial;font-weight:bold}
 .page .prev-button,.page .next-button,.page .noprev,.page .nonext{width:65px;padding:0}

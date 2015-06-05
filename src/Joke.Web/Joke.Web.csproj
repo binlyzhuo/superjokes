@@ -351,6 +351,7 @@
     <Content Include="Views\Home\HotCategoryJokes.cshtml" />
     <Content Include="Views\User\JokeList.cshtml" />
     <Content Include="Views\Home\Error.cshtml" />
+    <Content Include="Views\Account\UserLog.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

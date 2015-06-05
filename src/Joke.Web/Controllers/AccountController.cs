@@ -129,5 +129,10 @@ namespace Joke.Web.Controllers
         {
             return View();
         }
+
+        public ActionResult UserLog()
+        {
+            return View();
+        }
     }
 }

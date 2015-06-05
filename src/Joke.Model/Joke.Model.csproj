@@ -50,6 +50,7 @@
     <Compile Include="Domain\T_FriendLink.cs" />
     <Compile Include="Domain\T_Joke.cs" />
     <Compile Include="Domain\T_User.cs" />
+    <Compile Include="Domain\T_UserLog.cs" />
     <Compile Include="Dto\CategoryDto.cs" />
     <Compile Include="Dto\JokeDto.cs" />
     <Compile Include="Dto\UserDto.cs" />
