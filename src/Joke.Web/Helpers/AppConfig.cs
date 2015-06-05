@@ -14,6 +14,7 @@ namespace Joke.Web.Helpers
         public static readonly string JokeImgUpload;
         public static readonly int IsEnableComment;
         public static readonly string HotCategories;
+        public static readonly string SendCloudKey;
         static AppConfig()
         {
             IsQiniuUpload = ConfigurationManager.AppSettings["IsQiniuUpload"].ToInt32();
@@ -21,6 +22,7 @@ namespace Joke.Web.Helpers
             JokeImgUpload = ConfigurationManager.AppSettings["JokeImgUpload"];
             IsEnableComment = ConfigurationManager.AppSettings["IsEnableComment"].ToInt32();
             HotCategories = ConfigurationManager.AppSettings["HotCategories"];
+            SendCloudKey = ConfigurationManager.AppSettings["XueQ6S20K8v4BTdg"];
         }
     }
 }

@@ -39,6 +39,9 @@ namespace Joke.Web.Controllers
                 
             }
 
+            //
+            NoticeMail.SendWelcomeMail("bingo","binlyzhuo@outlook.com");
+
             SetPageSeo(SiteTitle, SiteKeyWords, SiteDescription);
             return View();
         }
