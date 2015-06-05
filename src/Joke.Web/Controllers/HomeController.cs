@@ -98,7 +98,7 @@ namespace Joke.Web.Controllers
                     T_UserLog log = new T_UserLog()
                     {
                         AddDate = DateTime.Now,
-                        Content = string.Format("{0}于{1}登录系统", user.UserName, DateTime.Now.ToString("yyyy-MM-dd")),
+                        Content = string.Format("{0}于{1}登录系统", user.UserName, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")),
                         UserID = user.UserID,
                         UserName = user.UserName
                     };
