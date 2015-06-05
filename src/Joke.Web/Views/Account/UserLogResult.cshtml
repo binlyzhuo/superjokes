@@ -1,0 +1,40 @@
+﻿@model PageSearchResult<T_UserLog>
+@using Joke.Model.ViewModel
+@using Joke.Model.Domain
+@using Joke.Web.Helpers
+
+@if (Model.TotalCount == 0)
+{
+    <div>暂无数据</div>
+}
+else
+{
+    <table class="gridtable">
+        <tr>
+            <th>序号</th>
+            <th>用户</th>
+            <th>发表时间</th>
+            <th>内容</th>
+            
+        </tr>
+
+        @foreach (var m in Model.Items)
+        {
+            <tr>
+                <td>@m.ID</td>
+                <td>@m.UserName</td>
+
+                <td>@m.AddDate.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                <td>@m.Content</td>
+                
+            </tr>
+        }
+    </table>
+    <br />
+    <div>
+
+        <div class="page">
+            @Html.AjaxPaging(Model.Page, Model.TotalCount, Model.TotalPages)
+        </div>
+    </div>
+}

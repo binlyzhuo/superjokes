@@ -132,7 +132,19 @@ namespace Joke.Web.Controllers
 
         public ActionResult UserLog()
         {
+            
             return View();
         }
+
+        [HttpPost]
+        public ActionResult UserLogResult(int page=1)
+        {
+            UserLogSearchModel search = new UserLogSearchModel();
+            search.Page = page;
+            var pageResult = userLogic.UserLogSearch(search);
+            return View(pageResult);
+        }
+
+
     }
 }

@@ -352,6 +352,7 @@
     <Content Include="Views\User\JokeList.cshtml" />
     <Content Include="Views\Home\Error.cshtml" />
     <Content Include="Views\Account\UserLog.cshtml" />
+    <Content Include="Views\Account\UserLogResult.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

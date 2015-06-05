@@ -4,5 +4,32 @@
     Layout = "~/Views/Shared/_BaseAdminLayoutPage.cshtml";
 }
 
-<h2>UserLog</h2>
+@section header{
+    <style type="text/css">
+        .postlist {
+            width: 700px;
+        }
+    </style>
+    <script type="text/javascript">
+        function search(p) {
+            $.ajax({
+                url: '/account/UserLogResult',
+                type: 'post',
+                dateType:'json',
+                data:{page:p},
+                success: function (d) {
+                    $("#searchresult").html(d);
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            search(1);
+        });
+    </script>
+}
+<h2>操作日志</h2>
+<div id="searchresult">
+
+</div>
 
