@@ -68,6 +68,7 @@
     <Compile Include="ViewModel\JokeTags.cs" />
     <Compile Include="ViewModel\PageSearchResult.cs" />
     <Compile Include="ViewModel\UserJokesSearchModel.cs" />
+    <Compile Include="ViewModel\UserLogSearchModel.cs" />
     <Compile Include="ViewModel\UserSearchModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

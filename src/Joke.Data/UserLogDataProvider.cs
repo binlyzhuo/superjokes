@@ -1,4 +1,6 @@
 ﻿using Joke.Model.Domain;
+using Joke.Model.ViewModel;
+using NPoco;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +14,20 @@ namespace Joke.Data
         public UserLogDataProvider()
         {
 
+        }
+
+        public PageSearchResult<T_UserLog> UserLogSearch(UserLogSearchModel search)
+        {
+            Sql where = Sql.Builder.Where("1=1").OrderBy("ID DESC");
+            var pageResult = this.jokeDatabase.Page<T_UserLog>(search.Page,search.PageSize,where);
+            PageSearchResult<T_UserLog> pageViewResult = new PageSearchResult<T_UserLog>()
+            {
+                Items = pageResult.Items,
+                Page = (int)pageResult.CurrentPage,
+                PageSize = (int)pageResult.ItemsPerPage,
+                TotalCount = (int)pageResult.TotalItems
+            };
+            return pageViewResult;
         }
     }
 }

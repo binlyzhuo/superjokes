@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Joke.BusinessLogic
 {
     public class UserBusinessLogic : BaseLogic
@@ -80,6 +81,12 @@ namespace Joke.BusinessLogic
         public void AddUserLog(T_UserLog log)
         {
             userlogData.Add(log);
+        }
+
+        public PageSearchResult<T_UserLog> UserLogSearch(UserLogSearchModel search)
+        {
+            var pageViewResut = userlogData.UserLogSearch(search);
+            return pageViewResut;
         }
     }
 }
