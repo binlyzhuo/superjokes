@@ -277,6 +277,7 @@
     <Compile Include="Helpers\AppConfig.cs" />
     <Compile Include="Helpers\ElmahResult.cs" />
     <Compile Include="Helpers\GZipCompressAttribute.cs" />
+    <Compile Include="Helpers\NoticeMail.cs" />
     <Compile Include="Helpers\SafeFilterAttribute.cs" />
     <Compile Include="Auth\UserAuthorizeAttribute.cs" />
     <Compile Include="Auth\UserInfo.cs" />
@@ -292,11 +293,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\JokeHelper.cs" />
-    <Compile Include="Helpers\RouteConfigBind.cs" />
-    <Compile Include="Helpers\SinaOAuth.cs" />
-    <Compile Include="Helpers\TencentOAuth.cs" />
     <Compile Include="Helpers\ValidateCode.cs" />
-    <Compile Include="Helpers\WebHelper.cs" />
+    <Compile Include="Helpers\MyHtmlHelper.cs" />
     <Compile Include="Models\AdminLoginModel.cs" />
     <Compile Include="Models\JokeUpdateModel.cs" />
     <Compile Include="Models\JsonViewResult.cs" />
@@ -351,6 +349,8 @@
     <Content Include="Views\Shared\_About.cshtml" />
     <Content Include="Views\Home\Test.cshtml" />
     <Content Include="Views\Home\HotCategoryJokes.cshtml" />
+    <Content Include="Views\User\JokeList.cshtml" />
+    <Content Include="Views\Home\Error.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,6 +1,7 @@
 ﻿@model PageSearchResult<T_User>
 @using Joke.Model.ViewModel
 @using Joke.Model.Domain
+@using Joke.Web.Helpers
 
 @if (Model.TotalCount == 0)
 {
@@ -41,13 +42,17 @@ else
                     {
                         <a href="#" onclick="updateUsers(@m.ID,0)">拖黑</a>
                     }
+                    <a href="#" onclick="deleteUser(@m.ID)">删除用户</a>
                 </td>
-
-
 
             </tr>
         }
     </table>
+    <br />
+    <div>
 
+        <div class="page">
+            @Html.AjaxPaging(Model.Page, Model.TotalCount, Model.TotalPages)
+        </div>
+    </div>
 }
-

@@ -2,9 +2,6 @@
     ViewBag.Title = "用户管理";
     Layout = "~/Views/Shared/_BaseAdminLayoutPage.cshtml";
 }
-@model PageSearchResult<T_User>
-@using Joke.Model.ViewModel
-@using Joke.Model.Domain
 @section header{
     <script type="text/javascript">
         function updateUsers(uid,state) {
@@ -19,10 +16,22 @@
             
         }
 
-        function userSearch(){
-
+        function search(p) {
+            $.ajax({
+                url:'/account/usersearchlist',
+                type: 'post',
+                dateType:'json',
+                data:{page:p},
+                success: function (d) {
+                    $("#searchresult").html(d);
+                }
+            });
         }
 
+        $(document).ready(function () {
+            search(1);
+        });
+        
         function deleteUser(uid){
             if(confirm("确认删除该用户"))
             {
@@ -42,50 +51,4 @@
 }
 <h2>用户管理</h2>
 
-@if (Model.TotalCount == 0)
-{
-    <div>暂无待审核笑话</div>
-}
-else
-{
-
-    <table class="gridtable">
-        <tr>
-            <th>会员ID</th>
-            <th>用户名</th>
-            <th>邮件</th>
-            <th>昵称</th>
-            <th>注册时间</th>
-            <th>角色</th>
-            <th>状态</th>
-            <th>操作</th>
-        </tr>
-
-        @foreach (var m in Model.Items)
-        {
-            <tr>
-                <td>@m.ID</td>
-                <td>@m.UserName</td>
-                <td>@m.Email</td>
-                <td>@m.NikeName</td>
-                <td>@m.RegisterDate.ToString("yyyy-MM-dd HH:mm:ss")</td>
-                <td>@Html.Raw(m.IsAdmin == 0 ? "会员" : "管理员") </td>
-                <td>@Html.Raw(m.State == 0 ? "无效" : "有效") </td>
-                <td>
-                    <a href="#" onclick="jokeDetail(@m.ID)">查看</a>
-                    @if (m.State == 0)
-                    {
-                        <a href="#" onclick="updateUsers(@m.ID,1)">解锁</a>
-                    }
-                    @if (m.State == 1)
-                    {
-                        <a href="#" onclick="updateUsers(@m.ID,0)">拖黑</a>
-                    }
-                    <a href="#" onclick="deleteUser(@m.ID)">删除用户</a>
-                </td>
-
-            </tr>
-        }
-    </table>
-
-}
+<div id="searchresult"></div>

@@ -78,13 +78,23 @@ namespace Joke.Web.Controllers
             return View();
         }
 
-        public ActionResult PostList(UserJokesSearchModel search)
+        public ActionResult PostList()
         {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult JokeList(int page=1)
+        {
+            UserJokesSearchModel search = new UserJokesSearchModel();
             search.UserId = user.UserId;
-            
+            search.Page = page;
+
             var pageViewResult = jokeLogic.UserJokesSearch(search);
             return View(pageViewResult);
         }
+
+        
 
         public void Logout()
         {

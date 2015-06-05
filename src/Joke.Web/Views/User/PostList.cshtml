@@ -4,13 +4,27 @@
 }
 
 @section headersection{
-  <style type="text/css">
-      .postlist{width:700px;}
-    </style>    
+    <style type="text/css">
+        .postlist {
+            width: 700px;
+        }
+    </style>
     <script type="text/javascript">
         function search(p) {
-
+            $.ajax({
+                url:'/user/jokelist',
+                type: 'post',
+                dateType:'json',
+                data:{page:p},
+                success: function (d) {
+                    $("#searchresult").html(d);
+                }
+            });
         }
+
+        $(document).ready(function () {
+            search(1);
+        });
     </script>
 }
 @model PageSearchResult<JokePostInfo>
@@ -19,46 +33,10 @@
 @using Joke.Web.Helpers
 
 <h2>我发布的笑话</h2>
-@if (Model.TotalCount == 0)
-{
-    <div>暂无待审核笑话</div>
-}
-else
-{
+<div id="searchresult">
+   
+</div>
 
-    <table class="gridtable">
-        <tr>
-            <th>序号</th>
-            <th>标题</th>
-           
-            <th>发表时间</th>
-            <th>状态</th>
-            <th>操作</th>
-        </tr>
-
-        @foreach (var m in Model.Items)
-        {
-            <tr>
-                <td>@m.JokeId</td>
-                <td>@m.Title</td>
-                
-                <td>@m.PostDate.ToString("yyyy-MM-dd HH:mm:ss")</td>
-                <td>@Html.Raw(m.JokeState == 0 ? "待审核" : "已审核") </td>
-                <td>
-                    <a href="#" onclick="jokeDetail(@m.JokeId)">查看</a>
-                    
-                </td>
-            </tr>
-        }
-    </table>
-    <br />
-    <div>
-        
-        <div class="page">
-            @Html.AjaxPaging(Model.Page, Model.TotalCount, Model.TotalPages, "user/postlist")
-        </div>
-    </div>
-}
 
 
 

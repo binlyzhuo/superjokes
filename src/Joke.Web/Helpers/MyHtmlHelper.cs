@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace Joke.Web.Helpers
 {
-    public static class WebHelper
+    public static class MyHtmlHelper
     {
         public static HtmlString ShowPageNavigate(this HtmlHelper htmlHelper, int currentPage,int totalCount,int totalPages,string link="")
         {
@@ -50,21 +50,21 @@ namespace Joke.Web.Helpers
                 }
                 output.Append(" ");
             }
-            output.AppendFormat("<label>第{0}页 / 共{1}页</label>", currentPage, totalPages);//这个统计加不加都行
+            //output.AppendFormat("<label>第{0}页 / 共{1}页</label>", currentPage, totalPages);//这个统计加不加都行
 
             return new HtmlString(output.ToString());
         }
 
-        public static HtmlString AjaxPaging(this HtmlHelper htmlHelper, int currentPage, int totalCount, int totalPages, string link = "")
+        public static HtmlString AjaxPaging(this HtmlHelper htmlHelper, int currentPage, int totalCount, int totalPages)
         {
             //var redirectTo = htmlHelper.ViewContext.RequestContext.HttpContext.Request.Url.AbsolutePath;
             var output = new StringBuilder();
             if (totalPages > 1)
             {
-                output.AppendFormat("<a class='pageLink' href='/{0}/1.html'>首页</a> ", link);
+                output.AppendFormat("<a class='pageLink' href='javascript:search({0});'>首页</a> ", currentPage);
                 if (currentPage > 1)
                 {//处理上一页的连接
-                    output.AppendFormat("<a class='pageLink' href='/{0}/{1}.html'>上一页</a> ", link, currentPage - 1);
+                    output.AppendFormat("<a class='pageLink' href='javascript:search({0});'>上一页</a> ", currentPage - 1);
                 }
 
                 output.Append(" ");
@@ -75,24 +75,24 @@ namespace Joke.Web.Helpers
                     {
                         if (currint == i)
                         {//当前页处理                           
-                            output.AppendFormat("<a class='selectpage' href='/{0}/{1}.html'>{2}</a> ", link, currentPage, currentPage);
+                            output.AppendFormat("<a class='selectpage' href='javascript:search({0});'>{0}</a> ", currentPage);
                         }
                         else
                         {//一般页处理
-                            output.AppendFormat("<a class='pageLink' href='/{0}/{1}.html'>{2}</a> ", link, currentPage + i - currint, currentPage + i - currint);
+                            output.AppendFormat("<a class='pageLink' href='javascript:search({0});'>{0}</a> ", currentPage + i - currint);
                         }
                     }
                     output.Append(" ");
                 }
                 if (currentPage < totalPages)
                 {//处理下一页的链接
-                    output.AppendFormat("<a class='pageLink' href='/{0}/{1}.html'>下一页</a> ", link, currentPage + 1);
+                    output.AppendFormat("<a class='pageLink' href='javascript:search({0});'>下一页</a> ", currentPage + 1);
                 }
 
                 output.Append(" ");
                 if (currentPage != totalPages)
                 {
-                    output.AppendFormat("<a class='pageLink' href='/{0}/{1}.html'>末页</a> ", link, totalPages);
+                    output.AppendFormat("<a class='pageLink' href='javascript:search({0});'>末页</a> ", totalPages);
                 }
                 output.Append(" ");
             }

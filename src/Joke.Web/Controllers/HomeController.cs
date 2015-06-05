@@ -276,6 +276,11 @@ namespace Joke.Web.Controllers
             return View();
         }
 
+        public ActionResult Error()
+        {
+            return View();
+        }
+
         public ActionResult QQCallBack()
         {
             return View();
