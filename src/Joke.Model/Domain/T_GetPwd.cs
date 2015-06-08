@@ -20,6 +20,7 @@ namespace Joke.Model.Domain
         private string _guid;
         private DateTime _adddate = DateTime.Now;
         private DateTime _expiredate = DateTime.Now;
+        private int _state = 1;
         /// <summary>
         /// 主键
         /// </summary>
@@ -60,6 +61,15 @@ namespace Joke.Model.Domain
         {
             set { _expiredate = value; }
             get { return _expiredate; }
+        }
+
+        /// <summary>
+        /// 有效状态
+        /// </summary>
+        public int State
+        {
+            set { _state = value; }
+            get { return _state; }
         }
         #endregion Model
 

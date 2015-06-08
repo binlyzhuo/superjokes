@@ -308,7 +308,7 @@ namespace Joke.Web.Controllers
             return View();
         }
 
-        
+
 
         /// <summary>
         /// 热门笑话
@@ -350,7 +350,7 @@ namespace Joke.Web.Controllers
             }
 
             var getpwdRecord = userBusinessLogic.GetPwdRecord(userinfo.ID);
-            if(getpwdRecord!=null)
+            if (getpwdRecord != null)
             {
                 json.Message = "已发送,请查收邮箱";
                 json.Success = true;
@@ -361,13 +361,14 @@ namespace Joke.Web.Controllers
             {
                 AddDate = DateTime.Now,
                 Guid = Guid.NewGuid().ToString("N"),
-                UserID = userinfo.ID, 
-                ExpireDate = DateTime.Now.AddHours(3)
+                UserID = userinfo.ID,
+                ExpireDate = DateTime.Now.AddHours(3),
+                State = 1
             };
 
-            json.Success=userBusinessLogic.AddGetPwdRecord(getpwd);
+            json.Success = userBusinessLogic.AddGetPwdRecord(getpwd);
             json.Message = "已发送,请查收邮箱";
-            string url = "http://"+Request.Url.Authority + "/home/ResetPwd?guid="+getpwd.Guid;
+            string url = "http://" + Request.Url.Authority + "/home/ResetPwd?guid=" + getpwd.Guid;
             NoticeMail.GetPassword(userinfo.UserName, userinfo.Email, url);
             return Json(json, JsonRequestBehavior.AllowGet);
         }
@@ -377,7 +378,7 @@ namespace Joke.Web.Controllers
         {
             var getpwdRecord = userBusinessLogic.GetPwdRecord(guid);
             bool checkResult = false;
-            if(getpwdRecord!=null)
+            if (getpwdRecord != null)
             {
                 checkResult = true;
             }
@@ -387,11 +388,54 @@ namespace Joke.Web.Controllers
             return View(model);
         }
 
-        public JsonResult ResetPwd(string guid,string password,string pwdconfig)
+        [HttpPost]
+        public JsonResult ResetPwd(string guid, string password, string configpwd)
         {
             JsonViewResult json = new JsonViewResult();
 
-            return Json(json,JsonRequestBehavior.AllowGet);
+            if (string.IsNullOrEmpty(guid) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(configpwd))
+            {
+                json.Success = false;
+                json.Message = "请输入密码和确认密码！";
+                return Json(json, JsonRequestBehavior.AllowGet);
+            }
+
+            if (password.Length < 6)
+            {
+                json.Success = false;
+                json.Message = "密码长度小于6位！";
+                return Json(json, JsonRequestBehavior.AllowGet);
+            }
+
+            var getpwd = userBusinessLogic.GetPwdRecord(guid);
+            if (getpwd == null)
+            {
+                json.Success = false;
+                json.Message = "修改状态不正确，请重新提交修改申请！";
+                return Json(json, JsonRequestBehavior.AllowGet);
+            }
+
+            var userinfo = userBusinessLogic.GetUserInfo(getpwd.UserID);
+            if (userinfo == null)
+            {
+                json.Success = false;
+                json.Message = "用户状态不正确！";
+                return Json(json, JsonRequestBehavior.AllowGet);
+            }
+
+            userinfo.Password = Md5.GetMd5(password);
+            json.Success = userBusinessLogic.UpdateUserPwd(userinfo.ID, userinfo.Password);
+            if (json.Success)
+            {
+                json.Message = "密码修改成功!";
+                getpwd.State = 0;
+                userBusinessLogic.UpdateGetPwd(getpwd);
+            }
+            else
+            {
+                json.Message = "密码修改失败！";
+            }
+            return Json(json, JsonRequestBehavior.AllowGet);
         }
     }
 }

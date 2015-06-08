@@ -1,15 +1,43 @@
-﻿
+﻿@model Joke.Web.Models.GetPasswordModel
 @{
     ViewBag.Title = "重置密码";
     Layout = "~/Views/Shared/_BaseLayoutPage.cshtml";
+    bool checkResult = ViewBag.CheckResult;
 }
+@section header{
+   <script type="text/javascript">
+       function resetpwd() {
+           var guid = $("#guid").val();
+           var password = $("#txtpassword").val();
+           var configpwd = $("#txtConfirm").val();
 
+           if ($.trim(guid)=="" || $.trim(password)=="" || $.trim(configpwd)=="" || (password != configpwd)) {
+               alert("输入状态不正确！");
+               return;
+           }
+
+           $.post('/home/resetpwd', { guid: guid, password: password, configpwd: configpwd }, function (d) {
+               alert(d.Message);
+               if (d.Success) {
+                   window.location.href = "/home/login";
+               }
+               else
+               {
+                   window.location.href = "/home/getpwd";
+               }
+           });
+       }
+    </script>    
+}
 <div class="regdiv wrapper" style="width:500px;height:300px;margin-top:20px;">
-    <form method="post" action="login" id="userLoginForm">
+    @if (checkResult)
+    {
         <table id="registerTable">
             <tr>
                 <td></td>
-                <td colspan="2"></td>
+                <td colspan="2">
+                    @Html.Hidden("guid",Model.Guid)
+                </td>
 
             </tr>
             <tr>
@@ -20,7 +48,7 @@
             <tr>
                 <td class="title">新密码：</td>
                 <td>
-                    <input type="text" id="txtpassword" name="password" class="text-form" />
+                    <input type="password" id="txtpassword" name="password" class="text-form" />
                     <span class="mustinput">*</span>
                 </td>
                 <td>
@@ -30,7 +58,7 @@
             <tr>
                 <td class="title">密码确认：</td>
                 <td>
-                    <input type="text" id="txtConfirm" name="pwdconfirm" class="text-form" />
+                    <input type="password" id="txtConfirm" name="pwdconfirm" class="text-form" />
                     <span class="mustinput">*</span>
                 </td>
                 <td>
@@ -40,11 +68,15 @@
             <tr>
                 <td></td>
                 <td colspan="2" align="left">
-                    <input type="button" value="提交修改"  id="btnSend" style="width:100px;height:30px;" />
+                    <input type="button" value="提交修改" id="btnSend" onclick="resetpwd();" style="width:100px;height:30px;" />
 
                 </td>
             </tr>
 
         </table>
-    </form>
+    }
+    else
+    {
+        <div>修改状态不正确！</div>
+    }
 </div>
