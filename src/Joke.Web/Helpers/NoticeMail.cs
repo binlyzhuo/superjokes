@@ -65,13 +65,13 @@ namespace Joke.Web.Helpers
             HttpPost postMethod = new HttpPost(new Uri("http://sendcloud.sohu.com/webapi/mail.send_template.json"));
             MultipartEntity multipartEntity = new MultipartEntity();
             postMethod.Entity = multipartEntity;
-            multipartEntity.AddBody(new StringBody(Encoding.UTF8, "template_invoke_name", "superjokes_verifynotice"));
-            multipartEntity.AddBody(new StringBody(Encoding.UTF8, "substitution_vars", "{\"to\": [\"" + email + "\"], \"sub\" : { \"%username%\" : [\"" + userName + "\"],\"joketitle\":[\"" + url + "\"]}}"));
+            multipartEntity.AddBody(new StringBody(Encoding.UTF8, "template_invoke_name", "superjokes_findpassword"));
+            multipartEntity.AddBody(new StringBody(Encoding.UTF8, "substitution_vars", "{\"to\": [\"" + email + "\"], \"sub\" : { \"%username%\" : [\"" + userName + "\"],\"%reseturl%\":[\"" + url + "\"]}}"));
             multipartEntity.AddBody(new StringBody(Encoding.UTF8, "api_user", "superjokes_cn"));
             multipartEntity.AddBody(new StringBody(Encoding.UTF8, "api_key", "XueQ6S20K8v4BTdg"));
             multipartEntity.AddBody(new StringBody(Encoding.UTF8, "from", "service@superjokes.cn"));
             multipartEntity.AddBody(new StringBody(Encoding.UTF8, "fromname", "超级冷笑话"));
-            multipartEntity.AddBody(new StringBody(Encoding.UTF8, "subject", "超级冷笑话审核通知"));
+            multipartEntity.AddBody(new StringBody(Encoding.UTF8, "subject", "超级冷笑话找回密码"));
             CodeScales.Http.Methods.HttpResponse response = client.Execute(postMethod);
 
             var repCode = response.ResponseCode;

@@ -367,6 +367,8 @@ namespace Joke.Web.Controllers
 
             json.Success=userBusinessLogic.AddGetPwdRecord(getpwd);
             json.Message = "已发送,请查收邮箱";
+            string url = "http://"+Request.Url.Authority + "/home/ResetPwd?guid="+getpwd.Guid;
+            NoticeMail.GetPassword(userinfo.UserName, userinfo.Email, url);
             return Json(json, JsonRequestBehavior.AllowGet);
         }
 
