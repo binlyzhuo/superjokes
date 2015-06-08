@@ -9,5 +9,7 @@ namespace Joke.Web.Models
     {
         public bool Success { set; get; }
         public string Message { set; get; }
+
+        public int Status { set; get; }
     }
 }

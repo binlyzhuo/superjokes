@@ -397,6 +397,7 @@ namespace Joke.Web.Controllers
             {
                 json.Success = false;
                 json.Message = "请输入密码和确认密码！";
+                json.Status = 1;
                 return Json(json, JsonRequestBehavior.AllowGet);
             }
 
@@ -404,6 +405,7 @@ namespace Joke.Web.Controllers
             {
                 json.Success = false;
                 json.Message = "密码长度小于6位！";
+                json.Status = 1;
                 return Json(json, JsonRequestBehavior.AllowGet);
             }
 
