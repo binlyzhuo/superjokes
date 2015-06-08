@@ -4,5 +4,47 @@
     Layout = "~/Views/Shared/_BaseLayoutPage.cshtml";
 }
 
-<h2>重置密码</h2>
+<div class="regdiv wrapper" style="width:500px;height:300px;margin-top:20px;">
+    <form method="post" action="login" id="userLoginForm">
+        <table id="registerTable">
+            <tr>
+                <td></td>
+                <td colspan="2"></td>
 
+            </tr>
+            <tr>
+                <td></td>
+                <td colspan="2" align="left" style="font-size:15px;font-weight:bold;">重置密码:</td>
+
+            </tr>
+            <tr>
+                <td class="title">新密码：</td>
+                <td>
+                    <input type="text" id="txtpassword" name="password" class="text-form" />
+                    <span class="mustinput">*</span>
+                </td>
+                <td>
+                    <span id="msgPassword"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="title">密码确认：</td>
+                <td>
+                    <input type="text" id="txtConfirm" name="pwdconfirm" class="text-form" />
+                    <span class="mustinput">*</span>
+                </td>
+                <td>
+                    <span id="msgpwdconfirm"></span>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td colspan="2" align="left">
+                    <input type="button" value="提交修改"  id="btnSend" style="width:100px;height:30px;" />
+
+                </td>
+            </tr>
+
+        </table>
+    </form>
+</div>

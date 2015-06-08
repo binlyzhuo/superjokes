@@ -374,8 +374,22 @@ namespace Joke.Web.Controllers
         public ActionResult ResetPwd(string guid)
         {
             var getpwdRecord = userBusinessLogic.GetPwdRecord(guid);
-            
-            return View();
+            bool checkResult = false;
+            if(getpwdRecord!=null)
+            {
+                checkResult = true;
+            }
+            ViewBag.CheckResult = checkResult;
+            GetPasswordModel model = new GetPasswordModel();
+            model.Guid = guid;
+            return View(model);
+        }
+
+        public JsonResult ResetPwd(string guid,string password,string pwdconfig)
+        {
+            JsonViewResult json = new JsonViewResult();
+
+            return Json(json,JsonRequestBehavior.AllowGet);
         }
     }
 }

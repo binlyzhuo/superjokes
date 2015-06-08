@@ -299,6 +299,7 @@
     <Compile Include="Helpers\ValidateCode.cs" />
     <Compile Include="Helpers\MyHtmlHelper.cs" />
     <Compile Include="Models\AdminLoginModel.cs" />
+    <Compile Include="Models\GetPasswordModel.cs" />
     <Compile Include="Models\JokeUpdateModel.cs" />
     <Compile Include="Models\JsonViewResult.cs" />
     <Compile Include="Models\PostJokeResult.cs" />
