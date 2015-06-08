@@ -22,25 +22,24 @@ namespace Joke.Web.Controllers
         UserBusinessLogic userBusinessLogic = new UserBusinessLogic();
 
         // GET: Home
-        [OutputCache(Duration=10)]
+        [OutputCache(Duration = 10)]
         public ActionResult Index()
         {
-            
+
             // 判断是否是手机端
             string strUserAgent = Request.UserAgent.ToString().ToLower();
             if (!string.IsNullOrEmpty(strUserAgent))
             {
-                if(Request.Browser.IsMobileDevice)
+                if (Request.Browser.IsMobileDevice)
                 {
                     Response.StatusCode = 301;
                     Response.RedirectLocation = "http://m.superjokes.cn";
                     Response.End();
                 }
-                
+
             }
 
             //
-            NoticeMail.SendWelcomeMail("bingo","binlyzhuo@outlook.com");
 
             SetPageSeo(SiteTitle, SiteKeyWords, SiteDescription);
             return View();
@@ -49,12 +48,12 @@ namespace Joke.Web.Controllers
         //
         public ActionResult Login()
         {
-            
-            if(Request.IsAuthenticated)
+
+            if (Request.IsAuthenticated)
             {
-                return RedirectToAction("Profile","User",null);
+                return RedirectToAction("Profile", "User", null);
             }
-            
+
             return View();
         }
 
@@ -62,7 +61,7 @@ namespace Joke.Web.Controllers
         public ActionResult Login(UserLoginModel userLoginModel)
         {
             SetPageSeo("用户登录");
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return View();
             }
@@ -73,21 +72,22 @@ namespace Joke.Web.Controllers
                 msgList.Add("验证码输入错误");
             }
 
-            userLoginModel = new UserLoginModel() {
+            userLoginModel = new UserLoginModel()
+            {
                 VerifyCode = Sanitizer.GetSafeHtmlFragment(userLoginModel.VerifyCode),
                 UserName = Sanitizer.GetSafeHtmlFragment(userLoginModel.UserName),
                 Password = userLoginModel.Password
             };
 
             var userinfo = userBusinessLogic.GetUserInfo(userLoginModel.UserName, Md5.GetMd5(userLoginModel.Password));
-            if(userinfo!=null)
+            if (userinfo != null)
             {
                 UserInfo user = new UserInfo(userinfo.ID, userinfo.UserName, userinfo.IsAdmin);
                 var userJson = JsonConvert.SerializeObject(user);
                 var ticket = new FormsAuthenticationTicket(1, userinfo.UserName, DateTime.Now, DateTime.Now.AddDays(1), true, userJson);
                 //FormsAuthentication.SetAuthCookie(userLoginModel.UserName, true);
                 string cookieString = FormsAuthentication.Encrypt(ticket);
-                HttpCookie authCookie = new HttpCookie(FormsAuthentication.FormsCookieName,cookieString);
+                HttpCookie authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, cookieString);
                 authCookie.Expires = ticket.Expiration;
                 authCookie.Path = FormsAuthentication.FormsCookiePath;
                 Response.Cookies.Add(authCookie);
@@ -96,7 +96,7 @@ namespace Joke.Web.Controllers
                 bool isAuth = Request.IsAuthenticated;
 
                 // add log
-                if(user.IsAdmin>0)
+                if (user.IsAdmin > 0)
                 {
                     T_UserLog log = new T_UserLog()
                     {
@@ -107,7 +107,7 @@ namespace Joke.Web.Controllers
                     };
                     userBusinessLogic.AddUserLog(log);
                 }
-                
+
                 return RedirectToAction("Profile", "User", null);
             }
             else
@@ -117,7 +117,7 @@ namespace Joke.Web.Controllers
                 return View();
             }
 
-            
+
         }
 
         public ActionResult LoginResult()
@@ -135,7 +135,7 @@ namespace Joke.Web.Controllers
         [HttpPost]
         public ActionResult Register(UserRegisterModel userRegister)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return View();
             }
@@ -147,20 +147,20 @@ namespace Joke.Web.Controllers
                 msgList.Add("验证码输入错误");
             }
 
-            
+
             var userinfo = userBusinessLogic.GetUserInfoByUserName(userRegister.UserName);
-            if(userinfo!=null)
+            if (userinfo != null)
             {
                 msgList.Add("用户名已存在");
             }
 
             userinfo = userBusinessLogic.GetUserInfoByEmail(userRegister.Email);
-            if(userinfo!=null)
+            if (userinfo != null)
             {
                 msgList.Add("Email已存在");
             }
 
-            if(msgList.Count>0)
+            if (msgList.Count > 0)
             {
                 ViewBag.MsgList = msgList;
                 return View();
@@ -173,12 +173,17 @@ namespace Joke.Web.Controllers
                 NikeName = "",
                 Password = Md5.GetMd5(userRegister.Password),
                 Photo = "",
-                RegisterDate = DateTime.Now, IsAdmin=0, State=1
+                RegisterDate = DateTime.Now,
+                IsAdmin = 0,
+                State = 1
             };
             int userId = userBusinessLogic.AddUser(userDomain);
-            if(userId>0)
+            if (userId > 0)
             {
-                return RedirectToAction("Profile","User",null);
+                // 发送注册成功提醒邮件
+                NoticeMail.SendWelcomeMail(userDomain.UserName, userDomain.Email);
+
+                return RedirectToAction("Profile", "User", null);
             }
             return View();
         }
@@ -188,10 +193,10 @@ namespace Joke.Web.Controllers
             return View();
         }
 
-        
-        public ActionResult Latest(int page=1)
+
+        public ActionResult Latest(int page = 1)
         {
-            SetPageSeo(string.Format("最新冷笑话_最新成人笑话_最新笑话_笑话大全_超级冷笑话_糗事百科_十万个冷笑话_第{0}页",page), SiteKeyWords, SiteDescription);
+            SetPageSeo(string.Format("最新冷笑话_最新成人笑话_最新笑话_笑话大全_超级冷笑话_糗事百科_十万个冷笑话_第{0}页", page), SiteKeyWords, SiteDescription);
             JokeSearchModel search = new JokeSearchModel();
             search.Page = page;
             search.SearchType = JokeSearchType.Latest;
@@ -203,7 +208,7 @@ namespace Joke.Web.Controllers
 
         public ActionResult LengXiaoHua(int page = 1)
         {
-            SetPageSeo(string.Format("最新冷笑话_最新成人笑话_最新笑话_笑话大全_糗事百科_十万个冷笑话_第{0}页",page), SiteKeyWords, SiteDescription);
+            SetPageSeo(string.Format("最新冷笑话_最新成人笑话_最新笑话_笑话大全_糗事百科_十万个冷笑话_第{0}页", page), SiteKeyWords, SiteDescription);
             JokeSearchModel search = new JokeSearchModel();
             search.Page = page;
             search.SearchType = JokeSearchType.LengXioaHua;
@@ -224,18 +229,18 @@ namespace Joke.Web.Controllers
             pageResult.Data = "images";
             pageResult.Data1 = "搞笑图片";
             return View("~/Views/Home/JokeList.cshtml", pageResult);
-            
+
         }
 
-        public ActionResult JokeCategoryList(string pinyin,int page=1,int pagesize=20)
+        public ActionResult JokeCategoryList(string pinyin, int page = 1, int pagesize = 20)
         {
-            
+
             pinyin = Sanitizer.GetSafeHtmlFragment(pinyin);
             var category = jokeLogic.CategoryGet(pinyin);
             string title = string.Format("{0}笑话大全_超级冷笑话_糗事百科_十万个冷笑话_第{1}页", category.Name, page);
-            string keywords = string.Format("{0}笑话，{1}",category.Name,SiteKeyWords);
+            string keywords = string.Format("{0}笑话，{1}", category.Name, SiteKeyWords);
             string description = string.Format("{0}笑话，{1}", category.Name, SiteDescription);
-            SetPageSeo(title,keywords,description);
+            SetPageSeo(title, keywords, description);
             JokeSearchModel search = new JokeSearchModel();
             search.Page = page;
             search.PageSize = pagesize;
@@ -261,7 +266,7 @@ namespace Joke.Web.Controllers
 
         public ActionResult LikeMostJokes()
         {
-            var jokes = jokeLogic.LikeMostJokesGet(10,null);
+            var jokes = jokeLogic.LikeMostJokesGet(10, null);
             return View(jokes);
         }
 
@@ -280,7 +285,7 @@ namespace Joke.Web.Controllers
             return File(bytes, @"image/jpeg");
         }
 
-        
+
 
         public ActionResult CategoryJokeList()
         {
@@ -303,25 +308,16 @@ namespace Joke.Web.Controllers
             return View();
         }
 
-        public ActionResult Test()
-        {
-            Response.Write("app test page!");
-            string strUserAgent = Request.UserAgent.ToString().ToLower();
-            if (!string.IsNullOrEmpty(strUserAgent))
-            {
-                Response.Write("<br/>ismobile:" + Request.Browser.IsMobileDevice);
-            }
-            return View();
-        }
+        
 
         /// <summary>
         /// 热门笑话
         /// </summary>
         /// <param name="categoryId"></param>
         /// <returns></returns>
-        public ActionResult HotCategoryJokes(int categoryId=1)
+        public ActionResult HotCategoryJokes(int categoryId = 1)
         {
-            var category=jokeLogic.GetCategoryInfo(categoryId);
+            var category = jokeLogic.GetCategoryInfo(categoryId);
             JokeCategoryJokesModel model = new JokeCategoryJokesModel();
             model.CategoryID = categoryId;
             model.CategoryName = category.Name;
@@ -329,6 +325,49 @@ namespace Joke.Web.Controllers
             model.JokeInfos = jokeLogic.GetCategoryJokes(categoryId, 10);
             model.TotalCount = jokeLogic.GetJokesCount(categoryId);
             return View(model);
+        }
+
+        public ActionResult GetPwd()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public JsonResult GetPwd(string userEmail)
+        {
+            JsonViewResult json = new JsonViewResult();
+            if (string.IsNullOrEmpty(userEmail) || !Utility.IsEmail(userEmail))
+            {
+                json.Message = "邮箱格式不正确!";
+                return Json(json, JsonRequestBehavior.AllowGet);
+            }
+            var userinfo = userBusinessLogic.GetUserInfoByEmail(userEmail);
+            if (userinfo == null)
+            {
+                json.Success = false;
+                json.Message = "找不到用户信息，请确认邮箱输入正确！";
+                return Json(json, JsonRequestBehavior.AllowGet);
+            }
+
+            var getpwdRecord = userBusinessLogic.GetPwdRecord(userinfo.ID);
+            if(getpwdRecord!=null)
+            {
+                json.Message = "已发送,请查收邮箱";
+                json.Success = true;
+                return Json(json, JsonRequestBehavior.AllowGet);
+            }
+
+            T_GetPwd getpwd = new T_GetPwd()
+            {
+                AddDate = DateTime.Now,
+                Guid = Guid.NewGuid().ToString("N"),
+                UserID = userinfo.ID, 
+                ExpireDate = DateTime.Now.AddHours(3)
+            };
+
+            json.Success=userBusinessLogic.AddGetPwdRecord(getpwd);
+            json.Message = "已发送,请查收邮箱";
+            return Json(json, JsonRequestBehavior.AllowGet);
         }
     }
 }

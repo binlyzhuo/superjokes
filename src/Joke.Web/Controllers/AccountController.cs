@@ -52,6 +52,8 @@ namespace Joke.Web.Controllers
                 jokeinfo.CheckUserId = user.UserId;
                 jokeLogic.UpdateJoke(jokeinfo);
                 jsonViewResult.Success = true;
+
+                // 发送审核
             }
             return Json(jsonViewResult,JsonRequestBehavior.AllowGet);
         }
@@ -86,8 +88,10 @@ namespace Joke.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult UserSearchList(UserSearchModel search)
+        public ActionResult UserSearchList(int page=1)
         {
+            UserSearchModel search = new UserSearchModel();
+            search.Page = page;
             var pageResult = userLogic.UserSearch(search);
             return View(pageResult);
         }

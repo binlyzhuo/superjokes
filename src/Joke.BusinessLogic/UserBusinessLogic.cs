@@ -14,10 +14,12 @@ namespace Joke.BusinessLogic
     {
         private readonly UserDataProvider userData;
         private readonly UserLogDataProvider userlogData;
+        private readonly GetPwdDataProvider getPwdData;
         public UserBusinessLogic()
         {
             userData = new UserDataProvider();
             userlogData = new UserLogDataProvider();
+            getPwdData = new GetPwdDataProvider();
         }
 
         public int AddUser(T_User user)
@@ -87,6 +89,16 @@ namespace Joke.BusinessLogic
         {
             var pageViewResut = userlogData.UserLogSearch(search);
             return pageViewResut;
+        }
+
+        public bool AddGetPwdRecord(T_GetPwd getpwd)
+        {
+            return getPwdData.Add(getpwd)>0;
+        }
+
+        public T_GetPwd GetPwdRecord(int userid)
+        {
+            return getPwdData.GetPwdRecord(userid);
         }
     }
 }

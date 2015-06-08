@@ -65,6 +65,7 @@
     <Compile Include="QiniuUpload.cs" />
     <Compile Include="SendCloud.cs" />
     <Compile Include="StringExtends.cs" />
+    <Compile Include="Utility.cs" />
     <Compile Include="WebCache.cs" />
   </ItemGroup>
   <ItemGroup>

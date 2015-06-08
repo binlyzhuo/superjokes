@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "找回密码";
+    Layout = "~/Views/Shared/_BaseLayoutPage.cshtml";
+}
+@section header{
+    <script type="text/javascript">
+        function send() {
+            var userEmail = $("#txtEmail").val();
+            if ($.trim(userEmail) == "") {
+                alert("请输入注册邮箱!");
+                return;
+            }
+
+            var emailRegex = re = /^(\w-*\.*)+@@(\w-?)+(\.\w{2,})+$/;
+            if (!emailRegex.test(userEmail)) {
+                alert("邮箱格式不正确!");
+                return;
+            }
+
+            $.post('/home/getpwd', { useremail: userEmail }, function (d) {
+                if (d.Success)
+                {
+                    $("#btnSend").attr("disabled", true);
+                }
+                alert(d.Message);
+            });
+        }
+    </script>
+}
+<div class="regdiv wrapper" style="width:500px;height:300px;margin-top:20px;">
+    <form method="post" action="login" id="userLoginForm">
+        <table id="registerTable">
+            <tr>
+                <td></td>
+                <td colspan="2">
+                    
+                </td>
+
+            </tr>
+            <tr>
+                <td></td>
+                <td colspan="2" align="left" style="font-size:15px;font-weight:bold;">找回密码:</td>
+
+            </tr>
+            <tr>
+                <td class="title">注册邮箱：</td>
+                <td>
+                    <input type="text" id="txtEmail" name="UserEmail" class="text-form" />
+                    <span class="mustinput">*</span>
+                </td>
+                <td>
+                    <span id="msgUserEmail"></span>
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td colspan="2" align="left">
+                    <input type="button" value="发送邮件" onclick="send();" id="btnSend" style="width:100px;height:30px;"  />
+                   
+                </td>
+            </tr>
+
+        </table>
+    </form>
+</div>
