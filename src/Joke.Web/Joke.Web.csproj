@@ -357,6 +357,7 @@
     <Content Include="Views\Account\UserLog.cshtml" />
     <Content Include="Views\Account\UserLogResult.cshtml" />
     <Content Include="Views\Home\GetPwd.cshtml" />
+    <Content Include="Views\Home\ResetPwd.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

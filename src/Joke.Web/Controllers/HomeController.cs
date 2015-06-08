@@ -369,5 +369,13 @@ namespace Joke.Web.Controllers
             json.Message = "已发送,请查收邮箱";
             return Json(json, JsonRequestBehavior.AllowGet);
         }
+
+        [HttpGet]
+        public ActionResult ResetPwd(string guid)
+        {
+            var getpwdRecord = userBusinessLogic.GetPwdRecord(guid);
+            
+            return View();
+        }
     }
 }

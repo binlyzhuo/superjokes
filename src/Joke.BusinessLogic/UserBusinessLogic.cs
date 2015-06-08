@@ -100,5 +100,10 @@ namespace Joke.BusinessLogic
         {
             return getPwdData.GetPwdRecord(userid);
         }
+
+        public T_GetPwd GetPwdRecord(string guid)
+        {
+            return getPwdData.GetPwdRecord(guid);
+        }
     }
 }

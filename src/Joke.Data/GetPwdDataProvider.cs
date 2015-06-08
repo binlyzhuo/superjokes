@@ -21,5 +21,12 @@ namespace Joke.Data
             var item = this.jokeDatabase.SingleOrDefault<T_GetPwd>(where);
             return item;
         }
+
+        public T_GetPwd GetPwdRecord(string guid)
+        {
+            Sql where = Sql.Builder.Where("Guid=@0 and ExpireDate>=getdate()", guid);
+            var item = this.jokeDatabase.SingleOrDefault<T_GetPwd>(where);
+            return item;
+        }
     }
 }
