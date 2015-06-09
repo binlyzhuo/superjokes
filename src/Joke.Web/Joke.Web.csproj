@@ -221,7 +221,7 @@
     <Content Include="Imgs\commentSection-bg.png" />
     <Content Include="Imgs\Connect_logo_1.png" />
     <Content Include="Imgs\Connect_logo_7.png" />
-    <Content Include="Imgs\errorimg.gif" />
+    <Content Include="Imgs\error404.jpg" />
     <Content Include="Imgs\filter-icon.png" />
     <Content Include="Imgs\header-bg.png" />
     <Content Include="Imgs\list-body-bg.png" />
