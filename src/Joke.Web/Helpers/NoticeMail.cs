@@ -13,11 +13,6 @@ namespace Joke.Web.Helpers
 {
     public class NoticeMail
     {
-        private static string sendCloudKey;
-        static NoticeMail()
-        {
-            sendCloudKey = AppConfig.SendCloudKey;
-        }
 
         public static void SendWelcomeMail(string userName,string email)
         {
@@ -28,7 +23,7 @@ namespace Joke.Web.Helpers
             multipartEntity.AddBody(new StringBody(Encoding.UTF8, "template_invoke_name", "superjokes_register"));
             multipartEntity.AddBody(new StringBody(Encoding.UTF8, "substitution_vars", "{\"to\": [\"" + email + "\"], \"sub\" : { \"%username%\" : [\"" + userName + "\"]}}"));
             multipartEntity.AddBody(new StringBody(Encoding.UTF8, "api_user", "superjokes_cn"));
-            multipartEntity.AddBody(new StringBody(Encoding.UTF8, "api_key", "XueQ6S20K8v4BTdg"));
+            multipartEntity.AddBody(new StringBody(Encoding.UTF8, "api_key", AppConfig.SendCloudKey));
             multipartEntity.AddBody(new StringBody(Encoding.UTF8, "from", "service@superjokes.cn"));
             multipartEntity.AddBody(new StringBody(Encoding.UTF8, "fromname", "超级冷笑话"));
             multipartEntity.AddBody(new StringBody(Encoding.UTF8, "subject", "超级冷笑话注册邮件"));
@@ -54,7 +49,7 @@ namespace Joke.Web.Helpers
             multipartEntity.AddBody(new StringBody(Encoding.UTF8, "template_invoke_name", "superjokes_verifynotice"));
             multipartEntity.AddBody(new StringBody(Encoding.UTF8, "substitution_vars", "{\"to\": [\"" + email + "\"], \"sub\" : { \"%username%\" : [\"" + userName + "\"],\"%joketitle%\":[\"" + jokeTitle + "\"],\"%jokeurl%\":[\"" + jokeurl + "\"]}}"));
             multipartEntity.AddBody(new StringBody(Encoding.UTF8, "api_user", "superjokes_cn"));
-            multipartEntity.AddBody(new StringBody(Encoding.UTF8, "api_key", "XueQ6S20K8v4BTdg"));
+            multipartEntity.AddBody(new StringBody(Encoding.UTF8, "api_key", AppConfig.SendCloudKey));
             multipartEntity.AddBody(new StringBody(Encoding.UTF8, "from", "service@superjokes.cn"));
             multipartEntity.AddBody(new StringBody(Encoding.UTF8, "fromname", "超级冷笑话"));
             multipartEntity.AddBody(new StringBody(Encoding.UTF8, "subject", "超级冷笑话审核通知"));
@@ -74,7 +69,7 @@ namespace Joke.Web.Helpers
             multipartEntity.AddBody(new StringBody(Encoding.UTF8, "template_invoke_name", "superjokes_findpassword"));
             multipartEntity.AddBody(new StringBody(Encoding.UTF8, "substitution_vars", "{\"to\": [\"" + email + "\"], \"sub\" : { \"%username%\" : [\"" + userName + "\"],\"%reseturl%\":[\"" + url + "\"]}}"));
             multipartEntity.AddBody(new StringBody(Encoding.UTF8, "api_user", "superjokes_cn"));
-            multipartEntity.AddBody(new StringBody(Encoding.UTF8, "api_key", "XueQ6S20K8v4BTdg"));
+            multipartEntity.AddBody(new StringBody(Encoding.UTF8, "api_key", AppConfig.SendCloudKey));
             multipartEntity.AddBody(new StringBody(Encoding.UTF8, "from", "service@superjokes.cn"));
             multipartEntity.AddBody(new StringBody(Encoding.UTF8, "fromname", "超级冷笑话"));
             multipartEntity.AddBody(new StringBody(Encoding.UTF8, "subject", "超级冷笑话找回密码"));

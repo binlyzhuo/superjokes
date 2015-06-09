@@ -14,8 +14,8 @@
     <title>@ViewBag.Title</title>
     <meta name="keywords" content="@ViewBag.KeyWords" />
     <meta name="description" content="@ViewBag.Description" />
-    
-    
+
+
     @Styles.Render("~/content/xiaohuacss")
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("header", false)
@@ -40,8 +40,8 @@
                 else
                 {
                     <a target="_self" href="/login" rel="nofollow">登录</a>
-                    
-                    <a target="_blank" href="/register" rel="nofollow">注册</a>
+
+                    <a target="_self" href="/register" rel="nofollow">注册</a>
                 }
                 <a target="_blank" href="http://m.superjokes.cn" title="超级冷笑话手机版">手机看笑话</a>
                 <a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=db2897f450bce914323fa66ec8d4d7c94f62fd75b6e5e7230d1d7db28dd82c93">
@@ -56,7 +56,7 @@
         </a>
 
 
-        
+
     </div>
 
 
@@ -66,13 +66,13 @@
     @Html.Partial("_FriendLinks")
     @Html.Partial("_About")
     <script>
-    var _hmt = _hmt || [];
-    (function () {
-        var hm = document.createElement("script");
-        hm.src = "//hm.baidu.com/hm.js?f344538d97afb5266a5905a8d337115d";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?f344538d97afb5266a5905a8d337115d";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
     </script>
 
     @MiniProfiler.RenderIncludes()

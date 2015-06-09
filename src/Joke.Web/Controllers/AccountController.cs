@@ -57,7 +57,8 @@ namespace Joke.Web.Controllers
 
                 // 发送审核
                 var userinfo = userLogic.GetUserInfo(jokeinfo.PostID);
-                NoticeMail.VerifyNotice(userinfo.UserName,userinfo.Email,jokeinfo.Title,jokeinfo.ID);
+                string jokeUrl = string.Format("http://{0}/joke{1}.html",Request.Url.Authority,jokeinfo.ID);
+                NoticeMail.VerifyNotice(userinfo.UserName, userinfo.Email, jokeinfo.Title, jokeUrl);
 
             }
             return Json(jsonViewResult,JsonRequestBehavior.AllowGet);

@@ -107,7 +107,7 @@ namespace Joke.Web.Controllers
                     };
                     userBusinessLogic.AddUserLog(log);
                 }
-
+                
                 return RedirectToAction("Profile", "User", null);
             }
             else
@@ -147,6 +147,10 @@ namespace Joke.Web.Controllers
                 msgList.Add("验证码输入错误");
             }
 
+            if(!Utility.IsEmail(userRegister.Email))
+            {
+                msgList.Add("Email输入错误");
+            }
 
             var userinfo = userBusinessLogic.GetUserInfoByUserName(userRegister.UserName);
             if (userinfo != null)
@@ -182,9 +186,12 @@ namespace Joke.Web.Controllers
             {
                 // 发送注册成功提醒邮件
                 NoticeMail.SendWelcomeMail(userDomain.UserName, userDomain.Email);
-
-                return RedirectToAction("Profile", "User", null);
+                msgList.Add("注册成功!");
+                ViewBag.MsgList = msgList;
+                //return RedirectToAction("Profile", "User", null);
             }
+            //Response.Write("<script>alert('注册成功，请登录！');</script>");
+            
             return View();
         }
 

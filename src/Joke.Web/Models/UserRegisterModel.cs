@@ -12,6 +12,7 @@ namespace Joke.Web.Models
         public string UserName { set; get; }
 
         [Required]
+        //[RegularExpression("[A-Za-z0-9][@][A-Za-z0-9]+[.][A-Za-z0-9]")]
         public string Email { set; get; }
 
         [Required]
