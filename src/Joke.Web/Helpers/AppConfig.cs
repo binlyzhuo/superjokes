@@ -22,7 +22,7 @@ namespace Joke.Web.Helpers
             JokeImgUpload = ConfigurationManager.AppSettings["JokeImgUpload"];
             IsEnableComment = ConfigurationManager.AppSettings["IsEnableComment"].ToInt32();
             HotCategories = ConfigurationManager.AppSettings["HotCategories"];
-            SendCloudKey = ConfigurationManager.AppSettings["XueQ6S20K8v4BTdg"];
+            SendCloudKey = ConfigurationManager.AppSettings["SendCloudSK"];
         }
     }
 }

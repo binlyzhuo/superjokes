@@ -2,6 +2,7 @@
 using CodeScales.Http.Entity;
 using CodeScales.Http.Entity.Mime;
 using CodeScales.Http.Methods;
+using Joke.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +32,7 @@ namespace Joke.Web.Helpers
 
             var repCode = response.ResponseCode;
             var repResult = EntityUtils.ToString(response.Entity);
+            //LogHelper.Info("reg:" + email + repResult + AppConfig.SendCloudKey);
 
             //Console.WriteLine("Response Code: " + response.ResponseCode);
             //Console.WriteLine("Response Content: " + EntityUtils.ToString(response.Entity));
@@ -57,7 +59,7 @@ namespace Joke.Web.Helpers
 
             var repCode = response.ResponseCode;
             var repResult = EntityUtils.ToString(response.Entity);
-
+            //LogHelper.Info("verify:" + email + repResult + AppConfig.SendCloudKey);
         }
 
         public static void GetPassword(string userName,string email,string url)
@@ -77,6 +79,8 @@ namespace Joke.Web.Helpers
 
             var repCode = response.ResponseCode;
             var repResult = EntityUtils.ToString(response.Entity);
+
+            //LogHelper.Info("getpwd:"+email+repResult+AppConfig.SendCloudKey);
         }
     }
 }
