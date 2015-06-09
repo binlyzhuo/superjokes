@@ -61,7 +61,7 @@ namespace Joke.Web.Helpers
             var output = new StringBuilder();
             if (totalPages > 1)
             {
-                output.AppendFormat("<a class='pageLink' href='javascript:search({0});'>首页</a> ", currentPage);
+                output.AppendFormat("<a class='pageLink' href='javascript:search({0});'>首页</a> ", 1);
                 if (currentPage > 1)
                 {//处理上一页的连接
                     output.AppendFormat("<a class='pageLink' href='javascript:search({0});'>上一页</a> ", currentPage - 1);

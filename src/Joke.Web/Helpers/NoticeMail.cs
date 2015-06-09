@@ -13,6 +13,12 @@ namespace Joke.Web.Helpers
 {
     public class NoticeMail
     {
+        private static string sendCloudKey;
+        static NoticeMail()
+        {
+            sendCloudKey = AppConfig.SendCloudKey;
+        }
+
         public static void SendWelcomeMail(string userName,string email)
         {
             HttpClient client = new HttpClient();
@@ -39,14 +45,14 @@ namespace Joke.Web.Helpers
             //Response.Write("Response Content: " + EntityUtils.ToString(response.Entity));
         }
 
-        public static void VerifyNotice(string userName,string email,string jokeTitle,int jokeId)
+        public static void VerifyNotice(string userName,string email,string jokeTitle,string jokeurl)
         {
             HttpClient client = new HttpClient();
             HttpPost postMethod = new HttpPost(new Uri("http://sendcloud.sohu.com/webapi/mail.send_template.json"));
             MultipartEntity multipartEntity = new MultipartEntity();
             postMethod.Entity = multipartEntity;
             multipartEntity.AddBody(new StringBody(Encoding.UTF8, "template_invoke_name", "superjokes_verifynotice"));
-            multipartEntity.AddBody(new StringBody(Encoding.UTF8, "substitution_vars", "{\"to\": [\"" + email + "\"], \"sub\" : { \"%username%\" : [\"" + userName + "\"],\"joketitle\":[\""+jokeTitle+"\"],\"jokeid\":[\""+jokeId+"\"]}}"));
+            multipartEntity.AddBody(new StringBody(Encoding.UTF8, "substitution_vars", "{\"to\": [\"" + email + "\"], \"sub\" : { \"%username%\" : [\"" + userName + "\"],\"%joketitle%\":[\"" + jokeTitle + "\"],\"%jokeurl%\":[\"" + jokeurl + "\"]}}"));
             multipartEntity.AddBody(new StringBody(Encoding.UTF8, "api_user", "superjokes_cn"));
             multipartEntity.AddBody(new StringBody(Encoding.UTF8, "api_key", "XueQ6S20K8v4BTdg"));
             multipartEntity.AddBody(new StringBody(Encoding.UTF8, "from", "service@superjokes.cn"));

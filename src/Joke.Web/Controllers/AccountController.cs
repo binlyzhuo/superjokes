@@ -2,6 +2,7 @@
 using Joke.Common;
 using Joke.Model.ViewModel;
 using Joke.Web.Auth;
+using Joke.Web.Helpers;
 using Joke.Web.Models;
 using System;
 using System.Collections.Generic;
@@ -53,7 +54,11 @@ namespace Joke.Web.Controllers
                 jokeLogic.UpdateJoke(jokeinfo);
                 jsonViewResult.Success = true;
 
+
                 // 发送审核
+                var userinfo = userLogic.GetUserInfo(jokeinfo.PostID);
+                NoticeMail.VerifyNotice(userinfo.UserName,userinfo.Email,jokeinfo.Title,jokeinfo.ID);
+
             }
             return Json(jsonViewResult,JsonRequestBehavior.AllowGet);
         }
