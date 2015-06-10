@@ -1,0 +1,56 @@
+﻿@model LinkEditModel
+@using Joke.Web.Models
+
+@{
+    ViewBag.Title = "友情链接";
+    Layout = "~/Views/Shared/_BaseAdminLayoutPage.cshtml";
+}
+@section header{
+   <script type="text/javascript">
+       function editlink() {
+           $("#postfriendlink").submit();
+       }
+    </script>    
+}
+<h2>友情链接</h2>
+<form id="postfriendlink" method="post" action="/account/linkedit">
+    <div class="content">
+        <ul class="mydata-list">
+            <li>
+                <label class="title">网站名称：</label>
+                <div class="others-cont">
+                    @Html.TextBoxFor(u => u.SiteName, new { @class = "text-form", style = "width:350px;" })
+                    @Html.ValidationMessageFor(u => u.SiteName)
+                    @Html.HiddenFor(u => u.ID)
+                </div>
+            </li>
+
+            <li>
+                <label class="title">网站链接：</label>
+                <div class="others-cont">
+                    @Html.TextBoxFor(u => u.LinkUrl, new { @class = "text-form", style = "width:350px;" })
+                    @Html.ValidationMessageFor(u => u.LinkUrl)
+                </div>
+            </li>
+
+            <li>
+                <label class="title">网站关键字：</label>
+                <div class="others-cont">
+                    @Html.TextBoxFor(u => u.KeyWords, new { @class = "text-form", style = "width:350px;" })
+                    @Html.ValidationMessageFor(u => u.KeyWords)
+                </div>
+            </li>
+            <li>
+                <label class="title">网站联系人：</label>
+                <div class="others-cont">
+                    @Html.TextBoxFor(u => u.LinkMan, new { @class = "text-form", style = "width:350px;" })
+                    @Html.ValidationMessageFor(u => u.LinkMan)
+                </div>
+            </li>
+        </ul>
+        <div class="save-btn">
+            <a href="javascript:;" onclick="editlink();" id="submitBtn" style="color:white;display:block;width:100px;padding:10px; text-align:center; margin-left:169px; background-color:#F28A1B;font-weight:bold;font-size:15px;" >确认提交</a>
+
+        </div>
+    </div>
+</form>

@@ -303,6 +303,7 @@
     <Compile Include="Models\GetPasswordModel.cs" />
     <Compile Include="Models\JokeUpdateModel.cs" />
     <Compile Include="Models\JsonViewResult.cs" />
+    <Compile Include="Models\LinkEditModel.cs" />
     <Compile Include="Models\PostJokeResult.cs" />
     <Compile Include="Models\UserLoginModel.cs" />
     <Compile Include="Models\UserRegisterModel.cs" />
@@ -360,6 +361,9 @@
     <Content Include="Views\Account\UserLogResult.cshtml" />
     <Content Include="Views\Home\GetPwd.cshtml" />
     <Content Include="Views\Home\ResetPwd.cshtml" />
+    <Content Include="Views\Account\Links.cshtml" />
+    <Content Include="Views\Account\LinkEdit.cshtml" />
+    <Content Include="Views\Account\LinkResult.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

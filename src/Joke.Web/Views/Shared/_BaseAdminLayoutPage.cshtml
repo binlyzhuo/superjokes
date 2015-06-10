@@ -16,7 +16,8 @@
     @RenderSection("header",false)
 </head>
 <body>
-    <div id="headerWrap" class="site-nav">
+
+    <div id="headerWrap" class="site-nav wrapper clearfix">
         <div class="site-nav-inner clearfix">
             <div class="quick-menu">
                 <a target="_parent" href="/">超级冷笑话</a>
@@ -37,21 +38,20 @@
             </div>
         </div>
     </div>
-    <div style="height:400px;margin-top:10px;margin-left:10px;">
+    <div style="height:400px;margin-top:10px;" class="wrapper clearfix">
 
         <div class="profileLeft">
             <ul class="useractionlist">
                 <li><a href="/account/verifylist">笑话审核</a></li>
                 <li><a href="/account/userlist">用户管理</a></li>
                 <li><a href="/account/userlog">操作日志</a></li>
-                
+                <li><a href="/account/links">友情链接</a></li>
             </ul>
         </div>
         <div class="profileRight">
             @RenderBody()
         </div>
     </div>
-
     @StackExchange.Profiling.MiniProfiler.RenderIncludes()
 </body>
 </html>

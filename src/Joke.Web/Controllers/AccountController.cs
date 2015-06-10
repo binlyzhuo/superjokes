@@ -1,5 +1,6 @@
 ﻿using Joke.BusinessLogic;
 using Joke.Common;
+using Joke.Model.Domain;
 using Joke.Model.ViewModel;
 using Joke.Web.Auth;
 using Joke.Web.Helpers;
@@ -18,6 +19,7 @@ namespace Joke.Web.Controllers
     {
         UserBusinessLogic userLogic = new UserBusinessLogic();
         JokeBusinessLogic jokeLogic = new JokeBusinessLogic();
+        FriendLinkBusinessLogic friendLinkLogic = new FriendLinkBusinessLogic();
         // GET: Account
         public ActionResult Index()
         {
@@ -30,7 +32,7 @@ namespace Joke.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult JokeList(int page=1,int pagesize=20,int state=0)
+        public ActionResult JokeList(int page = 1, int pagesize = 20, int state = 0)
         {
             UserJokesSearchModel userSearch = new UserJokesSearchModel();
             userSearch.JokeState = state;
@@ -38,11 +40,11 @@ namespace Joke.Web.Controllers
             return View(pageViewResult);
         }
 
-        public JsonResult Verify(int jokeid,int type)
+        public JsonResult Verify(int jokeid, int type)
         {
             JsonViewResult jsonViewResult = new JsonViewResult();
             var jokeinfo = jokeLogic.JokeDetailGet(jokeid);
-            if(jokeinfo==null||jokeinfo.State==1)
+            if (jokeinfo == null || jokeinfo.State == 1)
             {
                 jsonViewResult.Success = false;
             }
@@ -57,11 +59,11 @@ namespace Joke.Web.Controllers
 
                 // 发送审核
                 var userinfo = userLogic.GetUserInfo(jokeinfo.PostID);
-                string jokeUrl = string.Format("http://{0}/joke{1}.html",Request.Url.Authority,jokeinfo.ID);
+                string jokeUrl = string.Format("http://{0}/joke{1}.html", Request.Url.Authority, jokeinfo.ID);
                 NoticeMail.VerifyNotice(userinfo.UserName, userinfo.Email, jokeinfo.Title, jokeUrl);
 
             }
-            return Json(jsonViewResult,JsonRequestBehavior.AllowGet);
+            return Json(jsonViewResult, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult DeleteJoke(int jokeid)
@@ -84,17 +86,17 @@ namespace Joke.Web.Controllers
             return View(pageResult);
         }
 
-        public JsonResult UpdateUserState(int uid,int state)
+        public JsonResult UpdateUserState(int uid, int state)
         {
             JsonViewResult jsonViewResult = new JsonViewResult();
             var userinfo = userLogic.GetUserInfo(uid);
             userinfo.State = state;
             jsonViewResult.Success = userLogic.UpdateUserInfo(userinfo);
-            return Json(jsonViewResult,JsonRequestBehavior.AllowGet);
+            return Json(jsonViewResult, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
-        public ActionResult UserSearchList(int page=1)
+        public ActionResult UserSearchList(int page = 1)
         {
             UserSearchModel search = new UserSearchModel();
             search.Page = page;
@@ -108,13 +110,13 @@ namespace Joke.Web.Controllers
             JsonViewResult jsonViewResult = new JsonViewResult() { Success = false };
             int userJokesCount = jokeLogic.JokesCount(uid);
             var userinfo = userLogic.GetUserInfo(uid);
-            if(userinfo.IsAdmin>0)
+            if (userinfo.IsAdmin > 0)
             {
                 jsonViewResult.Success = false;
                 jsonViewResult.Message = "不能删除管理员";
                 return Json(jsonViewResult, JsonRequestBehavior.AllowGet);
             }
-            if(userJokesCount>0)
+            if (userJokesCount > 0)
             {
                 jsonViewResult.Success = false;
                 jsonViewResult.Message = "该会员已发表过笑话，不能删除该会员！";
@@ -124,7 +126,7 @@ namespace Joke.Web.Controllers
                 jsonViewResult.Success = userLogic.DeleteUser(uid);
 
             }
-            return Json(jsonViewResult,JsonRequestBehavior.AllowGet);
+            return Json(jsonViewResult, JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]
@@ -135,19 +137,19 @@ namespace Joke.Web.Controllers
             return View(jokeinfo);
         }
 
-        public ActionResult UpdateJoke(int jokeId,string title,string content,int categoryid)
+        public ActionResult UpdateJoke(int jokeId, string title, string content, int categoryid)
         {
             return View();
         }
 
         public ActionResult UserLog()
         {
-            
+
             return View();
         }
 
         [HttpPost]
-        public ActionResult UserLogResult(int page=1)
+        public ActionResult UserLogResult(int page = 1)
         {
             UserLogSearchModel search = new UserLogSearchModel();
             search.Page = page;
@@ -155,6 +157,42 @@ namespace Joke.Web.Controllers
             return View(pageResult);
         }
 
+        public ActionResult Links()
+        {
+            return View();
+        }
 
+        public ActionResult LinkEdit()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult LinkEdit(LinkEditModel linkModel)
+        {
+            T_FriendLink link;
+            bool result = false;
+            if (linkModel.ID == 0)
+            {
+                link = new T_FriendLink()
+                {
+                    AddDate = DateTime.Now,
+                    AddUserID = user.UserId,
+                    LinkMan = linkModel.LinkMan,
+                    LinkUrl = linkModel.LinkUrl,
+                    Name = linkModel.SiteName,
+                    State = 1,
+                    Remark = linkModel.KeyWords
+                };
+
+                result=friendLinkLogic.AddFriendLink(link);
+            }
+            return View();
+        }
+
+        public ActionResult LinkResult(int page=1)
+        {
+            return View();
+        }
     }
 }

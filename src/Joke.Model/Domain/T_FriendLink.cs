@@ -21,7 +21,8 @@ namespace Joke.Model.Domain
         private string _linkman = "";
         private int _state = 1;
         private DateTime _adddate = DateTime.Now;
-        private int _userid = 0;
+        private int _adduserid = 0;
+        private string _remark = "";
         /// <summary>
         /// 主键
         /// </summary>
@@ -70,13 +71,23 @@ namespace Joke.Model.Domain
             set { _adddate = value; }
             get { return _adddate; }
         }
+
+
         /// <summary>
         /// 添加人id
         /// </summary>
-        public int UserID
+        public int AddUserID
         {
-            set { _userid = value; }
-            get { return _userid; }
+            set { _adduserid = value; }
+            get { return _adduserid; }
+        }
+        /// <summary>
+        /// 备注
+        /// </summary>
+        public string Remark
+        {
+            set { _remark = value; }
+            get { return _remark; }
         }
         #endregion Model
 
