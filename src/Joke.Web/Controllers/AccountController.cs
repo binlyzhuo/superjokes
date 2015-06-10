@@ -217,6 +217,7 @@ namespace Joke.Web.Controllers
             }
             if(result)
             {
+                WebCache.Remove(friendLinkLogic.FriendLinksKey);
                 return RedirectToAction("links");
             }
             return View();
@@ -235,6 +236,10 @@ namespace Joke.Web.Controllers
         {
             JsonViewResult json = new JsonViewResult();
             json.Success = friendLinkLogic.DeleteFriendLink(id);
+            if(json.Success)
+            {
+                WebCache.Remove(friendLinkLogic.FriendLinksKey);
+            }
             return Json(json, JsonRequestBehavior.AllowGet);
         }
     }

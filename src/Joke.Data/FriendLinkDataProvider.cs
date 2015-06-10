@@ -22,5 +22,12 @@ namespace Joke.Data
             var pageResult = this.jokeDatabase.Page<T_FriendLink>(search.Page, search.PageSize, where);
             return pageResult;
         }
+
+        public List<T_FriendLink> GetFriendLinks()
+        {
+            Sql where = Sql.Builder.Where("1=1").OrderBy("ID Asc");
+            var items = this.jokeDatabase.Fetch<T_FriendLink>(where);
+            return items;
+        }
     }
 }

@@ -42,5 +42,11 @@ namespace Joke.BusinessLogic
         {
             return friendLinkData.SearchResult(search);
         }
+
+        public List<T_FriendLink> GetFriendLinks()
+        {
+
+            return friendLinkData.GetFriendLinks();
+        }
     }
 }

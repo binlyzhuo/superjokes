@@ -73,7 +73,7 @@
 
     @Html.Partial("_TopMenus")
     @RenderBody()
-    @Html.Partial("_FriendLinks")
+    @Html.Action("FriendLinks", "Home", null)
     @Html.Partial("_About")
     <script>
         var _hmt = _hmt || [];

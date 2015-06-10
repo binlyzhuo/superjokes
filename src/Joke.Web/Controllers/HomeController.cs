@@ -20,6 +20,7 @@ namespace Joke.Web.Controllers
     {
         JokeBusinessLogic jokeLogic = new JokeBusinessLogic();
         UserBusinessLogic userBusinessLogic = new UserBusinessLogic();
+        FriendLinkBusinessLogic linksLogic = new FriendLinkBusinessLogic();
 
         // GET: Home
         [OutputCache(Duration = 10)]
@@ -445,6 +446,19 @@ namespace Joke.Web.Controllers
                 json.Message = "密码修改失败！";
             }
             return Json(json, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult FriendLinks()
+        {
+            //var links = linksLogic.GetFriendLinks();
+
+            var links = WebCache.GetCacheObject<List<T_FriendLink>>(linksLogic.FriendLinksKey);
+            if (links == null || links.Count == 0)
+            {
+                links = linksLogic.GetFriendLinks();
+                WebCache.CacheInsert(links, linksLogic.FriendLinksKey);
+            }
+            return View("~/Views/Shared/_FriendLinks.cshtml", links);
         }
     }
 }
