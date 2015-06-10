@@ -65,6 +65,7 @@ namespace Joke.Web
         {
 
             var ex = Server.GetLastError();
+            LogHelper.Error(Utility.GetClientIP());
             LogHelper.Error(ex);
             var httpStatusCode = (ex is HttpException) ? (ex as HttpException).GetHttpCode() : 500;
 
