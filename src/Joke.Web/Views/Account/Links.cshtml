@@ -22,8 +22,21 @@
       });
 
       function deletelink(id) {
-
+          if (confirm("确定要删除该记录吗?")) {
+              $.post('/account/DeleteLink', { id: id }, function (d) {
+                  if (d.Success) {
+                      alert('删除成功!');
+                      window.location.href = "/account/links";
+                  }
+                  else
+                  {
+                      alert("删除失败！");
+                  }
+              });
+          }
       }
+
+
     </script>    
 }
 <h2>友情链接管理</h2>

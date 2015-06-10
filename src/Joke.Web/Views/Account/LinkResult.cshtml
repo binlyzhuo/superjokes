@@ -28,8 +28,8 @@ else
                 <td>@m.LinkMan</td>
                 <td>@m.AddDate.ToString("yyyy-MM-dd HH:mm:ss")</td>
                 <td>
-                    
-                    <a href="#" onclick="deletelink(@m.ID)">删除用户</a>
+                    <a href="/account/linkedit?id=@m.ID" target="_self">编辑</a>
+                    <a href="#" onclick="deletelink(@m.ID)">删除</a>
                 </td>
 
             </tr>

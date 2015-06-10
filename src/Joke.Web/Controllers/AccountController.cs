@@ -162,9 +162,26 @@ namespace Joke.Web.Controllers
             return View();
         }
 
-        public ActionResult LinkEdit()
+        public ActionResult LinkEdit(int id = 0)
         {
-            return View();
+            LinkEditModel linkModel;
+            if (id == 0)
+            {
+                linkModel = new LinkEditModel();
+            }
+            else
+            {
+                var link = friendLinkLogic.GetFriendLink(id);
+                linkModel = new LinkEditModel()
+                {
+                    ID = link.ID,
+                    KeyWords = link.Remark,
+                    LinkMan = link.LinkMan,
+                    LinkUrl = link.LinkUrl,
+                    SiteName = link.Name
+                };
+            }
+            return View(linkModel);
         }
 
         [HttpPost]
@@ -185,12 +202,27 @@ namespace Joke.Web.Controllers
                     Remark = linkModel.KeyWords
                 };
 
-                result=friendLinkLogic.AddFriendLink(link);
+                result = friendLinkLogic.AddFriendLink(link);
+                return RedirectToAction("Links");
+            }
+            else
+            {
+                link = friendLinkLogic.GetFriendLink(linkModel.ID);
+                link.Name = linkModel.SiteName;
+                link.LinkUrl = linkModel.LinkUrl;
+                link.Remark = linkModel.KeyWords;
+                link.LinkMan = linkModel.LinkMan;
+
+                result=friendLinkLogic.UpdateFriendLink(link);
+            }
+            if(result)
+            {
+                return RedirectToAction("links");
             }
             return View();
         }
 
-        public ActionResult LinkResult(int page=1)
+        public ActionResult LinkResult(int page = 1)
         {
             FriendLinkSearch search = new FriendLinkSearch();
             search.Page = page;
@@ -203,7 +235,7 @@ namespace Joke.Web.Controllers
         {
             JsonViewResult json = new JsonViewResult();
             json.Success = friendLinkLogic.DeleteFriendLink(linkid);
-            return Json(json,JsonRequestBehavior.AllowGet);
+            return Json(json, JsonRequestBehavior.AllowGet);
         }
     }
 }
