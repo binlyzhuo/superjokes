@@ -26,7 +26,7 @@
               $.post('/account/DeleteLink', { id: id }, function (d) {
                   if (d.Success) {
                       alert('删除成功!');
-                      window.location.href = "/account/links";
+                      search(1);
                   }
                   else
                   {
@@ -39,8 +39,8 @@
 
     </script>    
 }
-<h2>友情链接管理</h2>
-<a target="_parent" href="/account/linkedit">添加友情链接</a>
+<h2>友情链接管理<a target="_parent" style="margin-left:10px;font-weight:normal;" href="/account/linkedit">添加友情链接</a></h2>
+
 
 <div id="searchresult"></div>
 

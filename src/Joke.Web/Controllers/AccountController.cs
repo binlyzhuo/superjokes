@@ -231,10 +231,10 @@ namespace Joke.Web.Controllers
         }
 
         [HttpPost]
-        public JsonResult DeleteLink(int linkid)
+        public JsonResult DeleteLink(int id)
         {
             JsonViewResult json = new JsonViewResult();
-            json.Success = friendLinkLogic.DeleteFriendLink(linkid);
+            json.Success = friendLinkLogic.DeleteFriendLink(id);
             return Json(json, JsonRequestBehavior.AllowGet);
         }
     }

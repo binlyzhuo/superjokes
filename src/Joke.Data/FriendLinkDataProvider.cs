@@ -18,7 +18,7 @@ namespace Joke.Data
 
         public Page<T_FriendLink> SearchResult(FriendLinkSearch search)
         {
-            Sql where = Sql.Builder.Where("1=1");
+            Sql where = Sql.Builder.Where("1=1").OrderBy("ID Desc");
             var pageResult = this.jokeDatabase.Page<T_FriendLink>(search.Page, search.PageSize, where);
             return pageResult;
         }
