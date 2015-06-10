@@ -68,11 +68,12 @@ namespace Joke.Web
             LogHelper.Error(Utility.GetClientIP());
             LogHelper.Error(ex);
             var httpStatusCode = (ex is HttpException) ? (ex as HttpException).GetHttpCode() : 500;
-
+            RedirectUrl("/page404.html");
             switch (httpStatusCode)
             {
                 case 404:
                     Response.Redirect("/page404.html");
+                    
                     break;
                 default:
                     Response.Redirect("/page404.html");
@@ -88,6 +89,16 @@ namespace Joke.Web
         protected void Application_EndRequest()
         {
             MiniProfiler.Stop();
+        }
+
+        private void RedirectUrl(string url)
+        {
+            Response.Clear();
+            Response.BufferOutput = true;
+            if (Response.IsRequestBeingRedirected)
+            {
+                Response.Redirect(url, true);
+            }
         }
     }
 }

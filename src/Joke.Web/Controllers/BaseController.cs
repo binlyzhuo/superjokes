@@ -25,5 +25,10 @@ namespace Joke.Web.Controllers
             ViewBag.KeyWords = keywords;
             ViewBag.Description = description;
         }
+
+        protected void RedirectUrl(string url)
+        {
+
+        }
     }
 }
