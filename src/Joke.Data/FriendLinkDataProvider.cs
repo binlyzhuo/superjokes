@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NPoco;
+using Joke.Model.ViewModel;
 
 namespace Joke.Data
 {
@@ -15,6 +16,11 @@ namespace Joke.Data
 
         }
 
-        
+        public Page<T_FriendLink> SearchResult(FriendLinkSearch search)
+        {
+            Sql where = Sql.Builder.Where("1=1");
+            var pageResult = this.jokeDatabase.Page<T_FriendLink>(search.Page, search.PageSize, where);
+            return pageResult;
+        }
     }
 }

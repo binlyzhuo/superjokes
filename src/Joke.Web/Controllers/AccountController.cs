@@ -192,7 +192,17 @@ namespace Joke.Web.Controllers
 
         public ActionResult LinkResult(int page=1)
         {
-            return View();
+            FriendLinkSearch search = new FriendLinkSearch();
+            search.Page = page;
+            var pageResult = friendLinkLogic.FriendLinkSearch(search);
+            return View(pageResult);
+        }
+
+        [HttpPost]
+        public JsonResult DeleteLink(int linkid)
+        {
+            JsonViewResult json = new JsonViewResult();
+            return Json(json,JsonRequestBehavior.AllowGet);
         }
     }
 }

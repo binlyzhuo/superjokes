@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NPoco;
+using Joke.Model.ViewModel;
 
 namespace Joke.BusinessLogic
 {
@@ -34,6 +36,11 @@ namespace Joke.BusinessLogic
         public T_FriendLink GetFriendLink(int id)
         {
             return friendLinkData.SingleOrDefault(id);
+        }
+
+        public Page<T_FriendLink> FriendLinkSearch(FriendLinkSearch search)
+        {
+            return friendLinkData.SearchResult(search);
         }
     }
 }

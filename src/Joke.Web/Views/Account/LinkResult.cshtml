@@ -1,1 +1,45 @@
-﻿
+﻿@using NPoco
+@using Joke.Model.Domain
+@using Joke.Web.Helpers
+
+@model Page<T_FriendLink>
+
+@if (Model.TotalItems == 0)
+{
+    <div>暂无待审核笑话</div>
+}
+else
+{
+
+    <table class="gridtable">
+        <tr>
+            <th>网站名称</th>
+            <th>网站链接</th>
+            <th>联系人</th>
+            <th>添加时间</th>
+            <th>操作</th>
+        </tr>
+
+        @foreach (var m in Model.Items)
+        {
+            <tr>
+                <td>@m.Name</td>
+                <td>@m.LinkUrl</td>
+                <td>@m.LinkMan</td>
+                <td>@m.AddDate.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                <td>
+                    
+                    <a href="#" onclick="deletelink(@m.ID)">删除用户</a>
+                </td>
+
+            </tr>
+        }
+    </table>
+    <br />
+    <div>
+
+        <div class="page">
+            @Html.AjaxPaging((int)Model.CurrentPage, (int)Model.TotalItems, (int)Model.TotalPages)
+        </div>
+    </div>
+}
