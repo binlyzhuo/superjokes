@@ -28,7 +28,12 @@ namespace Joke.Web.Controllers
 
         protected void RedirectUrl(string url)
         {
-
+            Response.Clear();
+            Response.BufferOutput = true;
+            if(Response.IsRequestBeingRedirected)
+            {
+                Response.Redirect(url,true);
+            }
         }
     }
 }
