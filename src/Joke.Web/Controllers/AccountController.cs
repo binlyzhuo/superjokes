@@ -187,6 +187,10 @@ namespace Joke.Web.Controllers
         [HttpPost]
         public ActionResult LinkEdit(LinkEditModel linkModel)
         {
+            if(!ModelState.IsValid)
+            {
+                return View();
+            }
             T_FriendLink link;
             bool result = false;
             if (linkModel.ID == 0)
