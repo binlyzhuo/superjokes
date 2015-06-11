@@ -464,5 +464,10 @@ namespace Joke.Web.Controllers
             }
             return View("~/Views/Shared/_FriendLinks.cshtml", links);
         }
+
+        public ActionResult About()
+        {
+            return View();
+        }
     }
 }
