@@ -26,6 +26,10 @@ namespace Joke.Web.Controllers
         [OutputCache(Duration = 10)]
         public ActionResult Index()
         {
+            // 初始化数据
+            // 第一次运行请执行该代码来导入类型,导入后就可以删除了
+            // jokeLogic.InitCategory();
+            //
 
             // 判断是否是手机端
             string strUserAgent = Request.UserAgent.ToString().ToLower();
