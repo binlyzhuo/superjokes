@@ -96,7 +96,7 @@ namespace Joke.Web.Helpers
                 }
                 output.Append(" ");
             }
-            output.AppendFormat("<label>第{0}页 / 共{1}页</label>", currentPage, totalPages);//这个统计加不加都行
+            output.AppendFormat("<label>第{0}页 / 共{1}页,,共{2}条记录</label>", currentPage, totalPages, totalCount);//这个统计加不加都行
 
             return new HtmlString(output.ToString());
         }
