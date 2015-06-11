@@ -39,7 +39,7 @@ namespace Joke.Data
 
         public PageSearchResult<T_User> UserSearch(UserSearchModel search)
         {
-            Sql where = Sql.Builder.Where("1=1");
+            Sql where = Sql.Builder.Where("1=1").OrderBy("ID DESC");
             if(search.UserID>0)
             {
                 where.Append("ID=@0",search.UserID);
