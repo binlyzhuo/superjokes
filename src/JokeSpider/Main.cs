@@ -236,6 +236,7 @@ namespace JokeSpider
                 if (jokes.Count == 0)
                 {
                     lblMsg.Text = "没有抓取到数据，请重新定义规则!";
+                    btnRequest.Enabled = true;
                     return;
                 }
 
