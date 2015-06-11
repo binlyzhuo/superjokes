@@ -452,16 +452,17 @@ namespace Joke.Web.Controllers
             return Json(json, JsonRequestBehavior.AllowGet);
         }
 
+        [OutputCache(Duration = 10)]
         public ActionResult FriendLinks()
         {
-            //var links = linksLogic.GetFriendLinks();
+            var links = linksLogic.GetFriendLinks();
 
-            var links = WebCache.GetCacheObject<List<T_FriendLink>>(linksLogic.FriendLinksKey);
-            if (links == null || links.Count == 0)
-            {
-                links = linksLogic.GetFriendLinks();
-                WebCache.CacheInsert(links, linksLogic.FriendLinksKey);
-            }
+            //var links = WebCache.GetCacheObject<List<T_FriendLink>>(linksLogic.FriendLinksKey);
+            //if (links == null || links.Count == 0)
+            //{
+            //    links = linksLogic.GetFriendLinks();
+            //    WebCache.CacheInsert(links, linksLogic.FriendLinksKey);
+            //}
             return View("~/Views/Shared/_FriendLinks.cshtml", links);
         }
 
