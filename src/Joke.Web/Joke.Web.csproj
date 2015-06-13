@@ -282,9 +282,11 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ElmahController.cs" />
+    <Compile Include="Filter\LoginCheckAttribute.cs" />
+    <Compile Include="Filter\WapDeviceAttribute.cs" />
     <Compile Include="Helpers\AppConfig.cs" />
     <Compile Include="Helpers\ElmahResult.cs" />
-    <Compile Include="Helpers\GZipCompressAttribute.cs" />
+    <Compile Include="Filter\GZipCompressAttribute.cs" />
     <Compile Include="Helpers\NoticeMail.cs" />
     <Compile Include="Helpers\SafeFilterAttribute.cs" />
     <Compile Include="Auth\UserAuthorizeAttribute.cs" />

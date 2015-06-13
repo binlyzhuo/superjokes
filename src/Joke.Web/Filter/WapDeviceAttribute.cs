@@ -8,5 +8,10 @@ namespace Joke.Web.Filter
 {
     public class WapDeviceAttribute : ActionFilterAttribute
     {
+        public override void OnActionExecuting(ActionExecutingContext filterContext)
+        {
+            base.OnActionExecuting(filterContext);
+
+        }
     }
 }

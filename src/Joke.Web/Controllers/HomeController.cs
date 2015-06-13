@@ -13,6 +13,7 @@ using System.Web.Security;
 using Newtonsoft.Json;
 using Joke.Web.Auth;
 using Microsoft.Security.Application;
+using Joke.Web.Filter;
 
 namespace Joke.Web.Controllers
 {
@@ -51,6 +52,7 @@ namespace Joke.Web.Controllers
         }
 
         //
+        [LoginCheck]
         public ActionResult Login()
         {
 
@@ -63,6 +65,7 @@ namespace Joke.Web.Controllers
         }
 
         [HttpPost]
+        [LoginCheck]
         public ActionResult Login(UserLoginModel userLoginModel)
         {
             SetPageSeo("用户登录");
@@ -131,13 +134,16 @@ namespace Joke.Web.Controllers
         }
 
         [HttpGet]
+        [LoginCheck]
         public ActionResult Register()
         {
             ViewBag.BgClass = "indexPage-body";
+
             return View();
         }
 
         [HttpPost]
+        [LoginCheck]
         public ActionResult Register(UserRegisterModel userRegister)
         {
             if (!ModelState.IsValid)
