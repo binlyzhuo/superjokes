@@ -98,11 +98,11 @@
                         <a href="@JokeHelper.GetJokeDetail(p.JokeId)" target="_blank" title="@p.Title">@p.Title</a>
                     </h2>
                     <div class="article-source">
-                        <a class="user-icon" href="/" rel="nofollow" target="_blank">
+                        <span class="user-icon">
                             <img width="30" height="30" alt="@p.NikeName" src="~/Imgs/defaultphoto.png">
-                        </a>
-                        <a href="/" target="_blank" rel="nofollow" class="nike-name">@p.UserName</a>
-                        <a class="nike-name" style="margin-left:5px;">@p.PostDate.ToString("yyyy-MM-dd HH:mm:ss")</a>
+                        </span>
+                        <span class="nike-name">@p.UserName</span>
+                        <span class="nike-name" style="margin-left:5px;">@p.PostDate.ToString("yyyy-MM-dd HH:mm:ss")</span>
                         <a class="nike-name" target="_self" style="margin-left:5px;" href="@JokeHelper.GetCategoryJokes(p.CategoryPinyin)" title="@string.Format("{0}笑话,超级冷笑话",p.Category)">@p.Category</a>
                     </div>
                     <div class="summary-text">
@@ -127,7 +127,7 @@
                         
                     </div>
                     <div class="article-commentbar articleCommentbar clearfix" data-id="@p.JokeId">
-                        <a class="all-read" href="@JokeHelper.GetJokeDetail(p.JokeId)" target="_blank">查看全文»</a>
+                        <a class="all-read" href="@JokeHelper.GetJokeDetail(p.JokeId)" title="@p.Title" target="_blank">查看全文»</a>
                         <div class="share-btn-box btn">
                             
                             <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a title="分享到QQ空间" href="#" class="bds_qzone" data-cmd="qzone"></a><a title="分享到新浪微博" href="#" class="bds_tsina" data-cmd="tsina"></a><a title="分享到腾讯微博" href="#" class="bds_tqq" data-cmd="tqq"></a><a title="分享到人人网" href="#" class="bds_renren" data-cmd="renren"></a><a title="分享到微信" href="#" class="bds_weixin" data-cmd="weixin"></a></div>
