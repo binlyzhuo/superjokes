@@ -319,9 +319,9 @@ body{background:#fbf4e1}
 .new-panel .headline-title{height:26px;overflow:hidden;font:normal 20px/26px 'Microsoft YaHei','\5FAE\8F6F\96C5\9ED1';text-align:center}
 .new-panel .headline-title a{color:#f60;word-break:break-all;*white-space:nowrap}
 .new-panel .headline-title a:hover{color:#f60}
-.new-panel .headline p{padding:11px 0 17px;line-height:22px;word-break:break-all}
+.new-panel .headline p{padding:11px 0 10px;line-height:22px;word-break:break-all}
 .new-panel .headline .more{color:#f60;font-family:SimSun}
-.new-panel .news-list{padding-top:16px;padding-bottom:8px}
+.new-panel .news-list{padding-top:2px;padding-bottom:8px}
 .new-panel .news-list li{padding-left:0;background:none}
 .new-panel .news-list .date{float:right;color:#999}
 .new-panel .news-list a{padding-right:10px}
