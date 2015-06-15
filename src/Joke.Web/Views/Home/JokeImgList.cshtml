@@ -13,9 +13,9 @@
             <li class="item">
                 <span class="pic">
                     <a class="img-wrap" href="@JokeHelper.GetJokeDetail(s.ID)" target="_blank">
-                        <img class="lazyloading" src="/imgs/loadingplace.png" width="170" height="109" title="@s.Title" alt="@s.Title" data-original="@JokeHelper.GetJokeImg(s.Content)" shid="1" style="opacity: 1;">
+                        <img class="lazyloading" src="/imgs/loadingplace.png" width="170" height="109" title="@Html.Raw(s.Title)" alt="@Html.Raw(s.Title)" data-original="@JokeHelper.GetJokeImg(s.Content)" shid="1" style="opacity: 1;">
                     </a>
-                    <a class="text" href="@JokeHelper.GetJokeDetail(s.ID)" title="@s.Title" target="_blank">@s.Title</a>
+                    <a class="text" href="@JokeHelper.GetJokeDetail(s.ID)" title="@Html.Raw(s.Title)" target="_blank">@Html.Raw(s.Title)</a>
                 </span>
             </li>
         }

@@ -95,7 +95,7 @@
                 <li class="article-summary">
                     <span class="article-topbar"></span>
                     <h2 class="article-title">
-                        <a href="@JokeHelper.GetJokeDetail(p.JokeId)" target="_blank" title="@p.Title">@p.Title</a>
+                        <a href="@JokeHelper.GetJokeDetail(p.JokeId)" target="_blank" title="@Html.Raw(p.Title)">@Html.Raw(p.Title)</a>
                     </h2>
                     <div class="article-source">
                         <span class="user-icon">
@@ -122,12 +122,12 @@
                         {
                             <div>
                                 
-                                <img class="lazyloading" src="/imgs/loadingplace.png" data-original="@JokeHelper.GetJokeImg(p.Content)" alt="@p.Title" /></div>
+                                <img class="lazyloading" src="/imgs/loadingplace.png" data-original="@JokeHelper.GetJokeImg(p.Content)" alt="@Html.Raw(p.Title)" /></div>
                         }
                         
                     </div>
                     <div class="article-commentbar articleCommentbar clearfix" data-id="@p.JokeId">
-                        <a class="all-read" href="@JokeHelper.GetJokeDetail(p.JokeId)" title="@p.Title" target="_blank">查看全文»</a>
+                        <a class="all-read" href="@JokeHelper.GetJokeDetail(p.JokeId)" title="@Html.Raw(p.Title)" target="_blank">查看全文»</a>
                         <div class="share-btn-box btn">
                             
                             <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a title="分享到QQ空间" href="#" class="bds_qzone" data-cmd="qzone"></a><a title="分享到新浪微博" href="#" class="bds_tsina" data-cmd="tsina"></a><a title="分享到腾讯微博" href="#" class="bds_tqq" data-cmd="tqq"></a><a title="分享到人人网" href="#" class="bds_renren" data-cmd="renren"></a><a title="分享到微信" href="#" class="bds_weixin" data-cmd="weixin"></a></div>
