@@ -244,6 +244,7 @@
     <Content Include="App_Data\appsettings.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="license.txt" />
     <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\superjokes.pubxml" />
     <Content Include="robots.txt" />
