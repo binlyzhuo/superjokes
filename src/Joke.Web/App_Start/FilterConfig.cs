@@ -18,7 +18,7 @@ namespace Joke.Web.App_Start
         /// <param name="filters"></param>
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
-            //filters.Add(new HandleErrorAttribute());
+            filters.Add(new HandleErrorAttribute());
             filters.Add(new GZipCompressAttribute());
         }
     }
