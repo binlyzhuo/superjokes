@@ -372,6 +372,7 @@
     <Content Include="Views\Account\LinkEdit.cshtml" />
     <Content Include="Views\Account\LinkResult.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\TagsCloud.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

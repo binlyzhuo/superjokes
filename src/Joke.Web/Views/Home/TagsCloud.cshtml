@@ -1,0 +1,15 @@
+﻿@model List<CategoryDto>
+@using Joke.Model.Dto
+<div class="section">
+    <div class="section-header">
+        <h2 class="section-title">标签云</h2>
+    </div>
+    <div class="cloudwidth" id="tags">
+        
+        @foreach (var s in Model)
+        {
+            <a title="@string.Format("{0}笑话,超级冷笑话",s.Name)" href="@Joke.Web.Helpers.JokeHelper.GetCategoryJokes(s.PinYin)">@s.Name</a>
+        }
+    </div>
+
+</div>

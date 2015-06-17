@@ -476,5 +476,11 @@ namespace Joke.Web.Controllers
         {
             return View();
         }
+
+        public ActionResult TagsCloud()
+        {
+            var items = jokeLogic.GetCategoryList();
+            return View(items);
+        }
     }
 }

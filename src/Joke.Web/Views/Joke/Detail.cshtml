@@ -17,6 +17,7 @@
     <script type="text/javascript">
 
         $(function () {
+            tagsCloud();
             jokesfollow();
             showfaces();
             loadqqfaces();
@@ -157,6 +158,16 @@
                 });
             }
         }
+
+        function tagsCloud(){
+            var tags_a = $("#tags a");
+            tags_a.each(function () {
+                var x = 20;
+                var y = 0;
+                var rand = parseInt(Math.random() * (x - y + 1) + y);
+                $(this).addClass("tags" + rand);
+            });
+        }
     </script>
 }
 <div class="wrapper location clearfix">
@@ -270,6 +281,7 @@
     <div class="aside">
         <!-- section -->
         @Html.Action("LikeMostJokes", "Home", null)
+        @Html.Action("TagsCloud", "Home", null)
         <!-- //section -->
         <!-- section -->
         <!-- //section -->
