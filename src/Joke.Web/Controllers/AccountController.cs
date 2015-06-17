@@ -23,7 +23,7 @@ namespace Joke.Web.Controllers
         // GET: Account
         public ActionResult Index()
         {
-            int jokeToVerifyCount = jokeLogic.JokesCount(0);
+            int jokeToVerifyCount = jokeLogic.JokesStateCount(0);
             return View(jokeToVerifyCount);
         }
 

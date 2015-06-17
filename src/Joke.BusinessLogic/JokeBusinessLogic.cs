@@ -90,7 +90,7 @@ namespace Joke.BusinessLogic
             return jokeData.JokesCount();
         }
 
-        public int JokeCount(int? state)
+        public int JokesStateCount(int? state)
         {
             return jokeData.JokeCount(state);
         }
