@@ -23,7 +23,8 @@ namespace Joke.Web.Controllers
         // GET: Account
         public ActionResult Index()
         {
-            return View();
+            int jokeToVerifyCount = jokeLogic.JokesCount(0);
+            return View(jokeToVerifyCount);
         }
 
         public ActionResult VerifyList()
@@ -66,11 +67,11 @@ namespace Joke.Web.Controllers
             return Json(jsonViewResult, JsonRequestBehavior.AllowGet);
         }
 
+        [HttpPost]
         public JsonResult DeleteJoke(int jokeid)
         {
             JsonViewResult jsonViewResult = new JsonViewResult();
-            bool deleteResult = jokeLogic.DeleteJoke(jokeid);
-            jsonViewResult.Success = deleteResult;
+            jsonViewResult.Success = jokeLogic.DeleteJoke(jokeid);
             return Json(jsonViewResult, JsonRequestBehavior.AllowGet);
         }
 

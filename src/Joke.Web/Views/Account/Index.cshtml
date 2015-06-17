@@ -3,6 +3,9 @@
     ViewBag.Title = "管理中心";
     Layout = "~/Views/Shared/_BaseAdminLayoutPage.cshtml";
 }
-
+@model int
 <h2>管理中心</h2>
+<p>
+    @Html.Raw(string.Format("你有{0}条笑话待审核!",Model))
+</p>
 

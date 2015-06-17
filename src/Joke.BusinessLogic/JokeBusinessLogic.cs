@@ -90,6 +90,11 @@ namespace Joke.BusinessLogic
             return jokeData.JokesCount();
         }
 
+        public int JokeCount(int? state)
+        {
+            return jokeData.JokeCount(state);
+        }
+
         public Tuple<int, List<JokePrimaryInfo>> LatestJokesGet()
         {
             return jokeData.LatestJokesGet();

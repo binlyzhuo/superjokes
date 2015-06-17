@@ -22,6 +22,19 @@ namespace Joke.Data
             return Count(where);
         }
 
+        public int JokeCount(int? state)
+        {
+            if(state==null)
+            {
+                return Count();
+            }
+            else
+            {
+                Sql where = Sql.Builder.Where("state=@0",state);
+                return Count(where);
+            }
+        }
+
         public int JokesCount(int userid, int? state)
         {
             Sql where = Sql.Builder.Where("PostID=@0",userid);

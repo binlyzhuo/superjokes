@@ -23,22 +23,27 @@
 
         function Verify(jokeid,type)
         {
-            //alert(jokeid);
-            $.post('verify', { jokeid: jokeid, type: type }, function (data) {
-                if (data.Success) {
-                    alert('审核成功');
-                    loadingjokes();
-                }
-            });
+            if (confirm("确定审核通过?")) {
+                $.post('verify', { jokeid: jokeid, type: type }, function (data) {
+                    if (data.Success) {
+                        alert('审核成功');
+                        loadingjokes();
+                    }
+                });
+            }
+            
         }
 
         function DeleteJoke(jokeid) {
-            $.post('DeleteJoke', { jokeid: jokeid }, function (data) {
-                if (data.Success) {
-                    alert('删除成功');
-                    loadingjokes();
-                }
-            });
+            if (confirm("确定要删除吗?")) {
+                $.post('DeleteJoke', { jokeid: jokeid }, function (data) {
+                    if (data.Success) {
+                        alert('删除成功');
+                        loadingjokes();
+                    }
+                });
+            }
+            
         }
 
         function jokeDetail(jokieid) {

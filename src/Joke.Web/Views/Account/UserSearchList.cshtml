@@ -15,7 +15,7 @@ else
             <th>会员ID</th>
             <th>用户名</th>
             <th>邮件</th>
-            <th>昵称</th>
+            
             <th>注册时间</th>
             <th>角色</th>
             <th>状态</th>
@@ -28,7 +28,7 @@ else
                 <td>@m.ID</td>
                 <td>@m.UserName</td>
                 <td>@m.Email</td>
-                <td>@m.NikeName</td>
+                
                 <td>@m.RegisterDate.ToString("yyyy-MM-dd HH:mm:ss")</td>
                 <td>@Html.Raw(m.IsAdmin == 0 ? "会员" : "管理员") </td>
                 <td>@Html.Raw(m.State == 0 ? "无效" : "有效") </td>
