@@ -129,7 +129,7 @@ namespace Joke.Web.Controllers
             }
 
             var jokeinfo = jokeBusinessLogic.GetLastNextJokes(id);
-            string title = string.Format("冷笑话_超级冷笑话_{0}_冷笑话大全_成人笑话_糗事百科_十万个冷笑话", jokeinfo.Item1.Title);
+            string title = string.Format("超级冷笑话_{0}_超级冷笑话大全_成人笑话", jokeinfo.Item1.Title);
             string description = title;
             SetPageSeo(title,SiteKeyWords,SiteDescription);
             return View(jokeinfo);
