@@ -19,7 +19,7 @@
         }
 
     </ul><div class="more-link">
-             <a class="more" href="@JokeHelper.GetCategoryJokes(Model.PinYin)" target="_blank">
+             <a class="more" href="@JokeHelper.GetCategoryJokes(Model.PinYin)" target="_blank" title="@string.Format("{0}笑话",Model.CategoryName)">
                  
                  @Html.Raw(string.Format("共{0}条{1}»",Model.TotalCount,Model.CategoryName))
              </a>
