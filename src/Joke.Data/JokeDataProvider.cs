@@ -209,8 +209,8 @@ namespace Joke.Data
 
         public int GetJokesCount(int categoryId)
         {
-            string sql = "select count(1) from T_Joke with(NOLOCK) where Category=1 and Type=0 ";
-            int count = this.jokeDatabase.ExecuteScalar<int>(sql);
+            string sql = "select count(1) from T_Joke with(NOLOCK) where Category=@0 and Type=0 ";
+            int count = this.jokeDatabase.ExecuteScalar<int>(sql,categoryId);
             return count;
         }
     }
