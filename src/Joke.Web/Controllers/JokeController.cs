@@ -15,6 +15,7 @@ using Microsoft.Security.Application;
 using Travelling.Web.Helpers;
 using Joke.Web.Helpers;
 
+
 namespace Joke.Web.Controllers
 {
     public class JokeController : BaseController
@@ -129,9 +130,22 @@ namespace Joke.Web.Controllers
             }
 
             var jokeinfo = jokeBusinessLogic.GetLastNextJokes(id);
-            string title = string.Format("超级冷笑话_{0}_超级冷笑话大全_成人笑话", jokeinfo.Item1.Title);
-            string description = title;
-            SetPageSeo(title,SiteKeyWords,SiteDescription);
+            string categoryName = jokeBusinessLogic.GetCategoryInfo(jokeinfo.Item1.CategoryPinyin).Name;
+            string title = string.Format("超级冷笑话_{1}笑话_{0}_超级冷笑话大全_成人笑话", jokeinfo.Item1.Title, categoryName);
+            string keywords = title;
+            string descriptions = "";
+            if(jokeinfo.Item1.JokeType==0)
+            {
+                descriptions = Sanitizer.GetSafeHtmlFragment(jokeinfo.Item1.Content);
+            }
+            else
+            {
+                descriptions = Sanitizer.GetSafeHtmlFragment(jokeinfo.Item1.Title);
+            }
+            //HtmlSanitization.
+
+
+            SetPageSeo(title, title, descriptions);
             return View(jokeinfo);
         }
 

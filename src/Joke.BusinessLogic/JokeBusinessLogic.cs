@@ -63,6 +63,8 @@ namespace Joke.BusinessLogic
             return categoryDtos;
         }
 
+        
+
         public CategoryDto GetCategoryInfo(string pinyin)
         {
             return GetCategoryList().SingleOrDefault(u => u.PinYin == pinyin);
