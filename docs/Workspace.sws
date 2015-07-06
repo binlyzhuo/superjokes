@@ -11,7 +11,8 @@
 		<Model Expanded="Yes" ID="{E2320511-83DD-4064-9857-7C50005F8AE0}" Loaded="No" Name="Joke" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="Joke.pdm"/>
 		<Model Expanded="Yes" ID="{6F1C8B94-2CC2-4169-8E55-57FE875CAE13}" Loaded="No" Name="Collector" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="/github/collector/docs/Collector.pdm"/>
 		<Model Expanded="Yes" ID="{6F1C8B94-2CC2-4169-8E55-57FE875CAE13}" Loaded="No" Name="Collector" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="/github/collector/docs/Collector.pdm"/>
-		<Model Expanded="Yes" ID="{6F1C8B94-2CC2-4169-8E55-57FE875CAE13}" Name="Collector" Selected="Yes" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="/github/collector/docs/Collector.pdm"/>
+		<Model Expanded="Yes" ID="{6F1C8B94-2CC2-4169-8E55-57FE875CAE13}" Loaded="No" Name="Collector" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="/github/collector/docs/Collector.pdm"/>
+		<Model Expanded="Yes" ID="{90E6BAB4-F1CA-4659-86C8-19D8AFB47811}" Name="BooksInOffice" Selected="Yes" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="/github/booksinoffice/docs/BooksInOffice.pdm"/>
 	</Local>
 	<BrowserModule Name="Repository"/>
 </Workspace>
