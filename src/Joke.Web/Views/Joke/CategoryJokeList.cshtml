@@ -1,12 +1,15 @@
 ﻿@model List<CategoryDto>
 @using Joke.Model.Dto
 @using Joke.Web.Helpers
+@{
+    string category = ViewBag.Category;
+}
 <div class="filter">
     <div class="filter-links clearfix">
         <a href="/latest/">全部</a>
         @foreach (var s in Model)
         {
-            <a href="@JokeHelper.GetCategoryJokes(s.PinYin)" title="@string.Format("{0}笑话",s.Name)">@s.Name</a>
+            <a href="@JokeHelper.GetCategoryJokes(s.PinYin)" class="@Html.Raw(s.PinYin == category ? "current" : "")" target="_self" title="@string.Format("{0}笑话",s.Name)">@s.Name</a>
         }
     </div>
 </div>

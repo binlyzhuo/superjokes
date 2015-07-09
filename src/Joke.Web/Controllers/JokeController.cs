@@ -174,9 +174,10 @@ namespace Joke.Web.Controllers
             return View(pageResult);
         }
 
-        public ActionResult CategoryJokeList()
+        public ActionResult CategoryJokeList(string category="")
         {
             var items = jokeBusinessLogic.GetCategoryList();
+            ViewBag.Category = category;
             return View(items);
         }
 

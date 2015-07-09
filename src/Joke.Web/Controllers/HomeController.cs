@@ -214,19 +214,20 @@ namespace Joke.Web.Controllers
 
         public ActionResult Latest(int page = 1)
         {
-            SetPageSeo(string.Format("最新冷笑话_最新成人笑话_最新笑话_笑话大全_超级冷笑话_糗事百科_十万个冷笑话_第{0}页", page), SiteKeyWords, SiteDescription);
+            SetPageSeo(string.Format("{1}年最新冷笑话_最新成人笑话_超级冷笑话_第{0}页", page,DateTime.Now.Year), SiteKeyWords, SiteDescription);
             JokeSearchModel search = new JokeSearchModel();
             search.Page = page;
             search.SearchType = JokeSearchType.Latest;
             var pageResult = jokeLogic.JokePostInfo(search);
             pageResult.Data = "latest";
             pageResult.Data1 = "最新冷笑话";
+            
             return View("~/Views/Home/JokeList.cshtml", pageResult);
         }
 
         public ActionResult LengXiaoHua(int page = 1)
         {
-            SetPageSeo(string.Format("最新冷笑话_最新成人笑话_最新笑话_笑话大全_糗事百科_十万个冷笑话_第{0}页", page), SiteKeyWords, SiteDescription);
+            SetPageSeo(string.Format("最新冷笑话_笑话大全_第{0}页", page), SiteKeyWords, SiteDescription);
             JokeSearchModel search = new JokeSearchModel();
             search.Page = page;
             search.SearchType = JokeSearchType.LengXioaHua;
@@ -239,7 +240,7 @@ namespace Joke.Web.Controllers
         public ActionResult Images(int page = 1)
         {
 
-            SetPageSeo(string.Format("搞笑图片_冷笑话_糗事百科_最新成人笑话_成人搞笑图片_最新笑话_笑话大全_超级冷笑话_第{0}页", page), SiteKeyWords, SiteDescription);
+            SetPageSeo(string.Format("搞笑图片_成人搞笑图片_超级冷笑话_第{0}页", page), SiteKeyWords, SiteDescription);
             JokeSearchModel search = new JokeSearchModel();
             search.Page = page;
             search.SearchType = JokeSearchType.ImageJokes;
@@ -305,7 +306,7 @@ namespace Joke.Web.Controllers
 
 
 
-        public ActionResult CategoryJokeList()
+        public ActionResult CategoryJokeList(string category="")
         {
             var items = jokeLogic.GetCategoryList();
             return View(items);

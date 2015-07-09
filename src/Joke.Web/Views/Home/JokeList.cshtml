@@ -85,7 +85,7 @@
     <!-- main -->
     <div class="main">
         <!-- filter -->
-        @Html.Action("CategoryJokeList", "Joke", null)
+        @Html.Action("CategoryJokeList", "Joke", new { category=Model.Data })
         <!-- //filter -->
         <!-- article-list -->
         <ul class="article-list">
