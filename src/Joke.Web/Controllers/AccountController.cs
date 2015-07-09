@@ -247,5 +247,15 @@ namespace Joke.Web.Controllers
             }
             return Json(json, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult Comments()
+        {
+            return View();
+        }
+
+        public ActionResult CommentResult()
+        {
+            return View();
+        }
     }
 }
