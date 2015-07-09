@@ -104,14 +104,18 @@ namespace Joke.Web.Controllers
                 Message = jokeId>0?"发表成功":"发表失败"
             };
 
-            return RedirectToAction("PostJokeResult", postResult);
+            TempData["PostResult"] = postResult;
+ 
+            return RedirectToAction("PostJokeResult");
 
         }
 
         [UserAuthorize(Roles = "User,Admin")]
         [HttpGet]
-        public ActionResult PostJokeResult(PostJokeResult postResult)
+        public ActionResult PostJokeResult()
         {
+            //TempData["PostResult"];
+            PostJokeResult postResult = TempData["PostResult"] as PostJokeResult;
             return View(postResult);
         }
 
