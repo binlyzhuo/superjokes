@@ -253,8 +253,11 @@ namespace Joke.Web.Controllers
             return View();
         }
 
-        public ActionResult CommentResult(CommentManageSearch search)
+        [HttpPost]
+        public ActionResult CommentResult(int page=1)
         {
+            CommentManageSearch search = new CommentManageSearch() { Page=page };
+            search.PageSize = 3;
             var items = jokeLogic.CommentManageSearch(search);
             return View(items);
         }
