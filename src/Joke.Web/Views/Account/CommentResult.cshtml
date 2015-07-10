@@ -1,1 +1,45 @@
-﻿
+﻿@model PageSearchResult<T_Comment>
+@using Joke.Model.ViewModel
+@using Joke.Model.Domain
+@using Joke.Web.Helpers
+@using Joke.Common
+
+@if (Model.TotalCount == 0)
+{
+    <div>暂无数据</div>
+}
+else
+{
+    <table class="gridtable">
+        <tr>
+            <th>序号</th>
+            <th>用户</th>
+            <th>笑话ID</th>
+            <th>发表时间</th>
+            <th>内容</th>
+            <th>操作</th>
+        </tr>
+
+        @foreach (var m in Model.Items)
+        {
+            <tr>
+                <td>@m.ID</td>
+                <td>@m.UserID</td>
+                <td>@m.JokeId</td>
+                <td>@m.AddDate.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                <td>@m.Content.SubString(20)</td>
+                <td>
+                    <a href="javascript:deletecomments(@m.ID)">删除</a>
+                    <a target="_blank" href="/@string.Format("joke{0}.html",m.JokeId)">查看</a>
+                </td>
+            </tr>
+        }
+    </table>
+    <br />
+    <div>
+
+        <div class="page">
+            @Html.AjaxPaging(Model.Page, Model.TotalCount, Model.TotalPages)
+        </div>
+    </div>
+}

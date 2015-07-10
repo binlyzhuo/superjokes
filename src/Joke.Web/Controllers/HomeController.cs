@@ -256,7 +256,7 @@ namespace Joke.Web.Controllers
 
             pinyin = Sanitizer.GetSafeHtmlFragment(pinyin);
             var category = jokeLogic.CategoryGet(pinyin);
-            string title = string.Format("{0}笑话大全_超级冷笑话_糗事百科_十万个冷笑话_第{1}页", category.Name, page);
+            string title = string.Format("{0}笑话大全_超级冷笑话_第{1}页", category.Name, page);
             string keywords = string.Format("{0}笑话，{1}", category.Name, SiteKeyWords);
             string description = string.Format("{0}笑话，{1}", category.Name, SiteDescription);
             SetPageSeo(title, keywords, description);

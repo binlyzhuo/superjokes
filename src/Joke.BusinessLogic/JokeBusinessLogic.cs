@@ -202,5 +202,10 @@ namespace Joke.BusinessLogic
             return jokeData.GetJokesCount(categoryId);
         }
 
+        public PageSearchResult<T_Comment> CommentManageSearch(CommentManageSearch search)
+        {
+            return commentData.CommentManageSearch(search);
+        }
+
     }
 }

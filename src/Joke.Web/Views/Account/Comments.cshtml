@@ -1,8 +1,37 @@
 ﻿
 @{
-    ViewBag.Title = "Comments";
+    ViewBag.Title = "评论管理";
     Layout = "~/Views/Shared/_BaseAdminLayoutPage.cshtml";
 }
+@section header{
+   <script type="text/javascript">
+       $(function () {
+           search(1);
+       });
 
-<h2>Comments</h2>
+       function search(p) {
+           $.ajax({
+               url: '/account/commentresult',
+               type: 'post',
+               dateType: 'json',
+               data: { page: p },
+               success: function (d) {
+                   $("#searchresult").html(d);
+               }
+           });
+       }
+
+       function deletecomments(commentid){
+           if(confirm('确认删除本条评论'))
+           {
+               $.post('/joke/DeleteComment',{commentid:commentid},function(){
+                   search(1);
+               });
+           }
+       }
+    </script>    
+}
+<h2>评论管理</h2>
+
+<div id="searchresult"></div>
 

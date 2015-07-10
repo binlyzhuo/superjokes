@@ -34,7 +34,7 @@ namespace Joke.Data
 
             
             var items = this.jokeDatabase.FetchMultiple<CommentViewInfo, int>(sql, search.Page, search.PageSize);
-            PageSearchResult<CommentViewInfo> pageResult = new PageSearchResult<CommentViewInfo>()
+            var pageResult = new PageSearchResult<CommentViewInfo>()
             {
                 Items = items.Item1,
                 Page = search.Page,
@@ -43,6 +43,20 @@ namespace Joke.Data
             };
             return pageResult;
             
+        }
+
+        public PageSearchResult<T_Comment> CommentManageSearch(CommentManageSearch search)
+        {
+            Sql where = Sql.Builder.Where("1=1").OrderBy("ID Desc");
+            var page = this.jokeDatabase.Page<T_Comment>(search.Page, search.PageSize, where);
+            var pageResult = new PageSearchResult<T_Comment>()
+            {
+                Items = page.Items,
+                Page = search.Page,
+                PageSize = search.PageSize,
+                TotalCount = (int)page.TotalItems
+            };
+            return pageResult;
         }
     }
 }
