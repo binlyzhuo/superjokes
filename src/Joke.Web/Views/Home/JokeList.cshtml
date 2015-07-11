@@ -105,7 +105,7 @@
                         <span class="nike-name" style="margin-left:5px;">@p.PostDate.ToString("yyyy-MM-dd HH:mm:ss")</span>
                         <a class="nike-name" target="_self" style="margin-left:5px;" href="@JokeHelper.GetCategoryJokes(p.CategoryPinyin)" title="@string.Format("{0}笑话,超级冷笑话",p.Category)">@p.Category</a>
                     </div>
-                    <div class="summary-text">
+                    <div class="summary-text article">
                         @if (p.JokeType == 0)
                         {
                             <div>@Html.Raw(p.Content)</div>
@@ -120,16 +120,17 @@
                         }
                         else
                         {
-                            <div>
-                                
-                                <img class="lazyloading" src="/imgs/loadingplace.png" data-original="@JokeHelper.GetJokeImg(p.Content)" alt="@Html.Raw(p.Title)" /></div>
+                            <div class="article-text">
+
+                                <img class="lazyloading" src="/imgs/loadingplace.png" data-original="@JokeHelper.GetJokeImg(p.Content)" alt="@Html.Raw(p.Title)" />
+                            </div>
                         }
-                        
+
                     </div>
                     <div class="article-commentbar articleCommentbar clearfix" data-id="@p.JokeId">
                         <a class="all-read" href="@JokeHelper.GetJokeDetail(p.JokeId)" title="@Html.Raw(p.Title)" target="_blank">查看全文»</a>
                         <div class="share-btn-box btn">
-                            
+
                             <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a title="分享到QQ空间" href="#" class="bds_qzone" data-cmd="qzone"></a><a title="分享到新浪微博" href="#" class="bds_tsina" data-cmd="tsina"></a><a title="分享到腾讯微博" href="#" class="bds_tqq" data-cmd="tqq"></a><a title="分享到人人网" href="#" class="bds_renren" data-cmd="renren"></a><a title="分享到微信" href="#" class="bds_weixin" data-cmd="weixin"></a></div>
                             <script>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": '@Html.Raw(p.Title)', "bdMini": "2", "bdMiniList": false, "bdPic": "@Html.Raw(JokeHelper.GetShareImg(p))", "bdStyle": "1", "bdSize": "16" }, "share": {}, "image": { "viewList": ["qzone", "tsina", "tqq", "renren", "weixin"], "viewText": "分享到：", "viewSize": "16" }, "selectShare": { "bdContainerClass": null, "bdSelectMiniList": ["qzone", "tsina", "tqq", "renren", "weixin"] } }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
                         </div>
