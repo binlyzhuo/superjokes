@@ -39,7 +39,7 @@ namespace Joke.Web.Controllers
 
         [UserAuthorize(Roles="User,Admin")]
         [HttpPost]
-        [ValidateInput(false)]
+        [ValidateInput(true)]
         public ActionResult PostJoke(string joketitle, string jokecontent, int joketype, int jokecategory,HttpPostedFileBase jokeImgFile)
         {
             string content = "";
@@ -106,6 +106,8 @@ namespace Joke.Web.Controllers
             };
 
             TempData["PostResult"] = postResult;
+
+            
  
             return RedirectToAction("PostJokeResult");
 
