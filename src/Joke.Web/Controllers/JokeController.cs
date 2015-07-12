@@ -39,6 +39,7 @@ namespace Joke.Web.Controllers
 
         [UserAuthorize(Roles="User,Admin")]
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult PostJoke(string joketitle, string jokecontent, int joketype, int jokecategory,HttpPostedFileBase jokeImgFile)
         {
             string content = "";
