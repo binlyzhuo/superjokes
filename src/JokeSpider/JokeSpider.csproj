@@ -117,6 +117,7 @@
   <ItemGroup>
     <Content Include="Config\spiderrules.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
