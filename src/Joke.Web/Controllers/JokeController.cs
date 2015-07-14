@@ -49,8 +49,8 @@ namespace Joke.Web.Controllers
             }
             else if(joketype==1)
             {
-                FileInfoHelper.GetFileName(jokeImgFile.FileName);
-                FileInfoHelper.GetFileExtend(jokeImgFile.FileName);
+                //FileInfoHelper.GetFileName(jokeImgFile.FileName);
+                //FileInfoHelper.GetFileExtend(jokeImgFile.FileName);
                 string newName = FileInfoHelper.GetNewName(jokeImgFile.FileName);
                 if (Request.IsLocal)
                 {
