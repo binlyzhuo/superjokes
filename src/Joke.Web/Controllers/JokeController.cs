@@ -309,5 +309,18 @@ namespace Joke.Web.Controllers
             jsonViewResult.Success = jokeBusinessLogic.DeleteJoke(id);
             return Json(jsonViewResult, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult PostArticle()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [UserAuthorize(Roles="Admin")]
+        [ValidateInput(false)]
+        public ActionResult PostArticle(string joketitle, string jokecontent, int joketype, int jokecategory)
+        {
+            return View();
+        }
     }
 }

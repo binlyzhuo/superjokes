@@ -374,6 +374,7 @@
     <Content Include="Views\Home\TagsCloud.cshtml" />
     <Content Include="Views\Account\Comments.cshtml" />
     <Content Include="Views\Account\CommentResult.cshtml" />
+    <Content Include="Views\Joke\PostArticle.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
