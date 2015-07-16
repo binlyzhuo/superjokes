@@ -1,8 +1,10 @@
-﻿
+﻿@using System.Web.Optimization
 @{
     ViewBag.Title = "PostArticle";
     Layout = "~/Views/Shared/_BaseLayoutPage.cshtml";
 }
-
+@section header{
+   @Scripts.Render("~/bundles/umeditor")
+}
 <h2>PostArticle</h2>
 
