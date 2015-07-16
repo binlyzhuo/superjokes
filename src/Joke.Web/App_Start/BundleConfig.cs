@@ -17,6 +17,8 @@ namespace Joke.Web.App_Start
             bundles.Add(new ScriptBundle("~/bundles/umeditor").Include("~/umeditor/umeditor.config.js",
                 "~/umeditor/umeditor.min.js",
                 "~/umeditor/lang/zh-cn/zh-cn.js"));
+
+            bundles.Add(new StyleBundle("~/bundles/umeditortheme").Include("~/umeditor/themes/default/css/umeditor.min.css"));
         }
     }
 }
