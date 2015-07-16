@@ -32,4 +32,12 @@
     <contentrule>//div[1]/div[3]</contentrule>
     <encoding>gb2312</encoding>
   </rule>
+<rule>
+    <name>捧腹网</name>
+    <url>http://www.pengfu.com/zuijurenqi_1_1.html</url>
+    <listrule>//html[1]/body[1]/div[4]/div[1]/div[4]/div[2]</listrule>
+    <titlerule>//div[1]/h3[1]</titlerule>
+    <contentrule>//div[1]/div[3]</contentrule>
+    <encoding>gb2312</encoding>
+  </rule>
 </rules>
