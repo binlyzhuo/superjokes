@@ -364,6 +364,7 @@
     <Compile Include="Helpers\AppConfig.cs" />
     <Compile Include="Helpers\ElmahResult.cs" />
     <Compile Include="Filter\GZipCompressAttribute.cs" />
+    <Compile Include="Helpers\ImageStore.cs" />
     <Compile Include="Helpers\NoticeMail.cs" />
     <Compile Include="Helpers\SafeFilterAttribute.cs" />
     <Compile Include="Auth\UserAuthorizeAttribute.cs" />
