@@ -471,6 +471,7 @@
     <Content Include="umeditor\third-party\mathquill\font\Symbola.ttf" />
     <Content Include="umeditor\third-party\mathquill\font\Symbola.woff" />
     <Content Include="Views\Joke\PostArticle.cshtml" />
+    <Content Include="Views\Home\HotArticles.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

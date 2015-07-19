@@ -4,9 +4,21 @@
     Layout = "~/Views/Shared/_BaseLayoutPage.cshtml";
 }
 @section header{
-   @Styles.Render("~/bundles/umeditortheme")
-   @Scripts.Render("~/bundles/umeditor")
+    <link type="text/css" rel="stylesheet" href="~/umeditor/themes/default/css/umeditor.min.css" />
+    <script type="text/javascript" src="~/umeditor/umeditor.config.js"></script>
+    <script type="text/javascript" src="~/umeditor/umeditor.js"></script>
+    <script type="text/javascript" src="~/umeditor/lang/zh-cn/zh-cn.js"></script>
 
+    <script type="text/javascript">
+        $(function () {
+            window.um = UM.getEditor('container');
+        });
+    </script>
 }
-<h2>PostArticle</h2>
+<div class="wrapper">
+    <br />
+    <script id="container" name="content" type="text/plain" style="width:980px;height:400px;">
+    这里写你的初始化内容
+    </script>
+</div>
 

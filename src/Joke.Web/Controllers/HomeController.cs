@@ -483,5 +483,10 @@ namespace Joke.Web.Controllers
             var items = jokeLogic.GetCategoryList();
             return View(items);
         }
+
+        public ActionResult HotArticles()
+        {
+            return View();
+        }
     }
 }

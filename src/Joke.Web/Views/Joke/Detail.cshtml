@@ -210,7 +210,7 @@
                 }
                 else if (currentJoke.JokeType == 1)
                 {
-                    <img src="@JokeHelper.GetJokeImg(currentJoke.Content)" />
+                    <img src="@JokeHelper.GetJokeImg(currentJoke.Content)" title="@currentJoke.Title" alt="@currentJoke.Title"/>
                 }
                 @if (Request.IsAuthenticated && (System.Web.HttpContext.Current.User as UserInfoPrincipal).IsAdmin > 0)
                 {
