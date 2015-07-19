@@ -310,15 +310,17 @@ namespace Joke.Web.Controllers
             return Json(jsonViewResult, JsonRequestBehavior.AllowGet);
         }
 
+        [UserAuthorize(Roles = "Admin")]
         public ActionResult PostArticle()
         {
-            return View();
+            var categoryDtos = jokeBusinessLogic.GetCategoryList();
+            return View(categoryDtos);
         }
 
         [HttpPost]
         [UserAuthorize(Roles="Admin")]
         [ValidateInput(false)]
-        public ActionResult PostArticle(string joketitle, string jokecontent, int joketype, int jokecategory)
+        public ActionResult PostArticle(string joketitle, string jokecontent, int jokecategory)
         {
             return View();
         }

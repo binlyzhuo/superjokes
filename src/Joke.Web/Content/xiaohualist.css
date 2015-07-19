@@ -439,7 +439,6 @@ table.gridtable td{background-color:#fff}
 .selectpage{color:#c00}
 .mydata-list{padding:28px 0 10px}
 .upload-data .mydata-list li{line-height:32px;padding-left:80px}
-.mydata-list li{line-height:26px;padding:10px 0 0 168px;position:relative}
 .upload-data .mydata-list .title{line-height:32px;text-align:left;width:80px}
 .mydata-list li .title{color:#545454;font-size:14px;left:0;line-height:26px;position:absolute;text-align:right;top:10px;width:156px}
 .com_form,.com_form p,.comment{position:relative}
@@ -496,3 +495,5 @@ span.emotion:hover{background-position:2px -28px}
 #tags .tags20{font-size:13px;font-family:Georgia,Arial,Tahoma,Geneva;color:#a94bc2}
 #tags a:hover{color:red}
 .cloudwidth{width:98%;margin:0 auto;padding:6px 5px}
+.posttable {margin-top:20px;}
+.posttable tr td {padding-bottom:5px;}
