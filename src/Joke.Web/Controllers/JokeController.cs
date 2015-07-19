@@ -322,6 +322,12 @@ namespace Joke.Web.Controllers
         [ValidateInput(false)]
         public ActionResult PostArticle(string joketitle, string jokecontent, int jokecategory)
         {
+            return RedirectToAction("PostArticleResult");
+        }
+
+        //[HttpPost]
+        public ActionResult PostArticleResult()
+        {
             return View();
         }
     }

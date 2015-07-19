@@ -14,6 +14,7 @@
 
     <script type="text/javascript">
         $(function () {
+            //window.UMEDITOR_HOME_URL = "/xxx/";
             window.um = UM.getEditor('container');
         });
 
@@ -25,43 +26,50 @@
 }
 <div class="wrapper">
     <form id="postjokeform" method="post" action="/joke/postarticle" enctype="multipart/form-data">
-        <div class="content">
-            <ul id="myDayaListForm" class="mydata-list">
-                <li>发表文章</li>
-                <li>
-                    <label class="title">笑话标题：</label>
+        <table class="posttable">
+            <tr>
+                <td><label class="title">笑话标题：</label></td>
+                <td>
                     <div class="others-cont">
                         <input type="text" value="" name="joketitle" id="joketitle" class="text-form" style="width:350px;">
                         <span class="txt" id="txtTitle">建议在个20字符以内</span>
                     </div>
-                </li>
-                <li>
+                </td>
+            </tr>
+            <tr>
+                <td>
                     <label class="title">笑话分类：</label>
+                </td>
+                <td>
                     <div class="others-cont">
-
                         <select id="jokecategory" name="jokecategory" tabindex="5">
-
                             @foreach (var s in Model)
                             {
                                 <option value="@s.ID">@s.Name</option>
                             }
                         </select>
-
                     </div>
-                </li>
-                <li>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top">
                     <label class="title">笑话内容：</label>
+                </td>
+                <td>
                     <div>
                         <script id="container" name="jokecontent" type="text/plain" style="width:800px;height:400px;">测试</script>
                     </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div class="save-btn">
+                        <a href="javascript:;" onclick="post();" id="submitBtn" style="color:white;display:block;width:100px;padding:10px; text-align:center; margin-left:169px; background-color:#F28A1B;font-weight:bold;font-size:15px;">确认提交</a>
+                    </div>
+                </td>
 
-                </li>
-            </ul>
-            <div class="save-btn">
-                <a href="javascript:;" onclick="post();" id="submitBtn" style="color:white;display:block;width:100px;padding:10px; text-align:center; margin-left:169px; background-color:#F28A1B;font-weight:bold;font-size:15px;">确认提交</a>
-
-            </div>
-        </div>
+            </tr>
+        </table>
     </form>
     
 </div>
