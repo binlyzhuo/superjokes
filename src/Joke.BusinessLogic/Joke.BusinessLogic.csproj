@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArticleBusinessLogic.cs" />
     <Compile Include="BaseLogic.cs" />
     <Compile Include="DtoMapper.cs" />
     <Compile Include="FriendLinkBusinessLogic.cs" />

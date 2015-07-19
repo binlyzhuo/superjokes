@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppConfigDataProvider.cs" />
+    <Compile Include="ArticleDataProvider.cs" />
     <Compile Include="BaseData.cs" />
     <Compile Include="CategoryDataProvider.cs" />
     <Compile Include="CommentDataProvider.cs" />

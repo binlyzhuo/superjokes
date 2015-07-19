@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\T_AppConfig.cs" />
+    <Compile Include="Domain\T_Article.cs" />
     <Compile Include="Domain\T_Category.cs" />
     <Compile Include="Domain\T_Comment.cs" />
     <Compile Include="Domain\T_FriendLink.cs" />

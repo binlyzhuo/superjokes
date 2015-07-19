@@ -358,6 +358,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\ElmahController.cs" />
     <Compile Include="Filter\LoginCheckAttribute.cs" />
     <Compile Include="Filter\WapDeviceAttribute.cs" />
@@ -474,6 +475,13 @@
     <Content Include="Views\Joke\PostArticle.cshtml" />
     <Content Include="Views\Home\HotArticles.cshtml" />
     <Content Include="Views\Joke\PostArticleResult.cshtml" />
+    <Content Include="umeditor\umeditor.min.js.map">
+      <DependentUpon>umeditor.min.js</DependentUpon>
+    </Content>
+    <Content Include="Views\Article\Detail.cshtml" />
+    <Content Include="Views\Article\Post.cshtml" />
+    <Content Include="Views\Article\List.cshtml" />
+    <Content Include="Views\Article\PostResult.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
