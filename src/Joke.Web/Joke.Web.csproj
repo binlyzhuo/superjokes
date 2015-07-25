@@ -472,9 +472,7 @@
     <Content Include="umeditor\third-party\mathquill\font\Symbola.otf" />
     <Content Include="umeditor\third-party\mathquill\font\Symbola.ttf" />
     <Content Include="umeditor\third-party\mathquill\font\Symbola.woff" />
-    <Content Include="Views\Joke\PostArticle.cshtml" />
     <Content Include="Views\Home\HotArticles.cshtml" />
-    <Content Include="Views\Joke\PostArticleResult.cshtml" />
     <Content Include="umeditor\umeditor.min.js.map">
       <DependentUpon>umeditor.min.js</DependentUpon>
     </Content>

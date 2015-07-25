@@ -1,8 +1,78 @@
-﻿
+﻿@using System.Web.Optimization
+@using Joke.Model.Dto
+@model List<CategoryDto>
+
 @{
     ViewBag.Title = "PostArticle";
     Layout = "~/Views/Shared/_BaseLayoutPage.cshtml";
 }
+@section header{
+    <link type="text/css" rel="stylesheet" href="~/umeditor/themes/default/css/umeditor.css" />
+    <script type="text/javascript" src="~/umeditor/umeditor.config.js"></script>
+    <script type="text/javascript" src="~/umeditor/umeditor.js"></script>
+    <script type="text/javascript" src="~/umeditor/lang/zh-cn/zh-cn.js"></script>
 
-<h2>PostArticle</h2>
+    <script type="text/javascript">
+        $(function () {
+            //window.UMEDITOR_HOME_URL = "/xxx/";
+            window.um = UM.getEditor('container');
+        });
+
+        function post() {
+            //alert('post!!');
+            $("#postjokeform").submit();
+        }
+    </script>
+}
+<div class="wrapper">
+    <form id="postjokeform" method="post" action="/article/post" enctype="multipart/form-data">
+        <table class="posttable">
+            <tr>
+                <td><label class="title">笑话标题：</label></td>
+                <td>
+                    <div class="others-cont">
+                        <input type="text" value="" name="joketitle" id="joketitle" class="text-form" style="width:350px;">
+                        <span class="txt" id="txtTitle">建议在个20字符以内</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label class="title">笑话分类：</label>
+                </td>
+                <td>
+                    <div class="others-cont">
+                        <select id="jokecategory" name="jokecategory" tabindex="5">
+                            @foreach (var s in Model)
+                            {
+                                <option value="@s.ID">@s.Name</option>
+                            }
+                        </select>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top">
+                    <label class="title">笑话内容：</label>
+                </td>
+                <td>
+                    <div>
+                        <script id="container" name="jokecontent" type="text/plain" style="width:800px;height:400px;">
+                            测试
+                        </script>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div class="save-btn">
+                        <a href="javascript:;" onclick="post();" id="submitBtn" style="color:white;display:block;width:100px;padding:10px; text-align:center; margin-left:169px; background-color:#F28A1B;font-weight:bold;font-size:15px;">确认提交</a>
+                    </div>
+                </td>
+
+            </tr>
+        </table>
+    </form>
+
+</div>
 
